@@ -6,8 +6,7 @@
  * Time: 14:46
  */
 
-namespace App\View\Components;
-
+namespace App\View\Components\Admin;
 
 use App\View\BaseComponent;
 

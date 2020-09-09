@@ -6,7 +6,7 @@
     @yield('styles')
 </head>
 <body>
-<x-error-header/>
+<x-error-header.admin/>
 <main class="u-error-content-wrap">
     @yield('content')
 </main>

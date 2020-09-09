@@ -23,8 +23,11 @@ Route::group(['namespace' => 'Auth'], function () {
 });
 
 Route::group(['namespace' => 'Core'], function () {
-    Route::get('/', ['uses' => 'PageController@welcome', 'as' => 'welcome']);
+//    Route::get('/', ['uses' => 'PageController@welcome', 'as' => 'welcome']);
     Route::get('/system-files/{image}', ['uses' => 'FileController@files', 'as' => 'system.files'])->where('image', '(.*)');
+});
+Route::group(['namespace' => 'Front'], function () {
+    Route::get('/', ['uses' => 'MainController@index', 'as' => 'welcome']);
 });
 
 Route::group(['middleware' => 'auth'], function () {
