@@ -1,0 +1,52 @@
+version: '3'
+services:
+
+  #DOCKER ADMINISTRATION
+  portainer:
+    image: portainer/portainer
+    restart: always
+    ports:
+    - 9003:9000
+    - 8000:8000
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - portainer_data:/data
+
+  #PERSISTENT STORAGE
+  mysql:
+    image: bitnami/mysql:latest
+    environment:
+    - MYSQL_ROOT_USER=${CONF_MYSQL_ROOT_USER}
+    - MYSQL_ROOT_PASSWORD=${CONF_MYSQL_ROOT_PASSWORD}
+    - MYSQL_USER=${CONF_MYSQL_USER}
+    - MYSQL_PASSWORD=${CONF_MYSQL_PASSWORD}
+    - MYSQL_DATABASE=${CONF_MYSQL_DATABASE}
+    - MYSQL_AUTHENTICATION_PLUGIN=mysql_native_password
+    volumes:
+    - mysql_data:/bitnami/mysql/data
+    ports:
+    - 3307:3306
+  #TEMPORARY STORAGE
+  redis:
+    image: bitnami/redis:latest
+    ports:
+    - 6380:6379
+    environment:
+      REDIS_PASSWORD: ${CONF_REDIS_PASSWORD}
+
+  #FILE SERVICE
+  minio:
+    image: bitnami/minio:latest
+    volumes:
+    - minio:/data1
+    ports:
+    - 9000:9000
+    environment:
+      MINIO_ACCESS_KEY: ${CONF_MINIO_ACCESS_KEY}
+      MINIO_SECRET_KEY: ${CONF_MINIO_SECRET_KEY}
+      MINIO_DEFAULT_BUCKETS: ${CONF_MINIO_BUCKET}
+
+volumes:
+  minio: {}
+  portainer_data: {}
+  mysql_data: {}
