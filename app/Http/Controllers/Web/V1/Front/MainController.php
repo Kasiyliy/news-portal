@@ -17,4 +17,8 @@ class MainController extends WebBaseController
     {
         return $this->frontView('pages.news');
     }
+    public function newsDetail($id)
+    {
+        return $this->frontView('pages.news-detail');
+    }
 }

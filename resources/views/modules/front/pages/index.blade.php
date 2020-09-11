@@ -6,15 +6,13 @@
 
 @section('content')
 
-    <x-front.front-header/>
-
     <section class="info">
         <div class="container">
             <div class="info__inner">
                 <div class="info__content">
                     <div class="info__card">
                         <div class="info__card__head">
-                            <img src="assets/img/school-icon.png" alt="school">
+                            <img src="{{asset('modules/front/assets/img/school-icon.png')}}" alt="school">
                             <h2>Мемлекеттік бағдарламалар</h2>
                         </div>
                         <div class="info__card__content">
@@ -28,7 +26,7 @@
                     </div>
                     <div class="info__card">
                         <div class="info__card__head">
-                            <img src="assets/img/people-icon.png" alt="">
+                            <img src="{{asset('modules/front/assets/img/people-icon.png')}}" alt="">
                             <h2>Мемлекеттік бағдарламалар</h2>
                         </div>
                         <div class="info__card__content">
@@ -42,7 +40,7 @@
                     </div>
                     <div class="info__card">
                         <div class="info__card__head">
-                            <img src="assets/img/building-icon.png" alt="">
+                            <img src="{{asset('modules/front/assets/img/building-icon.png')}}" alt="">
                             <h2>Мемлекеттік бағдарламалар</h2>
                         </div>
                         <div class="info__card__content">
@@ -56,7 +54,7 @@
                     </div>
                     <div class="info__card">
                         <div class="info__card__head reverse">
-                            <img src="assets/img/t-icon.png" alt="">
+                            <img src="{{asset('modules/front/assets/img/t-icon.png')}}" alt="">
                             <h2>Мемлекеттік бағдарламалар</h2>
                         </div>
                         <div class="info__card__content reverse">
@@ -70,7 +68,7 @@
                     </div>
                     <div class="info__card">
                         <div class="info__card__head reverse">
-                            <img src="assets/img/sigma-icon.png" alt="">
+                            <img src="{{asset('modules/front/assets/img/sigma-icon.png')}}" alt="">
                             <h2>Мемлекеттік бағдарламалар</h2>
                         </div>
                         <div class="info__card__content reverse">
@@ -84,7 +82,7 @@
                     </div>
                     <div class="info__card">
                         <div class="info__card__head reverse">
-                            <img src="assets/img/tasks-icon.png" alt="">
+                            <img src="{{asset('modules/front/assets/img/tasks-icon.png')}}" alt="">
                             <h2>Мемлекеттік бағдарламалар</h2>
                         </div>
                         <div class="info__card__content reverse">
@@ -105,7 +103,7 @@
         <div class="container">
             <div class="about__inner">
                 <div class="about__image">
-                    <img src="assets/img/about.png" alt="about">
+                    <img src="{{asset('modules/front/assets/img/about.png')}}"alt="about">
                 </div>
                 <div class="about__content">
                     <h1>Жоба туралы </h1>
@@ -113,15 +111,15 @@
                         жастарына арналған <a href="">толығырақ...</a></p>
                     <div class="about__icons">
                         <div class="about__icons__content">
-                            <img src="assets/img/clock-icon.png" alt="clock">
+                            <img src="{{asset('modules/front/assets/img/clock-icon.png')}}" alt="clock">
                             <p>Уақыт үнемдеу</p>
                         </div>
                         <div class="about__icons__content">
-                            <img src="assets/img/attention-icon.png" alt="attention">
+                            <img src="{{asset('modules/front/assets/img/attention-icon.png')}}" alt="attention">
                             <p>Ақпаратқа қолжетімділік</p>
                         </div>
                         <div class="about__icons__content">
-                            <img src="assets/img/mobile-icon.png" alt="mobile">
+                            <img src="{{asset('modules/front/assets/img/mobile-icon.png')}}" alt="mobile">
                             <p>Мобильді қосымша</p>
                         </div>
                     </div>
@@ -199,57 +197,57 @@
                 <h1>Бизнес-идея</h1>
                 <div class="row">
                     <div class="col d-flex text-center">
-                        <img src="assets/img/tractor-icon.png" alt="tractor">
+                        <img src="{{asset('modules/front/assets/img/tractor-icon.png')}}" alt="tractor">
                         <p>Ауыл шаруашылығы</p>
                     </div>
                     <div class="col d-flex text-center">
-                        <img src="assets/img/ball-icon.png" alt="ball">
+                        <img src="{{asset('modules/front/assets/img/ball-icon.png')}}" alt="ball">
                         <p>Спорт</p>
                     </div>
                     <div class="col d-flex text-center">
-                        <img src="assets/img/medal-icon.png" alt="medal">
+                        <img src="{{asset('modules/front/assets/img/medal-icon.png')}}" alt="medal">
                         <p>Топ бизнес</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col d-flex text-center">
-                        <img src="assets/img/car-icon.png" alt="car">
+                        <img src="{{asset('modules/front/assets/img/car-icon.png')}}" alt="car">
                         <p>Автобизнес</p>
                     </div>
                     <div class="col d-flex text-center">
-                        <img src="assets/img/graduate-icon.png" alt="graduate">
+                        <img src="{{asset('modules/front/assets/img/graduate-icon.png')}}" alt="graduate">
                         <p>Білім</p>
                     </div>
                     <div class="col d-flex text-center">
-                        <img src="assets/img/heart-icon.png" alt="heart">
+                        <img src="{{asset('modules/front/assets/img/heart-icon.png')}}" alt="heart">
                         <p>Хобби-бизнес</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col d-flex text-center">
-                        <img src="assets/img/ie-icon.png" alt="ie">
+                        <img src="{{asset('modules/front/assets/img/ie-icon.png')}}" alt="ie">
                         <p>Интернет-бизнес</p>
                     </div>
                     <div class="col d-flex text-center">
-                        <img src="assets/img/mouse-icon.png" alt="mouse">
+                        <img src="{{asset('modules/front/assets/img/mouse-icon.png')}}" alt="mouse">
                         <p>Сауда</p>
                     </div>
                     <div class="col d-flex text-center">
-                        <img src="assets/img/fork-icon.png" alt="fork">
+                        <img src="{{asset('modules/front/assets/img/fork-icon.png')}}" alt="fork">
                         <p>Тағам өнеркәсібі</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col d-flex text-center">
-                        <img src="assets/img/build-icon.png" alt="build">
+                        <img src="{{asset('modules/front/assets/img/build-icon.png')}}" alt="build">
                         <p>Құрылыс</p>
                     </div>
                     <div class="col d-flex text-center">
-                        <img src="assets/img/industry-icon.png" alt="industry">
+                        <img src="{{asset('modules/front/assets/img/industry-icon.png')}}" alt="industry">
                         <p>Жеңіл өнеркәсіп</p>
                     </div>
                     <div class="col d-flex text-center">
-                        <img src="assets/img/wallet-icon.png" alt="wallet">
+                        <img src="{{asset('modules/front/assets/img/wallet-icon.png')}}" alt="wallet">
                         <p>Басқалары</p>
                     </div>
                 </div>
@@ -264,20 +262,20 @@
                 <h1>Жаңалықтар мен хабарландырулар</h1>
                 <div class="row">
                     <div class="col">
-                        <img src="assets/img/news-image.png" alt="">
+                        <img src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
                         <p>Шетелге тұрақты тұруға кетуге байланысты зейнетақы жинақтарын қалай алуға болады?</p>
                     </div>
                     <div class="col">
-                        <img src="assets/img/news-image.png" alt="">
+                        <img src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
                         <p>Бос мемлекеттік әкімшілік лауазымдарға орналасуға жалпы конкурс туралы хабарландыру</p>
                     </div>
                     <div class="col">
-                        <img src="assets/img/news-image.png" alt="">
+                        <img src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
                         <p>«Тегін заңгерлік кеңестер. Мамандардың заңгерлік көмегі» республикалық бағдарламасы Қазақстан
                             бойынша тұрақты түрде жаңа форматта</p>
                     </div>
                     <div class="col">
-                        <img src="assets/img/news-image.png" alt="">
+                        <img src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
                         <p>«БЖЗҚ» АҚ өзекті сауалдарға жауап береді </p>
                     </div>
                 </div>

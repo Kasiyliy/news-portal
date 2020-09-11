@@ -1,0 +1,26 @@
+.news__detail__inner h1 {
+    padding: 20px 0 10px 0;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.95);
+    border-bottom: 4px solid #F8A555;
+    position: relative;
+}
+
+.news__detail__inner h1::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 250px;
+    height: 4px;
+    background-color: #00656D;
+}
+
+.news__detail__inner a {
+    font-size: 14px;
+    line-height: 24px;
+    color: #00656D;
+}

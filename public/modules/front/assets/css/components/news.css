@@ -11,6 +11,11 @@
 
 /* NEWS BLOCK */
 
+.news__block__content{
+    height: 699px;
+    margin: 0;
+}
+
 .news__block__inner h1 {
     padding: 20px 0 10px 0;
     font-weight: bold;
@@ -36,9 +41,39 @@
     width: 100%;
 }
 
+.news__block__image{
+    padding: 0;
+    max-width: 21%;
+}
+
+.news__block__image_inner{
+    position: relative;
+}
+
+.news__block__image_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    position: absolute;
+    top:0;
+    left: 0;
+}
+.news__block__image_content>p{
+    text-align: center;
+    color:#FFFFFF;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 14px;
+}
+
 .news__block__slider {
     background-color: #F8A555;
     padding: 20px;
+    height: 100%;
 }
 
 .news__block__slider h2 {
@@ -63,11 +98,17 @@
 .news__block__collection {
     background-color: #00656D;
     padding: 20px 20px;
+    flex: 1 0 33.333333%;
+    max-width: 37.333333%;
+    overflow-y: scroll;
+    max-height: 699px;
+
 }
 
 .news__block__collection>.d-block {
     border-bottom: 1px solid #CDCCCC;
     padding: 15px 0 10px 0;
+
 }
 
 .news__block__collection>.d-block h3 {
@@ -75,6 +116,10 @@
     line-height: 18px;
     color: #FFFFFF;
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.news__block__date{
+    padding-right: 20px;
 }
 
 .news__block__date p {
@@ -91,7 +136,49 @@
 }
 
 /* NEWS BOTTOM */
+
+.news__bottom{
+    margin-bottom:50px;
+}
+
 .news__bottom__inner-card{
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
     margin: 20px 20px;
+    padding:0;
+}
+
+
+.news__bottom__image{
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.news__bottom__image img{
+    width: 100%;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.news__bottom__inner-card h5{
+    padding: 20px 10px;
+    font-size: 22px;
+    line-height: 24px;
+    color: #00656D;
+}
+
+.news__bottom__date{
+    padding: 0 20px 20px 10px;
+}
+
+.news__bottom__date p{
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 14px;
+    color: #00656D;
+    margin: 0;
+}
+.news__bottom__date img{
+    color:#00656D;
+    object-fit: none;
+    padding-right: 5px;
 }
