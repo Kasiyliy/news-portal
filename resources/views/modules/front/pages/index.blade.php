@@ -1,7 +1,7 @@
 @extends('modules.front.layouts.app-main')
 
 @section('styles')
-    <script src="{{asset('modules/front/assets/css/swiper.min.css')}}"></script>
+    <link rel="stylesheet" href="{{asset('modules/front/assets/css/swiper.min.css')}}">
 @endsection
 
 @section('content')
