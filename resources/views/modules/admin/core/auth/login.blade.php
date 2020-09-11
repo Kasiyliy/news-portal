@@ -4,7 +4,7 @@
         <div class="card-body p-4 p-lg-7">
             <h2 class="text-center mb-4">Вход</h2>
             <form action="{{route('login.post')}}" method="post">
-                <x-input-form-group-list
+                <x-admin.input-form-group-list
                         :errors="$errors"
                         :elements="$loginInputs"/>
 

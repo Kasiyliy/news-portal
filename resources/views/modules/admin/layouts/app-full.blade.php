@@ -6,14 +6,14 @@
     @yield('styles')
 </head>
 <body>
-<x-header.admin :user="auth()->user()"/>
+<x-admin.header :user="auth()->user()"/>
 <main class="u-main">
-    <x-sidebar.admin :user="auth()->user()"/>
+    <x-admin.sidebar :user="auth()->user()"/>
     <div class="u-content">
         <div class="u-body">
             @yield('content')
         </div>
-        <x-footer.admin/>
+        <x-admin.footer/>
     </div>
 </main>
 @include('modules.admin.parts.scripts')

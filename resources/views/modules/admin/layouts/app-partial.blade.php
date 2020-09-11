@@ -10,7 +10,7 @@
     <div class="container py-11 my-auto">
         @yield('content')
     </div>
-    <x-footer/>
+    <x-admin.footer/>
 </main>
 @include('modules.admin.parts.scripts')
 @yield('scripts')

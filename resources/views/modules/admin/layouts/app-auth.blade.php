@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    <x-footer.admin/>
+    <x-admin.footer/>
 </main>
 @include('modules.admin.parts.scripts')
 @yield('scripts')
