@@ -8,5 +8,5 @@
         @endforeach
     </ul>
     <span class="text-muted ml-auto">&copy; {{date('Y')}} <a class="text-muted" href="https://htmlstream.com/"
-                                                             target="_blank">Автомойка онлайн</a>. Все права защищены.</span>
+                                                             target="_blank">SmartJastar.kz</a>. Все права защищены.</span>
 </footer>
