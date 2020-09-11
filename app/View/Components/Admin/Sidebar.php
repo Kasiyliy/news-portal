@@ -15,7 +15,7 @@ class Sidebar extends BaseComponent
 
     public function render()
     {
-        return $this->coreView('parts.sidebar');
+        return $this->coreAdminView('parts.sidebar');
     }
 
     public function navList()

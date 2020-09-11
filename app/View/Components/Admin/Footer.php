@@ -13,7 +13,7 @@ class Footer extends BaseComponent
 {
     public function render()
     {
-        return $this->coreView('parts.footer');
+        return $this->coreAdminView('parts.footer');
     }
 
     public function navList()

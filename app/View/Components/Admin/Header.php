@@ -21,7 +21,7 @@ class Header extends BaseComponent
 
     public function render()
     {
-        return $this->coreView('parts.header');
+        return $this->coreAdminView('parts.header');
     }
 
     public function navList()

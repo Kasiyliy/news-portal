@@ -28,6 +28,7 @@ Route::group(['namespace' => 'Core'], function () {
 });
 Route::group(['namespace' => 'Front'], function () {
     Route::get('/', ['uses' => 'MainController@index', 'as' => 'welcome']);
+    Route::get('/news', ['uses' => 'MainController@news', 'as' => 'news']);
 });
 
 Route::group(['middleware' => 'auth'], function () {

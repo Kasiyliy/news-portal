@@ -33,7 +33,7 @@ class InputFormGroup extends BaseComponent
 
     public function render()
     {
-        return $this->coreView('forms.input-form-group');
+        return $this->coreAdminView('forms.input-form-group');
     }
 
 }

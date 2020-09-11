@@ -33,7 +33,7 @@ class SelectFormGroup extends BaseComponent
 
     public function render()
     {
-        return $this->coreView('forms.select-form-group');
+        return $this->coreAdminView('forms.select-form-group');
     }
 
 }

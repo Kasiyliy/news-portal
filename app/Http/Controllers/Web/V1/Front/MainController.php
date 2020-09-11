@@ -12,4 +12,9 @@ class MainController extends WebBaseController
     {
         return $this->frontView('pages.index');
     }
+
+    public function news()
+    {
+        return $this->frontView('pages.news');
+    }
 }

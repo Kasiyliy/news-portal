@@ -13,8 +13,13 @@ use Illuminate\View\Component;
 
 abstract class BaseComponent extends Component
 {
-    public function coreView($path, $compact = [])
+    public function coreAdminView($path, $compact = [])
     {
         return view("modules.admin.core.components.$path", $compact);
+    }
+
+    public function coreFrontView($path, $compact = [])
+    {
+        return view("modules.front.core.components.$path", $compact);
     }
 }

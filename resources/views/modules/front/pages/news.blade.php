@@ -1,36 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('modules.front.layouts.app-main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+@section('content')
 
-    <link rel="stylesheet" href="style/all.css">
-    <title>SmartJastar</title>
-
-</head>
-
-<body>
-    <header class="header__small">
-        <nav class="navbar">
-            <div class="container d-flex">
-                <div class="header__social_media">
-                    <a href=""><img src="assets/img/instagram-icon.png" alt="instagram"></a>
-                    <a href=""><img src="assets/img/facebook-icon.png" alt="facebook"></a>
-                    <a href=""><img src="assets/img/vk-icon.png" alt="vk"></a>
-                    <a href=""><img src="assets/img/youtube-icon.png" alt="youtube"></a>
-                </div>
-                <div class="header__auth">
-                    <a href=""><img src="assets/img/search-icon.png" alt="search"></a>
-                    <a href=""><img src="assets/img/eyelash-icon.png" alt="eyelash"></a>
-                    <a href=""><img src="assets/img/language-icon.png" alt="language"></a>
-                    <a href=""><img src="assets/img/auth-icon.png" alt="auth">Авторизация</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <x-front.small-header/>
 
     <section class="news__block">
         <div class="container">
@@ -144,6 +116,4 @@
             </div>
         </div>
     </section>
-</body>
-
-</html>
+@endsection

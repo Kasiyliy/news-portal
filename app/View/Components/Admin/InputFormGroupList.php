@@ -28,7 +28,7 @@ class InputFormGroupList extends BaseComponent
 
     public function render()
     {
-        return $this->coreView('forms.input-form-group-list');
+        return $this->coreAdminView('forms.input-form-group-list');
     }
 
 }

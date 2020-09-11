@@ -3,9 +3,8 @@
 namespace App\View\Components\Front;
 
 use App\View\BaseComponent;
-use Illuminate\View\Component;
 
-class FrontFooter extends BaseComponent
+class SmallHeader extends BaseComponent
 {
     /**
      * Create a new component instance.
@@ -24,6 +23,6 @@ class FrontFooter extends BaseComponent
      */
     public function render()
     {
-        return $this->coreFrontView('parts.front-footer');
+        return $this->coreFrontView('parts.small-header');
     }
 }
