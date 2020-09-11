@@ -1,15 +1,21 @@
 @import url("components/index.css");
 @import url("components/news.css");
 @import url("components/news-detail.css");
-
-
-
+@import url("components/groups.css");
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
 body {
     font-family: 'Roboto Condensed', sans-serif;
 }
 
-
 li {
     list-style-type: none;
+}
+
+.fa {
+    font-family: Times sans-serif;
+}
+
+.cursor {
+    cursor: pointer;
 }

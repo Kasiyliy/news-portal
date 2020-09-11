@@ -30,6 +30,7 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/', ['uses' => 'MainController@index', 'as' => 'welcome']);
     Route::get('/news', ['uses' => 'MainController@news', 'as' => 'news']);
     Route::get('/news/{id}', ['uses' => 'MainController@newsDetail', 'as' => 'news.detail'])->where('id', '[0-9]+');
+    Route::get('/groups', ['uses' => 'MainController@groups', 'as' => 'groups']);
 });
 
 Route::group(['middleware' => 'auth'], function () {

@@ -1,0 +1,11 @@
+.groups__content {
+    min-height: 60vh;
+}
+
+.bs-4 {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.bg-sj-gray {
+    background: #F2F4F8;
+}
