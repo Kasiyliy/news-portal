@@ -1,7 +1,7 @@
 @extends('modules.front.layouts.app-main')
 
 @section('styles')
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="{{asset('modules/front/assets/css/swiper.min.css')}}"></script>
 @endsection
 
 @section('content')
@@ -286,7 +286,7 @@
 @endsection
 
 @section('scripts')
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="{{asset('modules/front/assets/js/swiper.min.js')}}"></script>
     <script>
         var swiper = new Swiper('.swiper-container', {
             direction: 'vertical',
