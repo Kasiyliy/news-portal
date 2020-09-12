@@ -27,4 +27,9 @@ class MainController extends WebBaseController
     {
         return $this->frontView('pages.groups');
     }
+
+    public function guide()
+    {
+        return $this->frontView('pages.guide');
+    }
 }
