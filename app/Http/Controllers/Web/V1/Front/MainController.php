@@ -37,4 +37,9 @@ class MainController extends WebBaseController
     {
         return $this->frontView('pages.business');
     }
+
+    public function prominentDetail($id)
+    {
+        return $this->frontView('pages.prominent-detail');
+    }
 }

@@ -33,3 +33,7 @@ li {
 .text-gold {
     color: #F8A555;
 }
+
+.min__content {
+    min-height: 60vh;
+}

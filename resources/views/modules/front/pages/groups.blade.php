@@ -9,7 +9,7 @@
         </div>
     </section>
 
-    <section class="groups__content">
+    <section class="min__content">
         <div class="container my-5">
             <div class="row">
                 <div class="col-3">
