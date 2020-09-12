@@ -32,4 +32,9 @@ class MainController extends WebBaseController
     {
         return $this->frontView('pages.guide');
     }
+
+    public function business()
+    {
+        return $this->frontView('pages.business');
+    }
 }
