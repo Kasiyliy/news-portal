@@ -1,0 +1,85 @@
+/*PROMINENT*/
+
+.prominent__inner h1 {
+    padding: 20px 0 10px 0;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.95);
+    border-bottom: 4px solid #F8A555;
+    position: relative;
+}
+
+.prominent__inner h1::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 250px;
+    height: 4px;
+    background-color: #00656D;
+}
+
+.prominent__inner > img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 50px;
+}
+
+.prominent__content p {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.btn.dropdown-toggle {
+    width: 100%;
+    background-color: #F5F5F7;
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.prominent__filter-buttons button {
+    border: 1px solid #76767A;
+}
+
+.prominent__filter-buttons button:last-child {
+    background-color: #1094A9;
+    color: #FFFFFF;
+}
+
+.prominent__media {
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.prominent__media h6 {
+    font-size: 14px;
+    line-height: 16px;
+    color: #76767A;
+}
+
+.prominent__media p {
+    width: fit-content;
+    font-size: 12px;
+    line-height: 14px;
+    color: #76767A;
+    padding: 4px 7px;
+    background-color: #F5F5F7;
+    border-radius: 3px;
+}
+
+.prominent__media img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.prominent__popover {
+    right: 0;
+    left: auto;
+    top: auto;
+    border: none;
+    cursor: pointer;
+}

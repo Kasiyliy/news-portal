@@ -1,3 +1,5 @@
+/*NEWS DETAIL*/
+
 .news__detail__inner h1 {
     padding: 20px 0 10px 0;
     font-weight: bold;
@@ -23,4 +25,33 @@
     font-size: 14px;
     line-height: 24px;
     color: #00656D;
+}
+
+.news__detail__inner-header h2{
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 30px;
+    color: #000000;
+    padding: 20px 10px;
+}
+.news__detail__inner-content img{
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
+    width: 100%;
+    height: auto;
+}
+
+.news__detail__inner-content h4{
+    font-size: 24px;
+    line-height: 18px;
+    color: #000000;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.news__detail__inner-content p{
+    padding-bottom: 30px;
+    font-size: 24px;
+    line-height: 24px;
+    color: #000000;
+    text-align: justify;
 }
