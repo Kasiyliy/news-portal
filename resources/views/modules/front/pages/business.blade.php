@@ -25,7 +25,7 @@
             <div class="row">
 
                 @for($i = 0; $i < 10; $i++)
-                    <div class="col-12 col-md-4 p-2">
+                    <div class="col-12 col-sm-6 col-md-4 p-2">
                         <img class="business__card" src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
                         <p>
                             {{strlen('Ашықтық және есептілік. Nur Otan праймеризінде кім байқаушы болады?Ашықтық және есептілік. Nur Otan праймеризінде кім байқаушы болады?Ашықтық және есептілік. Nur Otan праймеризінде кім байқаушы болады?') > 300 ?
