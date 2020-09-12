@@ -27,6 +27,12 @@
     margin-bottom: 50px;
 }
 
+.prominent__content__media{
+    height: 700px;
+    overflow-y: scroll;
+    margin-bottom: 50px;
+}
+
 .prominent__content p {
     font-weight: 300;
     font-size: 14px;

@@ -7,7 +7,7 @@
                 <h1>100 үздік есім</h1>
                 <img src="{{asset('modules/front/assets/img/prominent-img.png')}}" alt="prominent">
                 <div class="prominent__content row">
-                    <div class="col-12 col-md-3">
+                    <div class="col-12 col-md-3 mt-5">
                         <div class="card">
                             <div class="card-body">
                                 <p>Аудан</p>
@@ -56,7 +56,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-9">
+                    <div class="col-12 col-md-9 mt-5 prominent__content__media">
                         <ul class="list-unstyled">
                             <li class="media prominent__media">
                                 <img src="{{asset('modules/front/assets/img/Elbasy.png')}}" class="mr-3" alt="...">
