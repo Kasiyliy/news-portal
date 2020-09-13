@@ -131,22 +131,12 @@
     <section class="numbers">
         <div class="container">
             <div class="numbers__inner row">
+                @foreach($about_us as $count)
                 <div class="numbers__content col-12 col-sm-6 col-lg-3 col-md-3">
-                    <h1 class="number">37 000</h1>
-                    <p>Жастар саны</p>
+                    <h1 class="number">{{$count->count}}</h1>
+                    <p>{{$count->title}}</p>
                 </div>
-                <div class="numbers__content col-12 col-sm-6 col-lg-3 col-md-3">
-                    <h1 class="number">13</h1>
-                    <p>Мемлекеттік бағдарламалар</p>
-                </div>
-                <div class="numbers__content col-12 col-sm-6 col-lg-3 col-md-3">
-                    <h1 class="number">500</h1>
-                    <p>Еріктілер саны</p>
-                </div>
-                <div class="numbers__content col-12 col-sm-6 col-lg-3 col-md-3">
-                    <h1 class="number">11</h1>
-                    <p>Ресурстық орталық</p>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

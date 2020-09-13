@@ -32,7 +32,7 @@
                 </header>
                 <div class="card-body pt-0">
                     <form action="{{route('change.password')}}" method="post">
-                        <x-input-form-group-list
+                        <x-admin.input-form-group-list
                                 :errors="$errors"
                                 :elements="$changePasswordForm"/>
                         <button type="submit" class="btn btn-block btn-wide btn-primary text-uppercase">
@@ -49,7 +49,7 @@
                 </header>
                 <div class="card-body pt-0">
                     <form action="{{route('update.profile')}}" method="post" enctype="multipart/form-data">
-                        <x-input-form-group-list
+                        <x-admin.input-form-group-list
                                 :errors="$errors"
                                 :elements="$updateProfileForm"/>
                         <button type="submit" class="btn btn-block btn-wide btn-primary text-uppercase">

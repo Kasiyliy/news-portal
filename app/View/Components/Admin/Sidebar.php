@@ -24,6 +24,7 @@ class Sidebar extends BaseComponent
             return [
                 $this->navItem(route('home'), 'ti-home', 'Главная'),
                 $this->navItem(route('welcome'), 'ti-arrow-left', 'Вебсайт'),
+                $this->navItem(route('about_us.index'), 'ti-info-alt', 'Про нас'),
             ];
         } else {
             return [];

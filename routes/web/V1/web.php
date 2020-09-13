@@ -42,6 +42,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['namespace' => 'Core'], function () {
         Route::get('/home', ['uses' => 'PageController@home', 'as' => 'home']);
     });
+    Route::group(['namespace' => 'System'], function () {
+        Route::get('/about-us', ['uses' => 'AboutUsController@index', 'as' => 'about_us.index']);
+        Route::post('/about-us/update', ['uses' => 'AboutUsController@update', 'as' => 'about_us.update']);
+    });
 
     Route::group(['namespace' => 'System'], function () {
         Route::get('/profile', ['uses' => 'UserController@profile', 'as' => 'user.profile']);

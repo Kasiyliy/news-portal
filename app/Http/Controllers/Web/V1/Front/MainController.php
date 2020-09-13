@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Web\V1\Front;
 
 
 use App\Http\Controllers\Web\WebBaseController;
+use App\Models\Entities\Content\AboutUs;
 
 class MainController extends WebBaseController
 {
     public function index()
     {
-        return $this->frontView('pages.index');
+        $about_us = AboutUs::all();
+        return $this->frontView('pages.index', compact('about_us'));
     }
 
     public function news()
