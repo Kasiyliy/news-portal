@@ -45,6 +45,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['namespace' => 'System'], function () {
         Route::get('/about-us', ['uses' => 'AboutUsController@index', 'as' => 'about_us.index']);
         Route::post('/about-us/update', ['uses' => 'AboutUsController@update', 'as' => 'about_us.update']);
+
+        //Guide
+        Route::get('/guide', ['uses' => 'GuideController@index', 'as' => 'guide.index']);
+        Route::get('/guide/contents/{category_id}', ['uses' => 'GuideController@content', 'as' => 'guide.content.index'])
+            ->where('category_id', '[0-9]+');
+        Route::get('/guide/contents/create/{category_id}', ['uses' => 'GuideController@contentCreate', 'as' => 'guide.content.create'])
+            ->where('category_id', '[0-9]+');
+        Route::get('/guide/contents/store/{category_id}', ['uses' => 'GuideController@contentStore', 'as' => 'guide.content.store'])
+            ->where('category_id', '[0-9]+');
+        Route::post('/guide/store', ['uses' => 'GuideController@store', 'as' => 'guide.store']);
+        Route::post('/guide/update/{id}', ['uses' => 'GuideController@update', 'as' => 'guide.update'])
+            ->where('id','[0-9]+');
     });
 
     Route::group(['namespace' => 'System'], function () {

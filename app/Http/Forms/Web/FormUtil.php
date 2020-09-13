@@ -26,4 +26,9 @@ class FormUtil
     {
         return compact('value', 'selected', 'title');
     }
+
+    public static function textArea($name, $placeholder, $label, $type, $required, $value = null): array {
+        return [$name => compact('placeholder', 'label', 'type', 'required', 'value')];
+
+    }
 }
