@@ -6,7 +6,7 @@ namespace App\View\Components\Admin;
 
 use App\View\BaseComponent;
 
-class TextAreaFormGroup extends BaseComponent
+class TextareaFormGroup extends BaseComponent
 {
     public $name;
     public $placeholder;
