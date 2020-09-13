@@ -33,7 +33,7 @@
                             <p>Мемлекеттік бағдарлама - ресурстар, орындаушылар, ғылыми-зерттеу, өндірістік,
                                 әлеуметтік-экономикалық, ұйымдық және басқа шаралар. </p>
                             <div class="info__card__link">
-                                <a href="">Толығырақ оқу ➞</a>
+                                <a href="{{route('prominent')}}">Толығырақ оқу ➞</a>
                                 <h1>02</h1>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                             <p>Мемлекеттік бағдарлама - ресурстар, орындаушылар, ғылыми-зерттеу, өндірістік,
                                 әлеуметтік-экономикалық, ұйымдық және басқа шаралар. </p>
                             <div class="info__card__link">
-                                <a href="">Толығырақ оқу ➞</a>
+                                <a href="{{route('groups')}}">Толығырақ оқу ➞</a>
                                 <h1>03</h1>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                             <p>Мемлекеттік бағдарлама - ресурстар, орындаушылар, ғылыми-зерттеу, өндірістік,
                                 әлеуметтік-экономикалық, ұйымдық және басқа шаралар. </p>
                             <div class="info__card__link">
-                                <a href="">Толығырақ оқу ➞</a>
+                                <a href="{{route('guide')}}">Толығырақ оқу ➞</a>
                                 <h1>05</h1>
                             </div>
                         </div>
@@ -190,56 +190,80 @@
             <div class="business__inner">
                 <h1>Бизнес-идея</h1>
                 <div class="row">
-                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <img src="{{asset('modules/front/assets/img/tractor-icon.png')}}" alt="tractor">
-                        <p>Ауыл шаруашылығы</p>
+                    <div class="business__item col-10 mx-auto col-lg-4  text-center">
+                        <a class="d-flex" href="{{route('business')}}">
+                            <img src="{{asset('modules/front/assets/img/tractor-icon.png')}}" alt="tractor">
+                            <p>Ауыл шаруашылығы</p>
+                        </a>
                     </div>
                     <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <img src="{{asset('modules/front/assets/img/ball-icon.png')}}" alt="ball">
-                        <p>Спорт</p>
+                        <a class="d-flex" href="{{route('business')}}">
+                            <img src="{{asset('modules/front/assets/img/ball-icon.png')}}" alt="ball">
+                            <p>Спорт</p>
+                        </a>
                     </div>
                     <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <img src="{{asset('modules/front/assets/img/medal-icon.png')}}" alt="medal">
-                        <p>Топ бизнес</p>
-                    </div>
-
-                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <img src="{{asset('modules/front/assets/img/car-icon.png')}}" alt="car">
-                        <p>Автобизнес</p>
-                    </div>
-                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <img src="{{asset('modules/front/assets/img/graduate-icon.png')}}" alt="graduate">
-                        <p>Білім</p>
-                    </div>
-                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <img src="{{asset('modules/front/assets/img/heart-icon.png')}}" alt="heart">
-                        <p>Хобби-бизнес</p>
+                        <a class="d-flex" href="{{route('business')}}">
+                            <img src="{{asset('modules/front/assets/img/medal-icon.png')}}" alt="medal">
+                            <p>Топ бизнес</p>
+                        </a>
                     </div>
 
                     <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <img src="{{asset('modules/front/assets/img/ie-icon.png')}}" alt="ie">
-                        <p>Интернет-бизнес</p>
+                        <a class="d-flex" href="{{route('business')}}">
+                            <img src="{{asset('modules/front/assets/img/car-icon.png')}}" alt="car">
+                            <p>Автобизнес</p>
+                        </a>
                     </div>
                     <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <img src="{{asset('modules/front/assets/img/mouse-icon.png')}}" alt="mouse">
-                        <p>Сауда</p>
+                        <a class="d-flex" href="{{route('business')}}">
+                            <img src="{{asset('modules/front/assets/img/graduate-icon.png')}}" alt="graduate">
+                            <p>Білім</p>
+                        </a>
                     </div>
                     <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <img src="{{asset('modules/front/assets/img/fork-icon.png')}}" alt="fork">
-                        <p>Тағам өнеркәсібі</p>
+                        <a class="d-flex" href="{{route('business')}}">
+                            <img src="{{asset('modules/front/assets/img/heart-icon.png')}}" alt="heart">
+                            <p>Хобби-бизнес</p>
+                        </a>
                     </div>
 
                     <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <img src="{{asset('modules/front/assets/img/build-icon.png')}}" alt="build">
-                        <p>Құрылыс</p>
+                        <a class="d-flex" href="{{route('business')}}">
+                            <img src="{{asset('modules/front/assets/img/ie-icon.png')}}" alt="ie">
+                            <p>Интернет-бизнес</p>
+                        </a>
                     </div>
                     <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <img src="{{asset('modules/front/assets/img/industry-icon.png')}}" alt="industry">
-                        <p>Жеңіл өнеркәсіп</p>
+                        <a class="d-flex" href="{{route('business')}}">
+                            <img src="{{asset('modules/front/assets/img/mouse-icon.png')}}" alt="mouse">
+                            <p>Сауда</p>
+                        </a>
                     </div>
                     <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <img src="{{asset('modules/front/assets/img/wallet-icon.png')}}" alt="wallet">
-                        <p>Басқалары</p>
+                        <a class="d-flex" href="{{route('business')}}">
+                            <img src="{{asset('modules/front/assets/img/fork-icon.png')}}" alt="fork">
+                            <p>Тағам өнеркәсібі</p>
+                        </a>
+                    </div>
+
+                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
+                        <a class="d-flex" href="{{route('business')}}">
+                            <img src="{{asset('modules/front/assets/img/build-icon.png')}}" alt="build">
+                            <p>Құрылыс</p>
+                        </a>
+                    </div>
+                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
+                        <a class="d-flex" href="{{route('business')}}">
+                            <img src="{{asset('modules/front/assets/img/industry-icon.png')}}" alt="industry">
+                            <p>Жеңіл өнеркәсіп</p>
+                        </a>
+                    </div>
+                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
+                        <a class="d-flex" href="{{route('business')}}">
+                            <img src="{{asset('modules/front/assets/img/wallet-icon.png')}}" alt="wallet">
+                            <p>Басқалары</p>
+                        </a>
                     </div>
                 </div>
 
@@ -253,21 +277,30 @@
                 <h1>Жаңалықтар мен хабарландырулар</h1>
                 <div class="row">
                     <div class="col-12 col-lg-3">
-                        <img src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
-                        <p>Шетелге тұрақты тұруға кетуге байланысты зейнетақы жинақтарын қалай алуға болады?</p>
+                        <a href="{{route('news.detail', 1)}}">
+                            <img src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
+                            <p>Шетелге тұрақты тұруға кетуге байланысты зейнетақы жинақтарын қалай алуға болады?</p>
+                        </a>
                     </div>
                     <div class="col-12 col-lg-3">
-                        <img src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
-                        <p>Бос мемлекеттік әкімшілік лауазымдарға орналасуға жалпы конкурс туралы хабарландыру</p>
+                        <a href="{{route('news.detail', 1)}}">
+                            <img src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
+                            <p>Бос мемлекеттік әкімшілік лауазымдарға орналасуға жалпы конкурс туралы хабарландыру</p>
+                        </a>
                     </div>
                     <div class="col-12 col-lg-3">
-                        <img src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
-                        <p>«Тегін заңгерлік кеңестер. Мамандардың заңгерлік көмегі» республикалық бағдарламасы Қазақстан
-                            бойынша тұрақты түрде жаңа форматта</p>
+                        <a href="{{route('news.detail', 1)}}">
+                            <img src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
+                            <p>«Тегін заңгерлік кеңестер. Мамандардың заңгерлік көмегі» республикалық бағдарламасы
+                                Қазақстан бойынша тұрақты түрде жаңа форматта</p>
+                        </a>
+
                     </div>
                     <div class="col-12 col-lg-3">
-                        <img src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
-                        <p>«БЖЗҚ» АҚ өзекті сауалдарға жауап береді </p>
+                        <a href="{{route('news.detail', 1)}}">
+                            <img src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
+                            <p>«БЖЗҚ» АҚ өзекті сауалдарға жауап береді </p>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -365,7 +365,9 @@
     border-bottom: 3px solid #F8A555;
     padding: 20px 0;
 }
-
+.business__item a{
+    color: #76767A;
+}
 .business__item {
     border-bottom: 1px solid #C4C4C4;
     padding: 30px 0 10px 0;

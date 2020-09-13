@@ -12,7 +12,7 @@
                     <div class="col-12 col-lg-3 col-md-4 mt-4 mx-auto news__block__image">
                         <div class="news__block__image_inner">
                             <img src="{{asset('modules/front/assets/img/operator-img.png')}}" alt="operator">
-                            <div class="news__block__image_content">
+                            <a class="news__block__image_content" href="{{route('news.detail', 1)}}">
                                 <p>БЖЗҚ-да МЗЖ бойынша зейнетақы
                                     шоттары автоматты түрде ашылады</p>
                                 <div class="d-flex">
@@ -26,7 +26,7 @@
                                         <p>25.08.2020</p>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="news__block__image_inner">
                             <img src="{{asset('modules/front/assets/img/operator-img.png')}}" alt="operator">
@@ -67,7 +67,7 @@
                     </div>
                     <div class="col-12 col-lg-4 col-md-12 mt-4 news__block__collection">
                         <div class="d-block">
-                            <h3>БЖЗҚ шоттарының саны 11 6 миллионнан асты</h3>
+                            <a href="{{route('news.detail', 1)}}"><h3>БЖЗҚ шоттарының саны 11 6 миллионнан асты</h3></a>
                             <div class="d-flex">
                                 <div class="d-flex news__block__date">
                                     <img src="{{asset('modules/front/assets/img/eye-icon.png')}}" alt="eye">
@@ -117,30 +117,31 @@
             <div class="row">
                 @for($i = 0; $i < 10; $i++)
                     <div class="col-12 col-lg-4 col-md-6 mt-4">
-                        <div class="news__bottom__inner-card">
-                            <div class="news__bottom__image">
-                                <img src="{{asset('modules/front/assets/img/Elbasy.png')}}" alt="">
-                            </div>
-                            <h5>
-
-                                {{strlen('Ашықтық және есептілік. Nur Otan праймеризінде кім байқаушы болады?') > 111 ?
-                                mb_substr('Ашықтық және есептілік. Nur Otan праймеризінде кім байқаушы болады?',0,111)."..."
-                                        : 'Ашықтық және есептілік. Nur Otan праймеризінде кім байқаушы болады?'}}
-
-                            </h5>
-                            <div class="d-flex">
-                                <div class=" d-flex news__bottom__date">
-                                    <img src="{{asset('modules/front/assets/img/eye_green-icon.png')}}" alt="eye">
-                                    <p>115</p>
+                        <a href="{{route('news.detail', 1)}}">
+                            <div class="news__bottom__inner-card">
+                                <div class="news__bottom__image">
+                                    <img src="{{asset('modules/front/assets/img/Elbasy.png')}}" alt="">
                                 </div>
-                                <div class=" d-flex news__bottom__date">
-                                    <img src="{{asset('modules/front/assets/img/calendar_green-icon.png')}}"
-                                         alt="calendar">
-                                    <p>25.08.2020</p>
+                                <h5>
+
+                                    {{strlen('Ашықтық және есептілік. Nur Otan праймеризінде кім байқаушы болады?') > 111 ?
+                                    mb_substr('Ашықтық және есептілік. Nur Otan праймеризінде кім байқаушы болады?',0,111)."..."
+                                            : 'Ашықтық және есептілік. Nur Otan праймеризінде кім байқаушы болады?'}}
+
+                                </h5>
+                                <div class="d-flex">
+                                    <div class=" d-flex news__bottom__date">
+                                        <img src="{{asset('modules/front/assets/img/eye_green-icon.png')}}" alt="eye">
+                                        <p>115</p>
+                                    </div>
+                                    <div class=" d-flex news__bottom__date">
+                                        <img src="{{asset('modules/front/assets/img/calendar_green-icon.png')}}"
+                                             alt="calendar">
+                                        <p>25.08.2020</p>
+                                    </div>
                                 </div>
                             </div>
-
-                        </div>
+                        </a>
                     </div>
                 @endfor
             </div>

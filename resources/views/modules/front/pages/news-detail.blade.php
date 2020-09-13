@@ -5,7 +5,7 @@
         <div class="container">
             <div class="news__detail__inner">
                 <h1>Жаңалықтар</h1>
-                <a href="#">← Жаңалықтар айдарына өту </a>
+                <a href="{{route('news')}}">← Жаңалықтар айдарына өту </a>
                 <div class="news__detail__inner-header">
                     <h2>Ашықтық және есептілік. Nur Otan праймеризінде кім байқаушы болады?</h2>
                     <div class="d-flex">

@@ -58,10 +58,12 @@
                     </div>
                     <div class="col-12 col-md-9 mt-5 prominent__content__media">
                         <ul class="list-unstyled">
-                            <li class="media prominent__media">
+                            <li class="media prominent__media my-4">
                                 <img src="{{asset('modules/front/assets/img/Elbasy.png')}}" class="mr-3" alt="...">
                                 <div class="media-body">
-                                    <h5 class="mt-0 mb-1">Ерлан Жүніс Төсбайұлы</h5>
+                                    <a class="prominent__name" href="{{route('prominent.detail', 1)}}">
+                                        <h5 class="mt-0 mb-1">Ерлан Жүніс Төсбайұлы</h5>
+                                    </a>
                                     <h6>Жамбыл облысы, Тараз</h6>
                                     <p>Ақын</p>
                                 </div>
@@ -69,17 +71,19 @@
                                     <a data-container="body"
                                        data-toggle="popover" data-placement="left"
                                        data-content="
-                                            <a href='#'>Өмірбаяны</a></br>
-                                            <a href='#'>Атқарған еңбектері</a></br>
-                                            <a href='#'>Қосымша ақпараттар</a>">
+                                            <a class='popover__nav-item' href='{{route('prominent.detail', 1)}}'>Өмірбаяны</a></br>
+                                            <a class='popover__nav-item' href='{{route('prominent.detail', 1)}}'>Атқарған еңбектері</a></br>
+                                            <a class='popover__nav-item' href='{{route('prominent.detail', 1)}}'>Қосымша ақпараттар</a>">
                                         <i class="fa fa-ellipsis-h "></i>
                                     </a>
                                 </div>
                             </li>
                             <li class="media prominent__media my-4">
-                                <img src="{{asset('modules/front/assets/img/user-icon.png')}}" class="mr-3" alt="...">
+                                <img src="{{asset('modules/front/assets/img/Elbasy.png')}}" class="mr-3" alt="...">
                                 <div class="media-body">
-                                    <h5 class="mt-0 mb-1">List-based media object</h5>
+                                    <a class="prominent__name" href="{{route('prominent.detail', 1)}}">
+                                        <h5 class="mt-0 mb-1">Ерлан Жүніс Төсбайұлы</h5>
+                                    </a>
                                     <h6>Жамбыл облысы, Тараз</h6>
                                     <p>Ақын</p>
                                 </div>
@@ -87,31 +91,14 @@
                                     <a data-container="body"
                                        data-toggle="popover" data-placement="left"
                                        data-content="
-                                            <a href='#'>Өмірбаяны</a></br>
-                                            <a href='#'>Атқарған еңбектері</a></br>
-                                            <a href='#'>Қосымша ақпараттар</a>">
+                                            <a class='popover__nav-item' href='{{route('prominent.detail', 1)}}'>Өмірбаяны</a></br>
+                                            <a class='popover__nav-item' href='{{route('prominent.detail', 1)}}'>Атқарған еңбектері</a></br>
+                                            <a class='popover__nav-item' href='{{route('prominent.detail', 1)}}'>Қосымша ақпараттар</a>">
                                         <i class="fa fa-ellipsis-h "></i>
                                     </a>
                                 </div>
                             </li>
-                            <li class="media prominent__media">
-                                <img src="{{asset('modules/front/assets/img/user-icon.png')}}" class="mr-3" alt="...">
-                                <div class="media-body">
-                                    <h5 class="mt-0 mb-1">List-based media object</h5>
-                                    <h6>Жамбыл облысы, Тараз</h6>
-                                    <p>Ақын</p>
-                                </div>
-                                <div class="popover prominent__popover mr-3">
-                                    <a data-container="body"
-                                       data-toggle="popover" data-placement="left"
-                                       data-content="
-                                            <a href='#'>Өмірбаяны</a></br>
-                                            <a href='#'>Атқарған еңбектері</a></br>
-                                            <a href='#'>Қосымша ақпараттар</a>">
-                                        <i class="fa fa-ellipsis-h "></i>
-                                    </a>
-                                </div>
-                            </li>
+
                         </ul>
                     </div>
 

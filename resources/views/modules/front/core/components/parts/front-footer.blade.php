@@ -14,20 +14,20 @@
                     <h2>Пайдалы ресурстар:</h2>
                     <div class="row">
                         <div class="col">
-                            <li class="footer__nav"><a href="">egov.kz</a></li>
-                            <li class="footer__nav"><a href="">digitalkz.kz</a></li>
-                            <li class="footer__nav"><a href="">taraz-bus.kz</a></li>
-                            <li class="footer__nav"><a href="">atameken.kz </a></li>
-                            <li class="footer__nav"><a href="">cao-zhambyl.kz</a></li>
-                            <li class="footer__nav"><a href="">qazlatyn.kz</a></li>
+                            <li class="footer__nav"><a href="https://egov.kz">egov.kz</a></li>
+                            <li class="footer__nav"><a href="https://digitalkz.kz">digitalkz.kz</a></li>
+                            <li class="footer__nav"><a href="https://taraz-bus.kz">taraz-bus.kz</a></li>
+                            <li class="footer__nav"><a href="https://atameken.kz">atameken.kz</a></li>
+                            <li class="footer__nav"><a href="https://cao-zhambyl.kz">cao-zhambyl.kz</a></li>
+                            <li class="footer__nav"><a href="https://qazlatyn.kz">qazlatyn.kz</a></li>
                         </div>
                         <div class="col">
-                            <li class="footer__nav"><a href="">nauka.kz</a></li>
-                            <li class="footer__nav"><a href="">enbek.kz</a></li>
-                            <li class="footer__nav"><a href="">kitap.kz</a></li>
-                            <li class="footer__nav"><a href="">eduschool.kz</a></li>
-                            <li class="footer__nav"><a href="">zhambyltipo.kz</a></li>
-                            <li class="footer__nav"><a href="">zhasotan.kz</a></li>
+                            <li class="footer__nav"><a href="https://nauka.kz">nauka.kz</a></li>
+                            <li class="footer__nav"><a href="https://enbek.kz">enbek.kz</a></li>
+                            <li class="footer__nav"><a href="https://kitap.kz">kitap.kz</a></li>
+                            <li class="footer__nav"><a href="https://eduschool.kz">eduschool.kz</a></li>
+                            <li class="footer__nav"><a href="https://zhambyltipo.kz">zhambyltipo.kz</a></li>
+                            <li class="footer__nav"><a href="https://zhasotan.kz">zhasotan.kz</a></li>
                         </div>
                     </div>
                 </div>

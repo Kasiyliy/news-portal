@@ -93,3 +93,17 @@
     border: none;
     cursor: pointer;
 }
+
+.media-body a{
+    text-decoration: none;
+}
+
+.prominent__name h5{
+    color: #000000;
+    text-decoration: none;
+}
+
+
+.popover__nav-item{
+    color: #000000;
+}
