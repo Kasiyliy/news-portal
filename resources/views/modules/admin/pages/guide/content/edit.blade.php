@@ -16,7 +16,7 @@
                     <h2 class="h4 card-header-title">Гид контент</h2>
                 </header>
                 <div class="card-body pt-0">
-                    <form action="{{route('guide.content.store', ['category_id' => $category_id])}}" method="post">
+                    <form action="{{route('guide.content.update', ['id' => $content->id])}}" method="post">
                         <x-admin.input-form-group-list
                             :errors="$errors"
                             :elements="$content_web_form"/>

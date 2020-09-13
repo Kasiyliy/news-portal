@@ -42,21 +42,24 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['namespace' => 'Core'], function () {
         Route::get('/home', ['uses' => 'PageController@home', 'as' => 'home']);
     });
-    Route::group(['namespace' => 'System'], function () {
+    Route::group(['namespace' => 'System', 'prefix' => 'admin'], function () {
         Route::get('/about-us', ['uses' => 'AboutUsController@index', 'as' => 'about_us.index']);
         Route::post('/about-us/update', ['uses' => 'AboutUsController@update', 'as' => 'about_us.update']);
 
         //Guide
         Route::get('/guide', ['uses' => 'GuideController@index', 'as' => 'guide.index']);
-        Route::get('/guide/contents/{category_id}', ['uses' => 'GuideController@content', 'as' => 'guide.content.index'])
-            ->where('category_id', '[0-9]+');
-        Route::get('/guide/contents/create/{category_id}', ['uses' => 'GuideController@contentCreate', 'as' => 'guide.content.create'])
-            ->where('category_id', '[0-9]+');
-        Route::get('/guide/contents/store/{category_id}', ['uses' => 'GuideController@contentStore', 'as' => 'guide.content.store'])
-            ->where('category_id', '[0-9]+');
         Route::post('/guide/store', ['uses' => 'GuideController@store', 'as' => 'guide.store']);
-        Route::post('/guide/update/{id}', ['uses' => 'GuideController@update', 'as' => 'guide.update'])
-            ->where('id','[0-9]+');
+        Route::post('/guide/update/{id}', ['uses' => 'GuideController@update', 'as' => 'guide.update'])->where('id','[0-9]+');
+        Route::post('/guide/delete/{id}', ['uses' => 'GuideController@delete', 'as' => 'guide.delete'])->where('id','[0-9]+');
+
+        Route::get('/guide/contents/{category_id}', ['uses' => 'GuideController@content', 'as' => 'guide.content.index'])->where('category_id', '[0-9]+');
+        Route::get('/guide/contents/create/{category_id}', ['uses' => 'GuideController@contentCreate', 'as' => 'guide.content.create'])->where('category_id', '[0-9]+');
+        Route::get('/guide/contents/edit/{id}', ['uses' => 'GuideController@contentEdit', 'as' => 'guide.content.edit'])->where('id', '[0-9]+');
+        Route::post('/guide/contents/store/{category_id}', ['uses' => 'GuideController@contentStore', 'as' => 'guide.content.store'])->where('category_id', '[0-9]+');
+        Route::post('/guide/contents/update/{id}', ['uses' => 'GuideController@contentUpdate', 'as' => 'guide.content.update'])->where('id', '[0-9]+');
+        Route::post('/guide/contents/delete/{id}', ['uses' => 'GuideController@contentDelete', 'as' => 'guide.content.delete'])->where('id', '[0-9]+');
+
+
     });
 
     Route::group(['namespace' => 'System'], function () {

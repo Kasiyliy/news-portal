@@ -4,8 +4,11 @@
 namespace App\Http\Controllers\Web\V1\Front;
 
 
+use App\Exceptions\Web\WebServiceExplainedException;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Models\Entities\Content\AboutUs;
+use App\Models\Entities\Content\GuideCategory;
+use Illuminate\Http\Request;
 
 class MainController extends WebBaseController
 {
@@ -30,9 +33,16 @@ class MainController extends WebBaseController
         return $this->frontView('pages.groups');
     }
 
-    public function guide()
+    public function guide(Request $request)
     {
-        return $this->frontView('pages.guide');
+        $categories = GuideCategory::with('contents')->get();
+        $i = 0;
+        $currentCategory = $categories->first();
+        if($request->category_id) {
+            $currentCategory = $categories->where('id', $request->category_id)->first();
+            if(!$currentCategory) throw new WebServiceExplainedException('Не найдено!');
+        }
+        return $this->frontView('pages.guide', compact('categories', 'i', 'currentCategory'));
     }
 
     public function business()

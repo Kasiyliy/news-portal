@@ -32,13 +32,40 @@
                                     <td>{{$category->id}}</td>
                                     <td>{{$category->name}}</td>
                                     <td>{{$category->created_at}}</td>
-                                    <td class="d-inline">
-                                        <button class="btn btn-outline-primary" data-toggle="modal"
+                                    <td class="d-inline-block">
+                                        <button class="btn btn-outline-primary btn-sm" data-toggle="modal"
                                                          data-target="#editCategory{{$category->id}}"><i class="ti ti-pencil"></i>
                                         </button>
                                         <a href="{{route('guide.content.index', ['category_id' => $category->id])}}"
-                                            class="btn btn-outline-primary"><i class="ti ti-eye"></i>
+                                            class="btn btn-outline-primary btn-sm"><i class="ti ti-eye"></i>
                                         </a>
+                                        <button class="btn btn-outline-danger btn-sm" data-toggle="modal"
+                                                data-target="#delete{{$category->id}}"><i class="ti ti-trash"></i>
+                                        </button>
+                                        <div class="modal modal-backdrop" id="delete{{$category->id}}" tabindex="-1"
+                                             role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title w-100" id="myModalLabel">Удаление</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Вы действительно хотите удалить?</p>
+                                                        <form method="post" action="{{route('guide.delete', ['id' => $category->id])}}">
+                                                            {{csrf_field()}}
+                                                            <button type="submit" class="btn btn-outline-danger mt-3">Удалить безвозвратно<i class="ti ti-trash"></i></button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger-soft btn-sm" data-dismiss="modal">
+                                                            <i class="ti ti-close"></i> Закрыть</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                                 <div class="modal modal-backdrop" id="editCategory{{$category->id}}" tabindex="-1"

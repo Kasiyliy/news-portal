@@ -1,10 +1,9 @@
 <div class="form-group {{$required ? ' required' : ''}}">
     <label class="control-label" for="{{$name}}">{{$label}}</label>
-    <input name="{{$name}}"
-           id="{{$name}}"
-           class="form-control{{ isset($errors) && $errors->has($name) ? ' is-invalid' : '' }}"
-           value="{{ isset($value) ? $value : old($name) }}" {{$required ? ' required' : ''}}
-           type="{{$type}}" placeholder="{{$placeholder}}">
+    <textarea name="{{$name}}"
+              id="description"
+              class="form-control{{ isset($errors) && $errors->has($name) ? ' is-invalid' : '' }}"
+              {{$required ? ' required' : ''}} placeholder="{{$placeholder}}">{{ isset($value) ? $value : old($name) }}</textarea>
     @if (isset($errors) && $errors->has($name))
         <span class="invalid-feedback" role="alert">
             <strong>{{ $errors->first($name) }}</strong>

@@ -10,7 +10,7 @@ class GuideCategory extends Model
         'name'
     ];
 
-    public function content() {
-        return $this-$this->hasMany(GuideContent::class, 'category_id', 'id');
+    public function contents() {
+        return $this->hasMany(GuideContent::class, 'category_id', 'id');
     }
 }

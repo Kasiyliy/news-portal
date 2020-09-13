@@ -8,6 +8,14 @@
                              :options="$element['options']"
                              :required="array_key_exists('required', $element) && $element['required']"
                              :type="$element['type']"/>
+    @elseif($element['type'] == 'textarea')
+        <x-admin.textarea-form-group :name="$key"
+                                  :errors="$errors"
+                                  :placeholder="$element['placeholder']"
+                                  :label="$element['label']"
+                                  :value="$element['value']"
+                                  :required="array_key_exists('required', $element) && $element['required']"
+                                  :type="$element['type']"/>
     @else
         <x-admin.input-form-group :name="$key"
                             :errors="$errors"

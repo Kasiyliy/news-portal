@@ -14,8 +14,9 @@ class GuideContentWebForm implements WithForm
         return array_merge(
             FormUtil::input('title', 'Как читать новость?', 'Заголовок',
                 'text', true, $value ? $value->title : ''),
-            FormUtil::input('description', '', 'Описание',
-            'text', true, $value ? $value->title : ''));
+            FormUtil::textArea('description',
+                'Новость можете прочитать сверху в меню нажав кнопку Жаналыктар', 'Описание',
+                false, $value ? $value->description : ''));
 
     }
 }

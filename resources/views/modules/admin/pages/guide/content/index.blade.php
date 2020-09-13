@@ -34,7 +34,37 @@
                                     <td>{{$content->id}}</td>
                                     <td>{{$content->title}}</td>
                                     <td>{{$content->created_at}}</td>
-                                    <td><button class="btn btn-outline-primary mt-3"><i class="ti ti-pencil"></i></button></td>
+                                    <td class="d-inline-block">
+                                        <a href="{{route('guide.content.edit', ['id' => $content->id])}}" class="btn btn-outline-primary btn-sm"><i class="ti ti-pencil"></i>
+                                        </a>
+                                        <button class="btn btn-outline-danger btn-sm" data-toggle="modal"
+                                                data-target="#delete{{$content->id}}"><i class="ti ti-trash"></i>
+                                        </button>
+                                        <div class="modal modal-backdrop" id="delete{{$content->id}}" tabindex="-1"
+                                             role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title w-100" id="myModalLabel">Удаление</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Вы действительно хотите удалить?</p>
+                                                        <form method="post" action="{{route('guide.content.delete', ['id' => $content->id])}}">
+                                                            {{csrf_field()}}
+                                                            <button type="submit" class="btn btn-outline-danger mt-3">Удалить безвозвратно<i class="ti ti-trash"></i></button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger-soft btn-sm" data-dismiss="modal">
+                                                            <i class="ti ti-close"></i> Закрыть</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
