@@ -132,10 +132,10 @@
         <div class="container">
             <div class="numbers__inner row">
                 @foreach($about_us as $count)
-                <div class="numbers__content col-12 col-sm-6 col-lg-3 col-md-3">
-                    <h1 class="number">{{$count->count}}</h1>
-                    <p>{{$count->title}}</p>
-                </div>
+                    <div class="numbers__content col-12 col-sm-6 col-lg-3 col-md-3">
+                        <h1 class="number">{{$count->count}}</h1>
+                        <p>{{$count->title}}</p>
+                    </div>
                 @endforeach
             </div>
         </div>
@@ -145,19 +145,47 @@
         <div class="container">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">Slide 1</div>
-                    <div class="swiper-slide">Slide 2</div>
-                    <div class="swiper-slide">Slide 3</div>
-                    <div class="swiper-slide">Slide 4</div>
-                    <div class="swiper-slide">Slide 5</div>
-                    <div class="swiper-slide">Slide 6</div>
-                    <div class="swiper-slide">Slide 7</div>
-                    <div class="swiper-slide">Slide 8</div>
-                    <div class="swiper-slide">Slide 9</div>
-                    <div class="swiper-slide">Slide 10</div>
+                    <div class="swiper-slide row slider-reverse-block">
+                        <div class="swiper-text col-md-12 col-lg-5 ml-5">
+                            <h1>Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар
+                                бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,
+                                жастардың жалпы назары мектепке аударылуы керек.
+                            </h1>
+                        </div>
+                        <div class="swiper-img col-md-6 col-lg-5 ml-4">
+                            <img src="{{asset('modules/front/assets/img/Elbasy.png')}}" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide row slider-reverse-block">
+                        <div class="swiper-text col-md-12 col-lg-5 ml-5">
+                            <h1>Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар
+                                бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,
+                                жастардың жалпы назары мектепке аударылуы керек.
+                            </h1>
+                        </div>
+                        <div class="swiper-img col-md-6 col-lg-5 ml-4">
+                            <img src="{{asset('modules/front/assets/img/Elbasy.png')}}" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide row slider-reverse-block">
+                        <div class="swiper-text col-md-12 col-lg-5 ml-5">
+                            <h1>Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар
+                                бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,
+                                жастардың жалпы назары мектепке аударылуы керек.
+                            </h1>
+                        </div>
+                        <div class="swiper-img col-md-6 col-lg-5 ml-4">
+                            <img src="{{asset('modules/front/assets/img/Elbasy.png')}}" alt="">
+                        </div>
+                    </div>
+
+
                 </div>
                 <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
+                <div class="swiper-pagination" id="swiper-pagination"></div>
+                <!-- Add Arrows -->
+                {{--                <div class="swiper-button-next-custom"><i class="fa fa-angle-double-right"></i></div>--}}
+                {{--                <div class="swiper-button-prev-custom"><i class="fa fa-angle-double-left"></i></div>--}}
             </div>
         </div>
     </section>
@@ -312,12 +340,27 @@
 @section('scripts')
     <script src="{{asset('modules/front/assets/js/swiper.min.js')}}"></script>
     <script>
+        let screenSize = $(window).width();
+        if (screenSize < 992) {
+            let pagination = document.getElementById('swiper-pagination');
+            pagination.style.display = "none";
+            let reverse = document.getElementsByClassName('slider-reverse-block');
+            for (let i = 0; i < reverse.length; i++) {
+                reverse[i].style.flexFlow = 'wrap-reverse';
+            }
+        }
+
         var swiper = new Swiper('.swiper-container', {
-            direction: 'vertical',
+            direction: screenSize < 992 ? 'horizontal' : 'vertical',
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
             },
+            navigation: {
+                nextEl: '.swiper-button-next-custom',
+                prevEl: '.swiper-button-prev-custom',
+            },
         });
     </script>
+
 @endsection
