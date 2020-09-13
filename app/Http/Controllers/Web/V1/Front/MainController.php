@@ -47,4 +47,9 @@ class MainController extends WebBaseController
     {
         return $this->frontView('pages.prominent');
     }
+
+    public function resource()
+    {
+        return $this->frontView('pages.resource');
+    }
 }

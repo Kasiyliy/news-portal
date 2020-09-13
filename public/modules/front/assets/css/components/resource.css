@@ -1,0 +1,23 @@
+.resource__inner img{
+    width: 100%;
+    height: auto;
+    margin-bottom: 50px;
+}
+
+.resource__inner h4{
+    font-size: 24px;
+    line-height: 18px;
+    color: #000000;
+    padding: 30px 0;
+}
+
+.resource__inner p{
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+    text-align: justify;
+}
+
+.resource__social {
+    color: #00656D;
+}

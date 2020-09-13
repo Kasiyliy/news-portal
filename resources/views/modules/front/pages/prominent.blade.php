@@ -72,7 +72,7 @@
                                             <a href='#'>Өмірбаяны</a></br>
                                             <a href='#'>Атқарған еңбектері</a></br>
                                             <a href='#'>Қосымша ақпараттар</a>">
-                                        <i class="fa fa-ellipsis-h fa-2x"></i>
+                                        <i class="fa fa-ellipsis-h "></i>
                                     </a>
                                 </div>
                             </li>
@@ -90,7 +90,7 @@
                                             <a href='#'>Өмірбаяны</a></br>
                                             <a href='#'>Атқарған еңбектері</a></br>
                                             <a href='#'>Қосымша ақпараттар</a>">
-                                        <i class="fa fa-ellipsis-h fa-2x"></i>
+                                        <i class="fa fa-ellipsis-h "></i>
                                     </a>
                                 </div>
                             </li>
@@ -108,7 +108,7 @@
                                             <a href='#'>Өмірбаяны</a></br>
                                             <a href='#'>Атқарған еңбектері</a></br>
                                             <a href='#'>Қосымша ақпараттар</a>">
-                                        <i class="fa fa-ellipsis-h fa-2x"></i>
+                                        <i class="fa fa-ellipsis-h "></i>
                                     </a>
                                 </div>
                             </li>

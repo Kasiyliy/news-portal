@@ -6,10 +6,10 @@
             <div class="news__block__inner">
                 <h1>Жаңалықтар</h1>
                 <div class="row news__block__content">
-                    <div class="col-5 news__block__slider">
+                    <div class="col-12 col-lg-5 col-md-12 mt-4 news__block__slider">
                         <h2>Соңғы жаңалықтар</h2>
                     </div>
-                    <div class="col-3 news__block__image">
+                    <div class="col-12 col-lg-3 col-md-4 mt-4 mx-auto news__block__image">
                         <div class="news__block__image_inner">
                             <img src="{{asset('modules/front/assets/img/operator-img.png')}}" alt="operator">
                             <div class="news__block__image_content">
@@ -65,7 +65,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-4 news__block__collection">
+                    <div class="col-12 col-lg-4 col-md-12 mt-4 news__block__collection">
                         <div class="d-block">
                             <h3>БЖЗҚ шоттарының саны 11 6 миллионнан асты</h3>
                             <div class="d-flex">

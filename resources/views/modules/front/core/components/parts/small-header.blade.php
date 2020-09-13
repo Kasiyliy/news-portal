@@ -1,17 +1,23 @@
 <header class="header__small">
-    <nav class="navbar">
-        <div class="container d-flex">
-            <div class="header__social_media">
-                <a href=""><img src="{{asset('modules/front/assets/img/instagram-icon.png')}}" alt="instagram"></a>
-                <a href=""><img src="{{asset('modules/front/assets/img/facebook-icon.png')}}" alt="facebook"></a>
-                <a href=""><img src="{{asset('modules/front/assets/img/vk-icon.png')}}" alt="vk"></a>
-                <a href=""><img src="{{asset('modules/front/assets/img/youtube-icon.png')}}" alt="youtube"></a>
-            </div>
-            <div class="header__auth">
-                <a href=""><img src="{{asset('modules/front/assets/img/search-icon.png')}}" alt="search"></a>
-                <a href=""><img src="{{asset('modules/front/assets/img/eyelash-icon.png')}}" alt="eyelash"></a>
-                <a href=""><img src="{{asset('modules/front/assets/img/language-icon.png')}}" alt="language"></a>
-                <a href=""><img src="{{asset('modules/front/assets/img/auth-icon.png')}}" alt="auth">Авторизация</a>
+    <nav class="container navbar navbar-expand-lg header__small__inner">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="burger-icon fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar d-flex navbar-nav justify-content-between">
+                <div class="header__social-media">
+                    <a class="nav-link" href=""> <i class=" nav__social-media fa fa-instagram"></i></a>
+                    <a class="nav-link" href=""> <i class=" nav__social-media fa fa-facebook-f"></i></a>
+                    <a class="nav-link" href=""> <i class=" nav__social-media fa fa-vk"></i></a>
+                    <a class="nav-link" href=""> <i class=" nav__social-media fa fa-youtube"></i></a>
+                </div>
+                <div class="header__auth">
+                    <a class="nav-link" href=""> <i class="nav__auth fa fa-search"></i></a>
+                    <a class="nav-link" href=""> <i class="nav__auth fa fa-eye-slash"></i></a>
+                    <a class="nav-link" href=""> <i class="nav__auth fa fa-language"></i></a>
+                    <a class="nav-link" href=""> <i class="nav__auth fa fa-user-circle"></i></a>
+                </div>
             </div>
         </div>
     </nav>

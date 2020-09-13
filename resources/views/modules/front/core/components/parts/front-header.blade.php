@@ -1,30 +1,34 @@
-<header class="header"{{asset('modules/front/')}}>
-    <div class="container head">
+<header class="header">
+    <div class="container">
         <div class="header__inner">
-            <div class="header__inner__top">
-                <div class="header__social_media">
-                    <a href=""><img src="{{asset('modules/front/assets/img/instagram-icon.png')}}" alt="instagram"></a>
-                    <a href=""><img src="{{asset('modules/front/assets/img/facebook-icon.png')}}"
-                                    alt="facebook"></a>
-                    <a href=""><img src="{{asset('modules/front/assets/img/vk-icon.png')}}" alt="vk"></a>
-                    <a href=""><img src="{{asset('modules/front/assets/img/youtube-icon.png')}}" alt="youtube"></a>
+            <div class="header__inner__top row justify-content-between">
+                <div class="header__social-media col-12 col-lg-3 justify-content-center">
+                    <a class="nav-link" href=""> <i class="nav__social-media fa fa-instagram"></i></a>
+                    <a class="nav-link" href=""> <i class="nav__social-media fa fa-facebook-f"></i></a>
+                    <a class="nav-link" href=""> <i class="nav__social-media fa fa-vk"></i></a>
+                    <a class="nav-link" href=""> <i class="nav__social-media fa fa-youtube"></i></a>
                 </div>
-                <div class="header__auth">
-                    <a href=""><img src="{{asset('modules/front/assets/img/search-icon.png')}}" alt="search"></a>
-                    <a href=""><img src="{{asset('modules/front/assets/img/eyelash-icon.png')}}" alt="eyelash"></a>
-                    <a href=""><img src="{{asset('modules/front/assets/img/language-icon.png')}}"
-                                    alt="language"></a>
-                    <a href=""><img src="{{asset('modules/front/assets/img/auth-icon.png')}}" alt="auth">Авторизация</a>
+                <div class="header__auth col-12 col-lg-3 justify-content-center">
+                    <a class="nav-link" href=""> <i class="nav__auth fa fa-search"></i></a>
+                    <a class="nav-link" href=""> <i class="nav__auth fa fa-eye-slash"></i></a>
+                    <a class="nav-link" href=""> <i class="nav__auth fa fa-language"></i></a>
+                    <a class="nav-link" href=""> <i class="nav__auth fa fa-user-circle"></i></a>
                 </div>
             </div>
-            <div class="header__inner__bottom">
+            <div class="header__inner__bottom navbar navbar-expand-lg ">
                 <div class="header__logo">
                     <img src="{{asset('modules/front/assets/img/logo.png')}}" alt="logo">
                 </div>
-                <div class="header__nav">
-                    @foreach($navItems as $navItem)
-                        <a href="{{$navItem['href']}}" class="nav__link">{{$navItem['title']}}</a>
-                    @endforeach
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="burger-icon fa fa-bars"></i>
+                </button>
+                <div class="header__nav collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav header__nav">
+                        @foreach($navItems as $navItem)
+                            <a href="{{$navItem['href']}}" class="nav__link nav-link">{{$navItem['title']}}</a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>

@@ -46,6 +46,10 @@
     margin-bottom: 25px;
 }
 
+.fa.fa-ellipsis-h{
+    font-size: 18px;
+}
+
 .prominent__filter-buttons button {
     border: 1px solid #76767A;
 }

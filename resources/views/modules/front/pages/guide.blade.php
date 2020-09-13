@@ -12,7 +12,7 @@
     <section class="min__content">
         <div class="container my-5">
             <div class="row">
-                <div class="col-3">
+                <div class="col-md-12 col-lg-3">
                     <ul class="list-group bs-4">
                         <li class="list-group-item cursor d-flex justify-content-between"
                             data-content="-1 ВСТАВИШЬ ОПИСАНИЕ СЮДА">
@@ -26,7 +26,7 @@
                         @endfor
                     </ul>
                 </div>
-                <div class="col-9">
+                <div class="col-md-12 col-lg-9">
                     <div class="accordion card p-3" id="accordionExample">
                         <ul>
                             @for($i = 0; $i < 10; $i++)

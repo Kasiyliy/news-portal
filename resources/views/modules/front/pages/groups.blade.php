@@ -12,7 +12,7 @@
     <section class="min__content">
         <div class="container my-5">
             <div class="row">
-                <div class="col-3">
+                <div class="col-sm-12 col-lg-3">
                     <ul class="list-group bs-4">
                         @for($i = 0; $i < 4; $i++)
                             <li onclick="chooseContent(this)" class="list-group-item cursor d-flex justify-content-between bg-sj-gray"
@@ -22,7 +22,7 @@
                         @endfor
                     </ul>
                 </div>
-                <div class="col-9">
+                <div class="col-sm-12 col-lg-9">
                     <div class="card bs-4 d-flex p-3" id="list-group-content">
                         <span>
                             не выбрано
