@@ -201,47 +201,19 @@
         <div class="container">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide row slider-reverse-block">
-                        <div class="swiper-text col-md-12 col-lg-5 ml-5">
-                            <h1>Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар
-                                бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,
-                                жастардың жалпы назары мектепке аударылуы керек.
-                            </h1>
+                    @foreach($slider as $s)
+                        <div class="swiper-slide row slider-reverse-block">
+                            <div class="swiper-text col-md-12 col-lg-5 ml-5">
+                                <h1>{{$s->title}}</h1>
+                            </div>
+                            <div class="swiper-img col-md-6 col-lg-5 ml-4">
+                                <img src="{{asset($s->image_path)}}" alt="">
+                            </div>
                         </div>
-                        <div class="swiper-img col-md-6 col-lg-5 ml-4">
-                            <img src="{{asset('modules/front/assets/img/Elbasy.png')}}" alt="">
-                        </div>
-                    </div>
-                    <div class="swiper-slide row slider-reverse-block">
-                        <div class="swiper-text col-md-12 col-lg-5 ml-5">
-                            <h1>Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар
-                                бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,
-                                жастардың жалпы назары мектепке аударылуы керек.
-                            </h1>
-                        </div>
-                        <div class="swiper-img col-md-6 col-lg-5 ml-4">
-                            <img src="{{asset('modules/front/assets/img/Elbasy.png')}}" alt="">
-                        </div>
-                    </div>
-                    <div class="swiper-slide row slider-reverse-block">
-                        <div class="swiper-text col-md-12 col-lg-5 ml-5">
-                            <h1>Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар
-                                бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,
-                                жастардың жалпы назары мектепке аударылуы керек.
-                            </h1>
-                        </div>
-                        <div class="swiper-img col-md-6 col-lg-5 ml-4">
-                            <img src="{{asset('modules/front/assets/img/Elbasy.png')}}" alt="">
-                        </div>
-                    </div>
-
-
+                    @endforeach
                 </div>
                 <!-- Add Pagination -->
                 <div class="swiper-pagination" id="swiper-pagination"></div>
-                <!-- Add Arrows -->
-                {{--                <div class="swiper-button-next-custom"><i class="fa fa-angle-double-right"></i></div>--}}
-                {{--                <div class="swiper-button-prev-custom"><i class="fa fa-angle-double-left"></i></div>--}}
             </div>
         </div>
     </section>

@@ -10,6 +10,7 @@ use App\Models\Entities\Content\AboutUs;
 use App\Models\Entities\Content\GuideCategory;
 use App\Models\Entities\Content\TeenagerGroup;
 use App\Models\Entities\Content\News;
+use App\Models\Entities\Content\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,7 +19,8 @@ class MainController extends WebBaseController
     public function index()
     {
         $about_us = AboutUs::all();
-        return $this->frontView('pages.index', compact('about_us'));
+        $slider = Slider::all();
+        return $this->frontView('pages.index', compact('about_us', 'slider'));
     }
 
     public function news()

@@ -21,5 +21,11 @@ class FileUtil
         return 'images/news.png';
     }
 
+    public static function defaultSliderPath()
+    {
+        return 'images/news.png';
+    }
+
+
 
 }

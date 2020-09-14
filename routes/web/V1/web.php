@@ -76,6 +76,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/group/update/{id}', ['uses' => 'TeenagerGroupController@update', 'as' => 'groups.update'])->where('id', '[0-9]+');
         Route::post('/group/delete/{id}', ['uses' => 'TeenagerGroupController@delete', 'as' => 'groups.delete'])->where('id', '[0-9]+');
 
+        //Slider
+        Route::get('/slider', ['uses' => 'SliderController@index', 'as' => 'slider.index']);
+        Route::get('/slider/create', ['uses' => 'SliderController@create', 'as' => 'slider.create']);
+        Route::get('/slider/edit/{id}', ['uses' => 'SliderController@edit', 'as' => 'slider.edit'])->where('id', '[0-9]+');
+        Route::post('/slider/store', ['uses' => 'SliderController@store', 'as' => 'slider.store']);
+        Route::post('/slider/update/{id}', ['uses' => 'SliderController@update', 'as' => 'slider.update'])->where('id', '[0-9]+');
+        Route::post('/slider/delete/{id}', ['uses' => 'SliderController@delete', 'as' => 'slider.delete'])->where('id', '[0-9]+');
+
 
 
 
