@@ -11,7 +11,7 @@
     <section class="resource">
         <div class="container">
             <div class="resource__inner my-5">
-                <img src="{{asset('modules/front/assets/img/resource-img.png')}}" alt="resource">
+                <img src="{{asset('modules/front/assets/img/calendar-bg.png')}}" alt="resource">
                 <h4>Негізгі ақпарат</h4>
                 <h5>Проект включает в себя четыре компонента:
                     <br>
