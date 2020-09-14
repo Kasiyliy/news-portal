@@ -8,6 +8,7 @@ use App\Exceptions\Web\WebServiceExplainedException;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Models\Entities\Content\AboutUs;
 use App\Models\Entities\Content\GuideCategory;
+use App\Models\Entities\Content\TeenagerGroup;
 use App\Models\Entities\Content\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -36,7 +37,8 @@ class MainController extends WebBaseController
 
     public function groups()
     {
-        return $this->frontView('pages.groups');
+        $groups = TeenagerGroup::orderBy('updated_at', 'desc')->get();
+        return $this->frontView('pages.groups', compact('groups'));
     }
 
     public function guide(Request $request)

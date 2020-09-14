@@ -60,15 +60,21 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/guide/contents/update/{id}', ['uses' => 'GuideController@contentUpdate', 'as' => 'guide.content.update'])->where('id', '[0-9]+');
         Route::post('/guide/contents/delete/{id}', ['uses' => 'GuideController@contentDelete', 'as' => 'guide.content.delete'])->where('id', '[0-9]+');
 
-
-
         //News
         Route::get('/news', ['uses' => 'NewsController@index', 'as' => 'news.index']);
         Route::get('/news/create', ['uses' => 'NewsController@create', 'as' => 'news.create']);
         Route::post('/news/store', ['uses' => 'NewsController@store', 'as' => 'news.store']);
         Route::get('/news/edit/{id}', ['uses' => 'NewsController@edit', 'as' => 'news.edit'])->where('id', '[0-9]+');
-        Route::post('/news/update/{id}', ['uses' => 'NewsController@update', 'as' => 'news.update']);
-        Route::post('/news/delete/{id}', ['uses' => 'NewsController@delete', 'as' => 'news.delete']);
+        Route::post('/news/update/{id}', ['uses' => 'NewsController@update', 'as' => 'news.update'])->where('id', '[0-9]+');
+        Route::post('/news/delete/{id}', ['uses' => 'NewsController@delete', 'as' => 'news.delete'])->where('id', '[0-9]+');
+
+        //TeenageGroups
+        Route::get('/groups', ['uses' => 'TeenagerGroupController@index', 'as' => 'groups.index']);
+        Route::get('/group/create', ['uses' => 'TeenagerGroupController@create', 'as' => 'groups.create']);
+        Route::get('/group/edit/{id}', ['uses' => 'TeenagerGroupController@edit', 'as' => 'groups.edit'])->where('id', '[0-9]+');
+        Route::post('/group/store', ['uses' => 'TeenagerGroupController@store', 'as' => 'groups.store']);
+        Route::post('/group/update/{id}', ['uses' => 'TeenagerGroupController@update', 'as' => 'groups.update'])->where('id', '[0-9]+');
+        Route::post('/group/delete/{id}', ['uses' => 'TeenagerGroupController@delete', 'as' => 'groups.delete'])->where('id', '[0-9]+');
 
 
 
