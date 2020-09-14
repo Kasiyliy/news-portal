@@ -17,7 +17,7 @@ class NewsWebForm implements WithForm
             FormUtil::textArea('description',
                 'Новость можете прочитать сверху в меню нажав кнопку Жаналыктар', 'Описание',
                 false, $value ? $value->description : ''),
-            FormUtil::input('file', 'Выберите фото:', 'Аватар:', 'file', false)
+            FormUtil::input('file', 'Выберите фото:', 'Фото:', 'file', false)
 
 
 

@@ -15,4 +15,11 @@ class FileUtil
     {
         return url('images/avatar.png');
     }
+
+    public static function defaultNewsPath()
+    {
+        return 'images/news.png';
+    }
+
+
 }

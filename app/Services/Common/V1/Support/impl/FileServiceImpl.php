@@ -9,11 +9,13 @@
 namespace App\Services\Common\V1\Support\impl;
 
 
+use App\Core\Utils\FileUtil;
 use App\Models\Entities\Support\AppFile;
 use App\Services\BaseService;
 use App\Services\Common\V1\Support\FileService;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class FileServiceImpl extends BaseService implements FileService
 {
@@ -49,5 +51,30 @@ class FileServiceImpl extends BaseService implements FileService
         return Storage::response($relative_path);
     }
 
+    public function store(UploadedFile $image, string $path): string
+    {
+        $image_path = time() . ((string)Str::uuid()) . 'img.' .$image->getClientOriginalExtension();
+        $imageFullPath = $image->move($path, $image_path);
+        return $imageFullPath;
+    }
 
+    public function remove(string $path)
+    {
+        if ($path != FileUtil::defaultNewsPath() && $path != FileUtil::defaultAvatarPath()) {
+            if (file_exists($path) && !is_dir($path)) {
+                return unlink($path);
+            }
+        }
+
+        return false;
+    }
+
+
+    public function updateWithRemoveOrStore(UploadedFile $image, string $path, string $oldFilePath = null): string
+    {
+        if ($oldFilePath && $oldFilePath != FileUtil::defaultNewsPath() && $oldFilePath != FileUtil::defaultAvatarPath()) {
+            $this->remove($oldFilePath);
+        }
+        return $this->store($image, $path);
+    }
 }

@@ -8,6 +8,19 @@
                 <div class="row news__block__content">
                     <div class="col-12 col-lg-5 col-md-12 mt-4 news__block__slider">
                         <h2>Соңғы жаңалықтар</h2>
+                        <div class="owl-carousel carousel-testimony">
+                            @foreach($last_news as $last_n)
+                                @php $count++; @endphp
+                                <div class="item">
+                                    <i class="fa fa-angle-left fa-2x slider-icon-back"></i>
+                                    <p class="count-img">{{$count}}/{{$last_news->count()}}</p>
+                                    <i class="fa fa-shopping-cart fa-lg slider-icon-cart"></i>
+                                    <div class="photos">
+                                        <img src="{{asset($last_n->image_path)}}" alt="">
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                     <div class="col-12 col-lg-3 col-md-4 mt-4 mx-auto news__block__image">
                         <div class="news__block__image_inner">
@@ -66,47 +79,23 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-4 col-md-12 mt-4 news__block__collection">
+                        @foreach($news as $n)
                         <div class="d-block">
-                            <a href="{{route('news.detail', 1)}}"><h3>БЖЗҚ шоттарының саны 11 6 миллионнан асты</h3></a>
+                            <a href="{{route('news.detail', $n->id)}}"><h3>{{$n->title}}</h3></a>
                             <div class="d-flex">
                                 <div class="d-flex news__block__date">
                                     <img src="{{asset('modules/front/assets/img/eye-icon.png')}}" alt="eye">
-                                    <p>115</p>
+                                    <p>{{$n->viewed_count}}</p>
                                 </div>
                                 <div class="d-flex news__block__date">
                                     <img src="{{asset('modules/front/assets/img/calendar-icon.png')}}" alt="calendar">
-                                    <p>25.08.2020</p>
+                                    <p>{{$n->created_at->format('Y-m-d')}}</p>
                                 </div>
                             </div>
 
                         </div>
-                        <div class="d-block">
-                            <h3>БЖЗҚ шоттарының саны 11 6 миллионнан асты</h3>
-                            <div class="d-flex">
-                                <div class="d-flex news__block__date">
-                                    <img src="{{asset('modules/front/assets/img/eye-icon.png')}}" alt="eye">
-                                    <p>115</p>
-                                </div>
-                                <div class="d-flex news__block__date">
-                                    <img src="{{asset('modules/front/assets/img/calendar-icon.png')}}" alt="calendar">
-                                    <p>25.08.2020</p>
-                                </div>
-                            </div>
 
-                        </div>
-                        <div class="d-block">
-                            <h3>БЖЗҚ шоттарының саны 11 6 миллионнан асты</h3>
-                            <div class="d-flex">
-                                <div class="d-flex news__block__date">
-                                    <img src="{{asset('modules/front/assets/img/eye-icon.png')}}" alt="eye">
-                                    <p>115</p>
-                                </div>
-                                <div class="d-flex news__block__date">
-                                    <img src="{{asset('modules/front/assets/img/calendar-icon.png')}}" alt="calendar">
-                                    <p>25.08.2020</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -115,35 +104,36 @@
     <section class="news__bottom">
         <div class="container mt-5">
             <div class="row">
-                @for($i = 0; $i < 10; $i++)
+                @foreach($news as $n)
                     <div class="col-12 col-lg-4 col-md-6 mt-4">
                         <a href="{{route('news.detail', 1)}}">
                             <div class="news__bottom__inner-card">
                                 <div class="news__bottom__image">
-                                    <img src="{{asset('modules/front/assets/img/Elbasy.png')}}" alt="">
+                                    <img src="{{asset($n->image_path)}}" alt="" >
                                 </div>
                                 <h5>
 
-                                    {{strlen('Ашықтық және есептілік. Nur Otan праймеризінде кім байқаушы болады?') > 111 ?
-                                    mb_substr('Ашықтық және есептілік. Nur Otan праймеризінде кім байқаушы болады?',0,111)."..."
-                                            : 'Ашықтық және есептілік. Nur Otan праймеризінде кім байқаушы болады?'}}
+                                    {{strlen($n->title) > 111 ?
+                                    mb_substr($n->title,0,111)."..."
+                                            : $n->title}}
 
                                 </h5>
                                 <div class="d-flex">
                                     <div class=" d-flex news__bottom__date">
                                         <img src="{{asset('modules/front/assets/img/eye_green-icon.png')}}" alt="eye">
-                                        <p>115</p>
+                                        <p>{{$n->viewed_count}}</p>
                                     </div>
                                     <div class=" d-flex news__bottom__date">
                                         <img src="{{asset('modules/front/assets/img/calendar_green-icon.png')}}"
                                              alt="calendar">
-                                        <p>25.08.2020</p>
+                                        <p>{{$n->created_at->format('Y-m-d')}}</p>
                                     </div>
                                 </div>
                             </div>
                         </a>
                     </div>
-                @endfor
+                @endforeach
+
             </div>
         </div>
     </section>

@@ -8,7 +8,9 @@ use App\Exceptions\Web\WebServiceExplainedException;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Models\Entities\Content\AboutUs;
 use App\Models\Entities\Content\GuideCategory;
+use App\Models\Entities\Content\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MainController extends WebBaseController
 {
@@ -20,7 +22,11 @@ class MainController extends WebBaseController
 
     public function news()
     {
-        return $this->frontView('pages.news');
+        $last_news = News::where('created_at', ">", DB::raw('NOW() - INTERVAL 1 WEEK'))->get();
+        $count = 0;
+        $news = News::paginate(6);
+
+        return $this->frontView('pages.news',compact('news','last_news' , 'count'));
     }
 
     public function newsDetail($id)
