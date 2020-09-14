@@ -51,7 +51,7 @@
         function start() {
             currentChosenEl = document.getElementById('groups').children[0];
             currentChosenEl.classList.add('bg-sj-gray');
-            content.innerHTML = `{!! $group->first() ? $group->latest()->first()->description : 'Ұйымдар жоқ!' !!}`;
+            content.innerHTML = `{!! $groups->first() ? $groups->first()->description : 'Ұйымдар жоқ!' !!}`;
         }
 
     </script>
