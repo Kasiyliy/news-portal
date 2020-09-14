@@ -61,6 +61,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/guide/contents/delete/{id}', ['uses' => 'GuideController@contentDelete', 'as' => 'guide.content.delete'])->where('id', '[0-9]+');
 
 
+
+        //News
+        Route::get('/news', ['uses' => 'NewsController@index', 'as' => 'news.index']);
+        Route::get('/news/create', ['uses' => 'NewsController@create', 'as' => 'news.create']);
+        Route::post('/news/store', ['uses' => 'NewsController@store', 'as' => 'news.store']);
+        Route::get('/news/edit/{id}', ['uses' => 'NewsController@edit', 'as' => 'news.edit'])->where('id', '[0-9]+');
+        Route::post('/news/update/{id}', ['uses' => 'NewsController@update', 'as' => 'news.update']);
+        Route::post('/news/delete/{id}', ['uses' => 'NewsController@delete', 'as' => 'news.delete']);
+
+
+
+
     });
 
     Route::group(['namespace' => 'System'], function () {
