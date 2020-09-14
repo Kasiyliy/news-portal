@@ -13,13 +13,12 @@
         <div class="container my-5">
             <div class="row">
                 <div class="col-sm-12 col-lg-3">
-                    <ul class="list-group bs-4">
-                        @for($i = 0; $i < 4; $i++)
-                            <li onclick="chooseContent(this)" class="list-group-item cursor d-flex justify-content-between bg-sj-gray"
-                                data-content="{{$i}} ВСТАВИШЬ ОПИСАНИЕ СЮДА">
-                                <span>«Жас Отан» ЖҚ</span><b>></b>
+                    <ul class="list-group bs-4" id="groups">
+                        @foreach($groups as $group)
+                            <li onclick="chooseContent(this, {{$group}})" class="list-group-item cursor d-flex justify-content-between">
+                                <span>{{$group->name}}</span><b>></b>
                             </li>
-                        @endfor
+                        @endforeach
                     </ul>
                 </div>
                 <div class="col-sm-12 col-lg-9">
@@ -39,14 +38,21 @@
     <script>
         let currentChosenEl = null;
         const content = document.getElementById('list-group-content');
-
-        function chooseContent(el) {
+        start();
+        function chooseContent(el, group) {
             if (currentChosenEl) {
-                currentChosenEl.classList.add('bg-sj-gray');
+                currentChosenEl.classList.remove('bg-sj-gray');
             }
             currentChosenEl = el;
-            content.innerHTML = currentChosenEl.dataset.content;
-            currentChosenEl.classList.remove('bg-sj-gray');
+            content.innerHTML = group.description;
+            currentChosenEl.classList.add('bg-sj-gray');
         }
+
+        function start() {
+            currentChosenEl = document.getElementById('groups').children[0];
+            currentChosenEl.classList.add('bg-sj-gray');
+            content.innerHTML = `{!! $group->first() ? $group->latest()->first()->description : 'Ұйымдар жоқ!' !!}`;
+        }
+
     </script>
 @endsection
