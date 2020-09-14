@@ -51,6 +51,7 @@ class UserController extends WebBaseController
 
     public function updateProfileInfo(UpdateProfileWebRequest $request)
     {
+
         $this->profileWebService->updateProfile(
             $this->getCurrentUser(),
             $request->name,

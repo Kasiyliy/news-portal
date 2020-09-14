@@ -23,16 +23,19 @@ class MainController extends WebBaseController
 
     public function news()
     {
-        $last_news = News::where('created_at', ">", DB::raw('NOW() - INTERVAL 1 WEEK'))->get();
+        $last_news = News::orderBy('created_at', 'desc')->take(7)->get();
         $count = 0;
+        $most_viewed = News::orderBy('viewed_count', 'desc')->take(3)->get();
         $news = News::paginate(6);
 
-        return $this->frontView('pages.news',compact('news','last_news' , 'count'));
+        return $this->frontView('pages.news',compact('news','last_news' , 'count','most_viewed'));
     }
 
     public function newsDetail($id)
     {
-        return $this->frontView('pages.news-detail');
+        $news = News::where('id',$id)->first();
+        $news->update(['viewed_count' => $news->viewed_count+1]);
+        return $this->frontView('pages.news-detail',compact('news'));
     }
 
     public function groups()
