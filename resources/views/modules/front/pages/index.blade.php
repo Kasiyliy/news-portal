@@ -27,11 +27,13 @@
                     <div class="info__card col-12 col-lg-4 col-md-6 mt-4">
                         <div class="info__card__head">
                             <img src="{{asset('modules/front/assets/img/people-icon.png')}}" alt="">
-                            <h2>Мемлекеттік бағдарламалар</h2>
+                            <h2>100 үздік есім</h2>
                         </div>
                         <div class="info__card__content">
-                            <p>Мемлекеттік бағдарлама - ресурстар, орындаушылар, ғылыми-зерттеу, өндірістік,
-                                әлеуметтік-экономикалық, ұйымдық және басқа шаралар. </p>
+                            <p>
+                                Мемлекеттік бағдарлама - ресурстар, орындаушылар, ғылыми-зерттеу, өндірістік,
+                                әлеуметтік-экономикалық, ұйымдық және басқа шаралар.
+                            </p>
                             <div class="info__card__link">
                                 <a href="{{route('prominent')}}">Толығырақ оқу ➞</a>
                                 <h1>02</h1>
@@ -41,7 +43,8 @@
                     <div class="info__card col-12 col-lg-4 col-md-6 mt-4">
                         <div class="info__card__head">
                             <img src="{{asset('modules/front/assets/img/building-icon.png')}}" alt="">
-                            <h2>Мемлекеттік бағдарламалар</h2>
+                            <h2>Жастар
+                                ұйымдары</h2>
                         </div>
                         <div class="info__card__content">
                             <p>Мемлекеттік бағдарлама - ресурстар, орындаушылар, ғылыми-зерттеу, өндірістік,
@@ -55,7 +58,7 @@
                     <div class="info__card col-12 col-lg-4 col-md-6 mt-4">
                         <div class="info__card__head reverse">
                             <img src="{{asset('modules/front/assets/img/t-icon.png')}}" alt="">
-                            <h2>Мемлекеттік бағдарламалар</h2>
+                            <h2>Форум / Сауалнама</h2>
                         </div>
                         <div class="info__card__content reverse">
                             <p>Мемлекеттік бағдарлама - ресурстар, орындаушылар, ғылыми-зерттеу, өндірістік,
@@ -69,7 +72,7 @@
                     <div class="info__card col-12 col-lg-4 col-md-6 mt-4">
                         <div class="info__card__head reverse">
                             <img src="{{asset('modules/front/assets/img/sigma-icon.png')}}" alt="">
-                            <h2>Мемлекеттік бағдарламалар</h2>
+                            <h2>ГИД</h2>
                         </div>
                         <div class="info__card__content reverse">
                             <p>Мемлекеттік бағдарлама - ресурстар, орындаушылар, ғылыми-зерттеу, өндірістік,
@@ -83,7 +86,7 @@
                     <div class="info__card col-12 col-lg-4 col-md-6 mt-4">
                         <div class="info__card__head reverse">
                             <img src="{{asset('modules/front/assets/img/tasks-icon.png')}}" alt="">
-                            <h2>Мемлекеттік бағдарламалар</h2>
+                            <h2>Еріктілер</h2>
                         </div>
                         <div class="info__card__content reverse">
                             <p>Мемлекеттік бағдарлама - ресурстар, орындаушылар, ғылыми-зерттеу, өндірістік,
