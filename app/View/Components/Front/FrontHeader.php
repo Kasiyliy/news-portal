@@ -30,7 +30,7 @@ class FrontHeader extends BaseComponent
             ],
             [
                 'title' => 'Жоба туралы',
-                'href' => '#'
+                'href' => route('about')
             ],
             [
                 'title' => 'Іс-шара',

@@ -36,6 +36,7 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/prominent', ['uses' => 'MainController@prominent', 'as' => 'prominent']);
     Route::get('/prominent/{id}', ['uses' => 'MainController@prominentDetail', 'as' => 'prominent.detail'])->where('id', '[0-9]+');
     Route::get('/resource', ['uses' => 'MainController@resource', 'as' => 'resource']);
+    Route::get('/about', ['uses' => 'MainController@about', 'as' => 'about']);
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -49,8 +50,8 @@ Route::group(['middleware' => 'auth'], function () {
         //Guide
         Route::get('/guide', ['uses' => 'GuideController@index', 'as' => 'guide.index']);
         Route::post('/guide/store', ['uses' => 'GuideController@store', 'as' => 'guide.store']);
-        Route::post('/guide/update/{id}', ['uses' => 'GuideController@update', 'as' => 'guide.update'])->where('id','[0-9]+');
-        Route::post('/guide/delete/{id}', ['uses' => 'GuideController@delete', 'as' => 'guide.delete'])->where('id','[0-9]+');
+        Route::post('/guide/update/{id}', ['uses' => 'GuideController@update', 'as' => 'guide.update'])->where('id', '[0-9]+');
+        Route::post('/guide/delete/{id}', ['uses' => 'GuideController@delete', 'as' => 'guide.delete'])->where('id', '[0-9]+');
 
         Route::get('/guide/contents/{category_id}', ['uses' => 'GuideController@content', 'as' => 'guide.content.index'])->where('category_id', '[0-9]+');
         Route::get('/guide/contents/create/{category_id}', ['uses' => 'GuideController@contentCreate', 'as' => 'guide.content.create'])->where('category_id', '[0-9]+');
