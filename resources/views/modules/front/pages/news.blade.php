@@ -63,29 +63,95 @@
         height: 100%;
     }
 
-    .pagination {
-        display: inline-block;
-        padding-left: 0;
-        margin: 20px 0;
-        margin-right: 200px;
-        border-radius: 4px;
+    .news_pagination{
+        padding-top: 50px;
+    }
+    .news_pagination nav{
+        display:flex;
+
+    }
+    .news_pagination ul{
+
+        margin:auto;
+
     }
 
-    .pagination > li {
-        display: inline;
+    .news_pagination .page-link{
+        border:none;
+        color: #00656D;
+
     }
-    .pagination > li > a,
-    .pagination > li > span {
-        position: relative;
-        float: left;
-        padding: 6px 12px;
-        margin-left: -1px;
-        line-height: 1.42857143;
-        color: #337ab7;
-        text-decoration: #00656D;
-        background-color: #fff;
-        border: 1px solid #ddd;
+    .news_pagination .page-item{
+        margin-right: 10px;
+        border: none;
     }
+    .news_pagination .page-item.active .page-link{
+        border: none;
+        background-color:#F8A555 ;
+    }
+    .news_pagination .page-item:last-child .page-link{
+        border: 1px solid #00656D;
+        box-sizing: border-box;
+        color:#00656D;
+        border-radius: 0;
+    }
+    .news_pagination .page-item:first-child .page-link{
+        border: 1px solid #00656D;
+        box-sizing: border-box;
+        color:#00656D;
+        border-radius: 0;
+    }
+    .news_pagination .page-item .page-link{
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        padding: 6px 12px 6px 12px;
+    }
+
+
+    /*.news_pagination a {*/
+    /*    color: #00656D;*/
+    /*    text-decoration: none;*/
+    /*    background-color: transparent;*/
+    /*}*/
+    /*.pagination {*/
+    /*    display: -ms-flexbox;*/
+    /*    display: flex;*/
+    /*    text-align: center;*/
+
+    /*    list-style: none;*/
+    /*    border-radius: .25rem;*/
+    /*}*/
+
+    /*.news_pagination li {*/
+    /*    list-style-type: none;*/
+    /*    text-align: center;*/
+    /*    display: inline;*/
+    /*    */
+    /*}*/
+
+
+    /*.news_pagination .page-item:last-child .page-link {*/
+    /*    border-top-right-radius: .25rem;*/
+    /*    border-bottom-right-radius: .25rem;*/
+    /*    text-align: center;*/
+    /*}*/
+
+    /* .page-link {*/
+    /*    position: relative;*/
+    /*    display: flex;*/
+    /*    text-align: center;*/
+    /*    padding: .5rem .75rem;*/
+    /*    margin-left: -1px;*/
+    /*    line-height: 1.25;*/
+    /*    color: #00656D;*/
+    /*    background-color: #fff;*/
+    /*    border: 1px solid #dee2e6;*/
+    /*}*/
+
+
+
 
 
 </style>
@@ -103,7 +169,7 @@
                             <!-- Additional required wrapper -->
                             <div class="swiper-wrapper">
                                 @foreach($last_news as $l_n)
-                                <div class="swiper-slide">
+                                <div class="swiper-slide" data-swiper-autoplay="20">
                                     <div class="news_block_slide">
                                         <img src="{{asset($l_n->image_path)}}" alt="operator">
                                         <a class="news__block__image_content2" href="{{route('news.detail', $l_n->id)}}">
@@ -157,7 +223,7 @@
                         @endforeach
                     </div>
                     <div class="col-12 col-lg-4 col-md-12 mt-4 news__block__collection">
-                        @foreach($news as $n)
+                        @foreach($last_news as $n)
                         <div class="d-block">
                             <a href="{{route('news.detail', $n->id)}}"><h3>{{$n->title}}</h3></a>
                             <div class="d-flex">
@@ -214,10 +280,11 @@
                 @endforeach
 
             </div>
-{{--            <div class="pagination" >{{ $news->links() }}</div>--}}
 
 
-
+        </div>
+        <div class="news_pagination">
+            {{ $news->links() }}
         </div>
 
     </section>
@@ -233,6 +300,7 @@
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
+
 
             },
         });
