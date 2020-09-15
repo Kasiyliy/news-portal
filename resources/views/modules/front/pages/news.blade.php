@@ -214,7 +214,7 @@
                 @endforeach
 
             </div>
-            <div class="pagination" >{{ $news->links() }}</div>
+{{--            <div class="pagination" >{{ $news->links() }}</div>--}}
 
 
 
