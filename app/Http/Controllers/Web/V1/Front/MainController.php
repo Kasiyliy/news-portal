@@ -8,6 +8,8 @@ use App\Exceptions\Web\WebServiceExplainedException;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Models\Entities\Content\AboutUs;
 use App\Models\Entities\Content\GuideCategory;
+use App\Models\Entities\Content\Prominent\ProminentDirection;
+use App\Models\Entities\Content\Prominent\ProminentUser;
 use App\Models\Entities\Content\TeenagerGroup;
 use App\Models\Entities\Content\News;
 use App\Models\Entities\Content\Slider;
@@ -65,12 +67,16 @@ class MainController extends WebBaseController
 
     public function prominentDetail($id)
     {
-        return $this->frontView('pages.prominent-detail');
+        $user = ProminentUser::where('id', $id)->with('directions.direction', 'area')->first();
+        return $this->frontView('pages.prominent-detail', compact('user'));
     }
 
     public function prominent()
     {
-        return $this->frontView('pages.prominent');
+        $users = ProminentUser::with('directions.direction', 'area')->paginate(10);
+        $directions = ProminentDirection::all();
+        $areas = ProminentDirection::all();
+        return $this->frontView('pages.prominent', compact('users', 'areas', 'directions'));
     }
 
     public function resource()

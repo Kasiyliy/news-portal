@@ -16,6 +16,13 @@
                                   :value="$element['value']"
                                   :required="array_key_exists('required', $element) && $element['required']"
                                   :type="$element['type']"/>
+    @elseif($element['type'] == 'checkbox')
+        <x-admin.checkbox-form-group :name="$key"
+                                     :label="$element['label']"
+                                     :errors="$errors"
+                                     :options="$element['options']"
+                                     :required="array_key_exists('required', $element) && $element['required']"
+                                     :type="$element['type']"/>
     @else
         <x-admin.input-form-group :name="$key"
                             :errors="$errors"

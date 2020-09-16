@@ -30,7 +30,7 @@
     toastr.info("{!!session()->get('warning') !!}");
     @endif
     tinymce.init({
-        selector: 'textarea#description',
+        selector: 'textarea.description',
         height: 300,
         menubar: false,
         plugins: [

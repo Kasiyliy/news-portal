@@ -1,11 +1,16 @@
 <div class="form-group {{$required ? ' required' : ''}}">
     <label class="control-label">{{$label}}</label>
-    <select class="custom-select" {{$required ? ' required' : ''}} name="{{$name}}">
-        <option value="" disabled>{{$placeholder}}</option>
+    <ul>
         @foreach($options as $option)
-            <option value="{{$option['value']}}" {{$option['selected']}}>{{$option['title']}}</option>
+            <li>
+                <label class="form-check-label">
+                    <input type="checkbox" value="{{$option['value']}}" name="{{$name}}"
+                           {{ $option['checked'] ? 'checked' : '' }} class="form-check-input">
+                    {{ $option['title'] }}
+                </label>
+            </li>
         @endforeach
-    </select>
+    </ul>
     @if (isset($errors) && $errors->has($name))
         <span class="invalid-feedback" role="alert">
             <strong>{{ $errors->first($name) }}</strong>

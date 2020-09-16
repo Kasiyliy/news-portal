@@ -10,40 +10,38 @@
                     <div class="col-12 col-md-3 mt-5">
                         <div class="card">
                             <div class="card-body">
-                                <p>Аудан</p>
-                                <div class="dropdown">
-                                    <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Байзақ ауданы
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </div>
-                                <p>Бағыты</p>
-                                @for($i=0; $i<4; $i++)
+                                <label class="form-control-plaintext">Аудан</label>
+                                <select class="form-control">
+                                    @foreach($areas as $area)
+                                        <option value="{{$area->id}}">{{$area->name}}</option>
+                                    @endforeach
+                                </select>
+                                {{--                                <div class="dropdown">--}}
+                                {{--                                    <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"--}}
+                                {{--                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                                {{--                                        Байзақ ауданы--}}
+                                {{--                                    </a>--}}
+                                {{--                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">--}}
+                                {{--                                        <a class="dropdown-item" href="#">Action</a>--}}
+                                {{--                                        <a class="dropdown-item" href="#">Another action</a>--}}
+                                {{--                                        <a class="dropdown-item" href="#">Something else here</a>--}}
+                                {{--                                    </div>--}}
+                                <label class="form-control-plaintext">Бағыты</label>
+                                @foreach($directions as $direction)
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                         <label class="form-check-label" for="defaultCheck1">
-                                            Еріктілер
+                                            {{$direction->name}}
                                         </label>
                                     </div>
-                                @endfor
-                                <p class="mt-3">Жынысы</p>
-                                <div class="dropdown">
-                                    <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        таңдау
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </div>
-                                <p class="mt-3">Жасы</p>
+                                @endforeach
+                                <label class="form-control-plaintext">Жынысы</label>
+                                <select class="form-control">
+                                    <option value="">таңдау</option>
+                                    <option value="0">Ер</option>
+                                    <option value="1">Әйел</option>
+                                </select>
+                                <label class="form-control-plaintext">Жасы</label>
                                 <div class="input-group">
                                     <input type="text" aria-label="First name" class="form-control" placeholder="14">
                                     <input type="text" aria-label="Last name" class="form-control" placeholder="29">
@@ -58,50 +56,36 @@
                     </div>
                     <div class="col-12 col-md-9 mt-5 prominent__content__media">
                         <ul class="list-unstyled">
-                            <li class="media prominent__media my-4">
-                                <img src="{{asset('modules/front/assets/img/Elbasy.png')}}" class="mr-3" alt="...">
-                                <div class="media-body">
-                                    <a class="prominent__name" href="{{route('prominent.detail', 1)}}">
-                                        <h5 class="mt-0 mb-1">Ерлан Жүніс Төсбайұлы</h5>
-                                    </a>
-                                    <h6>Жамбыл облысы, Тараз</h6>
-                                    <p>Ақын</p>
-                                </div>
-                                <div class="popover prominent__popover mr-3">
-                                    <a data-container="body"
-                                       data-toggle="popover" data-placement="left"
-                                       data-content="
-                                            <a class='popover__nav-item' href='{{route('prominent.detail', 1)}}'>Өмірбаяны</a></br>
-                                            <a class='popover__nav-item' href='{{route('prominent.detail', 1)}}'>Атқарған еңбектері</a></br>
-                                            <a class='popover__nav-item' href='{{route('prominent.detail', 1)}}'>Қосымша ақпараттар</a>">
-                                        <i class="fa fa-ellipsis-h "></i>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="media prominent__media my-4">
-                                <img src="{{asset('modules/front/assets/img/Elbasy.png')}}" class="mr-3" alt="...">
-                                <div class="media-body">
-                                    <a class="prominent__name" href="{{route('prominent.detail', 1)}}">
-                                        <h5 class="mt-0 mb-1">Ерлан Жүніс Төсбайұлы</h5>
-                                    </a>
-                                    <h6>Жамбыл облысы, Тараз</h6>
-                                    <p>Ақын</p>
-                                </div>
-                                <div class="popover prominent__popover mr-3">
-                                    <a data-container="body"
-                                       data-toggle="popover" data-placement="left"
-                                       data-content="
-                                            <a class='popover__nav-item' href='{{route('prominent.detail', 1)}}'>Өмірбаяны</a></br>
-                                            <a class='popover__nav-item' href='{{route('prominent.detail', 1)}}'>Атқарған еңбектері</a></br>
-                                            <a class='popover__nav-item' href='{{route('prominent.detail', 1)}}'>Қосымша ақпараттар</a>">
-                                        <i class="fa fa-ellipsis-h "></i>
-                                    </a>
-                                </div>
-                            </li>
-
+                            <div class="infinite-scroll">
+                                @foreach($users as $user)
+                                    <li class="media prominent__media my-4">
+                                        <img src="{{asset($user->avatar_path)}}" class="mr-3"
+                                             alt="...">
+                                        <div class="media-body">
+                                            <a class="prominent__name" href="{{route('prominent.detail', $user->id)}}">
+                                                <h5 class="mt-0 mb-1">{{$user->fullName()}}</h5>
+                                            </a>
+                                            <h6>Жамбыл облысы, {{$user->area->name}}</h6>
+                                            @foreach($user->directions as $direction)
+                                                <p>{{$direction->direction->name}}</p>
+                                            @endforeach
+                                        </div>
+                                        <div class="popover prominent__popover mr-3">
+                                            <a data-container="body"
+                                               data-toggle="popover" data-placement="left"
+                                               data-content="
+                                            <a class='popover__nav-item' href='{{route('prominent.detail', $user->id)}}'>Өмірбаяны</a></br>
+                                            <a class='popover__nav-item' href='{{route('prominent.detail', $user->id)}}'>Атқарған еңбектері</a></br>
+                                            <a class='popover__nav-item' href='{{route('prominent.detail', $user->id)}}'>Қосымша ақпараттар</a>">
+                                                <i class="fa fa-ellipsis-h "></i>
+                                            </a>
+                                        </div>
+                                    </li>
+                                @endforeach
+                                {{$users->links()}}
+                            </div>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -109,10 +93,27 @@
 @endsection
 
 @section('scripts')
+    <script src="{{asset('modules/front/assets/js/jquery.jscroll.min.js')}}"></script>
     <script>
         $(function () {
             $('[data-toggle="popover"]').popover({html: true})
-        })
+        });
+
+        $('ul.pagination').hide();
+        $(function () {
+            $('.infinite-scroll').jscroll({
+                autoTrigger: true,
+                padding: 0,
+                margin: 0,
+                loadingHtml: '<img class="center-block d-block" style="margin-left: auto; margin-right: auto;" ' +
+                    'src="{{asset('modules/front/assets/img/loading.gif')}}" alt="Loading..." />', // MAKE SURE THAT YOU PUT THE CORRECT IMG PATH
+                nextSelector: '.pagination li.active + li a',
+                contentSelector: 'div.infinite-scroll',
+                callback: function () {
+                    $('ul.pagination').remove();
+                }
+            });
+        });
     </script>
 @endsection
 

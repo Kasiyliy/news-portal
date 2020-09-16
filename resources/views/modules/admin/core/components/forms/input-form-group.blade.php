@@ -4,7 +4,9 @@
            id="{{$name}}"
            class="form-control{{ isset($errors) && $errors->has($name) ? ' is-invalid' : '' }}"
            value="{{ isset($value) ? $value : old($name) }}" {{$required ? ' required' : ''}}
-           type="{{$type}}" placeholder="{{$placeholder}}">
+           type="{{$type}}" placeholder="{{$placeholder}}"
+           @if($type == 'date') max='2000-01-01' @endif
+           @if($type == 'file') accept="image/*" @endif>
     @if (isset($errors) && $errors->has($name))
         <span class="invalid-feedback" role="alert">
             <strong>{{ $errors->first($name) }}</strong>

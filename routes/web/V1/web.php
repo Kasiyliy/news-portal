@@ -84,6 +84,29 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/slider/update/{id}', ['uses' => 'SliderController@update', 'as' => 'slider.update'])->where('id', '[0-9]+');
         Route::post('/slider/delete/{id}', ['uses' => 'SliderController@delete', 'as' => 'slider.delete'])->where('id', '[0-9]+');
 
+        //Prominent
+        Route::group(['namespace' => 'Prominent', 'prefix' => 'prominent'], function () {
+            //Area
+            Route::get('/areas', ['uses' => 'ProminentAreaController@index', 'as' => 'prominent.area.index']);
+            Route::post('/area/store', ['uses' => 'ProminentAreaController@store', 'as' => 'prominent.area.store']);
+            Route::post('/area/update/{id}', ['uses' => 'ProminentAreaController@update', 'as' => 'prominent.area.update'])->where('id', '[0-9]+');
+            Route::post('/area/delete/{id}', ['uses' => 'ProminentAreaController@delete', 'as' => 'prominent.area.delete'])->where('id', '[0-9]+');
+
+            //Directory
+            Route::get('/directions', ['uses' => 'ProminentDirectionController@index', 'as' => 'prominent.direction.index']);
+            Route::post('/direction/store', ['uses' => 'ProminentDirectionController@store', 'as' => 'prominent.direction.store']);
+            Route::post('/direction/update/{id}', ['uses' => 'ProminentDirectionController@update', 'as' => 'prominent.direction.update'])->where('id', '[0-9]+');
+            Route::post('/direction/delete/{id}', ['uses' => 'ProminentDirectionController@delete', 'as' => 'prominent.direction.delete'])->where('id', '[0-9]+');
+
+            //User
+            Route::get('/users', ['uses' => 'ProminentUserController@index', 'as' => 'prominent.user.index']);
+            Route::get('/user/create', ['uses' => 'ProminentUserController@create', 'as' => 'prominent.user.create']);
+            Route::post('/user/store', ['uses' => 'ProminentUserController@store', 'as' => 'prominent.user.store']);
+            Route::get('/user/edit/{id}', ['uses' => 'ProminentUserController@edit', 'as' => 'prominent.user.edit'])->where('id', '[0-9]+');;
+            Route::post('/user/update/{id}', ['uses' => 'ProminentUserController@update', 'as' => 'prominent.user.update'])->where('id', '[0-9]+');
+            Route::post('/user/delete/{id}', ['uses' => 'ProminentUserController@delete', 'as' => 'prominent.user.delete'])->where('id', '[0-9]+');
+        });
+
 
 
 

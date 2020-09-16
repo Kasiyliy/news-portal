@@ -22,6 +22,12 @@ class FormUtil
         return [$name => compact('placeholder', 'label', 'type', 'required', 'options')];
     }
 
+    public static function checkbox($name, $label, $required = true, $options = []): array
+    {
+        $type = 'checkbox';
+        return [$name => compact( 'label', 'type', 'required', 'options')];
+    }
+
     public static function option($value, $selected, $title): array
     {
         return compact('value', 'selected', 'title');
