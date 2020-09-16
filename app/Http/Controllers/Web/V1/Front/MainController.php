@@ -22,7 +22,9 @@ class MainController extends WebBaseController
     {
         $about_us = AboutUs::all();
         $slider = Slider::all();
-        return $this->frontView('pages.index', compact('about_us', 'slider'));
+        $news = News::orderBy('created_at', 'desc')->take(4)->get();
+
+        return $this->frontView('pages.index', compact('about_us', 'slider','news'));
     }
 
     public function news()
@@ -31,6 +33,7 @@ class MainController extends WebBaseController
         $count = 0;
         $most_viewed = News::orderBy('viewed_count', 'desc')->take(3)->get();
         $news = News::paginate(6);
+
 
         return $this->frontView('pages.news',compact('news','last_news' , 'count','most_viewed'));
     }

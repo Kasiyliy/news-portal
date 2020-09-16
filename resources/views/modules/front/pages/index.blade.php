@@ -332,33 +332,18 @@
             <div class="news__inner">
                 <h1>Жаңалықтар мен хабарландырулар</h1>
                 <div class="row">
-                    <div class="col-12 col-lg-3">
-                        <a href="{{route('news.detail', 1)}}">
-                            <img src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
-                            <p>Шетелге тұрақты тұруға кетуге байланысты зейнетақы жинақтарын қалай алуға болады?</p>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-3">
-                        <a href="{{route('news.detail', 1)}}">
-                            <img src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
-                            <p>Бос мемлекеттік әкімшілік лауазымдарға орналасуға жалпы конкурс туралы хабарландыру</p>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-3">
-                        <a href="{{route('news.detail', 1)}}">
-                            <img src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
-                            <p>«Тегін заңгерлік кеңестер. Мамандардың заңгерлік көмегі» республикалық бағдарламасы
-                                Қазақстан бойынша тұрақты түрде жаңа форматта</p>
-                        </a>
-
-                    </div>
-                    <div class="col-12 col-lg-3">
-                        <a href="{{route('news.detail', 1)}}">
-                            <img src="{{asset('modules/front/assets/img/news-image.png')}}" alt="">
-                            <p>«БЖЗҚ» АҚ өзекті сауалдарға жауап береді </p>
-                        </a>
-                    </div>
+                        @foreach($news as $n)
+                            <div class="col-12 col-lg-3">
+                                <a href="{{route('news.detail', $n->id)}}">
+                                    <img src="{{asset($n->image_path)}}" alt="" width="210" height="143.17">
+                                    <p >{{strlen($n->title) > 111 ?
+                                    mb_substr($n->title,0,111)."..."
+                                            : $n->title}}</p>
+                                </a>
+                            </div>
+                        @endforeach
                 </div>
+
             </div>
         </div>
     </section>

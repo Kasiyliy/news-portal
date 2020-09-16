@@ -13,7 +13,7 @@ class NewsWebRequest extends WebBaseRequest
         return [
             'title' => ['required', 'string'],
             'description' => ['required', 'string'],
-            'file' => ['nullable', 'image'],
+            'file' => [ !request()->route('id') ? 'required': '', 'image'],
         ];
     }
 }
