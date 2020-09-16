@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class ProminentDirectionController extends WebBaseController
 {
     public function index() {
-        $directions = ProminentDirection::paginate(1);
+        $directions = ProminentDirection::paginate(10);
         $direction_web_form = ProminentDirectionWebForm::inputGroups(null);
         return $this->adminView('pages.prominent.directions.index', compact('directions', 'direction_web_form'));
     }

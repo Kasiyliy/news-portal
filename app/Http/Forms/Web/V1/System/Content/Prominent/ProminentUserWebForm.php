@@ -31,7 +31,9 @@ class ProminentUserWebForm implements WithForm
         }
         foreach ($directions as $direction) {
             $checked = false;
-            if($value->directions->where('direction_id', $direction->id)->first()) $checked = true;
+            if($value) {
+                if ($value->directions->where('direction_id', $direction->id)->first()) $checked = true;
+            }
             $options2[] = ['title' => $direction->name, 'checked' => $checked, 'value' => $direction->id];
         }
         return array_merge(
