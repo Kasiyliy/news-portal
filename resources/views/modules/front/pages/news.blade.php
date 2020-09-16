@@ -88,6 +88,7 @@
     .news_pagination .page-item.active .page-link{
         border: none;
         background-color:#F8A555 ;
+        color:#00656D;
     }
     .news_pagination .page-item:last-child .page-link{
         border: 1px solid #00656D;
