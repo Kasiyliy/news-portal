@@ -365,6 +365,7 @@
 
 .news__inner {
     margin-bottom: 50px;
+
 }
 
 .news__inner h1 {
@@ -387,6 +388,7 @@
 
 .news__inner img {
     width: 100%;
+    border-radius: 10px;
 }
 
 /* FOOTER */
