@@ -8,6 +8,7 @@ use App\Exceptions\Web\WebServiceExplainedException;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Models\Entities\Content\AboutUs;
 use App\Models\Entities\Content\GuideCategory;
+use App\Models\Entities\Content\Prominent\ProminentArea;
 use App\Models\Entities\Content\Prominent\ProminentDirection;
 use App\Models\Entities\Content\Prominent\ProminentUser;
 use App\Models\Entities\Content\TeenagerGroup;
@@ -78,7 +79,7 @@ class MainController extends WebBaseController
     {
         $users = ProminentUser::with('directions.direction', 'area')->paginate(10);
         $directions = ProminentDirection::all();
-        $areas = ProminentDirection::all();
+        $areas = ProminentArea::all();
         return $this->frontView('pages.prominent', compact('users', 'areas', 'directions'));
     }
 
