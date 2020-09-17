@@ -246,81 +246,14 @@
             <div class="business__inner">
                 <h1>Бизнес-идея</h1>
                 <div class="row">
+                    @foreach($business_categories as $business_category)
                     <div class="business__item col-10 mx-auto col-lg-4  text-center">
-                        <a class="d-flex" href="{{route('business')}}">
-                            <img src="{{asset('modules/front/assets/img/tractor-icon.png')}}" alt="tractor">
-                            <p>Ауыл шаруашылығы</p>
+                        <a class="d-flex" href="{{route('business', ['category_id' => $business_category->id])}}">
+                            <img src="{{asset($business_category->image_path)}}" alt="tractor">
+                            <p>{{$business_category->name}}</p>
                         </a>
                     </div>
-                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <a class="d-flex" href="{{route('business')}}">
-                            <img src="{{asset('modules/front/assets/img/ball-icon.png')}}" alt="ball">
-                            <p>Спорт</p>
-                        </a>
-                    </div>
-                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <a class="d-flex" href="{{route('business')}}">
-                            <img src="{{asset('modules/front/assets/img/medal-icon.png')}}" alt="medal">
-                            <p>Топ бизнес</p>
-                        </a>
-                    </div>
-
-                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <a class="d-flex" href="{{route('business')}}">
-                            <img src="{{asset('modules/front/assets/img/car-icon.png')}}" alt="car">
-                            <p>Автобизнес</p>
-                        </a>
-                    </div>
-                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <a class="d-flex" href="{{route('business')}}">
-                            <img src="{{asset('modules/front/assets/img/graduate-icon.png')}}" alt="graduate">
-                            <p>Білім</p>
-                        </a>
-                    </div>
-                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <a class="d-flex" href="{{route('business')}}">
-                            <img src="{{asset('modules/front/assets/img/heart-icon.png')}}" alt="heart">
-                            <p>Хобби-бизнес</p>
-                        </a>
-                    </div>
-
-                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <a class="d-flex" href="{{route('business')}}">
-                            <img src="{{asset('modules/front/assets/img/ie-icon.png')}}" alt="ie">
-                            <p>Интернет-бизнес</p>
-                        </a>
-                    </div>
-                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <a class="d-flex" href="{{route('business')}}">
-                            <img src="{{asset('modules/front/assets/img/mouse-icon.png')}}" alt="mouse">
-                            <p>Сауда</p>
-                        </a>
-                    </div>
-                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <a class="d-flex" href="{{route('business')}}">
-                            <img src="{{asset('modules/front/assets/img/fork-icon.png')}}" alt="fork">
-                            <p>Тағам өнеркәсібі</p>
-                        </a>
-                    </div>
-
-                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <a class="d-flex" href="{{route('business')}}">
-                            <img src="{{asset('modules/front/assets/img/build-icon.png')}}" alt="build">
-                            <p>Құрылыс</p>
-                        </a>
-                    </div>
-                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <a class="d-flex" href="{{route('business')}}">
-                            <img src="{{asset('modules/front/assets/img/industry-icon.png')}}" alt="industry">
-                            <p>Жеңіл өнеркәсіп</p>
-                        </a>
-                    </div>
-                    <div class="business__item col-10 mx-auto col-lg-4 d-flex text-center">
-                        <a class="d-flex" href="{{route('business')}}">
-                            <img src="{{asset('modules/front/assets/img/wallet-icon.png')}}" alt="wallet">
-                            <p>Басқалары</p>
-                        </a>
-                    </div>
+                    @endforeach
                 </div>
 
             </div>

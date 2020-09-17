@@ -42,7 +42,7 @@ class NewsController extends WebBaseController
     public function store(NewsWebRequest $request) {
     try {
         $path = null;
-        DB::beginTransaction();
+
         if ($request->file('file')) {
             $path = $this->fileService->store($request->file('file'), News::DEFAULT_RESOURCE_DIRECTORY);
         }
@@ -53,11 +53,11 @@ class NewsController extends WebBaseController
             'image_path' => $path
         ]);
         $this->added();
-        DB::commit();
+
 
         return redirect()->route('news.index');
         }catch (\Exception $exception){
-        DB::rollBack();
+
         if($path) $this->fileService->remove($path);
         throw new WebServiceExplainedException($exception->getMessage());
         }

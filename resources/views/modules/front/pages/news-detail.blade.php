@@ -23,7 +23,7 @@
                     <img src="{{asset($news->image_path)}}" alt="newsdetail" width="539" height="1004">
                     <p>
                     <div>
-                        {!! $news->description !!}
+                    {!! $news->description !!}
                     </div>
                 </div>
             </div>

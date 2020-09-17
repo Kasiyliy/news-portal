@@ -84,6 +84,21 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/slider/update/{id}', ['uses' => 'SliderController@update', 'as' => 'slider.update'])->where('id', '[0-9]+');
         Route::post('/slider/delete/{id}', ['uses' => 'SliderController@delete', 'as' => 'slider.delete'])->where('id', '[0-9]+');
 
+        //Business
+
+        Route::get('/business', ['uses' => 'BusinessController@index', 'as' => 'business.index']);
+        Route::post('/business/store', ['uses' => 'BusinessController@store', 'as' => 'business.store']);
+        Route::post('/business/update/{id}', ['uses' => 'BusinessController@update', 'as' => 'business.update'])->where('id', '[0-9]+');
+        Route::post('/business/delete/{id}', ['uses' => 'BusinessController@delete', 'as' => 'business.delete'])->where('id', '[0-9]+');
+
+        Route::get('/business/contents/{category_id}', ['uses' => 'BusinessController@content', 'as' => 'business.content.index'])->where('category_id', '[0-9]+');
+        Route::get('/business/contents/create/{category_id}', ['uses' => 'BusinessController@contentCreate', 'as' => 'business.content.create'])->where('category_id', '[0-9]+');
+        Route::get('/business/contents/edit/{id}', ['uses' => 'BusinessController@contentEdit', 'as' => 'business.content.edit'])->where('id', '[0-9]+');
+        Route::post('/business/contents/store/{category_id}', ['uses' => 'BusinessController@contentStore', 'as' => 'business.content.store'])->where('category_id', '[0-9]+');
+        Route::post('/business/contents/update/{id}', ['uses' => 'BusinessController@contentUpdate', 'as' => 'business.content.update'])->where('id', '[0-9]+');
+        Route::post('/business/contents/delete/{id}', ['uses' => 'BusinessController@contentDelete', 'as' => 'business.content.delete'])->where('id', '[0-9]+');
+
+
         //Prominent
         Route::group(['namespace' => 'Prominent', 'prefix' => 'prominent'], function () {
             //Area

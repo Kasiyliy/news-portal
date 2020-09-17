@@ -8,6 +8,8 @@ use App\Exceptions\Web\WebServiceExplainedException;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Models\Entities\Content\AboutProject;
 use App\Models\Entities\Content\AboutUs;
+use App\Models\Entities\Content\Business\BusinessCategory;
+use App\Models\Entities\Content\Business\BusinessContent;
 use App\Models\Entities\Content\GuideCategory;
 use App\Models\Entities\Content\Prominent\ProminentArea;
 use App\Models\Entities\Content\Prominent\ProminentDirection;
@@ -27,8 +29,9 @@ class MainController extends WebBaseController
         $about_us = AboutUs::all();
         $slider = Slider::all();
         $news = News::orderBy('created_at', 'desc')->take(4)->get();
+        $business_categories = BusinessCategory::orderBy('created_at', 'desc')->take(12)->get();
 
-        return $this->frontView('pages.index', compact('about_us', 'slider','news'));
+        return $this->frontView('pages.index', compact('about_us', 'slider','news','business_categories'));
     }
 
     public function news()
@@ -67,9 +70,19 @@ class MainController extends WebBaseController
         return $this->frontView('pages.guide', compact('categories', 'i', 'currentCategory'));
     }
 
-    public function business()
+    public function business(Request $request)
     {
-        return $this->frontView('pages.business');
+
+        $categories = BusinessCategory::orderBy('updated_at', 'desc')->get();
+        $currentCategory = $categories->first();
+
+        if ($request->category_id) {
+            $currentCategory = $categories->where('id', $request->category_id)->first();
+            if (!$currentCategory) throw new WebServiceExplainedException('Не найдено!');
+        }
+        $contents = BusinessContent::where('category_id',$currentCategory->id)->paginate(6);
+
+        return $this->frontView('pages.business',compact('categories','currentCategory','contents'));
     }
 
     public function prominentDetail($id)
