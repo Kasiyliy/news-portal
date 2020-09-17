@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Front;
 
+use App\Models\Entities\Content\AboutProject;
 use App\View\BaseComponent;
 
 class FrontHeader extends BaseComponent
@@ -37,6 +38,7 @@ class FrontHeader extends BaseComponent
                 'href' => '#'
             ]
         ];
-        return $this->coreFrontView('parts.front-header', compact('navItems'));
+        $about_project = AboutProject::first();
+        return $this->coreFrontView('parts.front-header', compact('navItems', 'about_project'));
     }
 }

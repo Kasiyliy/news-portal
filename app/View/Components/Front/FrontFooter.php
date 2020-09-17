@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Front;
 
+use App\Models\Entities\Content\AboutProject;
 use App\View\BaseComponent;
 use Illuminate\View\Component;
 
@@ -24,6 +25,7 @@ class FrontFooter extends BaseComponent
      */
     public function render()
     {
-        return $this->coreFrontView('parts.front-footer');
+        $about_project = AboutProject::first();
+        return $this->coreFrontView('parts.front-footer', compact('about_project'));
     }
 }

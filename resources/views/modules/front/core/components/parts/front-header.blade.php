@@ -1,4 +1,6 @@
-<header class="header">
+
+
+<header class="header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({{asset($about_project->main_image)}})">
     <div class="container">
         <div class="header__inner">
             <div class="header__inner__top row justify-content-between">
@@ -34,8 +36,7 @@
         </div>
         <div class="main__inner">
             <div class="main__inner__content">
-                <h1>Жамбыл жастарының
-                    ресурстық орталығы</h1>
+                <h1>{{$about_project->main_title}}</h1>
                 <a href="{{route('resource')}}"><button>Ресурстық орталықтар ➞</button></a>
             </div>
         </div>

@@ -107,6 +107,10 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/user/delete/{id}', ['uses' => 'ProminentUserController@delete', 'as' => 'prominent.user.delete'])->where('id', '[0-9]+');
         });
 
+        //AboutProject
+        Route::get('/about-project', ['uses' => 'AboutProjectController@index', 'as' => 'about_project.index']);
+        Route::post('/about-project/update', ['uses' => 'AboutProjectController@update', 'as' => 'about_project.update']);
+
 
 
 

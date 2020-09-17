@@ -1,5 +1,8 @@
 @extends('modules.front.layouts.app-main')
 
+@section('styles')
+    <link rel="stylesheet" href="{{asset('modules/front/assets/css/swiper.min.css')}}">
+@endsection
 @section('content')
     <section class="news__detail">
         <div class="container">
@@ -8,26 +11,61 @@
             </div>
         </div>
     </section>
-    <section class="resource">
+    <section class="about">
         <div class="container">
-            <div class="resource__inner my-5">
-                <img src="{{asset('modules/front/assets/img/calendar-bg.png')}}" alt="resource">
-                <h4>Негізгі ақпарат</h4>
-                <h5>Проект включает в себя четыре компонента:
-                    <br>
-                    - предоставление грантов до 1 000 000 тенге и социальных стипендий группам молодежи на реализацию социальных проектов;
-                    <br>
-                    - обучение молодых людей по развитию жизненно важных навыков и управлению проектами;
-                    <br>
-                    - работа с уязвимыми группами молодежи;
-                    <br>
-                    - реализация эффективной информационно-разъяснительной кампании и механизма обратной связи и разрешения проблем.
-                    <br>
-                    Участники Проекта проходят трёхэтапное обучение программе жизненно важных навыков и управления проектами, реализуют свои социальные проекты в течение пяти месяцев, а также получают ежемесячную стипендию 60 000 тенге – выпускники вузов, 40 000 тенге – все остальные участники. Кроме этого, все участники получают поддержку менторов в период реализации своих проектов.
-                    <br>
-                    В рамках реализации Проекта проводится конкурс по отбору менторов и грантовый конкурс для молодёжи.
+            <div class="about__inner my-5">
+                <div class="row mb-5">
+                    <div class="about__main-img  col-md-12 col-lg-10">
+                        <img id="expandedImg" src="{{asset($about_project->images[0]->image_path)}}">
+                    </div>
+                    <div class="about__tab-img col-md-12 col-lg-2">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper about__tab-img">
+                                @foreach($about_project->images as $image )
+                                    <div class="about__gallery swiper-slide">
+                                        <img src="{{asset($image->image_path)}}" onclick="myFunction(this);"
+                                             alt="">
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="mb-4">Негізгі ақпарат</h4>
+                <h5>
+                    {!! $about_project->main_description !!}
                 </h5>
             </div>
         </div>
     </section>
+@endsection
+
+@section('scripts')
+    <script src="{{asset('modules/front/assets/js/swiper.min.js')}}"></script>
+    <script>
+        function myFunction(imgs) {
+            var expandImg = document.getElementById("expandedImg");
+            expandImg.src = imgs.src;
+            expandImg.parentElement.style.display = "block";
+        }
+
+        let screenSize = $(window).width();
+        if (screenSize < 992) {
+            let reverse = document.getElementsByClassName('slider-reverse-block');
+            for (let i = 0; i < reverse.length; i++) {
+                reverse[i].style.flexFlow = 'wrap-reverse';
+            }
+        }
+
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 2,
+            direction: screenSize < 992 ? 'horizontal' : 'vertical',
+            breakpoints: {
+                640: {
+                    slidesPerView: 4,
+                }
+            }
+        });
+    </script>
+
 @endsection

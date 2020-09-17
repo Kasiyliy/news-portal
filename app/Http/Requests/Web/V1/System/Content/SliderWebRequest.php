@@ -10,7 +10,7 @@ class SliderWebRequest extends WebBaseRequest
     {
         return [
           'title' => ['required', 'string'],
-          'file' => ['nullable', 'image'],
+          'file' => [ !request()->route('id') ? 'required': '', 'image'],
         ];
     }
 }

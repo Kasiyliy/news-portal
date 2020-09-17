@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Web\V1\Front;
 
 use App\Exceptions\Web\WebServiceExplainedException;
 use App\Http\Controllers\Web\WebBaseController;
+use App\Models\Entities\Content\AboutProject;
 use App\Models\Entities\Content\AboutUs;
 use App\Models\Entities\Content\GuideCategory;
 use App\Models\Entities\Content\Prominent\ProminentArea;
@@ -135,6 +136,8 @@ class MainController extends WebBaseController
 
     public function about()
     {
-        return $this->frontView('pages.about');
+        $about_project = AboutProject::first();
+        return $this->frontView('pages.about', compact('about_project'));
     }
+
 }

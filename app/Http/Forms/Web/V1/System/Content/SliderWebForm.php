@@ -14,7 +14,9 @@ class SliderWebForm implements WithForm
         return array_merge(
             FormUtil::input('title', 'Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар
                                 бүгін сөзден іске көшетін заман.', 'Заголовок', 'text', true, $value ? $value->title : ''),
-            FormUtil::input('file', 'Выберите фото:', 'Аватар:', 'file', false)
+            FormUtil::input('file', 'Выберите фото:', 'Аватар:', 'file',
+                $value ? false : true
+                )
         );
     }
 }

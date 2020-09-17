@@ -4,11 +4,11 @@
             <div class="row">
                 <div class="col-md-12 col-lg-4 mx-auto ">
                     <div class="d-flex">
-                        <img src="{{asset('modules/front/assets/img/logo.png')}}" alt="logo">
-                        <h2>Жастар Саясаты басқармасы</h2>
+                        <img src="{{asset($about_project->footer_image)}}" alt="logo">
+                        <h2>{{$about_project->footer_title}}</h2>
                     </div>
-                    <p>Мекен-жайы: Желтоқсан көшесі, 78</p>
-                    <p>Телефон: 555-556-557</p>
+                    <p>Мекен-жайы: {{$about_project->footer_address}}</p>
+                    <p>Телефон: {{$about_project->footer_number}}</p>
                 </div>
                 <div class="col-md-12 col-lg-4 mx-auto  mt-3">
                     <h2>Пайдалы ресурстар:</h2>

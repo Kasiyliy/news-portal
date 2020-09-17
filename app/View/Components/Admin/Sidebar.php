@@ -31,6 +31,7 @@ class Sidebar extends BaseComponent
                 $this->navItem(route('prominent.area.index'), 'ti-location-arrow', 'Районы'),
                 $this->navItem(route('prominent.direction.index'), 'ti-direction-alt', 'Направления'),
                 $this->navItem(route('prominent.user.index'), 'ti-user', 'Люди'),
+                $this->navItem(route('about_project.index'), 'ti-clipboard', 'О проекте')
 
             ];
         } else {

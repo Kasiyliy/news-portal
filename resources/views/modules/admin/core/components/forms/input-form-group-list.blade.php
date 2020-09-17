@@ -30,6 +30,7 @@
                             :label="$element['label']"
                             :value="$element['value']"
                             :required="array_key_exists('required', $element) && $element['required']"
+                            :multiple="array_key_exists('multiple', $element) && $element['multiple']"
                             :type="$element['type']"/>
     @endif
 @endforeach

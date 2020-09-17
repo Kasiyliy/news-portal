@@ -11,9 +11,9 @@ namespace App\Http\Forms\Web;
 
 class FormUtil
 {
-    public static function input($name, $placeholder, $label, $type, $required, $value = null): array
+    public static function input($name, $placeholder, $label, $type, $required, $value = null, $multiple = false): array
     {
-        return [$name => compact('placeholder', 'label', 'type', 'required', 'value')];
+        return [$name => compact('placeholder', 'label', 'type', 'required', 'value', 'multiple')];
     }
 
     public static function select($name, $placeholder, $label, $required = true, $options = []): array
@@ -25,7 +25,7 @@ class FormUtil
     public static function checkbox($name, $label, $required = true, $options = []): array
     {
         $type = 'checkbox';
-        return [$name => compact( 'label', 'type', 'required', 'options')];
+        return [$name => compact('label', 'type', 'required', 'options')];
     }
 
     public static function option($value, $selected, $title): array
@@ -33,12 +33,12 @@ class FormUtil
         return compact('value', 'selected', 'title');
     }
 
-    public static function textArea($name, $placeholder, $label, $required, $value = null): array {
+    public static function textArea($name, $placeholder, $label, $required, $value = null): array
+    {
         $type = 'textarea';
         return [$name => compact('placeholder', 'label', 'type', 'required', 'value', 'type')];
 
     }
-
 
 
 }
