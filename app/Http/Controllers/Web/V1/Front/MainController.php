@@ -87,7 +87,7 @@ class MainController extends WebBaseController
 
     public function businessDetail($id)
     {
-        $business_content = BusinessContent::where('id',$id)->first();
+        $business_content = BusinessContent::where('id',$id)->with('category')->first();
         return $this->frontView('pages.business-detail',compact('business_content'));
     }
 

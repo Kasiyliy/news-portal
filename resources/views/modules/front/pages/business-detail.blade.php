@@ -8,6 +8,7 @@
                 <a href="{{route('business')}}">← Бизнесқа өту </a>
                 <div class="news__detail__inner-header">
                     <h2>{{$business_content->title}}</h2>
+                    <p>{{$business_content->category->name}}</p>
                 </div>
                 <div class="news__detail__inner-content my-5">
                     <img src="{{asset($business_content->image_path)}}" alt="businessdetail" width="539" height="1004">

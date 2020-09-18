@@ -12,4 +12,8 @@ class BusinessContent extends Model
     protected $fillable = [
         'title','description','image_path','category_id'
     ];
+
+    public function category() {
+        return $this->belongsTo(BusinessCategory::class, 'category_id', 'id');
+    }
 }
