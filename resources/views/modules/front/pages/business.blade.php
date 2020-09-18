@@ -113,12 +113,14 @@
 
                 @foreach($contents as $content)
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 p-4">
+                        <a  href="{{route('business.detail', $content->id)}}">
                         <img class="business__card" src="{{asset($content->image_path)}}" alt="">
                         <div class="business_content">
                             <h1 class="mt-2">{{$content->title}}</h1>
                             <p class="mt-2" >{{strip_tags($content->description)}}</p>
 
                         </div>
+                        </a>
                     </div>
                 @endforeach
             </div>

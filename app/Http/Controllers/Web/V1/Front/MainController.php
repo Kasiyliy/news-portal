@@ -85,6 +85,12 @@ class MainController extends WebBaseController
         return $this->frontView('pages.business',compact('categories','currentCategory','contents'));
     }
 
+    public function businessDetail($id)
+    {
+        $business_content = BusinessContent::where('id',$id)->first();
+        return $this->frontView('pages.business-detail',compact('business_content'));
+    }
+
     public function prominentDetail($id)
     {
         $user = ProminentUser::where('id', $id)->with('directions.direction', 'area')->first();
