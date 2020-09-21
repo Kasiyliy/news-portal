@@ -88,7 +88,10 @@
         <div class="container">
             <div class="news__detail__inner">
                 <h1>Бизнес</h1>
+                <a href="{{route('welcome')}}">← Қайта оралу </a>
+
             </div>
+
             <h5>
                 Тақырыбы
             </h5>
