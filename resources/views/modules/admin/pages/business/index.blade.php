@@ -31,7 +31,7 @@
                                 <tr>
                                     <td>{{$category->id}}</td>
                                     <td>{{$category->name}}</td>
-                                    <td><img src="{{asset($category->image_path)}}" alt  ></td>
+                                    <td><img src="{{asset($category->image_path)}}" width="36" height="36" ></td>
                                     <td class="d-inline-block">
                                         <button class="btn btn-outline-primary btn-sm" data-toggle="modal"
                                                          data-target="#editCategory{{$category->id}}"><i class="ti ti-pencil"></i>
