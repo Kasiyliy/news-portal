@@ -54,6 +54,58 @@
         .swiper-container-vertical > .swiper-pagination-bullets {
             left: 10px;
         }
+
+
+
+
+        .fa {
+            font-size: 0.5em;
+        }
+        table {
+            width: 100%;
+        }
+        th {
+            text-align: center;
+        }
+        td {
+            /*width: 120px;*/
+            /*height: 100px;*/
+            text-align: center;
+            /*line-height: 100px !important;*/
+            font-size: 14px;
+            font-weight: 500;
+
+            font-family: Roboto Condensed;
+            font-style: normal;
+            color: #00656D;
+
+
+        }
+        td.day{
+            color: rgba(0, 0, 0, 0.95);
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            text-transform: lowercase;
+        }
+        td,
+        #year {
+            font-family: monospace;
+        }
+        .hover {
+            background: #eee;
+        }
+        #about {
+            font-size: 5em !important;
+            position: absolute;
+            top: -35px;
+            right: 15px;
+        }
+        #about a {
+            text-decoration: none;
+        }
+
+
     </style>
 @endsection
 
@@ -222,7 +274,10 @@
         <div class="container">
             <h1>Іс-шара күнтізбесі</h1>
             <div class="calendar__inner row pb-5 justify-content-around">
-                <div class="calendar__general col-md-12 col-lg-3">
+                <div class="calendar__general col-md-12 col-lg-4">
+                        <h1 class="text-center"><a id="left" ><i class="fa fa-chevron-left"> </i></a><span>&nbsp;</span><span id="month"> </span><span>&nbsp;</span><span id="year"> </span><span>&nbsp;</span><a id="right"><i class="fa fa-chevron-right"> </i></a></h1>
+
+                            <table class="table"></table>
 
                 </div>
                 <div class="calendar__detail col-md-12 col-lg-6">
@@ -309,4 +364,115 @@
         });
     </script>
 
+    <script>
+        $(document).ready(function () {
+            var currentDate = new Date();
+            function generateCalendar(d) {
+                function monthDays(month, year) {
+                    var result = [];
+                    var days = new Date(year, month, 0).getDate();
+                    for (var i = 1; i <= days; i++) {
+                        result.push(i);
+                    }
+                    return result;
+                }
+                Date.prototype.monthDays = function () {
+                    var d = new Date(this.getFullYear(), this.getMonth() + 1, 0);
+                    return d.getDate();
+                };
+                var details = {
+                    // totalDays: monthDays(d.getMonth(), d.getFullYear()),
+                    totalDays: d.monthDays(),
+                    weekDays: [
+                        "Жс",
+                        "Дс",
+                        "Сс",
+                        "Ср",
+                        "Бс",
+                        "Жм",
+                        "Сн",
+
+                    ],
+                    months: [
+                        "Қаңтар",
+                        "Ақпан",
+                        "Наурыз",
+                        "Сәуір",
+                        "Мамыр",
+                        "Маусым",
+                        "Шілде",
+                        "Тамыз",
+                        "Қыркүйек",
+                        "Қазан",
+                        "Қараша",
+                        "Желтоқсан"
+                    ]
+                };
+                var start = new Date(d.getFullYear(), d.getMonth()).getDay();
+                var cal = [];
+                var day = 1;
+                for (var i = 0; i <= 6; i++) {
+                    cal.push(["<tr>"]);
+                    for (var j = 0; j < 7; j++) {
+                        if (i === 0) {
+                            cal[i].push("<td>" + details.weekDays[j] + "</td>");
+                        } else if (day > details.totalDays) {
+                            cal[i].push("<td>&nbsp;</td>");
+                        } else {
+                            if (i === 1 && j < start) {
+                                cal[i].push("<td>&nbsp;</td>");
+                            } else {
+                                cal[i].push('<td class="day">' + day++ + "</td>");
+                            }
+                        }
+                    }
+                    cal[i].push("</tr>");
+                }
+                cal = cal
+                    .reduce(function (a, b) {
+                        return a.concat(b);
+                    }, [])
+                    .join("");
+                $("table").append(cal);
+                $("#month").text(details.months[d.getMonth()]);
+                $("#year").text(d.getFullYear());
+                $("td.day")
+
+                    .mouseover(function () {
+                        $(this).addClass("hover");
+                    })
+                    .mouseout(function () {
+                        $(this).removeClass("hover");
+                    });
+            }
+            $("#left").click(function () {
+                $("table").text("");
+                if (currentDate.getMonth() === 0) {
+                    currentDate = new Date(currentDate.getFullYear() - 1, 11);
+                    generateCalendar(currentDate);
+                } else {
+                    currentDate = new Date(
+                        currentDate.getFullYear(),
+                        currentDate.getMonth() - 1
+                    );
+                    generateCalendar(currentDate);
+                }
+            });
+            $("#right").click(function () {
+                $("table").html("<tr></tr>");
+                if (currentDate.getMonth() === 11) {
+                    currentDate = new Date(currentDate.getFullYear() + 1, 0);
+                    generateCalendar(currentDate);
+                } else {
+                    currentDate = new Date(
+                        currentDate.getFullYear(),
+                        currentDate.getMonth() + 1
+                    );
+                    generateCalendar(currentDate);
+                }
+            });
+            generateCalendar(currentDate);
+        });
+
+    </script>
 @endsection

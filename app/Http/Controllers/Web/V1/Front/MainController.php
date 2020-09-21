@@ -163,4 +163,13 @@ class MainController extends WebBaseController
         return $this->frontView('pages.about', compact('about_project'));
     }
 
+    public function event()
+    {
+        return $this->frontView('pages.event');
+    }
+
+    public function eventSend()
+    {
+        return $this->frontView('pages.event-send');
+    }
 }

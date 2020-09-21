@@ -38,6 +38,11 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/prominent/{id}', ['uses' => 'MainController@prominentDetail', 'as' => 'prominent.detail'])->where('id', '[0-9]+');
     Route::get('/resource', ['uses' => 'MainController@resource', 'as' => 'resource']);
     Route::get('/about', ['uses' => 'MainController@about', 'as' => 'about']);
+    Route::get('/event', ['uses' => 'MainController@event', 'as' => 'event']);
+    Route::get('/event/send', ['uses' => 'MainController@eventSend', 'as' => 'event.send']);
+
+
+
 });
 
 Route::group(['middleware' => 'auth'], function () {
