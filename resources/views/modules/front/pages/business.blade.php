@@ -92,10 +92,9 @@
             <h5>
                 Тақырыбы
             </h5>
-
             <select class="form-control w-50" onchange="location = this.value;">
                 @foreach($categories as $category)
-                <option value="{{route('business', ['category_id' => $category->id])}}" {{$currentCategory->id == $category->id ? 'selected' : ''}}>
+                <option value="{{route('business', [$parent_category->id,'category_id' => $category->id])}}" {{$currentCategory->id == $category->id ? 'selected' : ''}}>
                     {{$category->name}}
                 </option>
 

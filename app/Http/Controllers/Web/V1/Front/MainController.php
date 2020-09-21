@@ -29,7 +29,7 @@ class MainController extends WebBaseController
         $about_us = AboutUs::all();
         $slider = Slider::all();
         $news = News::orderBy('created_at', 'desc')->take(4)->get();
-        $business_categories = BusinessCategory::orderBy('created_at', 'desc')->take(12)->get();
+        $business_categories = BusinessCategory::where('parent_category_id',null)->has('childCategories')->orderBy('created_at', 'desc')->get();
 
         return $this->frontView('pages.index', compact('about_us', 'slider','news','business_categories'));
     }
@@ -39,7 +39,7 @@ class MainController extends WebBaseController
         $last_news = News::orderBy('created_at', 'desc')->take(7)->get();
         $count = 0;
         $most_viewed = News::orderBy('viewed_count', 'desc')->take(3)->get();
-        $news = News::paginate(6);
+        $news = News::orderBy('created_at', 'desc')->paginate(6);
 
 
         return $this->frontView('pages.news',compact('news','last_news' , 'count','most_viewed'));
@@ -70,25 +70,29 @@ class MainController extends WebBaseController
         return $this->frontView('pages.guide', compact('categories', 'i', 'currentCategory'));
     }
 
-    public function business(Request $request)
+    public function business($id,Request $request)
     {
-
-        $categories = BusinessCategory::orderBy('updated_at', 'desc')->get();
+        $parent_category = BusinessCategory::find($id);
+        $categories = BusinessCategory::where('parent_category_id',$parent_category->id)->orderBy('updated_at', 'desc')->get();
         $currentCategory = $categories->first();
 
         if ($request->category_id) {
             $currentCategory = $categories->where('id', $request->category_id)->first();
             if (!$currentCategory) throw new WebServiceExplainedException('Не найдено!');
         }
-        $contents = BusinessContent::where('category_id',$currentCategory->id)->paginate(6);
 
-        return $this->frontView('pages.business',compact('categories','currentCategory','contents'));
+        $contents = $currentCategory->contents()->paginate(6);
+
+
+        return $this->frontView('pages.business',compact('categories','currentCategory','contents','parent_category'));
     }
 
     public function businessDetail($id)
     {
+
         $business_content = BusinessContent::where('id',$id)->with('category')->first();
-        return $this->frontView('pages.business-detail',compact('business_content'));
+        $parent_category_id = $business_content->category->parent_category_id;
+        return $this->frontView('pages.business-detail',compact('business_content','parent_category_id'));
     }
 
     public function prominentDetail($id)

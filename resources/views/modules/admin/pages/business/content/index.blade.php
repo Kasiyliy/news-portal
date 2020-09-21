@@ -1,7 +1,7 @@
 @extends('modules.admin.layouts.app-full')
 @section('content')
 
-    <h1 class="h2 mb-2">Бизнес контент</h1>
+    <h1 class="h2 mb-2">Бизнес контент: {{$category_name}}</h1>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('home')}}">Главная</a></li>
@@ -12,9 +12,9 @@
         <div class="col-md-12 mb-5">
             <div class="card h-100">
                 <header class="card-header">
-                    <a href="{{route('business.index')}}" class="btn btn-outline-primary mt-1 mb-4"><i class="ti ti-arrow-left"></i> Назад</a>
+                    <a href="{{route('business.category.index',['category_id' => $parent_category_id])}}" class="btn btn-outline-primary mt-1 mb-4"><i class="ti ti-arrow-left"></i> Назад</a>
 
-                    <h2 class="h4 card-header-title">Бизнес контент</h2>
+                    <h2 class="h4 card-header-title">Бизнес контент: {{$category_name}}</h2>
                     <a href="{{route('business.content.create', ['category_id' => $category_id])}}" class="btn btn-outline-primary mt-3">Добавить <i class="ti ti-plus"></i></a>
                 </header>
                 <div class="card-body pt-0">

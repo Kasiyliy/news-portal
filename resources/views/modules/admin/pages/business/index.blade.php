@@ -36,7 +36,7 @@
                                         <button class="btn btn-outline-primary btn-sm" data-toggle="modal"
                                                          data-target="#editCategory{{$category->id}}"><i class="ti ti-pencil"></i>
                                         </button>
-                                        <a href="{{route('business.content.index', ['category_id' => $category->id])}}"
+                                        <a href="{{route('business.category.index', ['category_id' => $category->id])}}"
                                             class="btn btn-outline-primary btn-sm"><i class="ti ti-eye"></i>
                                         </a>
                                         <button class="btn btn-outline-danger btn-sm" data-toggle="modal"

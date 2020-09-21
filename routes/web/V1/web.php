@@ -32,7 +32,7 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/news/{id}', ['uses' => 'MainController@newsDetail', 'as' => 'news.detail'])->where('id', '[0-9]+');
     Route::get('/groups', ['uses' => 'MainController@groups', 'as' => 'groups']);
     Route::get('/guide', ['uses' => 'MainController@guide', 'as' => 'guide']);
-    Route::get('/business', ['uses' => 'MainController@business', 'as' => 'business']);
+    Route::get('/business/category/{id}', ['uses' => 'MainController@business', 'as' => 'business'])->where('id', '[0-9]+');
     Route::get('/business/{id}', ['uses' => 'MainController@businessDetail', 'as' => 'business.detail'])->where('id', '[0-9]+');
     Route::get('/prominent', ['uses' => 'MainController@prominent', 'as' => 'prominent']);
     Route::get('/prominent/{id}', ['uses' => 'MainController@prominentDetail', 'as' => 'prominent.detail'])->where('id', '[0-9]+');
@@ -91,6 +91,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/business/store', ['uses' => 'BusinessController@store', 'as' => 'business.store']);
         Route::post('/business/update/{id}', ['uses' => 'BusinessController@update', 'as' => 'business.update'])->where('id', '[0-9]+');
         Route::post('/business/delete/{id}', ['uses' => 'BusinessController@delete', 'as' => 'business.delete'])->where('id', '[0-9]+');
+
+        Route::get('/business/categories/{category_id}', ['uses' => 'BusinessController@childCategory', 'as' => 'business.category.index'])->where('category_id', '[0-9]+');
+        Route::post('/business/categories/store/{category_id}', ['uses' => 'BusinessController@childCategoryStore', 'as' => 'business.category.store'])->where('category_id', '[0-9]+');
+        Route::post('/business/categories/update/{id}', ['uses' => 'BusinessController@childCategoryUpdate', 'as' => 'business.category.update'])->where('id', '[0-9]+');
+        Route::post('/business/categories/delete/{id}', ['uses' => 'BusinessController@childCategoryDelete', 'as' => 'business.category.delete'])->where('id', '[0-9]+');
+
+
+
 
         Route::get('/business/contents/{category_id}', ['uses' => 'BusinessController@content', 'as' => 'business.content.index'])->where('category_id', '[0-9]+');
         Route::get('/business/contents/create/{category_id}', ['uses' => 'BusinessController@contentCreate', 'as' => 'business.content.create'])->where('category_id', '[0-9]+');

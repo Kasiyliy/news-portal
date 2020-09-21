@@ -5,7 +5,7 @@
         <div class="container">
             <div class="news__detail__inner">
                 <h1>Бизнес</h1>
-                <a href="{{route('business')}}">← Бизнесқа өту </a>
+                <a href="{{route('business',$parent_category_id)}}">← Бизнесқа өту </a>
                 <div class="news__detail__inner-header">
                     <h2>{{$business_content->title}}</h2>
                     <p>{{$business_content->category->name}}</p>

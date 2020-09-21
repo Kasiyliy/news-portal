@@ -248,7 +248,7 @@
                 <div class="row">
                     @foreach($business_categories as $business_category)
                     <div class="business__item col-10 mx-auto col-lg-4  text-center">
-                        <a class="d-flex" href="{{route('business', ['category_id' => $business_category->id])}}">
+                        <a class="d-flex" href="{{route('business',$business_category->id)}}">
                             <img src="{{asset($business_category->image_path)}}" alt="tractor" height="36">
                             <p>{{$business_category->name}}</p>
                         </a>
