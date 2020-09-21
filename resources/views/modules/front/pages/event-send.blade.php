@@ -120,8 +120,16 @@
                     <input type="text" class="form-control" id="inputHtml" placeholder="http://www.">
 
                 </div>
-                <input id="file-input" type="file" multiple>
-                <div id="preview"></div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Қосымша ақпарат</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" cols="200" rows="8" ></textarea>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <input id="file-input" type="file" multiple>
+                    <div id="preview"></div>
+                </div>
+
             </div>
 
             <button type="submit" class="btn btn-primary">Жіберу</button>
