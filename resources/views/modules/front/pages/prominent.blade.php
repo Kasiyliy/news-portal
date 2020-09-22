@@ -1,4 +1,15 @@
 @extends('modules.front.layouts.app-main')
+@section('styles')
+    <style>
+
+        .prominent__inner a {
+            font-size: 14px;
+            line-height: 24px;
+            color: #00656D;
+        }
+
+    </style>
+@endsection
 
 @section('content')
     <section class="prominent">

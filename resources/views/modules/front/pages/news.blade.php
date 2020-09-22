@@ -153,6 +153,11 @@
 
 
 
+    .news__block__inner a {
+        font-size: 14px;
+        line-height: 24px;
+        color: #00656D;
+    }
 
 
 </style>
