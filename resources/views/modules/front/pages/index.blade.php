@@ -288,7 +288,7 @@
                             <button>Толық көру</button>
                         </div>
                         <div class="col-12 col-md-6 calendar__button right mt-3">
-                            <button>Іс-шараны ұсыну</button>
+                            <button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>
                         </div>
                     </div>
                 </div>
