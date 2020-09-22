@@ -8,6 +8,7 @@
         <div class="container">
             <div class="news__detail__inner">
                 <h1>Жоба туралы</h1>
+                <a href="{{route('welcome')}}">← Қайта оралу </a>
             </div>
         </div>
     </section>
