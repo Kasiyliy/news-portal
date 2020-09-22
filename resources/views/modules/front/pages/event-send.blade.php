@@ -80,11 +80,11 @@
 </section>
 <section class="about">
     <div class="container">
-        <form>
+        <form action="{{route('user.send.event')}}" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label for="inputAddress">Іс-шараның аты*</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="">
+                <input type="text" class="form-control" id="inputAddress" placeholder="" name = "title">
             </div>
                         <div class="form-row">
                             <div class="form-group col-md-3">
@@ -128,7 +128,7 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                    <input id="file-input" type="file" multiple>
+                    <input id="file-input" type="file" name ="image_path[]" multiple>
                     <div id="preview"></div>
                 </div>
 

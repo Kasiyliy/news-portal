@@ -33,8 +33,9 @@ class MainController extends WebBaseController
         $slider = Slider::all();
         $news = News::orderBy('created_at', 'desc')->take(4)->get();
         $business_categories = BusinessCategory::where('parent_category_id', null)->has('childCategories')->orderBy('created_at', 'desc')->get();
+        $events = Event::where('is_accepted', true)->with(['images'])->get();
 
-        return $this->frontView('pages.index', compact('about_us', 'slider', 'news', 'business_categories'));
+        return $this->frontView('pages.index', compact('about_us', 'slider', 'news', 'business_categories','events'));
     }
 
     public function news()
