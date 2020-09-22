@@ -22,6 +22,7 @@ use App\Models\Entities\Content\TeenagerGroup;
 use App\Models\Entities\Content\News;
 use App\Models\Entities\Content\Slider;
 use Carbon\Carbon;
+use Facade\FlareClient\Http\Exceptions\NotFound;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -174,7 +175,11 @@ class MainController extends WebBaseController
 
     public function event($id)
     {
-        $event = Event::where('id', $id)->with(['images'])->first();
+        $event = Event::where('id', $id)->where('is_accepted',true)->with(['images'])->first();
+        if(!$event){
+            throw new WebServiceExplainedException('Не найдено!');
+
+        }
         return $this->frontView('pages.event', compact('event'));
     }
 

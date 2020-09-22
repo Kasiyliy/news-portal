@@ -18,7 +18,7 @@ class UserSendEventWebRequest extends WebBaseRequest
             'representative' => ['required','string'],
             'place' => ['string'],
             'fio' => ['required','string'],
-            'phone' => ['required','string'],
+            'phone' => ['required','numeric'],
             'email' => ['email'],
             'website' => ['string'],
         ];

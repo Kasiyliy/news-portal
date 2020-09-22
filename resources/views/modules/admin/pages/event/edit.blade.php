@@ -45,15 +45,15 @@
 
                 <div class="card-header border-dark event__images">
                     <div class="form-group">
-                        <label for="inputAddress2">Ұйымдастырушы*</label>
+                        <label for="inputAddress2">Представитель</label>
                         <input type="text" class="form-control" id="inputAddress2" placeholder="" disabled value="{{$events->representative}}">
                     </div>
                     <div class="form-group">
-                        <label for="inputAddress2">Ұйымдастыратын жері</label>
+                        <label for="inputAddress2">Место проведения</label>
                         <input type="text" class="form-control" id="inputAddress2" placeholder="" disabled value="{{$events->place}}">
                     </div>
                     <div class="form-group">
-                        <label for="inputAddress2">Т.А.Ә*</label>
+                        <label for="inputAddress2">ФИО</label>
                         <input type="text" class="form-control" id="inputAddress2" placeholder="" disabled value="{{$events->fio}}">
                     </div>
                     <div class="form-row">

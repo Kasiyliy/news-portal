@@ -21,6 +21,8 @@ class Event extends Model
     ];
 
     public function images(){
-        return $this->hasMany(EventImage::class);
+        return $this->hasMany(EventImage::class,'event_id', 'id');
     }
+
+
 }

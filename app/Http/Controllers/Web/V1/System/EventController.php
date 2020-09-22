@@ -119,12 +119,14 @@ class EventController extends WebBaseController
 
     public function delete($id)
     {
-        $event_image = EventImage::where('event_id', '=' , $id);
-        $event_image->delete();
+
         $event = Event::find($id);
         if (!$event) {
             throw new WebServiceExplainedException('Мероприятие не найдено!');
         }
+
+        $this->deleteEventImages($event->id);
+        $event->images()->delete();
         $event->delete();
         $this->deleted();
         return redirect()->route('event.index');
@@ -143,6 +145,7 @@ class EventController extends WebBaseController
 
 
     public function eventSend(UserSendEventWebRequest $request){
+
         $event = Event::create([
             'title' => $request->title,
             'description' => $request->description,
@@ -154,6 +157,7 @@ class EventController extends WebBaseController
             'email' => $request->email,
             'website' => $request->website,
         ]);
+
 
         $image_path = [];
         $now = Carbon::now();
@@ -170,6 +174,16 @@ class EventController extends WebBaseController
             }
         }
         EventImage::insert($image_path);
+
         $this->added();
+
+        return $this->frontView('pages.event-send');
+    }
+
+    public function deleteEventImages($event_id){
+        $contents = EventImage::where('event_id',$event_id)->get();
+        foreach ($contents as $content){
+            $this->fileService->remove($content->image_path);
+        }
     }
 }

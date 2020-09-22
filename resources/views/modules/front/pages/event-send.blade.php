@@ -80,8 +80,9 @@
 </section>
 <section class="about">
     <div class="container">
-        <form action="{{route('user.send.event')}}" method="post" enctype="multipart/form-data">
 
+        <form action="{{route('user.send.event')}}" method="post" enctype="multipart/form-data">
+            {{csrf_field()}}
             <div class="form-group">
                 <label for="inputAddress">Іс-шараның аты*</label>
                 <input type="text" class="form-control" id="inputAddress" placeholder="" name = "title">
@@ -89,7 +90,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="inputEmail4">Басталу уақытысы*</label>
-                                <input class="form-control" type="date" value="" id="start-date-input">
+                                <input class="form-control" type="date" value="" id="start-date-input" name = "date">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="inputPassword4">Аяқталу уақытысы*</label>
@@ -98,37 +99,37 @@
                         </div>
             <div class="form-group">
                 <label for="inputAddress2">Ұйымдастырушы*</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="">
+                <input type="text" class="form-control" id="inputAddress2" placeholder="" name = "representative">
             </div>
             <div class="form-group">
                 <label for="inputAddress2">Ұйымдастыратын жері</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="">
+                <input type="text" class="form-control" id="inputAddress2" placeholder="" name = "place">
             </div>
             <div class="form-group">
                 <label for="inputAddress2">Т.А.Ә*</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="">
+                <input type="text" class="form-control" id="inputAddress2" placeholder="" name = "fio">
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputCity">Телефон</label>
-                    <input class="form-control" type="tel" value="+7(7__) ___ ____" id="example-tel-input">
+                    <input class="form-control" type="tel" value="+7(7__) ___ ____" id="example-tel-input" name = "phone">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">E-mail</label>
-                    <input type="email" class="form-control" id="inputEmail3" >
+                    <input type="email" class="form-control" id="inputEmail3" name = "email" >
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputZip">Сайт</label>
-                    <input type="text" class="form-control" id="inputHtml" placeholder="http://www.">
+                    <input type="text" class="form-control" id="inputHtml" placeholder="http://www." name = "website">
 
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Қосымша ақпарат</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" cols="200" rows="8" ></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" cols="200" rows="8" name = "description"></textarea>
                 </div>
 
                 <div class="form-group col-md-6">
-                    <input id="file-input" type="file" name ="image_path[]" multiple>
+                    <input id="file-input" type="file" name = "image_path[]" multiple>
                     <div id="preview"></div>
                 </div>
 
