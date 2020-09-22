@@ -10,6 +10,14 @@ class Event extends Model
     protected $fillable = [
         'title',
         'description',
+        'date',
+        'representative',
+        'place',
+        'fio',
+        'phone',
+        'email',
+        'website',
+        'is_accepted'
     ];
 
     public function images(){

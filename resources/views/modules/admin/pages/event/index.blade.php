@@ -22,7 +22,9 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Название</th>
-                                <th>Дата создания</th>
+                                <th>Дата</th>
+                                <th>Принята</th>
+                                <th>Действия</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -30,11 +32,18 @@
                                 <tr>
                                     <td>{{$e->id}}</td>
                                     <td>{{$e->title}}</td>
-                                    <td>{{$e->created_at}}</td>
+                                    <td>{{$e->date}}</td>
+                                    <td>{{$e->is_accepted?'Да':'Нет'}}</td>
                                     <td>
                                         <a href="{{route('event.edit', ['id' => $e->id])}}"
                                            class="btn btn-outline-primary btn-sm"><i class="ti ti-pencil"></i>
                                         </a>
+                                        @if(!$e->is_accepted)
+                                        <a href="{{route('event.accept', ['id' => $e->id])}}"
+                                           class="btn btn-outline-success btn-sm"><i class="ti ti-check"></i>
+                                        </a>
+                                        @else
+                                            @endif
                                         <button class="btn btn-outline-danger btn-sm" data-toggle="modal"
                                                 data-target="#delete{{$e->id}}"><i class="ti ti-trash"></i>
                                         </button>

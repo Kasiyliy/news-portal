@@ -1,10 +1,12 @@
 <?php
 
+
 namespace App\Http\Requests\Web\V1\System\Content;
+
 
 use App\Http\Requests\Web\WebBaseRequest;
 
-class EventWebRequest extends WebBaseRequest
+class UserSendEventWebRequest extends WebBaseRequest
 {
     public function injectedRules(): array
     {
@@ -13,6 +15,12 @@ class EventWebRequest extends WebBaseRequest
             'description' => ['required', 'string'],
             'date' => ['required','date'],
             'image_path' => ['array'],
+            'representative' => ['required','string'],
+            'place' => ['string'],
+            'fio' => ['required','string'],
+            'phone' => ['required','string'],
+            'email' => ['email'],
+            'website' => ['string'],
         ];
     }
 }

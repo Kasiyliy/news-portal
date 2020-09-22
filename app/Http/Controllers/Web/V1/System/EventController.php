@@ -8,6 +8,7 @@ use App\Exceptions\Web\WebServiceExplainedException;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Http\Forms\Web\V1\System\Content\EventWebForm;
 use App\Http\Requests\Web\V1\System\Content\EventWebRequest;
+use App\Http\Requests\Web\V1\System\Content\UserSendEventWebRequest;
 use App\Models\Entities\Content\Event;
 use App\Models\Entities\Content\EventImage;
 use App\Services\Common\V1\Support\FileService;
@@ -46,7 +47,9 @@ class EventController extends WebBaseController
     {
         $event = Event::create([
             'title' => $request->title,
-            'description' => $request->description
+            'description' => $request->description,
+            'date' => $request->date,
+            'is_accepted' => true
         ]);
 
         $image_path = [];
@@ -92,6 +95,7 @@ class EventController extends WebBaseController
         $event->update([
             'title' => $request->title,
             'description' => $request->description,
+            'date' => $request->date
         ]);
 
         $eventUpdate = [];
@@ -125,5 +129,47 @@ class EventController extends WebBaseController
         $this->deleted();
         return redirect()->route('event.index');
 
+    }
+
+    public function accept($id)
+    {
+        $event = Event::find( $id);
+        $event->update(['is_accepted' => true]);
+
+        $this->added();
+        return redirect()->route('event.index');
+
+    }
+
+
+    public function eventSend(UserSendEventWebRequest $request){
+        $event = Event::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'date' => $request->date,
+            'representative' => $request->representative,
+            'place' => $request->place,
+            'fio' => $request->fio,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'website' => $request->website,
+        ]);
+
+        $image_path = [];
+        $now = Carbon::now();
+
+        if ($request->has('image_path')) {
+            $files = $request->image_path;
+            foreach ($files as $file) {
+                $image_path[] = [
+                    'image_path' => $this->fileService->store($file, Event::DEFAULT_RESOURCE_DIRECTORY),
+                    'event_id' => $event->id,
+                    'created_at' => $now,
+                    'updated_at' => $now
+                ];
+            }
+        }
+        EventImage::insert($image_path);
+        $this->added();
     }
 }

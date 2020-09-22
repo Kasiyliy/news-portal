@@ -6,11 +6,13 @@ namespace App\Http\Controllers\Web\V1\Front;
 
 use App\Exceptions\Web\WebServiceExplainedException;
 use App\Http\Controllers\Web\WebBaseController;
+use App\Http\Requests\Web\V1\System\Content\UserSendEventWebRequest;
 use App\Models\Entities\Content\AboutProject;
 use App\Models\Entities\Content\AboutUs;
 use App\Models\Entities\Content\Business\BusinessCategory;
 use App\Models\Entities\Content\Business\BusinessContent;
 use App\Models\Entities\Content\Event;
+use App\Models\Entities\Content\EventImage;
 use App\Models\Entities\Content\GuideCategory;
 use App\Models\Entities\Content\Prominent\ProminentArea;
 use App\Models\Entities\Content\Prominent\ProminentDirection;
@@ -175,10 +177,11 @@ class MainController extends WebBaseController
         return $this->frontView('pages.event', compact('event'));
     }
 
-    public function eventSend()
+    public function eventSend(UserSendEventWebRequest $request)
     {
         return $this->frontView('pages.event-send');
     }
+
 
     public function forumAndQuestionnaire() {
         return $this->frontView('pages.forum-questionnaire');

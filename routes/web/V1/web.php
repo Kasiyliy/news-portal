@@ -46,6 +46,11 @@ Route::group(['namespace' => 'Front'], function () {
 
 });
 
+Route::group(['namespace' => 'System'], function () {
+    Route::post('/event/send', ['uses' => 'EventController@eventSend', 'as' => 'user.event.send']);
+
+});
+
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['namespace' => 'Core'], function () {
         Route::get('/home', ['uses' => 'PageController@home', 'as' => 'home']);
@@ -148,6 +153,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/event/update/{id}', ['uses' => 'EventController@update', 'as' => 'event.update'])->where('id', '[0-9]+');
         Route::get('/event/edit/{id}', ['uses' => 'EventController@edit', 'as' => 'event.edit'])->where('id', '[0-9]+');
         Route::post('/event/delete/{id}', ['uses' => 'EventController@delete', 'as' => 'event.delete'])->where('id', '[0-9]+');
+        Route::get('/event/accept/{id}', ['uses' => 'EventController@accept', 'as' => 'event.accept'])->where('id', '[0-9]+');
+
 
 
 

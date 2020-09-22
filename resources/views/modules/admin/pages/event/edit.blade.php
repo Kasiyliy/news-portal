@@ -42,6 +42,35 @@
                         </button>
                     </form>
                 </div>
+
+                <div class="card-header border-dark event__images">
+                    <div class="form-group">
+                        <label for="inputAddress2">Ұйымдастырушы*</label>
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="" disabled value="{{$events->representative}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress2">Ұйымдастыратын жері</label>
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="" disabled value="{{$events->place}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress2">Т.А.Ә*</label>
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="" disabled value="{{$events->fio}}">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputCity">Телефон</label>
+                            <input class="form-control" type="tel" value="+7(7__) ___ ____" id="example-tel-input" disabled value="{{$events->phone}}">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputState">E-mail</label>
+                            <input type="email" class="form-control" id="inputEmail3" disabled value="{{$events->email}}">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputZip">Сайт</label>
+                            <input type="text" class="form-control" id="inputHtml" placeholder="http://www." disabled value="{{$events->website}}">
+
+                        </div>
+                </div>
             </div>
         </div>
     </div>
