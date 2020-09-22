@@ -40,6 +40,7 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/about', ['uses' => 'MainController@about', 'as' => 'about']);
     Route::get('/event/{id}', ['uses' => 'MainController@event', 'as' => 'event'])->where('id', '[0-9]+');
     Route::get('/event/send', ['uses' => 'MainController@eventSend', 'as' => 'event.send']);
+    Route::get('/forum/questionnaire', ['uses' => 'MainController@forumAndQuestionnaire', 'as' => 'forum.questionnaire']);
 
 
 

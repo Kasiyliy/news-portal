@@ -90,8 +90,10 @@ class MainController extends WebBaseController
 
     public function businessDetail($id)
     {
-
-        $business_content = BusinessContent::where('id', $id)->with('category')->first();
+        $business_content = BusinessContent::where('id',$id)->with('category')->first();
+        if(!$business_content){
+            throw new WebServiceExplainedException('Не найдено!');
+        }
         $parent_category_id = $business_content->category->parent_category_id;
         return $this->frontView('pages.business-detail', compact('business_content', 'parent_category_id'));
     }
@@ -99,6 +101,9 @@ class MainController extends WebBaseController
     public function prominentDetail($id)
     {
         $user = ProminentUser::where('id', $id)->with('directions.direction', 'area')->first();
+        if(!$user){
+            throw new WebServiceExplainedException('Не найдено!');
+        }
         return $this->frontView('pages.prominent-detail', compact('user'));
     }
 
@@ -173,5 +178,9 @@ class MainController extends WebBaseController
     public function eventSend()
     {
         return $this->frontView('pages.event-send');
+    }
+
+    public function forumAndQuestionnaire() {
+        return $this->frontView('pages.forum-questionnaire');
     }
 }

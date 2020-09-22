@@ -165,7 +165,7 @@
                             <p>Мемлекеттік бағдарлама - ресурстар, орындаушылар, ғылыми-зерттеу, өндірістік,
                                 әлеуметтік-экономикалық, ұйымдық және басқа шаралар. </p>
                             <div class="info__card__link">
-                                <a href="">Толығырақ оқу ➞</a>
+                                <a href="{{route('forum.questionnaire')}}">Толығырақ оқу ➞</a>
                                 <h1>04</h1>
                             </div>
                         </div>
@@ -286,7 +286,7 @@
                             <button>Толық көру</button>
                         </div>
                         <div class="col-12 col-md-6 calendar__button right mt-3">
-                            <button>Іс-шараны ұсыну</button>
+                            <button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>
                         </div>
                     </div>
                 </div>
