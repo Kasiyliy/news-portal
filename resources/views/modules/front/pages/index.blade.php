@@ -207,8 +207,8 @@
         </div>
     </section>
 
-    <section class="about">
-        <div class="container">
+    <section class="about" id ="about_section" >
+        <div class="container" >
             <div class="row">
                 <div class="about__image mt-5 col-12 col-lg-6 col-md-6 ">
                     <img src="{{asset('modules/front/assets/img/about.png')}}" alt="about">
@@ -270,7 +270,7 @@
         </div>
     </section>
 
-    <section class="calendar">
+    <section class="calendar" id ="event">
         <div class="container">
             <h1>Іс-шара күнтізбесі</h1>
             <div class="calendar__inner row pb-5 justify-content-around">
@@ -315,10 +315,10 @@
         </div>
     </section>
 
-    <section class="news">
+    <section class="news" id ="news">
         <div class="container">
             <div class="news__inner">
-                <h1>Жаңалықтар мен хабарландырулар</h1>
+                <h1 >Жаңалықтар мен хабарландырулар </h1>
                 <div class="row">
                         @foreach($news as $n)
                             <div class="col-12 col-lg-3">

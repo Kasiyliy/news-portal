@@ -27,15 +27,15 @@ class FrontHeader extends BaseComponent
         $navItems = [
             [
                 'title' => 'Жаңалықтар',
-                'href' => route('news')
+                'href' => $_SERVER['REQUEST_URI'].'#news'
             ],
             [
                 'title' => 'Жоба туралы',
-                'href' => route('about')
+                'href' => $_SERVER['REQUEST_URI'].'#about_section'
             ],
             [
                 'title' => 'Іс-шара',
-                'href' => '#'
+                'href' => $_SERVER['REQUEST_URI'].'#event'
             ]
         ];
         $about_project = AboutProject::first();
