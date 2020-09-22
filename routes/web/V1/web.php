@@ -47,7 +47,7 @@ Route::group(['namespace' => 'Front'], function () {
 });
 
 Route::group(['namespace' => 'System'], function () {
-    Route::post('/event/send', ['uses' => 'EventController@eventSend', 'as' => 'user.event.send']);
+    Route::post('/user/event/send', ['uses' => 'EventController@eventSend', 'as' => 'user.event.send']);
 
 });
 

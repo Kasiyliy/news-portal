@@ -177,7 +177,7 @@ class MainController extends WebBaseController
         return $this->frontView('pages.event', compact('event'));
     }
 
-    public function eventSend(UserSendEventWebRequest $request)
+    public function eventSend()
     {
         return $this->frontView('pages.event-send');
     }
