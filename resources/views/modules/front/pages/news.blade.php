@@ -168,7 +168,9 @@
         <div class="container">
             <div class="news__block__inner">
                 <h1>Жаңалықтар</h1>
-                <a href="{{route('welcome')}}">← Қайта оралу </a>
+                <div class="mt-3">
+                    <a href="{{route('welcome')}}">← Қайта оралу </a>
+                </div>
                 <div class="row news__block__content">
                     <div class="col-12 col-lg-5 col-md-12 mt-4 news__block__slider">
                         <h2>Соңғы жаңалықтар</h2>

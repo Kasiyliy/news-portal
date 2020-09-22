@@ -9,7 +9,9 @@
         <div class="container">
             <div class="news__detail__inner">
                 <h1>Іс-шара</h1>
-                <a href="{{route('welcome')}}">← Қайта оралу </a>
+                <div class="mt-3 mb-3">
+                    <a href="{{route('welcome')}}">← Қайта оралу </a>
+                </div>
             </div>
             <div class="news__detail__inner-header">
                 <h2>А.Құнанбайұлының 175 жылдығына арналған іс-шара</h2>

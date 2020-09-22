@@ -5,7 +5,9 @@
         <div class="container">
             <div class="news__detail__inner">
                 <h1>ГИД</h1>
-                <a href="{{route('welcome')}}">← Қайта оралу </a>
+                <div class="mt-3 mb-3">
+                    <a href="{{route('welcome')}}">← Қайта оралу </a>
+                </div>
 
             </div>
         </div>

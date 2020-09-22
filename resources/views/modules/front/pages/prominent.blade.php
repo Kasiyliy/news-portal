@@ -16,7 +16,9 @@
         <div class="container">
             <div class="prominent__inner">
                 <h1>100 үздік есім</h1>
-                <a href="{{route('welcome')}}">← Қайта оралу </a>
+                <div class="mt-3 mb-3">
+                    <a href="{{route('welcome')}}">← Қайта оралу </a>
+                </div>
                 <img src="{{asset('modules/front/assets/img/prominent-img.png')}}" alt="prominent">
                 <div class="prominent__content row">
                     <div class="col-12 col-md-3 mt-5">
