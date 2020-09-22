@@ -68,13 +68,9 @@
             text-align: center;
         }
         td {
-            /*width: 120px;*/
-            /*height: 100px;*/
             text-align: center;
-            /*line-height: 100px !important;*/
             font-size: 14px;
             font-weight: 500;
-
             font-family: Roboto Condensed;
             font-style: normal;
             color: #00656D;
@@ -210,10 +206,10 @@
     <section class="about" id ="about_section" >
         <div class="container" >
             <div class="row">
-                <div class="about__image mt-5 col-12 col-lg-6 col-md-6 ">
+                <div class="about__image col-12 col-lg-6 col-md-6 ">
                     <img src="{{asset('modules/front/assets/img/about.png')}}" alt="about">
                 </div>
-                <div class="about__content mt-5 col-12 col-lg-6 col-md-6 ">
+                <div class="about__content col-12 col-lg-6 col-md-6 ">
                     <h1>Жоба туралы </h1>
                     <p>Жамбыл облысы әкімдігінің жастар саясаты мәселелері басқармасының тапсыры бойынша Әулие-ата
                         жастарына арналған <a href="{{route('about')}}">толығырақ...</a></p>
@@ -241,7 +237,9 @@
             <div class="numbers__inner row">
                 @foreach($about_us as $count)
                     <div class="numbers__content col-12 col-sm-6 col-lg-3 col-md-3">
-                        <h1 class="number">{{$count->count}}</h1>
+                        <h1 data-purecounter-start="0"
+                            data-purecounter-end="{{$count->count}}"
+                            class="purecounter">0</h1>
                         <p>{{$count->title}}</p>
                     </div>
                 @endforeach
@@ -339,6 +337,7 @@
 @endsection
 
 @section('scripts')
+    <script src="{{asset('modules/front/assets/js/purecounter.js')}}"></script>
     <script src="{{asset('modules/front/assets/js/swiper.min.js')}}"></script>
     <script>
         let screenSize = $(window).width();

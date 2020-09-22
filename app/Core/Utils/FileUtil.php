@@ -26,6 +26,11 @@ class FileUtil
         return 'images/news.png';
     }
 
+    public static function defaultEventPath()
+    {
+        return 'images/news.png';
+    }
+
 
 
 }

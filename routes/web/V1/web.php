@@ -38,7 +38,7 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/prominent/{id}', ['uses' => 'MainController@prominentDetail', 'as' => 'prominent.detail'])->where('id', '[0-9]+');
     Route::get('/resource', ['uses' => 'MainController@resource', 'as' => 'resource']);
     Route::get('/about', ['uses' => 'MainController@about', 'as' => 'about']);
-    Route::get('/event', ['uses' => 'MainController@event', 'as' => 'event']);
+    Route::get('/event/{id}', ['uses' => 'MainController@event', 'as' => 'event'])->where('id', '[0-9]+');
     Route::get('/event/send', ['uses' => 'MainController@eventSend', 'as' => 'event.send']);
 
 
@@ -139,6 +139,15 @@ Route::group(['middleware' => 'auth'], function () {
         //AboutProject
         Route::get('/about-project', ['uses' => 'AboutProjectController@index', 'as' => 'about_project.index']);
         Route::post('/about-project/update', ['uses' => 'AboutProjectController@update', 'as' => 'about_project.update']);
+
+        //Event
+        Route::get('/event', ['uses' => 'EventController@index', 'as' => 'event.index']);
+        Route::post('/event/store', ['uses' => 'EventController@store', 'as' => 'event.store']);
+        Route::get('/event/create', ['uses' => 'EventController@create', 'as' => 'event.create']);
+        Route::post('/event/update/{id}', ['uses' => 'EventController@update', 'as' => 'event.update'])->where('id', '[0-9]+');
+        Route::get('/event/edit/{id}', ['uses' => 'EventController@edit', 'as' => 'event.edit'])->where('id', '[0-9]+');
+        Route::post('/event/delete/{id}', ['uses' => 'EventController@delete', 'as' => 'event.delete'])->where('id', '[0-9]+');
+
 
 
 

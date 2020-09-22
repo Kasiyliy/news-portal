@@ -16,6 +16,7 @@
     </section>
     <section class="about">
         <div class="container">
+            <h4 class="mb-4">Негізгі ақпарат</h4>
             <div class="about__inner my-5">
                 <div class="row mb-5">
                     <div class="about__main-img  col-md-12 col-lg-10">
@@ -26,15 +27,13 @@
                             <div class="swiper-wrapper about__tab-img">
                                 @foreach($about_project->images as $image )
                                     <div class="about__gallery swiper-slide">
-                                        <img src="{{asset($image->image_path)}}" onclick="myFunction(this);"
-                                             alt="">
+                                        <img src="{{asset($image->image_path)}}" onclick="myFunction(this);" alt="">
                                     </div>
                                 @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
-                <h4 class="mb-4">Негізгі ақпарат</h4>
                 <h5>
                     {!! $about_project->main_description !!}
                 </h5>

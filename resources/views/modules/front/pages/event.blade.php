@@ -1,4 +1,3 @@
-
 @extends('modules.front.layouts.app-main')
 
 @section('styles')
@@ -14,7 +13,7 @@
                 </div>
             </div>
             <div class="news__detail__inner-header">
-                <h2>А.Құнанбайұлының 175 жылдығына арналған іс-шара</h2>
+                <h2>{{$event->title}}</h2>
             </div>
         </div>
     </section>
@@ -23,48 +22,24 @@
             <div class="about__inner my-5">
                 <div class="row mb-5">
                     <div class="about__main-img  col-md-12 col-lg-10">
-                        <img id="expandedImg" src="{{asset('modules/front/assets/img/event.png')}}">
+                        <img id="expandedImg" src="{{asset($event->images[0]->image_path)}}">
                     </div>
                     <div class="about__tab-img col-md-12 col-lg-2">
                         <div class="swiper-container">
                             <div class="swiper-wrapper about__tab-img">
-
+                                @foreach($event->images as $image)
                                     <div class="about__gallery swiper-slide">
-                                        <img src="{{asset('modules/front/assets/img/event.png')}}" onclick="myFunction(this);"
+                                        <img src="{{asset($image->image_path)}}"
+                                             onclick="myFunction(this);"
                                              alt="">
                                     </div>
-                                <div class="about__gallery swiper-slide">
-                                    <img src="{{asset('modules/front/assets/img/event.png')}}" onclick="myFunction(this);"
-                                         alt="">
-                                </div>
-                                <div class="about__gallery swiper-slide">
-                                    <img src="{{asset('modules/front/assets/img/logo.png')}}" onclick="myFunction(this);"
-                                         alt="">
-                                </div>
-                                <div class="about__gallery swiper-slide">
-                                    <img src="{{asset('modules/front/assets/img/event.png')}}" onclick="myFunction(this);"
-                                         alt="">
-                                </div>
-                                <div class="about__gallery swiper-slide">
-                                    <img src="{{asset('modules/front/assets/img/logo.png')}}" onclick="myFunction(this);"
-                                         alt="">
-                                </div>
-                                <div class="about__gallery swiper-slide">
-                                    <img src="{{asset('modules/front/assets/img/logo.png')}}" onclick="myFunction(this);"
-                                         alt="">
-                                </div>
-                                <div class="about__gallery swiper-slide">
-                                    <img src="{{asset('modules/front/assets/img/logo.png')}}" onclick="myFunction(this);"
-                                         alt="">
-                                </div>
-
-
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    Тұрғындардың тілдік мәдениетін арттыру және рухани тәрбие беру үшін Ұлы ойшыл ақынның мұрасын зерделеу, ұғыну және дәріптеу мақсатында ай сайын, кестеге сәйкес, әр ауылдық округ А. Құнанбайұлының 175 жылдығына орай іс-шара ұйымдастыруда. Ережеге сәйкес, эстафетаны ай сайын келесі ауылдық округке жолдауы керек. Үстіміздегі жылдың 12 наурызында аталмыш іс-шара Белоглин ауылдық округінің Белоглин ауылының ауылдық клубында өткізілді. Ауыл тұрғындарының ұйымдастыруымен А. Құнанбайұлының 175 жылдығына арналған «Абай» қойылымы сахналанды. Іс-шараға ауыл тұрғындары, мемлекеттік қызметшілер, мектеп мұғалімдері мен оқушылары қатысты.
+                    {!!$event->description!!}
                 </div>
             </div>
         </div>

@@ -10,6 +10,7 @@ use App\Models\Entities\Content\AboutProject;
 use App\Models\Entities\Content\AboutUs;
 use App\Models\Entities\Content\Business\BusinessCategory;
 use App\Models\Entities\Content\Business\BusinessContent;
+use App\Models\Entities\Content\Event;
 use App\Models\Entities\Content\GuideCategory;
 use App\Models\Entities\Content\Prominent\ProminentArea;
 use App\Models\Entities\Content\Prominent\ProminentDirection;
@@ -29,9 +30,9 @@ class MainController extends WebBaseController
         $about_us = AboutUs::all();
         $slider = Slider::all();
         $news = News::orderBy('created_at', 'desc')->take(4)->get();
-        $business_categories = BusinessCategory::where('parent_category_id',null)->has('childCategories')->orderBy('created_at', 'desc')->get();
+        $business_categories = BusinessCategory::where('parent_category_id', null)->has('childCategories')->orderBy('created_at', 'desc')->get();
 
-        return $this->frontView('pages.index', compact('about_us', 'slider','news','business_categories'));
+        return $this->frontView('pages.index', compact('about_us', 'slider', 'news', 'business_categories'));
     }
 
     public function news()
@@ -42,14 +43,14 @@ class MainController extends WebBaseController
         $news = News::orderBy('created_at', 'desc')->paginate(6);
 
 
-        return $this->frontView('pages.news',compact('news','last_news' , 'count','most_viewed'));
+        return $this->frontView('pages.news', compact('news', 'last_news', 'count', 'most_viewed'));
     }
 
     public function newsDetail($id)
     {
-        $news = News::where('id',$id)->first();
-        $news->update(['viewed_count' => $news->viewed_count+1]);
-        return $this->frontView('pages.news-detail',compact('news'));
+        $news = News::where('id', $id)->first();
+        $news->update(['viewed_count' => $news->viewed_count + 1]);
+        return $this->frontView('pages.news-detail', compact('news'));
     }
 
     public function groups()
@@ -70,10 +71,10 @@ class MainController extends WebBaseController
         return $this->frontView('pages.guide', compact('categories', 'i', 'currentCategory'));
     }
 
-    public function business($id,Request $request)
+    public function business($id, Request $request)
     {
         $parent_category = BusinessCategory::find($id);
-        $categories = BusinessCategory::where('parent_category_id',$parent_category->id)->orderBy('updated_at', 'desc')->get();
+        $categories = BusinessCategory::where('parent_category_id', $parent_category->id)->orderBy('updated_at', 'desc')->get();
         $currentCategory = $categories->first();
 
         if ($request->category_id) {
@@ -84,15 +85,15 @@ class MainController extends WebBaseController
         $contents = $currentCategory->contents()->paginate(6);
 
 
-        return $this->frontView('pages.business',compact('categories','currentCategory','contents','parent_category'));
+        return $this->frontView('pages.business', compact('categories', 'currentCategory', 'contents', 'parent_category'));
     }
 
     public function businessDetail($id)
     {
 
-        $business_content = BusinessContent::where('id',$id)->with('category')->first();
+        $business_content = BusinessContent::where('id', $id)->with('category')->first();
         $parent_category_id = $business_content->category->parent_category_id;
-        return $this->frontView('pages.business-detail',compact('business_content','parent_category_id'));
+        return $this->frontView('pages.business-detail', compact('business_content', 'parent_category_id'));
     }
 
     public function prominentDetail($id)
@@ -111,7 +112,7 @@ class MainController extends WebBaseController
         $selectedDirections = null;
 
         $users_query = ProminentUser::with('area');
-        if($request->directions) {
+        if ($request->directions) {
             $selectedDirections = explode(',', $request->directions);
             $ids = ProminentUserDirection::whereIn('direction_id', $selectedDirections)
                 ->groupBy('prominent_user_id')
@@ -119,15 +120,15 @@ class MainController extends WebBaseController
                 ->pluck('prominent_user_id');
             $users_query = $users_query->whereIn('id', $ids);
         }
-        if($request->sex) {
+        if ($request->sex) {
             $selectedSex = $request->sex;
             $users_query = $users_query->where('sex', $selectedSex);
         }
-        if($request->area) {
+        if ($request->area) {
             $selectedArea = $request->area;
             $users_query = $users_query->where('area_id', $selectedArea);
         }
-        if($request->minAge || $request->maxAge) {
+        if ($request->minAge || $request->maxAge) {
             if ($request->minAge) $minAge = $request->minAge;
             if ($request->maxAge) $maxAge = $request->maxAge;
             $minDate = Carbon::today()->subYears($minAge);
@@ -163,9 +164,10 @@ class MainController extends WebBaseController
         return $this->frontView('pages.about', compact('about_project'));
     }
 
-    public function event()
+    public function event($id)
     {
-        return $this->frontView('pages.event');
+        $event = Event::where('id', $id)->with(['images'])->first();
+        return $this->frontView('pages.event', compact('event'));
     }
 
     public function eventSend()
