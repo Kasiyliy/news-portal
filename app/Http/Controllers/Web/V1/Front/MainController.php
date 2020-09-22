@@ -172,4 +172,8 @@ class MainController extends WebBaseController
     {
         return $this->frontView('pages.event-send');
     }
+
+    public function forumAndQuestionnaire() {
+        return $this->frontView('pages.forum-questionnaire');
+    }
 }
