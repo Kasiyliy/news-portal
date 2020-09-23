@@ -38,26 +38,6 @@ class MainController extends WebBaseController
         return $this->frontView('pages.index', compact('about_us', 'slider', 'news', 'business_categories'));
     }
 
-    public function news()
-    {
-        $last_news = News::orderBy('created_at', 'desc')->take(7)->get();
-        $count = 0;
-        $most_viewed = News::orderBy('viewed_count', 'desc')->take(3)->get();
-        $news = News::orderBy('created_at', 'desc')->paginate(6);
-
-
-        return $this->frontView('pages.news', compact('news', 'last_news', 'count', 'most_viewed'));
-    }
-
-    public function newsDetail($id)
-    {
-        $news = News::where('id', $id)->first();
-        if(!$news) throw new WebServiceExplainedException('Не найдено!');
-
-        $news->update(['viewed_count' => $news->viewed_count + 1]);
-        return $this->frontView('pages.news-detail', compact('news'));
-    }
-
     public function groups()
     {
         $groups = TeenagerGroup::orderBy('updated_at', 'desc')->get();
@@ -76,95 +56,6 @@ class MainController extends WebBaseController
         return $this->frontView('pages.guide', compact('categories', 'i', 'currentCategory'));
     }
 
-    public function business($id, Request $request)
-    {
-        $parent_category = BusinessCategory::find($id);
-        if(!$parent_category) throw new WebServiceExplainedException('Не найдено!');
-
-        $categories = BusinessCategory::where('parent_category_id', $parent_category->id)->orderBy('updated_at', 'desc')->get();
-        if($categories->isEmpty()) throw new WebServiceExplainedException('Пустой контент!');
-        $currentCategory = $categories->first();
-
-        if ($request->category_id) {
-            $currentCategory = $categories->where('id', $request->category_id)->first();
-            if (!$currentCategory) throw new WebServiceExplainedException('Не найдено!');
-        }
-
-        $contents = $currentCategory->contents()->paginate(6);
-
-
-        return $this->frontView('pages.business', compact('categories', 'currentCategory', 'contents', 'parent_category'));
-    }
-
-    public function businessDetail($id)
-    {
-        $business_content = BusinessContent::where('id', $id)->with('category')->first();
-        if (!$business_content) {
-            throw new WebServiceExplainedException('Не найдено!');
-        }
-        $parent_category_id = $business_content->category->parent_category_id;
-        return $this->frontView('pages.business-detail', compact('business_content', 'parent_category_id'));
-    }
-
-    public function prominentDetail($id)
-    {
-        $user = ProminentUser::where('id', $id)->with('directions.direction', 'area')->first();
-        if (!$user) {
-            throw new WebServiceExplainedException('Не найдено!');
-        }
-        return $this->frontView('pages.prominent-detail', compact('user'));
-    }
-
-
-    public function prominent(Request $request)
-    {
-        $minAge = null;
-        $maxAge = null;
-        $selectedSex = null;
-        $selectedArea = null;
-        $selectedDirections = null;
-
-        $users_query = ProminentUser::with('area');
-        if ($request->directions) {
-            $selectedDirections = explode(',', $request->directions);
-            $ids = ProminentUserDirection::whereIn('direction_id', $selectedDirections)
-                ->groupBy('prominent_user_id')
-                ->distinct()
-                ->pluck('prominent_user_id');
-            $users_query = $users_query->whereIn('id', $ids);
-        }
-        if ($request->sex) {
-            $selectedSex = $request->sex;
-            $users_query = $users_query->where('sex', $selectedSex);
-        }
-        if ($request->area) {
-            $selectedArea = $request->area;
-            $users_query = $users_query->where('area_id', $selectedArea);
-        }
-        if ($request->minAge || $request->maxAge) {
-            if ($request->minAge) $minAge = $request->minAge;
-            if ($request->maxAge) $maxAge = $request->maxAge;
-            $minDate = Carbon::today()->subYears($minAge);
-            $maxDate = Carbon::today()->subYears($maxAge)->endOfDay();
-            if ($request->minAge && $request->maxAge) {
-                $users_query = $users_query->whereBetween('birth_date', [$maxDate, $minDate]);
-            } else if ($request->minAge && !$request->maxAge) {
-                $users_query = $users_query->whereDate('birth_date', '<=', $minDate);
-            } else if (!$request->minAge && $request->maxAge) {
-                $users_query = $users_query->whereDate('birth_date', '>=', $maxDate);
-            }
-        }
-
-        $users = $users_query
-            ->with('directions.direction')
-            ->orderBy('prominent_users.updated_at', 'desc')
-            ->paginate(10)
-            ->appends(request()->query());
-        $directions = ProminentDirection::all();
-        $areas = ProminentArea::all();
-        return $this->frontView('pages.prominent', compact('users', 'areas',
-            'directions', 'selectedArea', 'selectedSex', 'maxAge', 'minAge', 'selectedDirections'));
-    }
 
     public function resource()
     {
@@ -177,34 +68,4 @@ class MainController extends WebBaseController
         return $this->frontView('pages.about', compact('about_project'));
     }
 
-    public function event($id)
-    {
-        $event = Event::where('id', $id)->where('is_accepted', true)->with(['images'])->first();
-        if (!$event) {
-            throw new WebServiceExplainedException('Не найдено!');
-
-        }
-        return $this->frontView('pages.event', compact('event'));
-    }
-
-    public function eventSend()
-    {
-        return $this->frontView('pages.event-send');
-    }
-
-
-    public function forumAndQuestionnaire()
-    {
-        return $this->frontView('pages.forum-questionnaire');
-    }
-
-    public function calendarEvent(Request $request)
-    {
-        try {
-            $events = Event::where('date', '=', $request->date)->where('is_accepted', true)->with(['images'])->get();
-            return json_encode(['success' => true, 'events' => $events]);
-        } catch (\Exception $exception) {
-            return json_encode(['success' => false]);
-        }
-    }
 }

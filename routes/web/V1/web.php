@@ -28,21 +28,38 @@ Route::group(['namespace' => 'Core'], function () {
 });
 Route::group(['namespace' => 'Front'], function () {
     Route::get('/', ['uses' => 'MainController@index', 'as' => 'welcome']);
-    Route::get('/news', ['uses' => 'MainController@news', 'as' => 'news']);
-    Route::get('/news/{id}', ['uses' => 'MainController@newsDetail', 'as' => 'news.detail'])->where('id', '[0-9]+');
-    Route::get('/groups', ['uses' => 'MainController@groups', 'as' => 'groups']);
-    Route::get('/guide', ['uses' => 'MainController@guide', 'as' => 'guide']);
-    Route::get('/business/category/{id}', ['uses' => 'MainController@business', 'as' => 'business'])->where('id', '[0-9]+');
-    Route::get('/business/{id}', ['uses' => 'MainController@businessDetail', 'as' => 'business.detail'])->where('id', '[0-9]+');
-    Route::get('/prominent', ['uses' => 'MainController@prominent', 'as' => 'prominent']);
-    Route::get('/prominent/{id}', ['uses' => 'MainController@prominentDetail', 'as' => 'prominent.detail'])->where('id', '[0-9]+');
-    Route::get('/resource', ['uses' => 'MainController@resource', 'as' => 'resource']);
-    Route::get('/about', ['uses' => 'MainController@about', 'as' => 'about']);
-    Route::get('/event/calendar', ['uses' => 'MainController@calendarEvent', 'as' => 'calendar.event']);
-    Route::get('/event/{id}', ['uses' => 'MainController@event', 'as' => 'event'])->where('id', '[0-9]+');
-    Route::get('/event/send', ['uses' => 'MainController@eventSend', 'as' => 'event.send']);
 
-    Route::get('/forum/questionnaire', ['uses' => 'MainController@forumAndQuestionnaire', 'as' => 'forum.questionnaire']);
+    //News
+    Route::get('/news', ['uses' => 'NewsController@news', 'as' => 'news']);
+    Route::get('/news/{id}', ['uses' => 'NewsController@newsDetail', 'as' => 'news.detail'])->where('id', '[0-9]+');
+
+    //Groups
+    Route::get('/groups', ['uses' => 'MainController@groups', 'as' => 'groups']);
+
+    //Guides
+    Route::get('/guide', ['uses' => 'MainController@guide', 'as' => 'guide']);
+
+    //Business
+    Route::get('/business/category/{id}', ['uses' => 'BusinessController@business', 'as' => 'business'])->where('id', '[0-9]+');
+    Route::get('/business/{id}', ['uses' => 'BusinessController@businessDetail', 'as' => 'business.detail'])->where('id', '[0-9]+');
+
+    //Prominent
+    Route::get('/prominent', ['uses' => 'ProminentController@prominent', 'as' => 'prominent']);
+    Route::get('/prominent/{id}', ['uses' => 'ProminentController@prominentDetail', 'as' => 'prominent.detail'])->where('id', '[0-9]+');
+
+    //Resource
+    Route::get('/resource', ['uses' => 'MainController@resource', 'as' => 'resource']);
+
+    //About
+    Route::get('/about', ['uses' => 'MainController@about', 'as' => 'about']);
+
+    //Events
+    Route::get('/event/calendar', ['uses' => 'EventController@calendarEvent', 'as' => 'calendar.event']);
+    Route::get('/event/{id}', ['uses' => 'EventController@event', 'as' => 'event'])->where('id', '[0-9]+');
+    Route::get('/event/send', ['uses' => 'EventController@eventSend', 'as' => 'event.send']);
+
+    //Forum
+    Route::get('/forum/questionnaire', ['uses' => 'ForumController@forumAndQuestionnaire', 'as' => 'forum.questionnaire']);
 
 
 });
@@ -108,8 +125,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/business/categories/store/{category_id}', ['uses' => 'BusinessController@childCategoryStore', 'as' => 'business.category.store'])->where('category_id', '[0-9]+');
         Route::post('/business/categories/update/{id}', ['uses' => 'BusinessController@childCategoryUpdate', 'as' => 'business.category.update'])->where('id', '[0-9]+');
         Route::post('/business/categories/delete/{id}', ['uses' => 'BusinessController@childCategoryDelete', 'as' => 'business.category.delete'])->where('id', '[0-9]+');
-
-
 
 
         Route::get('/business/contents/{category_id}', ['uses' => 'BusinessController@content', 'as' => 'business.content.index'])->where('category_id', '[0-9]+');
