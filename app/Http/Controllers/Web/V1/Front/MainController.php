@@ -82,6 +82,7 @@ class MainController extends WebBaseController
         if(!$parent_category) throw new WebServiceExplainedException('Не найдено!');
 
         $categories = BusinessCategory::where('parent_category_id', $parent_category->id)->orderBy('updated_at', 'desc')->get();
+        if($categories->isEmpty()) throw new WebServiceExplainedException('Пустой контент!');
         $currentCategory = $categories->first();
 
         if ($request->category_id) {
