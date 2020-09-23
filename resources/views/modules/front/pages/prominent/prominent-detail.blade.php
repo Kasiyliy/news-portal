@@ -11,6 +11,9 @@
     <section class="min__content my-5">
 
         <div class="container">
+            <div class="news__detail__inner mt-3 mb-3">
+                <a href="{{URL::previous()}}">← Қайта оралу </a>
+            </div>
             <form method="post">
                 <div class="row">
                     <div class="col-md-4">

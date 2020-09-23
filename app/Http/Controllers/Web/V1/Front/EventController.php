@@ -34,12 +34,12 @@ class EventController extends WebBaseController
             throw new WebServiceExplainedException('Не найдено!');
 
         }
-        return $this->frontView('pages.event', compact('event'));
+        return $this->frontView('pages.events.event', compact('event'));
     }
 
     public function eventSend()
     {
-        return $this->frontView('pages.event-send');
+        return $this->frontView('pages.events.event-send');
     }
 
     public function eventSendPost(UserSendEventWebRequest $request) {

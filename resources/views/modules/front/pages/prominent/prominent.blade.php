@@ -113,6 +113,12 @@
 @section('scripts')
     <script src="{{asset('modules/front/assets/js/jquery.jscroll.min.js')}}"></script>
     <script>
+        $(window).on('load', function() {
+            var changed = '{{ $changed }}';
+            if(changed === '1') {
+                $(window).scrollTop(800);
+            }
+        });
         $(function () {
             $('[data-toggle="popover"]').popover({html: true})
         });
@@ -153,7 +159,6 @@
                     }
                 }
             });
-            console.log(count);
             if (array.length > 0) {
                 char = '&';
                 if (count == 0) char = '?';
@@ -165,6 +170,7 @@
         function reload() {
             window.location.href = '{{route('prominent')}}';
         }
+
     </script>
 @endsection
 

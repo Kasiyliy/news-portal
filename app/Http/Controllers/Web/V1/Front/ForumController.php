@@ -11,6 +11,6 @@ class ForumController extends WebBaseController
 
     public function forumAndQuestionnaire()
     {
-        return $this->frontView('pages.forum-questionnaire');
+        return $this->frontView('pages.forum.forum-questionnaire');
     }
 }

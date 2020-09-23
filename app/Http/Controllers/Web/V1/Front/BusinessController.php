@@ -28,7 +28,7 @@ class BusinessController extends WebBaseController
         $contents = $currentCategory->contents()->paginate(6);
 
 
-        return $this->frontView('pages.business', compact('categories', 'currentCategory', 'contents', 'parent_category'));
+        return $this->frontView('pages.business.business', compact('categories', 'currentCategory', 'contents', 'parent_category'));
     }
 
     public function businessDetail($id)
@@ -38,6 +38,6 @@ class BusinessController extends WebBaseController
             throw new WebServiceExplainedException('Не найдено!');
         }
         $parent_category_id = $business_content->category->parent_category_id;
-        return $this->frontView('pages.business-detail', compact('business_content', 'parent_category_id'));
+        return $this->frontView('pages.business.business-detail', compact('business_content', 'parent_category_id'));
     }
 }

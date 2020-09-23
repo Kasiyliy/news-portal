@@ -21,7 +21,7 @@ class ProminentController extends WebBaseController
         if (!$user) {
             throw new WebServiceExplainedException('Не найдено!');
         }
-        return $this->frontView('pages.prominent-detail', compact('user'));
+        return $this->frontView('pages.prominent.prominent-detail', compact('user'));
     }
 
 
@@ -32,9 +32,11 @@ class ProminentController extends WebBaseController
         $selectedSex = null;
         $selectedArea = null;
         $selectedDirections = null;
+        $changed = false;
 
         $users_query = ProminentUser::with('area');
         if ($request->directions) {
+            $changed = true;
             $selectedDirections = explode(',', $request->directions);
             $ids = ProminentUserDirection::whereIn('direction_id', $selectedDirections)
                 ->groupBy('prominent_user_id')
@@ -43,14 +45,17 @@ class ProminentController extends WebBaseController
             $users_query = $users_query->whereIn('id', $ids);
         }
         if ($request->sex) {
+            $changed = true;
             $selectedSex = $request->sex;
             $users_query = $users_query->where('sex', $selectedSex);
         }
         if ($request->area) {
+            $changed = true;
             $selectedArea = $request->area;
             $users_query = $users_query->where('area_id', $selectedArea);
         }
         if ($request->minAge || $request->maxAge) {
+            $changed = true;
             if ($request->minAge) $minAge = $request->minAge;
             if ($request->maxAge) $maxAge = $request->maxAge;
             $minDate = Carbon::today()->subYears($minAge);
@@ -71,7 +76,7 @@ class ProminentController extends WebBaseController
             ->appends(request()->query());
         $directions = ProminentDirection::all();
         $areas = ProminentArea::all();
-        return $this->frontView('pages.prominent', compact('users', 'areas',
-            'directions', 'selectedArea', 'selectedSex', 'maxAge', 'minAge', 'selectedDirections'));
+        return $this->frontView('pages.prominent.prominent', compact('users', 'areas',
+            'directions', 'selectedArea', 'selectedSex', 'maxAge', 'minAge', 'selectedDirections', 'changed'));
     }
 }

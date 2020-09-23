@@ -18,7 +18,7 @@ class NewsController extends WebBaseController
         $news = News::orderBy('created_at', 'desc')->paginate(6);
 
 
-        return $this->frontView('pages.news', compact('news', 'last_news', 'count', 'most_viewed'));
+        return $this->frontView('pages.news.news', compact('news', 'last_news', 'count', 'most_viewed'));
     }
 
     public function newsDetail($id)
@@ -27,6 +27,6 @@ class NewsController extends WebBaseController
         if(!$news) throw new WebServiceExplainedException('Не найдено!');
 
         $news->update(['viewed_count' => $news->viewed_count + 1]);
-        return $this->frontView('pages.news-detail', compact('news'));
+        return $this->frontView('pages.news.news-detail', compact('news'));
     }
 }
