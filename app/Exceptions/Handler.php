@@ -97,7 +97,8 @@ class Handler extends ExceptionHandler
                 'errorCode' => ErrorCode::UNAUTHORIZED
             ], 401);
         } else {
-            return response()->view('modules.admin.core.errors.404', [], 404);
+//            return response()->view('modules.admin.core.errors.404', [], 404);
+            return redirect()->route('login');
         }
     }
 
