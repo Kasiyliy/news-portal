@@ -462,8 +462,10 @@
                 function getCalendar(day) {
                     console.log(day);
                     for (let i = 0; i < events.length; i++) {
-                        // if (events[i].date == `${d.getFullYear()}-${d.getMonth() + 1}-${day}`) {
-                        if (events[i].date == `1999-${d.getMonth() + 1}-${day}`) {
+
+                        console.log(`${d.getFullYear()}-${("0" + (d.getMonth() + 1)).slice(-2)}-${day}`);
+                        if (events[i].date == `${d.getFullYear()}-${("0" + (d.getMonth() + 1)).slice(-2)}-${day}`) {
+                        // if (events[i].date == `2020-${d.getMonth() + 1}-${day}`) {
                             swiperWrapper.insertAdjacentHTML('beforeend',
                                 `<div class="swiper-slide calendar">
                             <h3>${events[i].title}</h3>

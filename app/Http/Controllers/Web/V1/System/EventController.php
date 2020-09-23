@@ -38,8 +38,8 @@ class EventController extends WebBaseController
 
     public function create()
     {
-        $event = Event::with(['images'])->first();
-        $event_form = EventWebForm::inputGroups($event);
+//        $event = Event::with(['images'])->first();
+        $event_form = EventWebForm::inputGroups();
         return $this->adminView('pages.event.create', compact('event_form'));
     }
 

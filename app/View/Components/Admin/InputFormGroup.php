@@ -20,8 +20,9 @@ class InputFormGroup extends BaseComponent
     public $required;
     public $value;
     public $multiple;
+    public $max;
 
-    public function __construct($name, $type, $placeholder, $label, $errors = [], $required = true, $value = null, $multiple = false)
+    public function __construct($name, $type, $placeholder, $label, $errors = [], $required = true, $value = null, $multiple = false,$max = null)
     {
         $this->name = $name;
         $this->type = $type;
@@ -31,6 +32,7 @@ class InputFormGroup extends BaseComponent
         $this->required = $required;
         $this->value = $value;
         $this->multiple = $multiple;
+        $this->max = $max;
     }
 
     public function render()
