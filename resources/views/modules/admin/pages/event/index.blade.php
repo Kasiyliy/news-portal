@@ -23,7 +23,7 @@
                                 <th>ID</th>
                                 <th>Название</th>
                                 <th>Дата</th>
-                                <th>Принято</th>
+                                <th>Видимо</th>
                                 <th>Действия</th>
                             </tr>
                             </thead>
@@ -33,17 +33,41 @@
                                     <td>{{$e->id}}</td>
                                     <td>{{$e->title}}</td>
                                     <td>{{$e->date}}</td>
-                                    <td>{{$e->is_accepted?'Да':'Нет'}}</td>
+                                    <td> @if($e->is_accepted)
+                                            <span class="text-success">
+                                            Да
+                                        </span>
+                                        @else
+                                            <span class="text-danger">
+                                            Нет
+                                        </span>
+                                        @endif</td>
                                     <td>
                                         <a href="{{route('event.edit', ['id' => $e->id])}}"
                                            class="btn btn-outline-primary btn-sm"><i class="ti ti-pencil"></i>
                                         </a>
-                                        @if(!$e->is_accepted)
-                                        <a href="{{route('event.accept', ['id' => $e->id])}}"
-                                           class="btn btn-outline-success btn-sm"><i class="ti ti-check"></i>
-                                        </a>
-                                        @else
+                                        <form class="d-inline" method="post"
+                                              action="{{route('event.accept', ['id' => $e->id])}}">
+                                            {{csrf_field()}}
+                                            @if($e->is_accepted)
+                                                <button class=" btn  btn-outline-danger btn-sm " type="submit">
+                                                    <i class="ti ti-lock"></i>
+                                                </button>
+                                            @else
+                                                <button class=" btn  btn-outline-success btn-sm " type="submit">
+                                                    <i class="ti ti-check"></i>
+                                                </button>
                                             @endif
+                                        </form>
+
+                                        @if($e->representative)
+                                            <a href="{{route('event.info', ['id' => $e->id])}}"
+                                               class="btn btn-outline-primary btn-sm"><i class="ti ti-eye"></i>
+                                            </a>
+                                        @else
+                                        @endif
+
+
                                         <button class="btn btn-outline-danger btn-sm" data-toggle="modal"
                                                 data-target="#delete{{$e->id}}"><i class="ti ti-trash"></i>
                                         </button>
