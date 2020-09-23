@@ -332,7 +332,7 @@
     <section class="news" id="news">
         <div class="container">
             <div class="news__inner">
-                <h1>Жаңалықтар мен хабарландырулар </h1>
+                <h1 onclick="location.href='{{route('news')}}';">Жаңалықтар мен хабарландырулар </h1>
                 <div class="row">
                     @foreach($news as $n)
                         <div class="col-12 col-lg-3">
@@ -461,12 +461,14 @@
                 function getCalendar(day) {
                     for (let i = 0; i < events.length; i++) {
                         if (events[i].date == `${d.getFullYear()}-${("0" + (d.getMonth() + 1)).slice(-2)}-${day}`) {
+
+                        // if (events[i].date == `2020-${d.getMonth() + 1}-${day}`) {
                             swiperWrapper.insertAdjacentHTML('beforeend',
                                 `<div class="swiper-slide calendar">
                             <h3>${events[i].title}</h3>
                             <div class="calendar__detail-button row">
                                 <div class="col-12 col-md-6 calendar__button left mt-3">
-                                    <button>Толық көру</button>
+                                    <button onclick="location.href='{{route('event','')}}'+'/'+${events[i].id};">Толық көру</button>
                                 </div>
                                 <div class="col-12 col-md-6 calendar__button right mt-3">
                                     <button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>
