@@ -32,7 +32,7 @@ class EventController extends WebBaseController
 
     public function index()
     {
-        $event = Event::paginate(10);
+        $event = Event::orderBy('is_accepted', 'asc')->orderBy('created_at', 'desc')->paginate(10);
         return $this->adminView( 'pages.event.index', compact('event'));
     }
 
@@ -114,7 +114,7 @@ class EventController extends WebBaseController
         EventImage::insert($eventUpdate);
 
         $this->edited();
-        return redirect()->back();
+        return redirect()->route('event.index');
     }
 
     public function delete($id)
@@ -135,49 +135,12 @@ class EventController extends WebBaseController
 
     public function accept($id)
     {
-        $event = Event::find( $id);
+        $event = Event::find($id);
         $event->update(['is_accepted' => true]);
 
         $this->added();
         return redirect()->route('event.index');
 
-    }
-
-
-    public function eventSend(UserSendEventWebRequest $request){
-
-        $event = Event::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'date' => $request->date,
-            'representative' => $request->representative,
-            'place' => $request->place,
-            'fio' => $request->fio,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'website' => $request->website,
-        ]);
-
-
-        $image_path = [];
-        $now = Carbon::now();
-
-        if ($request->has('image_path')) {
-            $files = $request->image_path;
-            foreach ($files as $file) {
-                $image_path[] = [
-                    'image_path' => $this->fileService->store($file, Event::DEFAULT_RESOURCE_DIRECTORY),
-                    'event_id' => $event->id,
-                    'created_at' => $now,
-                    'updated_at' => $now
-                ];
-            }
-        }
-        EventImage::insert($image_path);
-
-        $this->added();
-
-        return $this->frontView('pages.event-send');
     }
 
     public function deleteEventImages($event_id){

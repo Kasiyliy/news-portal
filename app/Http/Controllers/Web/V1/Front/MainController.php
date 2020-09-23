@@ -38,6 +38,10 @@ class MainController extends WebBaseController
         return $this->frontView('pages.index', compact('about_us', 'slider', 'news', 'business_categories'));
     }
 
+    public function success() {
+        return $this->frontView('pages.success');
+    }
+
     public function groups()
     {
         $groups = TeenagerGroup::orderBy('updated_at', 'desc')->get();

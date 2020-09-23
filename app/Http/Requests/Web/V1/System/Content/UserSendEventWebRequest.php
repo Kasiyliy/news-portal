@@ -14,11 +14,11 @@ class UserSendEventWebRequest extends WebBaseRequest
             'title' => ['required', 'string'],
             'description' => ['required', 'string'],
             'date' => ['required','date'],
-            'image_path' => ['array'],
+            'images' => ['array'],
             'representative' => ['required','string'],
             'place' => ['string'],
             'fio' => ['required','string'],
-            'phone' => ['required','numeric'],
+            'phone' => ['required','string'],
             'email' => ['email'],
             'website' => ['string'],
         ];

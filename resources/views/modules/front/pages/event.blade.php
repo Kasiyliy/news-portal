@@ -20,6 +20,7 @@
     <section class="about">
         <div class="container">
             <div class="about__inner my-5">
+                @if(!$event->images->isEmpty())
                 <div class="row mb-5">
                     <div class="about__main-img  col-md-12 col-lg-10">
                         <img id="expandedImg" src="{{asset($event->images[0]->image_path)}}">
@@ -38,6 +39,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 <div>
                     {!!$event->description!!}
                 </div>

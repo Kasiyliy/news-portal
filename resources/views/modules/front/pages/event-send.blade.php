@@ -98,13 +98,13 @@
             </div>
                         <div class="form-row">
                             <div class="form-group col-md-3">
-                                <label for="inputEmail4">Басталу уақытысы <span>*</span></label>
+                                <label for="inputEmail4">Уақыты <span>*</span></label>
                                 <input class="form-control" type="date" id="start-date-input" name = "date" required>
                             </div>
-                            <div class="form-group col-md-3">
-                                <label for="inputPassword4">Аяқталу уақытысы <span>*</span></label>
-                                <input class="form-control" type="date" id="end-date-input" required>
-                            </div>
+{{--                            <div class="form-group col-md-3">--}}
+{{--                                <label for="inputPassword4">Аяқталу уақытысы <span>*</span></label>--}}
+{{--                                <input class="form-control" type="date" id="end-date-input" required>--}}
+{{--                            </div>--}}
                         </div>
             <div class="form-group">
                 <label for="inputAddress2">Ұйымдастырушы <span>*</span></label>
@@ -143,17 +143,24 @@
                             <span class="input-group-text" id="inputGroupFileAddon01">Суреттерді таңдаңыз</span>
                         </div>
                         <div class="custom-file">
-                            <input id="file-input" type="file" class="custom-file-input" name = "image_path[]" accept="image/*" multiple >
+                            <input id="file-input" type="file" class="custom-file-input" name = "images[]" accept="image/*" multiple >
                             <label class="custom-file-label" for="inputGroupFile04">Таңдау</label>
                         </div>
                     </div>
-                    <div id="preview" class="mt-4"></div>
-                </div>
+                    <div id="preview" class="mt-4"></div></div>
 
             </div>
             <button type="submit" class="btn btn-primary mb-5 pr-5 pl-5">Жіберу</button>
         </form>
-
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </div>
 
 

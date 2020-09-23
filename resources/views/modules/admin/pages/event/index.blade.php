@@ -81,8 +81,9 @@
                                 </tr>
                             @endforeach
                             </tbody>
-                            {{$event->links()}}
                         </table>
+                        {{$event->links()}}
+
                     @else<h6>Вы не добавили ни одного мероприятия!</h6>
                     @endif
                 </div>

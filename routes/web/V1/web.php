@@ -28,7 +28,7 @@ Route::group(['namespace' => 'Core'], function () {
 });
 Route::group(['namespace' => 'Front'], function () {
     Route::get('/', ['uses' => 'MainController@index', 'as' => 'welcome']);
-
+    Route::get('/success', ['uses' => 'MainController@success', 'as' => 'success']);
     //News
     Route::get('/news', ['uses' => 'NewsController@news', 'as' => 'news']);
     Route::get('/news/{id}', ['uses' => 'NewsController@newsDetail', 'as' => 'news.detail'])->where('id', '[0-9]+');
@@ -57,15 +57,12 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/event/calendar', ['uses' => 'EventController@calendarEvent', 'as' => 'calendar.event']);
     Route::get('/event/{id}', ['uses' => 'EventController@event', 'as' => 'event'])->where('id', '[0-9]+');
     Route::get('/event/send', ['uses' => 'EventController@eventSend', 'as' => 'event.send']);
+    Route::post('/event/send/post', ['uses' => 'EventController@eventSendPost', 'as' => 'user.send.event']);
+
 
     //Forum
     Route::get('/forum/questionnaire', ['uses' => 'ForumController@forumAndQuestionnaire', 'as' => 'forum.questionnaire']);
 
-
-});
-
-Route::group(['namespace' => 'System'], function () {
-    Route::post('/event/send', ['uses' => 'EventController@eventSend', 'as' => 'user.send.event']);
 
 });
 
