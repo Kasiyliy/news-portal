@@ -135,12 +135,15 @@ class EventController extends WebBaseController
 
     public function accept($id)
     {
-        $event = Event::find($id);
-        $event->update(['is_accepted' => true]);
-
-        $this->added();
+        $event = Event::findOrFail($id);
+        if (!$event) {
+            throw new WebServiceExplainedException('Мероприятие не найдено!');
+        }
+        if ($event->is_accepted) $event->is_accepted = false;
+        else $event->is_accepted = true;
+        $event->save();
+        $this->edited();
         return redirect()->route('event.index');
-
     }
 
     public function deleteEventImages($event_id){
@@ -148,5 +151,16 @@ class EventController extends WebBaseController
         foreach ($contents as $content){
             $this->fileService->remove($content->image_path);
         }
+    }
+
+    public function info($id)
+    {
+        $event = Event::with(['images'])->find($id);
+        if (!$event) {
+            throw new WebServiceExplainedException('Мероприятие не найдено!');
+        }
+
+        return $this->adminView('pages.event.info', compact( 'event'));
+
     }
 }

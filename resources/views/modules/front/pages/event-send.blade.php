@@ -101,10 +101,7 @@
                                 <label for="inputEmail4">Уақыты <span>*</span></label>
                                 <input class="form-control" type="date" id="start-date-input" name = "date" required>
                             </div>
-{{--                            <div class="form-group col-md-3">--}}
-{{--                                <label for="inputPassword4">Аяқталу уақытысы <span>*</span></label>--}}
-{{--                                <input class="form-control" type="date" id="end-date-input" required>--}}
-{{--                            </div>--}}
+
                         </div>
             <div class="form-group">
                 <label for="inputAddress2">Ұйымдастырушы <span>*</span></label>
