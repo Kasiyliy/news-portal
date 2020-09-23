@@ -297,12 +297,11 @@
                             id="right"><i class="fa fa-chevron-right"> </i></a></h1>
                     <table class="table"></table>
                 </div>
-                {{--                {{dd($events)}}--}}
                 <div class="calendar__detail col-md-12 col-lg-6">
-                    <h2 id="calendar-title">30 тамыз </h2>
+                    <h2 id="calendar-title"></h2>
                     <div class="swiper-container calendar">
                         <div class="swiper-wrapper" id="swiper-wrapper">
-
+                            {{--слайдер--}}
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>
@@ -460,12 +459,8 @@
                 getCalendar(new Date().getDate());
 
                 function getCalendar(day) {
-                    console.log(day);
                     for (let i = 0; i < events.length; i++) {
-
-                        console.log(`${d.getFullYear()}-${("0" + (d.getMonth() + 1)).slice(-2)}-${day}`);
                         if (events[i].date == `${d.getFullYear()}-${("0" + (d.getMonth() + 1)).slice(-2)}-${day}`) {
-                        // if (events[i].date == `2020-${d.getMonth() + 1}-${day}`) {
                             swiperWrapper.insertAdjacentHTML('beforeend',
                                 `<div class="swiper-slide calendar">
                             <h3>${events[i].title}</h3>
@@ -478,6 +473,8 @@
                                 </div>
                             </div>
                         </div>`);
+                        }else{
+                            swiperWrapper.innerHTML = '<div></div>'
                         }
                     }
                 }
