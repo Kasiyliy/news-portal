@@ -154,12 +154,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/event/edit/{id}', ['uses' => 'EventController@edit', 'as' => 'event.edit'])->where('id', '[0-9]+');
         Route::post('/event/delete/{id}', ['uses' => 'EventController@delete', 'as' => 'event.delete'])->where('id', '[0-9]+');
         Route::get('/event/accept/{id}', ['uses' => 'EventController@accept', 'as' => 'event.accept'])->where('id', '[0-9]+');
-
-
-
-
-
-
     });
 
     Route::group(['namespace' => 'System'], function () {
