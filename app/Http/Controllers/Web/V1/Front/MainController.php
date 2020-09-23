@@ -33,9 +33,9 @@ class MainController extends WebBaseController
         $about_us = AboutUs::all();
         $slider = Slider::all();
         $news = News::orderBy('created_at', 'desc')->take(4)->get();
-        $business_categories = BusinessCategory::where('parent_category_id', null)->has('childCategories')->orderBy('created_at', 'desc')->get();
-        $events = Event::where('is_accepted', true)->with(['images'])->get();
-        return $this->frontView('pages.index', compact('about_us', 'slider', 'news', 'business_categories', 'events'));
+        $business_categories = BusinessCategory::where('parent_category_id', null)->has('childCategories')
+            ->orderBy('created_at', 'desc')->get();
+        return $this->frontView('pages.index', compact('about_us', 'slider', 'news', 'business_categories'));
     }
 
     public function news()
@@ -52,6 +52,8 @@ class MainController extends WebBaseController
     public function newsDetail($id)
     {
         $news = News::where('id', $id)->first();
+        if(!$news) throw new WebServiceExplainedException('Не найдено!');
+
         $news->update(['viewed_count' => $news->viewed_count + 1]);
         return $this->frontView('pages.news-detail', compact('news'));
     }
@@ -77,6 +79,8 @@ class MainController extends WebBaseController
     public function business($id, Request $request)
     {
         $parent_category = BusinessCategory::find($id);
+        if(!$parent_category) throw new WebServiceExplainedException('Не найдено!');
+
         $categories = BusinessCategory::where('parent_category_id', $parent_category->id)->orderBy('updated_at', 'desc')->get();
         $currentCategory = $categories->first();
 
@@ -196,7 +200,7 @@ class MainController extends WebBaseController
     public function calendarEvent(Request $request)
     {
         try {
-            $events = Event::where('date', '=', $request->date)->get();
+            $events = Event::where('date', '=', $request->date)->where('is_accepted', true)->with(['images'])->get();
             return json_encode(['success' => true, 'events' => $events]);
         } catch (\Exception $exception) {
             return json_encode(['success' => false]);

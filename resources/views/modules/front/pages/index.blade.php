@@ -309,7 +309,6 @@
             </div>
         </div>
     </section>
-    {{--{{dd($events)}}--}}
     <section class="business">
         <div class="container">
             <div class="business__inner">
@@ -453,7 +452,6 @@
 
                         })
                     ;
-                    var events = {!! json_encode($events->toArray()) !!};
                     let swiperWrapper = document.getElementById('swiper-wrapper');
 
                     addUpdateData(new Date().getDate());
