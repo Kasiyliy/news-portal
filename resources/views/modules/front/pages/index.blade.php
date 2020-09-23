@@ -297,32 +297,12 @@
                             id="right"><i class="fa fa-chevron-right"> </i></a></h1>
                     <table class="table"></table>
                 </div>
+                {{--                {{dd($events)}}--}}
                 <div class="calendar__detail col-md-12 col-lg-6">
                     <h2 id="calendar-title">30 тамыз </h2>
                     <div class="swiper-container calendar">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide calendar">
-                                <h3>Конституция күні</h3>
-                                <div class="calendar__detail-button row">
-                                    <div class="col-12 col-md-6 calendar__button left mt-3">
-                                        <button>Толық көру</button>
-                                    </div>
-                                    <div class="col-12 col-md-6 calendar__button right mt-3">
-                                        <button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide calendar">
-                                <h3>Конституция күні</h3>
-                                <div class="calendar__detail-button row">
-                                    <div class="col-12 col-md-6 calendar__button left mt-3">
-                                        <button>Толық көру</button>
-                                    </div>
-                                    <div class="col-12 col-md-6 calendar__button right mt-3">
-                                        <button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="swiper-wrapper" id="swiper-wrapper">
+
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>
@@ -377,39 +357,9 @@
     <script src="{{asset('modules/front/assets/js/purecounter.js')}}"></script>
     <script src="{{asset('modules/front/assets/js/swiper.min.js')}}"></script>
     <script>
-        let screenSize = $(window).width();
-        if (screenSize < 992) {
-            let pagination = document.getElementById('swiper-pagination');
-            pagination.style.display = "none";
-            let reverse = document.getElementsByClassName('slider-reverse-block');
-            for (let i = 0; i < reverse.length; i++) {
-                reverse[i].style.flexFlow = 'wrap-reverse';
-            }
-        }
-
-        var swiper = new Swiper('.swiper-container.slider', {
-            direction: screenSize < 992 ? 'horizontal' : 'vertical',
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next-custom',
-                prevEl: '.swiper-button-prev-custom',
-            },
-        });
-        var swiper = new Swiper('.swiper-container.calendar', {
-            pagination: {
-                el: '.swiper-pagination',
-                dynamicBullets: true,
-                clickable: true,
-            },
-        });
-    </script>
-
-    <script>
         $(document).ready(function () {
             var currentDate = new Date();
+
             function generateCalendar(d) {
                 function monthDays(month, year) {
                     var result = [];
@@ -466,12 +416,10 @@
                         } else {
                             if (i === 1 && j < start) {
                                 cal[i].push("<td>&nbsp;</td>");
-                            }
-                            else if(day === new Date().getDate() && d.getMonth() === new Date().getMonth()){
+                            } else if (day === new Date().getDate() && d.getMonth() === new Date().getMonth()) {
                                 cal[i].push('<td class="day active">' + day++ + "</td>");
                                 title.innerHTML = `${new Date().getDate()} ${details.months[d.getMonth()]}`
-                            }
-                            else {
+                            } else {
                                 cal[i].push('<td class="day">' + day++ + "</td>");
                             }
                         }
@@ -494,16 +442,46 @@
                     .mouseout(function () {
                         $(this).removeClass("hover");
                     })
-                    .click(function(){
+                    .click(function () {
                         let days = document.getElementsByClassName("day");
-                        for(let i=0; i<days.length; i++){
+                        for (let i = 0; i < days.length; i++) {
                             days[i].className = "day";
                         }
                         title.innerHTML = `${$(this)[0].outerText} ${details.months[d.getMonth()]}`
                         $(this).addClass("active")
+                        let choosenDate = $("td.day.active").text();
+                        getCalendar(choosenDate)
                     })
                 ;
+                var events = {!! json_encode($events->toArray()) !!};
+                console.log(events);
+                let swiperWrapper = document.getElementById('swiper-wrapper');
+
+                getCalendar(new Date().getDate());
+
+                function getCalendar(day) {
+                    console.log(day);
+                    for (let i = 0; i < events.length; i++) {
+                        // if (events[i].date == `${d.getFullYear()}-${d.getMonth() + 1}-${day}`) {
+                        if (events[i].date == `1999-${d.getMonth() + 1}-${day}`) {
+                            swiperWrapper.insertAdjacentHTML('beforeend',
+                                `<div class="swiper-slide calendar">
+                            <h3>${events[i].title}</h3>
+                            <div class="calendar__detail-button row">
+                                <div class="col-12 col-md-6 calendar__button left mt-3">
+                                    <button>Толық көру</button>
+                                </div>
+                                <div class="col-12 col-md-6 calendar__button right mt-3">
+                                    <button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>
+                                </div>
+                            </div>
+                        </div>`);
+                        }
+                    }
+                }
+
             }
+
 
             $("#left").click(function () {
                 $("table").text("");
@@ -534,5 +512,37 @@
             generateCalendar(currentDate);
         });
 
+    </script>
+
+    <script>
+        let screenSize = $(window).width();
+        if (screenSize < 992) {
+            let pagination = document.getElementById('swiper-pagination');
+            pagination.style.display = "none";
+            let reverse = document.getElementsByClassName('slider-reverse-block');
+            for (let i = 0; i < reverse.length; i++) {
+                reverse[i].style.flexFlow = 'wrap-reverse';
+            }
+        }
+
+        var swiper = new Swiper('.swiper-container.slider', {
+            direction: screenSize < 992 ? 'horizontal' : 'vertical',
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next-custom',
+                prevEl: '.swiper-button-prev-custom',
+            },
+        });
+
+        var swiper = new Swiper('.swiper-container.calendar', {
+            pagination: {
+                el: '.swiper-pagination',
+                dynamicBullets: true,
+                clickable: true,
+            },
+        });
     </script>
 @endsection
