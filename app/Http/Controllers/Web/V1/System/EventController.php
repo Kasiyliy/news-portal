@@ -33,7 +33,7 @@ class EventController extends WebBaseController
     public function index()
     {
         $event = Event::paginate(10);
-        return $this->adminView('pages.event.index', compact('event'));
+        return $this->adminView( 'pages.event.index', compact('event'));
     }
 
     public function create()

@@ -309,7 +309,7 @@
             </div>
         </div>
     </section>
-
+    {{--{{dd($events)}}--}}
     <section class="business">
         <div class="container">
             <div class="business__inner">
@@ -357,114 +357,129 @@
     <script src="{{asset('modules/front/assets/js/swiper.min.js')}}"></script>
     <script>
         $(document).ready(function () {
-            var currentDate = new Date();
+                var currentDate = new Date();
 
-            function generateCalendar(d) {
-                function monthDays(month, year) {
-                    var result = [];
-                    var days = new Date(year, month, 0).getDate();
-                    for (var i = 1; i <= days; i++) {
-                        result.push(i);
+                function generateCalendar(d) {
+                    function monthDays(month, year) {
+                        var result = [];
+                        var days = new Date(year, month, 0).getDate();
+                        for (var i = 1; i <= days; i++) {
+                            result.push(i);
+                        }
+                        return result;
                     }
-                    return result;
-                }
 
-                Date.prototype.monthDays = function () {
-                    var d = new Date(this.getFullYear(), this.getMonth() + 1, 0);
-                    return d.getDate();
-                };
-                var details = {
-                    // totalDays: monthDays(d.getMonth(), d.getFullYear()),
-                    totalDays: d.monthDays(),
-                    weekDays: [
-                        "Жс",
-                        "Дс",
-                        "Сс",
-                        "Ср",
-                        "Бс",
-                        "Жм",
-                        "Сн",
+                    Date.prototype.monthDays = function () {
+                        var d = new Date(this.getFullYear(), this.getMonth() + 1, 0);
+                        return d.getDate();
+                    };
+                    var details = {
+                        // totalDays: monthDays(d.getMonth(), d.getFullYear()),
+                        totalDays: d.monthDays(),
+                        weekDays: [
+                            "Жс",
+                            "Дс",
+                            "Сс",
+                            "Ср",
+                            "Бс",
+                            "Жм",
+                            "Сн",
 
-                    ],
-                    months: [
-                        "Қаңтар",
-                        "Ақпан",
-                        "Наурыз",
-                        "Сәуір",
-                        "Мамыр",
-                        "Маусым",
-                        "Шілде",
-                        "Тамыз",
-                        "Қыркүйек",
-                        "Қазан",
-                        "Қараша",
-                        "Желтоқсан"
-                    ]
-                };
-                let title = document.getElementById('calendar-title');
-                var start = new Date(d.getFullYear(), d.getMonth()).getDay();
-                var cal = [];
-                var day = 1;
-                for (var i = 0; i <= 6; i++) {
-                    cal.push(["<tr>"]);
-                    for (var j = 0; j < 7; j++) {
-                        if (i === 0) {
-                            cal[i].push("<td>" + details.weekDays[j] + "</td>");
-                        } else if (day > details.totalDays) {
-                            cal[i].push("<td>&nbsp;</td>");
-                        } else {
-                            if (i === 1 && j < start) {
+                        ],
+                        months: [
+                            "Қаңтар",
+                            "Ақпан",
+                            "Наурыз",
+                            "Сәуір",
+                            "Мамыр",
+                            "Маусым",
+                            "Шілде",
+                            "Тамыз",
+                            "Қыркүйек",
+                            "Қазан",
+                            "Қараша",
+                            "Желтоқсан"
+                        ]
+                    };
+                    let title = document.getElementById('calendar-title');
+                    var start = new Date(d.getFullYear(), d.getMonth()).getDay();
+                    var cal = [];
+                    var day = 1;
+                    for (var i = 0; i <= 6; i++) {
+                        cal.push(["<tr>"]);
+                        for (var j = 0; j < 7; j++) {
+                            if (i === 0) {
+                                cal[i].push("<td>" + details.weekDays[j] + "</td>");
+                            } else if (day > details.totalDays) {
                                 cal[i].push("<td>&nbsp;</td>");
-                            } else if (day === new Date().getDate() && d.getMonth() === new Date().getMonth()) {
-                                cal[i].push('<td class="day active">' + day++ + "</td>");
-                                title.innerHTML = `${new Date().getDate()} ${details.months[d.getMonth()]}`
                             } else {
-                                cal[i].push('<td class="day">' + day++ + "</td>");
+                                if (i === 1 && j < start) {
+                                    cal[i].push("<td>&nbsp;</td>");
+                                } else if (day === new Date().getDate() && d.getMonth() === new Date().getMonth()) {
+                                    cal[i].push('<td class="day active">' + day++ + "</td>");
+                                    title.innerHTML = `${new Date().getDate()} ${details.months[d.getMonth()]}`
+                                } else {
+                                    cal[i].push('<td class="day">' + day++ + "</td>");
+                                }
                             }
                         }
+                        cal[i].push("</tr>");
                     }
-                    cal[i].push("</tr>");
-                }
-                cal = cal
-                    .reduce(function (a, b) {
-                        return a.concat(b);
-                    }, [])
-                    .join("");
-                $("table").append(cal);
-                $("#month").text(details.months[d.getMonth()]);
-                $("#year").text(d.getFullYear());
-                $("td.day")
+                    cal = cal
+                        .reduce(function (a, b) {
+                            return a.concat(b);
+                        }, [])
+                        .join("");
+                    $("table").append(cal);
+                    $("#month").text(details.months[d.getMonth()]);
+                    $("#year").text(d.getFullYear());
+                    $("td.day")
 
-                    .mouseover(function () {
-                        $(this).addClass("hover");
-                    })
-                    .mouseout(function () {
-                        $(this).removeClass("hover");
-                    })
-                    .click(function () {
-                        let days = document.getElementsByClassName("day");
-                        for (let i = 0; i < days.length; i++) {
-                            days[i].className = "day";
-                        }
-                        title.innerHTML = `${$(this)[0].outerText} ${details.months[d.getMonth()]}`
-                        $(this).addClass("active")
-                        let choosenDate = $("td.day.active").text();
-                        getCalendar(choosenDate)
-                    })
-                ;
-                var events = {!! json_encode($events->toArray()) !!};
-                console.log(events);
-                let swiperWrapper = document.getElementById('swiper-wrapper');
+                        .mouseover(function () {
+                            $(this).addClass("hover");
+                        })
+                        .mouseout(function () {
+                            $(this).removeClass("hover");
+                        })
+                        .click(function () {
+                            let days = document.getElementsByClassName("day");
+                            for (let i = 0; i < days.length; i++) {
+                                days[i].className = "day";
+                            }
+                            title.innerHTML = `${$(this)[0].outerText} ${details.months[d.getMonth()]}`
+                            $(this).addClass("active")
+                            let choosenDate = $("td.day.active").text();
+                            addUpdateData(choosenDate)
 
-                getCalendar(new Date().getDate());
+                        })
+                    ;
+                    var events = {!! json_encode($events->toArray()) !!};
+                    let swiperWrapper = document.getElementById('swiper-wrapper');
 
-                function getCalendar(day) {
-                    for (let i = 0; i < events.length; i++) {
-                        if (events[i].date == `${d.getFullYear()}-${("0" + (d.getMonth() + 1)).slice(-2)}-${day}`) {
+                    addUpdateData(new Date().getDate());
 
-                        // if (events[i].date == `2020-${d.getMonth() + 1}-${day}`) {
-                            swiperWrapper.insertAdjacentHTML('beforeend',
-                                `<div class="swiper-slide calendar">
+                    function addUpdateData(day) {
+                        $(function () {
+                            $.ajax({
+                                method: "get",
+                                url: "{{route('calendar.event')}}",
+                                data: {
+                                    date: `${d.getFullYear()}-${("0" + (d.getMonth() + 1)).slice(-2)}-${day}`
+                                },
+                                success: function (response) {
+                                    let events = JSON.parse(response);
+                                    getCalendar(events.events);
+                                }
+                            });
+                        });
+                    }
+
+                    function getCalendar(events) {
+                        if (events.length) {
+                            swiperWrapper.innerHTML = '';
+                            for (let i = 0; i < events.length; i++) {
+                                swiperWrapper.insertAdjacentHTML('beforeend',
+                                    `<div class="swiper-slide calendar">
                             <h3>${events[i].title}</h3>
                             <div class="calendar__detail-button row">
                                 <div class="col-12 col-md-6 calendar__button left mt-3">
@@ -475,43 +490,52 @@
                                 </div>
                             </div>
                         </div>`);
-                        }else{
-                            swiperWrapper.innerHTML = '<div></div>'
+                            }
+                        } else {
+                            swiperWrapper.innerHTML =
+                                `<div class="swiper-slide calendar">
+                                    <div class="calendar__detail-button row mb-5 mt-5">
+                                        <div class="col-12 calendar__button right pb-5 pt-5 mb-5 mt-5">
+                                            <h5>Бұл күнге ешқандай іс-шара белгіленбеген</h5>
+                                            <button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>
+                                        </div>
+                                    </div>
+                                </div>`
                         }
+                        swiper.update();
                     }
                 }
 
+
+                $("#left").click(function () {
+                    $("table").text("");
+                    if (currentDate.getMonth() === 0) {
+                        currentDate = new Date(currentDate.getFullYear() - 1, 11);
+                        generateCalendar(currentDate);
+                    } else {
+                        currentDate = new Date(
+                            currentDate.getFullYear(),
+                            currentDate.getMonth() - 1
+                        );
+                        generateCalendar(currentDate);
+                    }
+                });
+                $("#right").click(function () {
+                    $("table").html("<tr></tr>");
+                    if (currentDate.getMonth() === 11) {
+                        currentDate = new Date(currentDate.getFullYear() + 1, 0);
+                        generateCalendar(currentDate);
+                    } else {
+                        currentDate = new Date(
+                            currentDate.getFullYear(),
+                            currentDate.getMonth() + 1
+                        );
+                        generateCalendar(currentDate);
+                    }
+                });
+                generateCalendar(currentDate);
             }
-
-
-            $("#left").click(function () {
-                $("table").text("");
-                if (currentDate.getMonth() === 0) {
-                    currentDate = new Date(currentDate.getFullYear() - 1, 11);
-                    generateCalendar(currentDate);
-                } else {
-                    currentDate = new Date(
-                        currentDate.getFullYear(),
-                        currentDate.getMonth() - 1
-                    );
-                    generateCalendar(currentDate);
-                }
-            });
-            $("#right").click(function () {
-                $("table").html("<tr></tr>");
-                if (currentDate.getMonth() === 11) {
-                    currentDate = new Date(currentDate.getFullYear() + 1, 0);
-                    generateCalendar(currentDate);
-                } else {
-                    currentDate = new Date(
-                        currentDate.getFullYear(),
-                        currentDate.getMonth() + 1
-                    );
-                    generateCalendar(currentDate);
-                }
-            });
-            generateCalendar(currentDate);
-        });
+        );
 
     </script>
 
@@ -545,5 +569,6 @@
                 clickable: true,
             },
         });
+
     </script>
 @endsection
