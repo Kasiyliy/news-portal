@@ -37,9 +37,9 @@
                                     <div class="form-check">
                                         <input class="form-check-input search" name="directions[]"
                                                type="checkbox" value="{{$direction->id}}"
-                                               id="defaultCheck1"
+                                               id="defaultCheck{{$direction->id}}"
                                             {{$selectedDirections ? in_array($direction->id, $selectedDirections) ? 'checked' : '' : ''}}>
-                                        <label class="form-check-label" for="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck{{$direction->id}}">
                                             {{$direction->name}}
                                         </label>
                                     </div>
