@@ -38,10 +38,11 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/prominent/{id}', ['uses' => 'MainController@prominentDetail', 'as' => 'prominent.detail'])->where('id', '[0-9]+');
     Route::get('/resource', ['uses' => 'MainController@resource', 'as' => 'resource']);
     Route::get('/about', ['uses' => 'MainController@about', 'as' => 'about']);
+    Route::get('/event/calendar', ['uses' => 'MainController@calendarEvent', 'as' => 'calendar.event']);
     Route::get('/event/{id}', ['uses' => 'MainController@event', 'as' => 'event'])->where('id', '[0-9]+');
     Route::get('/event/send', ['uses' => 'MainController@eventSend', 'as' => 'event.send']);
-    Route::get('/forum/questionnaire', ['uses' => 'MainController@forumAndQuestionnaire', 'as' => 'forum.questionnaire']);
 
+    Route::get('/forum/questionnaire', ['uses' => 'MainController@forumAndQuestionnaire', 'as' => 'forum.questionnaire']);
 
 
 });

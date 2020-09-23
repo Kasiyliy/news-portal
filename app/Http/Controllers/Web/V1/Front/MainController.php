@@ -35,8 +35,7 @@ class MainController extends WebBaseController
         $news = News::orderBy('created_at', 'desc')->take(4)->get();
         $business_categories = BusinessCategory::where('parent_category_id', null)->has('childCategories')->orderBy('created_at', 'desc')->get();
         $events = Event::where('is_accepted', true)->with(['images'])->get();
-
-        return $this->frontView('pages.index', compact('about_us', 'slider', 'news', 'business_categories','events'));
+        return $this->frontView('pages.index', compact('about_us', 'slider', 'news', 'business_categories', 'events'));
     }
 
     public function news()
@@ -94,8 +93,8 @@ class MainController extends WebBaseController
 
     public function businessDetail($id)
     {
-        $business_content = BusinessContent::where('id',$id)->with('category')->first();
-        if(!$business_content){
+        $business_content = BusinessContent::where('id', $id)->with('category')->first();
+        if (!$business_content) {
             throw new WebServiceExplainedException('Не найдено!');
         }
         $parent_category_id = $business_content->category->parent_category_id;
@@ -105,7 +104,7 @@ class MainController extends WebBaseController
     public function prominentDetail($id)
     {
         $user = ProminentUser::where('id', $id)->with('directions.direction', 'area')->first();
-        if(!$user){
+        if (!$user) {
             throw new WebServiceExplainedException('Не найдено!');
         }
         return $this->frontView('pages.prominent-detail', compact('user'));
@@ -175,8 +174,8 @@ class MainController extends WebBaseController
 
     public function event($id)
     {
-        $event = Event::where('id', $id)->where('is_accepted',true)->with(['images'])->first();
-        if(!$event){
+        $event = Event::where('id', $id)->where('is_accepted', true)->with(['images'])->first();
+        if (!$event) {
             throw new WebServiceExplainedException('Не найдено!');
 
         }
@@ -189,7 +188,18 @@ class MainController extends WebBaseController
     }
 
 
-    public function forumAndQuestionnaire() {
+    public function forumAndQuestionnaire()
+    {
         return $this->frontView('pages.forum-questionnaire');
+    }
+
+    public function calendarEvent(Request $request)
+    {
+        try {
+            $events = Event::where('date', '=', $request->date)->get();
+            return json_encode(['success' => true, 'events' => $events]);
+        } catch (\Exception $exception) {
+            return json_encode(['success' => false]);
+        }
     }
 }
