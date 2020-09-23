@@ -13,7 +13,7 @@ class BusinessController extends WebBaseController
 {
     public function business($id, Request $request)
     {
-        $parent_category = BusinessCategory::find($id);
+        $parent_category = BusinessCategory::where('id', $id)->where('parent_category_id', null)->first();
         if(!$parent_category) throw new WebServiceExplainedException('Не найдено!');
 
         $categories = BusinessCategory::where('parent_category_id', $parent_category->id)->orderBy('updated_at', 'desc')->get();
