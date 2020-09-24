@@ -61,7 +61,7 @@ Route::group(['namespace' => 'Front'], function () {
 
 
     //Forum
-    Route::get('/forum/questionnaire', ['uses' => 'ForumController@forumAndQuestionnaire', 'as' => 'forum.questionnaire']);
+    Route::get('/forum/forum-questionnaire', ['uses' => 'ForumController@forumAndQuestionnaire', 'as' => 'forum.forum-questionnaire']);
 
 
 });

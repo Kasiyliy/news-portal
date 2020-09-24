@@ -28,6 +28,7 @@
                     <h3>Информация</h3>
                     <p><b>ФИО:</b> {{$event->fio}}</p>
                     <p><b>Email:</b> {{$event->email}}</p>
+                    <p><b>Дата:</b> {{$event->date}}</p>
                     <p><b>Контактный номер:</b> {{$event->phone}}</p>
                     <p><b>Представитель:</b> {{$event->representative}}</p>
                     <p><b>Место проведения:</b> {{$event->place}}</p>

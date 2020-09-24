@@ -94,44 +94,44 @@
             {{csrf_field()}}
             <div class="form-group">
                 <label for="inputAddress">Іс-шараның аты <span>*</span></label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Іс-шараның аты" name = "title" required >
+                <input type="text" class="form-control" id="inputAddress" placeholder="Іс-шараның аты" value="{{old('title')}}" name="title" required >
             </div>
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="inputEmail4">Уақыты <span>*</span></label>
-                                <input class="form-control" type="date" id="start-date-input" name = "date" required>
+                                <input class="form-control" type="date" id="start-date-input" value="{{old('date')}}" name = "date" required>
                             </div>
 
                         </div>
             <div class="form-group">
                 <label for="inputAddress2">Ұйымдастырушы <span>*</span></label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Ұйымдастырушы" name = "representative" required>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Ұйымдастырушы" value="{{old('representative')}}" name = "representative" required>
             </div>
             <div class="form-group">
                 <label for="inputAddress2">Ұйымдастыратын жері</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Ұйымдастыратын жері" name = "place" >
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Ұйымдастыратын жері" value="{{old('place')}}" name = "place" >
             </div>
             <div class="form-group">
                 <label for="inputAddress2">Т.А.Ә <span>*</span></label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Т.А.Ә" name = "fio" required>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Т.А.Ә" value="{{old('fio')}}" name = "fio" required>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputCity">Телефон <span>*</span></label>
-                    <input class="form-control" type="tel" id="example-tel-input" name = "phone" required>
+                    <input class="form-control" type="tel" id="example-tel-input" value="{{old('phone')}}" name = "phone" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">E-mail <span>*</span></label>
-                    <input type="email" class="form-control" placeholder="E-mail" id="inputEmail3" name = "email" required>
+                    <input type="email" class="form-control" placeholder="E-mail" id="inputEmail3" value="{{old('email')}}" name = "email" required>
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputZip">Сайт</label>
-                    <input type="text" class="form-control" id="inputHtml" placeholder="www.jastar.kz" name = "website" >
+                    <input type="text" class="form-control" id="inputHtml" placeholder="www.jastar.kz" value="{{old('website')}}" name = "website" >
 
                 </div>
                 <div class="form-group col-md-12">
-                    <label for="exampleFormControlTextarea1">Қосымша ақпарат</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" cols="200" placeholder="Қосымша ақпарат" rows="8" name = "description"></textarea>
+                    <label for="exampleFormControlTextarea1">Қосымша ақпарат <span>*</span></label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" cols="200" placeholder="Қосымша ақпарат" rows="8" value="{{old('description')}}" name = "description" required></textarea>
                 </div>
 
                 <div class="form-group col-md-12">
@@ -140,7 +140,7 @@
                             <span class="input-group-text" id="inputGroupFileAddon01">Суреттерді таңдаңыз</span>
                         </div>
                         <div class="custom-file">
-                            <input id="file-input" type="file" class="custom-file-input" name = "images[]" accept="image/*" multiple >
+                            <input id="file-input" type="file" class="custom-file-input" value="{{old('images[]')}}" name = "images[]" accept="image/*" multiple >
                             <label class="custom-file-label" for="inputGroupFile04">Таңдау</label>
                         </div>
                     </div>

@@ -498,6 +498,7 @@
         line-height: 38px;
     }
 
+
     .footer__image__logo {
         margin: 0px 20px 50px 30px;
     }
@@ -516,5 +517,7 @@
 }
 
 @media (max-width: 767px) {
-
+    .calendar__general{
+        margin-bottom: 40px;
+    }
 }
