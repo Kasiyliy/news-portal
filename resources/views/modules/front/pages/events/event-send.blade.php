@@ -118,7 +118,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputCity">Телефон <span>*</span></label>
-                    <input class="form-control" type="tel" id="example-tel-input" value="{{old('phone')}}" name = "phone" required>
+                    <input class="form-control" type="tel" id="phone" name = "phone"  value="{{old('phone')}}" required placeholder="+7(777) 777-7777" >
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">E-mail <span>*</span></label>
@@ -165,6 +165,7 @@
 @endsection
 
 @section('scripts')
+
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
         (function() {
@@ -218,6 +219,14 @@
         }
 
         document.querySelector('#file-input').addEventListener("change", previewImages);
+    </script>
+
+    <script>
+
+        $(function(){
+
+            $("#phone").mask("+7(999) 999-9999");
+        });
     </script>
 
 @endsection

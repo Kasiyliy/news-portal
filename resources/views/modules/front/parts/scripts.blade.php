@@ -6,6 +6,7 @@
 <script type="text/javascript" src="{{asset('modules/front/assets/js/main.js')}}"></script>
 <script src="{{asset('modules/admin/assets/js/toastr.js')}}"></script>
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js" integrity="sha512-d4KkQohk+HswGs6A1d6Gak6Bb9rMWtxjOa0IiY49Q3TeFd5xAzjWXDCBW9RS7m86FQ4RzM2BdHmdJnnKRYknxw==" crossorigin="anonymous"></script>
 <script>
     toastr.options.closeButton = true;
     @if(session()->has('success'))
