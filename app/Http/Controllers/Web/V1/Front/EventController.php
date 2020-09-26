@@ -82,7 +82,7 @@ class EventController extends WebBaseController
             DB::rollBack();
             if($images) {
                 foreach ($images as $image) {
-                    $this->fileService->remove($image->image_path);
+                    $this->fileService->remove($image['image_path']);
                 }
             }
         }
