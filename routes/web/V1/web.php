@@ -169,6 +169,28 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/event/accept/{id}', ['uses' => 'EventController@accept', 'as' => 'event.accept'])->where('id', '[0-9]+');
         Route::get('/event/info/{id}', ['uses' => 'EventController@info', 'as' => 'event.info'])->where('id', '[0-9]+');
 
+
+
+        //Survey
+        Route::group(['namespace' => 'Survey', 'prefix' => 'survey'], function () {
+            //Area
+            Route::get('', ['uses' => 'SurveyController@index', 'as' => 'survey.index']);
+            Route::post('/store', ['uses' => 'SurveyController@store', 'as' => 'survey.store']);
+            Route::post('/update/{id}', ['uses' => 'SurveyController@update', 'as' => 'survey.update'])->where('id', '[0-9]+');
+//            Route::post('/area/delete/{id}', ['uses' => 'ProminentAreaController@delete', 'as' => 'prominent.area.delete'])->where('id', '[0-9]+');
+            Route::get('/questions/{survey_id}', ['uses' => 'QuestionController@index', 'as' => 'survey.question.index'])->where('survey_id', '[0-9]+');
+            Route::get('/question/create/{survey_id}', ['uses' => 'QuestionController@create', 'as' => 'survey.question.create'])->where('survey_id', '[0-9]+');
+            Route::post('/question/store/{survey_id}', ['uses' => 'QuestionController@store', 'as' => 'survey.question.store'])->where('survey_id', '[0-9]+');
+            Route::get('/question/edit/{id}', ['uses' => 'QuestionController@edit', 'as' => 'survey.question.edit'])->where('id', '[0-9]+');
+            Route::post('/question/update/{id}', ['uses' => 'QuestionController@update', 'as' => 'survey.question.update'])->where('id', '[0-9]+');
+
+
+
+            Route::post('/visible/{id}', ['uses' => 'SurveyController@changeVisibility', 'as' => 'survey.visible.change'])->where('id', '[0-9]+');
+
+        });
+
+
     });
 
     Route::group(['namespace' => 'System'], function () {

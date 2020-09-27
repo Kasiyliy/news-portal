@@ -9,15 +9,12 @@ use App\Http\Controllers\Web\WebBaseController;
 use App\Http\Forms\Web\V1\System\Content\Business\BusinessCategoryWebForm;
 use App\Http\Forms\Web\V1\System\Content\Business\BusinessChildCategoryWebForm;
 use App\Http\Forms\Web\V1\System\Content\Business\BusinessContentWebForm;
-use App\Http\Forms\Web\V1\System\Content\GuideContentWebForm;
 use App\Http\Requests\Web\V1\System\Content\Business\BusinessCategoryWebRequest;
 use App\Http\Requests\Web\V1\System\Content\Business\BusinessChildCategoryRequest;
 use App\Http\Requests\Web\V1\System\Content\Business\BusinessContentWebRequest;
-use App\Http\Requests\Web\V1\System\Content\GuideContentWebRequest;
 use App\Models\Entities\Content\Business\BusinessCategory;
 use App\Models\Entities\Content\Business\BusinessContent;
-use App\Models\Entities\Content\GuideCategory;
-use App\Models\Entities\Content\GuideContent;
+
 use App\Services\Common\V1\Support\FileService;
 
 class BusinessController extends WebBaseController
