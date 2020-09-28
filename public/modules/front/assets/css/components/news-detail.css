@@ -21,6 +21,18 @@
     background-color: #00656D;
 }
 
+.news__detail__inner h2 {
+    font-size: 30px;
+    line-height: 35px;
+    color: #00656D;
+}
+
+.news__detail__inner p {
+    color: #000000;
+    font-size: 18px;
+    line-height: 21px;
+}
+
 .news__detail__inner a {
     font-size: 14px;
     line-height: 24px;

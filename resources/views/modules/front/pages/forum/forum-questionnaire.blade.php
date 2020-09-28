@@ -63,8 +63,8 @@
     <section class="min__content">
         <div class="container justify-content-center my-4">
             <div class="row col-md-12">
-                <a href="" class="forum-questionnaire forum col-12 col-md-4 offset-md-1">Форум</a>
-                <a href="" class="forum-questionnaire questionnaire col-12 col-md-4 offset-md-2">Сауалнама</a>
+                <a href="{{route('forum.categories')}}" class="forum-questionnaire forum col-12 col-md-4 offset-md-1">Форум</a>
+                <a href="{{route('forum.questionnaire.list')}}" class="forum-questionnaire questionnaire col-12 col-md-4 offset-md-2">Сауалнама</a>
             </div>
         </div>
     </section>

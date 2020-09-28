@@ -171,8 +171,8 @@
                 <div class="mt-3">
                     <a href="{{route('welcome')}}">← Қайта оралу </a>
                 </div>
-                <div class="row news__block__content">
-                    <div class="col-12 col-lg-5 col-md-12 mt-4 news__block__slider">
+                <div class="row news__block__content mt-4">
+                    <div class="col-12 col-lg-5 col-md-12 news__block__slider">
                         <h2>Соңғы жаңалықтар</h2>
                         <div class="swiper-container">
                             <!-- Additional required wrapper -->
@@ -210,7 +210,7 @@
                             <div class="swiper-pagination"></div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-3 col-md-4 mt-4 mx-auto news__block__image">
+                    <div class="col-12 col-lg-3 col-md-4 mx-auto news__block__image">
                         @foreach($most_viewed as $m_v)
                             <div class="news__block__image_inner">
                                 <img src="{{asset($m_v->image_path)}}" alt="operator" width="232.5" height="232.5">
@@ -231,7 +231,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="col-12 col-lg-4 col-md-12 mt-4 news__block__collection">
+                    <div class="col-12 col-lg-4 col-md-12 news__block__collection">
                         @foreach($last_news as $n)
                         <div class="d-block">
                             <a href="{{route('news.detail', $n->id)}}"><h3>{{$n->title}}</h3></a>
