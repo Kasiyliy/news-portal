@@ -61,16 +61,18 @@
         const getOptions = () => {
             let inputs = document.getElementsByClassName('survey__input');
             let arr = [];
-            let optional = {};
+            let optional = [];
             for(let i=0; i<inputs.length; i++){
                 if(inputs[i].checked){
                     arr.push(inputs[i].id);
                 }
                 if(inputs[i].name === 'optional-input' && inputs[i].value != ''){
-                    optional = {
-                        'id': inputs[i].id,
-                        'value': inputs[i].value
-                    }
+                    optional.push(
+                        {
+                            'id': inputs[i].id,
+                            'value': inputs[i].value
+                        }
+                    )
                 }
             }
 
