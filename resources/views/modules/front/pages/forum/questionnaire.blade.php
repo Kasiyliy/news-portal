@@ -81,7 +81,7 @@
                     method: "get",
                     url: "{{route('forum.questionnaire.post')}}",
                     data: {
-                        options: arr,
+                        options: JSON.stringify(arr),
                         optional: JSON.stringify(optional)
                     },
                     success: function (response) {
