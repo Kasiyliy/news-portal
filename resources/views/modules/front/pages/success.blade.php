@@ -43,7 +43,7 @@
     <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
         <i class="checkmark">✓</i>
     </div>
-    <h1 class="mt-2">Іс-шара сәтті жіберілді!</h1>
+    <h1 class="mt-2">{{$message}}</h1>
     <a href="{{route('welcome')}}" class="btn btn-outline-success mt-3">ОК!</a>
 </div>
 </body>

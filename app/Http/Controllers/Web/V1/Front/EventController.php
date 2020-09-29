@@ -77,7 +77,8 @@ class EventController extends WebBaseController
             EventImage::insert($images);
             $this->added();
             DB::commit();
-            return redirect()->route('success');
+            $message = 'Іс-шара сәтті жіберілді!';
+            return redirect()->route('success',compact('message'));
         } catch (\Exception $exception) {
             DB::rollBack();
             if($images) {

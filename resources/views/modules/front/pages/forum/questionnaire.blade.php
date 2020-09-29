@@ -58,6 +58,7 @@
 
 @section('scripts')
     <script>
+
         const getOptions = () => {
             let inputs = document.getElementsByClassName('survey__input');
             let arr = [];
@@ -82,10 +83,11 @@
                     url: "{{route('forum.questionnaire.post')}}",
                     data: {
                         options: JSON.stringify(arr),
-                        optional: JSON.stringify(optional)
+                        optional: JSON.stringify(optional),
+                        survey_id:'{{$survey_id}}'
                     },
                     success: function (response) {
-                        // let events = JSON.parse(response);
+                        window.location.href = response;
                     }
                 });
             });

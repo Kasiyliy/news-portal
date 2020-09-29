@@ -9,7 +9,11 @@ use App\Http\Requests\Web\V1\System\Content\Survey\SendQuestionnaireWebRequest;
 use App\Models\Entities\Content\Survey\Question;
 use App\Models\Entities\Content\Survey\QuestionOption;
 use App\Models\Entities\Content\Survey\Survey;
+use App\Models\Entities\Content\Survey\SurveyResult;
+use App\Models\Entities\Content\Survey\SurveyResultAnswer;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ForumController extends WebBaseController
 {
@@ -46,6 +50,64 @@ class ForumController extends WebBaseController
     }
 
     public function questionnairePost(SendQuestionnaireWebRequest $request){
-        dd($request->options);
+        try {
+
+            $open_answers = json_decode($request->optional);
+            $options = json_decode($request->options);
+
+            $survey = Survey::find($request->survey_id);
+
+            if(!$survey){
+            throw new WebServiceExplainedException('Не найдено!');
+        }
+        DB::beginTransaction();
+        $result = SurveyResult::create([
+            'survey_id' => $survey->id
+        ]);
+        $now = Carbon::now();
+       $answers = array();
+       $answers2 = array();
+        foreach ( $options as $option_id) {
+            $option = QuestionOption::find($option_id);
+            if (!$option){
+                throw new WebServiceExplainedException('Не найдено!');
+            }
+
+            $answers[] = [
+                'question_id' => $option->question_id,
+                'question_option_id' => $option->id,
+                'survey_result_id' => $result->id,
+                'created_at' => $now,
+                'updated_at' => $now
+            ];
+        }
+
+        foreach ( $open_answers as $open_answer){
+            $question = QuestionOption::find($open_answer->id);
+            if (!$question){
+                throw new WebServiceExplainedException('Не найдено!');
+            }
+            $answers2[] = [
+                'question_id' => $question->id,
+                'survey_result_id' => $result->id,
+                'text' => $open_answer->value,
+                'created_at' => $now,
+                'updated_at' => $now
+            ];
+        }
+        SurveyResultAnswer::insert($answers);
+        SurveyResultAnswer::insert($answers2);
+        DB::commit();
+        $message = 'Саулнама сәтті жіберілді!';
+
+        return route('success',compact('message'));
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            throw new WebServiceExplainedException($exception->getMessage());
+
+        }
     }
+
+
+
 }

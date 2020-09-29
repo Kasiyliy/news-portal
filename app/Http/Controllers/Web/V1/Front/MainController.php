@@ -38,8 +38,10 @@ class MainController extends WebBaseController
         return $this->frontView('pages.index', compact('about_us', 'slider', 'news', 'business_categories'));
     }
 
-    public function success() {
-        return $this->frontView('pages.success');
+    public function success(Request $request) {
+
+        $message = $request->message;
+        return $this->frontView('pages.success', compact('message'));
     }
 
     public function groups()

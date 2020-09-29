@@ -34,7 +34,8 @@ class Sidebar extends BaseComponent
                 $this->navItem(route('prominent.user.index'), 'ti-user', 'Люди'),
                 $this->navItem(route('about_project.index'), 'ti-clipboard', 'О проекте'),
                 $this->navItem(route('event.index'), 'ti-calendar', 'Мероприятия'),
-                $this->navItem(route('survey.index'), 'ti-check-box', 'Опросы')
+                $this->navItem(route('survey.index'), 'ti-check-box', 'Опросы'),
+                $this->navItem(route('forum.index'), 'ti-comments', 'Форум')
 
 
             ];

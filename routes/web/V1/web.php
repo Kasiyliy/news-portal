@@ -194,7 +194,26 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/visible/{id}', ['uses' => 'SurveyController@changeVisibility', 'as' => 'survey.visible.change'])->where('id', '[0-9]+');
 
         });
+        Route::group(['namespace' => 'Forum', 'prefix' => 'forum'], function () {
+            Route::get('', ['uses' => 'ForumCategoryController@index', 'as' => 'forum.index']);
+            Route::post('store', ['uses' => 'ForumCategoryController@store', 'as' => 'forum.store']);
+            Route::post('update/{id}', ['uses' => 'ForumCategoryController@update', 'as' => 'forum.update'])->where('id', '[0-9]+');
+            Route::post('delete/{id}', ['uses' => 'ForumCategoryController@delete', 'as' => 'forum.delete'])->where('id', '[0-9]+');
 
+
+
+            Route::get('categories/{category_id}', ['uses' => 'ForumCategoryController@childCategory', 'as' => 'forum.category.index'])->where('category_id', '[0-9]+');
+            Route::post('categories/store/{category_id}', ['uses' => 'ForumCategoryController@childCategoryStore', 'as' => 'forum.category.store'])->where('category_id', '[0-9]+');
+            Route::post('categories/update/{id}', ['uses' => 'ForumCategoryController@childCategoryUpdate', 'as' => 'forum.category.update'])->where('id', '[0-9]+');
+            Route::post('categories/delete/{id}', ['uses' => 'ForumCategoryController@childCategoryDelete', 'as' => 'forum.category.delete'])->where('id', '[0-9]+');
+
+
+            Route::get('topics/{category_id}', ['uses' => 'ForumTopicController@index', 'as' => 'forum.topic.index'])->where('category_id', '[0-9]+');
+            Route::post('topics/delete/{id}', ['uses' => 'ForumTopicController@delete', 'as' => 'forum.topic.delete'])->where('id', '[0-9]+');
+            Route::get('messages/{topic_id}', ['uses' => 'ForumTopicController@message', 'as' => 'forum.message.index'])->where('topic_id', '[0-9]+');
+            Route::post('messages/delete/{id}', ['uses' => 'ForumTopicController@messageDelete', 'as' => 'forum.message.delete'])->where('id', '[0-9]+');
+
+        });
 
     });
 

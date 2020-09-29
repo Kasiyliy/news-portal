@@ -19,6 +19,7 @@
                         <x-admin.input-form-group-list
                             :errors="$errors"
                             :elements="$content_web_form"/>
+
                         <button type="submit" class="offset-md-4 col-md-4 btn btn-block btn-wide btn-primary text-uppercase">
                             Сохранить <i class="ti ti-check"></i>
                         </button>
