@@ -23,7 +23,7 @@
         line-height: 26px;
         color: #00656D;
     }
-    .forum__messagel i, p{
+    .forum__message i, p{
         color: #00656D;
     }
 </style>
@@ -61,7 +61,7 @@
                         <li><a href="#">Төрт түлік мал</a></li>
                         <li><a href="#">Уақ малдар</a></li>
                     </div>
-                    <div class="col forum__message text-center">
+                    <div class="forum__message text-center">
                         <i class="fa fa-comments fa-3x"></i>
                         <p>300 сообщении</p>
                     </div>
@@ -77,7 +77,7 @@
                         <li><a href="#">Қантты дақылдар</a></li>
                         <li><a href="#">Күздік дақылдар</a></li>
                     </div>
-                    <div class="co forum__messagel text-center">
+                    <div class="forum__message text-center">
                         <i class="fa fa-comments fa-3x"></i>
                         <p>200 сообщении</p>
                     </div>
@@ -93,62 +93,7 @@
                         <li><a href="#">Төрт түлік мал</a></li>
                         <li><a href="#">Мал аурулары</a></li>
                     </div>
-                    <div class="co forum__messagel text-center">
-                        <i class="fa fa-comments fa-3x"></i>
-                        <p>100 сообщении</p>
-                    </div>
-                </div>
-            </div>
-            <p class="forum-btn">
-                <a class="btn btn-info btn-block text-left" type="button" data-toggle="collapse"
-                   data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    Ауыл шаруашылығы бойынша форум
-                </a>
-                <span class="button__messages">500 сообщении</span>
-            </p>
-            <div class="collapse mb-2" id="collapseExample">
-                <div class="card card-body flex-row ">
-                    <div class="col forum__title">
-                        <h5>Мал шаруашылығы</h5>
-                    </div>
-                    <div class="col forum__content">
-                        <li><a href="#">Ірі қара мал</a></li>
-                        <li><a href="#">Төрт түлік мал</a></li>
-                        <li><a href="#">Уақ малдар</a></li>
-                    </div>
-                    <div class="co forum__messagel text-center">
-                        <i class="fa fa-comments fa-3x"></i>
-                        <p>300 сообщении</p>
-                    </div>
-                </div>
-            </div>
-            <div class="collapse mb-2" id="collapseExample">
-                <div class="card card-body flex-row ">
-                    <div class="col forum__title">
-                        <h5>Егін шаруашылығы</h5>
-                    </div>
-                    <div class="col forum__content">
-                        <li><a href="#">Дәнді дақылдар</a></li>
-                        <li><a href="#">Қантты дақылдар</a></li>
-                        <li><a href="#">Күздік дақылдар</a></li>
-                    </div>
-                    <div class="co forum__messagel text-center">
-                        <i class="fa fa-comments fa-3x"></i>
-                        <p>200 сообщении</p>
-                    </div>
-                </div>
-            </div>
-            <div class="collapse mb-2" id="collapseExample">
-                <div class="card card-body flex-row ">
-                    <div class="col forum__title">
-                        <h5>Ветеринария </h5>
-                    </div>
-                    <div class="col forum__content">
-                        <li><a href="#">Үй жануарлары</a></li>
-                        <li><a href="#">Төрт түлік мал</a></li>
-                        <li><a href="#">Мал аурулары</a></li>
-                    </div>
-                    <div class="co forum__messagel text-center">
+                    <div class="forum__message text-center">
                         <i class="fa fa-comments fa-3x"></i>
                         <p>100 сообщении</p>
                     </div>

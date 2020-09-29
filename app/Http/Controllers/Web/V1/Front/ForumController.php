@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\V1\Front;
 use App\Exceptions\Web\WebServiceExplainedException;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Web\WebBaseController;
+use App\Http\Requests\Web\V1\System\Content\Survey\SendQuestionnaireWebRequest;
 use App\Models\Entities\Content\Survey\Question;
 use App\Models\Entities\Content\Survey\QuestionOption;
 use App\Models\Entities\Content\Survey\Survey;
@@ -25,7 +26,8 @@ class ForumController extends WebBaseController
             throw new WebServiceExplainedException('Не найдено!');
         }
         $questions = Question::where('survey_id', $survey->id)->with(['options'])->with('type')->get();
-        return $this->frontView('pages.forum.questionnaire', compact('questions'));
+        $survey_id = $id;
+        return $this->frontView('pages.forum.questionnaire', compact('questions', 'survey_id'));
     }
     public function questionnaireList()
     {
@@ -41,5 +43,9 @@ class ForumController extends WebBaseController
     public function categoryDetail($id)
     {
         return $this->frontView('pages.forum.category-detail');
+    }
+
+    public function questionnairePost(SendQuestionnaireWebRequest $request){
+        dd($request->options);
     }
 }

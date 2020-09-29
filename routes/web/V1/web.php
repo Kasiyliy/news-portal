@@ -66,6 +66,7 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/forum/questionnaire-list', ['uses' => 'ForumController@questionnaireList', 'as' => 'forum.questionnaire.list']);
     Route::get('/forum/categories', ['uses' => 'ForumController@categories', 'as' => 'forum.categories']);
     Route::get('/forum/categories/{id}', ['uses' => 'ForumController@categoryDetail', 'as' => 'forum.category.detail'])->where('id', '[0-9]+');
+    Route::get('/forum/questionnaire/post', ['uses' => 'ForumController@questionnairePost', 'as' => 'forum.questionnaire.post']);
 
 
 });
