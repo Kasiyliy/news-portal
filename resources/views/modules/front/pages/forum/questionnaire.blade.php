@@ -82,7 +82,7 @@
                     url: "{{route('forum.questionnaire.post')}}",
                     data: {
                         options: arr.length > 0 ? arr.join() : null,
-                        optional: optional
+                        optional: JSON.stringify(optional)
                     },
                     success: function (response) {
                         // let events = JSON.parse(response);
