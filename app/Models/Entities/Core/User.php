@@ -3,15 +3,18 @@
 namespace App\Models\Entities\Core;
 
 use App\Models\Entities\Support\AppFile;
-use App\Models\Entities\System\Car;
-use App\Models\Entities\System\Order;
-use App\Models\Entities\System\Organization;
+
+
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject
+class User extends Authenticatable implements JWTSubject ,MustVerifyEmail
 {
+    public const DEFAULT_RESOURCE_DIRECTORY = 'images/avatars';
+
     use Notifiable;
 
     /**
@@ -19,13 +22,16 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array
      */
+
+
     protected $fillable = [
         'name',
         'email',
         'password',
         'phone',
         'role_id',
-        'avatar_file_id'
+        'avatar_file_id',
+        'iin'
     ];
 
     /**
@@ -75,5 +81,8 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->role_id == Role::ADMIN_ID;
     }
+
+
+
 
 }

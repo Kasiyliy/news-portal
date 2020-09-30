@@ -14,11 +14,12 @@
 
             <div class="card flex-row flex-wrap">
                 <div class="card-header border-dark">
-                    <img src="{{auth()->user()->getAvatar()}}" width="100">
+                    <img src="{{auth()->user()->avatar_path}}" width="100">
                 </div>
                 <div class="card-block p-4">
                     <h4 class="card-title">{{auth()->user()->name}}</h4>
-                    <p class="card-text">{{auth()->user()->status}}</p>
+                    <p class="card-text">{{auth()->user()->surname}}</p>
+                    <p class="card-text">{{auth()->user()->email}}</p>
                 </div>
             </div>
         </div>

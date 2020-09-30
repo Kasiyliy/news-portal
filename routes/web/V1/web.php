@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,13 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+    Auth::routes(['verify' => true]);
+Route::group(['namespace' => 'Auth','verify' => true], function () {
 
-Route::group(['namespace' => 'Auth'], function () {
     Route::get('register', ['as' => 'register', 'uses' => 'RegisterController@showRegistrationForm']);
     Route::post('register', ['as' => 'register.post', 'uses' => 'RegisterController@register']);
     Route::get('login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
     Route::post('login', ['as' => 'login.post', 'uses' => 'LoginController@login']);
     Route::post('logout', ['as' => 'logout', 'uses' => 'LoginController@logout']);
+});
+
+Route::group(['namespace' => 'Admin'], function () {
+    Route::get('/admin/register', ['as' => 'admin.register', 'uses' => 'RegisterController@showRegisterForm']);
+    Route::post('/admin/register', ['as' => 'admin.register.post', 'uses' => 'RegisterController@register']);
+
 });
 
 Route::group(['namespace' => 'Core'], function () {
@@ -64,17 +71,21 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/forum/forum-questionnaire', ['uses' => 'ForumController@forumAndQuestionnaire', 'as' => 'forum.forum-questionnaire']);
     Route::get('/forum/questionnaire/{id}', ['uses' => 'ForumController@questionnaire', 'as' => 'forum.questionnaire'])->where('id', '[0-9]+');
     Route::get('/forum/questionnaire-list', ['uses' => 'ForumController@questionnaireList', 'as' => 'forum.questionnaire.list']);
-    Route::get('/forum/categories', ['uses' => 'ForumController@categories', 'as' => 'forum.categories']);
-    Route::get('/forum/categories/{id}', ['uses' => 'ForumController@categoryDetail', 'as' => 'forum.category.detail'])->where('id', '[0-9]+');
+    Route::get('/forum/categories', ['uses' => 'ForumController@categories', 'as' => 'forum.categories'])->middleware('auth');
+    Route::get('/forum/categories/{id}', ['uses' => 'ForumController@categoryDetail', 'as' => 'forum.category.detail'])->where('id', '[0-9]+')->middleware('auth');
     Route::get('/forum/questionnaire/post', ['uses' => 'ForumController@questionnairePost', 'as' => 'forum.questionnaire.post']);
 
 
 });
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth','verify' => true], function () {
+
+
     Route::group(['namespace' => 'Core'], function () {
         Route::get('/home', ['uses' => 'PageController@home', 'as' => 'home']);
     });
+
+    Route::group(['middleware' => ['ROLE_OR:' . \App\Models\Entities\Core\Role::ADMIN_ID]], function () {
     Route::group(['namespace' => 'System', 'prefix' => 'admin'], function () {
         Route::get('/about-us', ['uses' => 'AboutUsController@index', 'as' => 'about_us.index']);
         Route::post('/about-us/update', ['uses' => 'AboutUsController@update', 'as' => 'about_us.update']);
@@ -216,12 +227,15 @@ Route::group(['middleware' => 'auth'], function () {
         });
 
     });
-
-    Route::group(['namespace' => 'System'], function () {
-        Route::get('/profile', ['uses' => 'UserController@profile', 'as' => 'user.profile']);
-        Route::post('/change-password', ['uses' => 'UserController@changePassword', 'as' => 'change.password']);
-        Route::post('/update-profile', ['uses' => 'UserController@updateProfileInfo', 'as' => 'update.profile']);
     });
+    Route::group(['middleware' => 'auth','verify' => true], function () {
+        Route::group(['namespace' => 'System'], function () {
+            Route::get('/profile', ['uses' => 'UserController@profile', 'as' => 'user.profile'])->middleware('verified');
+            Route::post('/change-password', ['uses' => 'UserController@changePassword', 'as' => 'change.password']);
+            Route::post('/update-profile', ['uses' => 'UserController@updateProfileInfo', 'as' => 'update.profile']);
+        });
+    });
+
 });
 
 

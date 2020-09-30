@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Core\Errors\ErrorCode;
+
 use App\Core\Traits\ErrorTrait;
 use Closure;
 
@@ -22,10 +22,9 @@ class RoleOr
         if (in_array(auth()->user()->role_id, $roleIds)) {
             return $next($request);
         } else {
-            $this->adaptedFail(
-                trans('error.access.denied'),
-                403,
-                ErrorCode::ACCESS_DENIED);
+            request()->session()->flash('warning', 'Доступ запрещен!');
+            return redirect()->back();
+
         }
     }
 }

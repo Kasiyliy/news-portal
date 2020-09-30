@@ -17,7 +17,7 @@ class UpdateProfileWebRequest extends WebBaseRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'status' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
             'file' => ['nullable', 'image'],
         ];
     }

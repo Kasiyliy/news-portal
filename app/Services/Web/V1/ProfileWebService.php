@@ -15,5 +15,5 @@ interface ProfileWebService
 {
     public function changePassword($currentUser, $oldPassword, $newPassword);
 
-    public function updateProfile($currentUser, $name, $status, UploadedFile $file = null);
+    public function updateProfile($currentUser, $name, $surname, UploadedFile $file = null);
 }

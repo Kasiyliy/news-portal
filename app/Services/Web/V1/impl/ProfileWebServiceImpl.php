@@ -9,6 +9,7 @@
 namespace App\Services\Web\V1\impl;
 
 
+use App\Models\Entities\Core\User;
 use App\Services\BaseService;
 use App\Services\Common\V1\Support\FileService;
 use App\Services\Web\V1\ProfileWebService;
@@ -44,18 +45,19 @@ class ProfileWebServiceImpl extends BaseService implements ProfileWebService
         }
     }
 
-    public function updateProfile($currentUser, $name, $status, UploadedFile $file = null)
+    public function updateProfile($currentUser, $name, $surname, UploadedFile $file = null)
     {
         DB::beginTransaction();
         try {
             $currentUser->name = $name;
-            $currentUser->status = $status;
+            $currentUser->surname = $surname;
+            $path = $currentUser->avatar_path;
+
             if ($file) {
-                $oldFile = $currentUser->avatar;
-                $newAppFile = $this->fileService->putFile($file);
-                $currentUser->avatar_file_id = $newAppFile->id;
-                $this->fileService->removeFile($oldFile);
+                $path = $this->fileService
+                    ->updateWithRemoveOrStore($file, User::DEFAULT_RESOURCE_DIRECTORY, $path);
             }
+            $currentUser->avatar_path = $path;
             $currentUser->save();
             DB::commit();
         } catch (\Exception $exception) {

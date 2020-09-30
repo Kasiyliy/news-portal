@@ -46,7 +46,7 @@ class UserController extends WebBaseController
             $request->password
         );
         $this->edited();
-        return $this->back();
+        return redirect()->route('user.profile');
     }
 
     public function updateProfileInfo(UpdateProfileWebRequest $request)
@@ -55,10 +55,10 @@ class UserController extends WebBaseController
         $this->profileWebService->updateProfile(
             $this->getCurrentUser(),
             $request->name,
-            $request->status,
+            $request->surname,
             $request->file('file')
         );
         $this->edited();
-        return $this->back();
+        return redirect()->route('user.profile');
     }
 }

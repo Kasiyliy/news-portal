@@ -4,12 +4,19 @@ namespace App\Http\Controllers\Web\V1\Auth;
 
 use App\Http\Controllers\Web\WebBaseController;
 use App\Http\Forms\Web\V1\Auth\RegisterWebForm;
+use App\Http\Forms\Web\V1\Auth\UserRegisterWebForm;
 use App\Models\Entities\Core\Role;
 use App\Models\Entities\Core\User;
 use App\Models\Entities\Support\AppFile;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Rules\YearRule;
 
 class RegisterController extends WebBaseController
 {
@@ -24,19 +31,46 @@ class RegisterController extends WebBaseController
     |
     */
 
-    use RegistersUsers;
+    use RedirectsUsers;
 
-    protected $redirectTo = RouteServiceProvider::HOME;
 
     public function __construct()
     {
         $this->middleware('guest');
     }
 
+    public function register(Request $request)
+    {
+
+        $this->validator($request->all())->validate();
+
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 201)
+            : redirect()->route('user.profile');
+    }
+
+
+    public function showRegistrationForm()
+    {
+        $register_web_form = RegisterWebForm::inputGroups();
+        return $this->adminView('core.auth.register',compact('register_web_form'));
+    }
+
     protected function validator(array $data)
     {
+
+
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'iin' => ['required', 'string', 'min:12' , 'max:12','unique:users',new YearRule()],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -45,19 +79,22 @@ class RegisterController extends WebBaseController
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'iin' => $data['iin'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'role_id' => Role::ORGANIZATION_ID,
-            'avatar_file_id' => AppFile::DEFAULT_IMAGE_ID
+            'role_id' => Role::CLIENT_ID,
+            'avatar_file_id' => AppFile::DEFAULT_IMAGE_ID,
+            'avatar_path' => 'images/avatar.png'
         ]);
     }
 
-    public function showRegistrationForm()
+    protected function guard()
     {
-        $registerInputs = RegisterWebForm::inputGroups();
-        return $this->adminView('core.auth.register', compact('registerInputs'));
+        return Auth::guard();
     }
 
-
+    protected function registered(Request $request, $user)
+    {
+        //
+    }
 }

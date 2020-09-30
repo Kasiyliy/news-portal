@@ -20,6 +20,7 @@ class Sidebar extends BaseComponent
 
     public function navList()
     {
+
         if ($this->user->isAdmin()) {
             return [
                 $this->navItem(route('home'), 'ti-home', 'Главная'),
@@ -40,7 +41,9 @@ class Sidebar extends BaseComponent
 
             ];
         } else {
-            return [];
+            return [
+                $this->navItem(route('welcome'), 'ti-arrow-left', 'Вебсайт')
+            ];
         }
     }
 

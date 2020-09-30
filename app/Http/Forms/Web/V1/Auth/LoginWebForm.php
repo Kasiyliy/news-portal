@@ -18,7 +18,7 @@ class LoginWebForm implements WithForm
     public static function inputGroups($value = null): array
     {
         return array_merge(
-            FormUtil::input('email', 'Введите email:', 'Email', 'text', true),
+            FormUtil::input('email', 'Введите email или ИИН:', 'Email или ИИН', 'text', true),
             FormUtil::input('password', 'Введите пароль:', 'Пароль', 'password', true)
         );
     }

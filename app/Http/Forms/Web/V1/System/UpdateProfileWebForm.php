@@ -18,7 +18,7 @@ class UpdateProfileWebForm implements WithForm
     {
         return array_merge(
             FormUtil::input('name', 'Введите ваше имя:', 'Имя', 'text', true, $value ? $value->name : null),
-            FormUtil::input('status', 'Enter status:', 'Статус', 'text', true, $value ? $value->status : null),
+            FormUtil::input('surname', 'Введите ваше фамилию:', 'Фамилия', 'text', true, $value ? $value->surname : null),
             FormUtil::input('file', 'Выберите фото:', 'Аватар:', 'file', false)
         );
     }
