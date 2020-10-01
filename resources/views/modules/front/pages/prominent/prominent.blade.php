@@ -21,7 +21,7 @@
                 </div>
                 <div class="Collage effect-parent">
                     @foreach($users_photos as $u_photo)
-                        <img src="{{$u_photo->avatar_path}}" alt="">
+                        <img style="max-height: 270px; max-width: 350px;" src="{{$u_photo->avatar_path}}" alt="">
                     @endforeach
                 </div>
                 <div class="prominent__content row">
