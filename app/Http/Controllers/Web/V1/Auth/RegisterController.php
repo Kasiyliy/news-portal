@@ -62,7 +62,7 @@ class RegisterController extends WebBaseController
     public function showRegistrationForm()
     {
         $register_web_form = RegisterWebForm::inputGroups();
-        return $this->adminView('core.auth.register',compact('register_web_form'));
+        return $this->frontView('core.auth.register',compact('register_web_form'));
     }
 
     protected function validator(array $data)
