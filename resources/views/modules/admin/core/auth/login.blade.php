@@ -13,6 +13,8 @@
                         <input id="rememberMe" name="remember" {{ old('remember') ? 'checked' : '' }}
                         class="custom-control-input" type="checkbox">
                         <label class="custom-control-label text-dark" for="rememberMe">Запомнить меня</label>
+{{--                        <a class="reset_pass" href="{{route('password.reset')}}">Забыли пароль?</a>--}}
+
                     </div>
                 </div>
                 <button type="submit" class="btn btn-block btn-wide btn-primary text-uppercase">
@@ -21,10 +23,11 @@
                 <div class="divider-with-text text-center my-4 mx-7">
                     <span class="divider-with-text__content"></span>
                 </div>
-                <p class="text-center mb-0">
-                    Нет аккаунта?
-                    <a class="font-weight-semi-bold" href="{{route('register')}}">Зарегистрируйтесь</a>
-                </p>
+{{--                <p class="text-center mb-0">--}}
+{{--                    Нет аккаунта?--}}
+{{--                    <a class="font-weight-semi-bold" href="{{route('register')}}">Зарегистрируйтесь</a>--}}
+{{--                </p>--}}
+
             </form>
         </div>
     </div>

@@ -4,7 +4,7 @@
     <section class="news__detail">
         <div class="container">
             <div class="news__detail__inner">
-                <h1>Жастар ұйымдары</h1>
+                <h1>Мемлекеттік бағдарламалар</h1>
                 <div class="mt-3 mb-3">
                     <a href="{{route('welcome')}}">← Қайта оралу </a>
                 </div>
@@ -18,9 +18,9 @@
             <div class="row">
                 <div class="col-sm-12 col-lg-3">
                     <ul class="list-group bs-4" id="groups">
-                        @foreach($groups as $group)
-                            <li onclick="chooseContent(this, {{$group}})" class="list-group-item cursor d-flex justify-content-between">
-                                <span>{{$group->name}}</span><b>></b>
+                        @foreach($programs as $program)
+                            <li onclick="chooseContent(this, {{$program}})" class="list-group-item cursor d-flex justify-content-between">
+                                <span>{{$program->name}}</span><b>></b>
                             </li>
                         @endforeach
                     </ul>
@@ -57,7 +57,7 @@
             if(currentChosenEl) {
                 currentChosenEl.classList.add('bg-sj-gray');
             }
-            content.innerHTML = `{!! $groups->first() ? $groups->first()->description : 'Ұйымдар жоқ!' !!}`;
+            content.innerHTML = `{!! $programs->first() ? $programs->first()->description : 'Бағдарламалар жоқ!' !!}`;
         }
 
     </script>

@@ -21,6 +21,12 @@ Route::group(['namespace' => 'Auth','verify' => true], function () {
     Route::get('login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
     Route::post('login', ['as' => 'login.post', 'uses' => 'LoginController@login']);
     Route::post('logout', ['as' => 'logout', 'uses' => 'LoginController@logout']);
+
+
+    Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.reset');
+    Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+    Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset.token');
+    Route::post('password/reset', 'ResetPassword`Controller@reset');
 });
 
 Route::group(['namespace' => 'Admin'], function () {
@@ -42,6 +48,9 @@ Route::group(['namespace' => 'Front'], function () {
 
     //Groups
     Route::get('/groups', ['uses' => 'MainController@groups', 'as' => 'groups']);
+
+    //Groups
+    Route::get('/programs', ['uses' => 'MainController@programs', 'as' => 'programs']);
 
     //Guides
     Route::get('/guide', ['uses' => 'MainController@guide', 'as' => 'guide']);
@@ -122,6 +131,14 @@ Route::group(['middleware' => 'auth','verify' => true], function () {
         Route::post('/group/store', ['uses' => 'TeenagerGroupController@store', 'as' => 'groups.store']);
         Route::post('/group/update/{id}', ['uses' => 'TeenagerGroupController@update', 'as' => 'groups.update'])->where('id', '[0-9]+');
         Route::post('/group/delete/{id}', ['uses' => 'TeenagerGroupController@delete', 'as' => 'groups.delete'])->where('id', '[0-9]+');
+
+        //Government programs
+        Route::get('/programs', ['uses' => 'GovernmentProgramController@index', 'as' => 'programs.index']);
+        Route::get('/program/create', ['uses' => 'GovernmentProgramController@create', 'as' => 'programs.create']);
+        Route::get('/program/edit/{id}', ['uses' => 'GovernmentProgramController@edit', 'as' => 'programs.edit'])->where('id', '[0-9]+');
+        Route::post('/program/store', ['uses' => 'GovernmentProgramController@store', 'as' => 'programs.store']);
+        Route::post('/program/update/{id}', ['uses' => 'GovernmentProgramController@update', 'as' => 'programs.update'])->where('id', '[0-9]+');
+        Route::post('/program/delete/{id}', ['uses' => 'GovernmentProgramController@delete', 'as' => 'programs.delete'])->where('id', '[0-9]+');
 
         //Slider
         Route::get('/slider', ['uses' => 'SliderController@index', 'as' => 'slider.index']);
@@ -234,7 +251,8 @@ Route::group(['middleware' => 'auth','verify' => true], function () {
     });
     Route::group(['middleware' => 'auth','verify' => true], function () {
         Route::group(['namespace' => 'System'], function () {
-            Route::get('/profile', ['uses' => 'UserController@profile', 'as' => 'user.profile'])->middleware('verified');
+//            Route::get('/profile', ['uses' => 'UserController@profile', 'as' => 'user.profile'])->middleware('verified');
+            Route::get('/profile', ['uses' => 'UserController@profile', 'as' => 'user.profile']);
             Route::post('/change-password', ['uses' => 'UserController@changePassword', 'as' => 'change.password']);
             Route::post('/update-profile', ['uses' => 'UserController@updateProfileInfo', 'as' => 'update.profile']);
         });
