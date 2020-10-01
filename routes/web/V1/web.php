@@ -49,6 +49,9 @@ Route::group(['namespace' => 'Front'], function () {
     //Groups
     Route::get('/groups', ['uses' => 'MainController@groups', 'as' => 'groups']);
 
+    //Groups
+    Route::get('/programs', ['uses' => 'MainController@programs', 'as' => 'programs']);
+
     //Guides
     Route::get('/guide', ['uses' => 'MainController@guide', 'as' => 'guide']);
 
@@ -124,6 +127,14 @@ Route::group(['middleware' => 'auth','verify' => true], function () {
         Route::post('/group/store', ['uses' => 'TeenagerGroupController@store', 'as' => 'groups.store']);
         Route::post('/group/update/{id}', ['uses' => 'TeenagerGroupController@update', 'as' => 'groups.update'])->where('id', '[0-9]+');
         Route::post('/group/delete/{id}', ['uses' => 'TeenagerGroupController@delete', 'as' => 'groups.delete'])->where('id', '[0-9]+');
+
+        //Government programs
+        Route::get('/programs', ['uses' => 'GovernmentProgramController@index', 'as' => 'programs.index']);
+        Route::get('/program/create', ['uses' => 'GovernmentProgramController@create', 'as' => 'programs.create']);
+        Route::get('/program/edit/{id}', ['uses' => 'GovernmentProgramController@edit', 'as' => 'programs.edit'])->where('id', '[0-9]+');
+        Route::post('/program/store', ['uses' => 'GovernmentProgramController@store', 'as' => 'programs.store']);
+        Route::post('/program/update/{id}', ['uses' => 'GovernmentProgramController@update', 'as' => 'programs.update'])->where('id', '[0-9]+');
+        Route::post('/program/delete/{id}', ['uses' => 'GovernmentProgramController@delete', 'as' => 'programs.delete'])->where('id', '[0-9]+');
 
         //Slider
         Route::get('/slider', ['uses' => 'SliderController@index', 'as' => 'slider.index']);
