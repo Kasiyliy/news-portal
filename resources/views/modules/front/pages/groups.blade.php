@@ -53,8 +53,8 @@
         }
 
         function start() {
+            currentChosenEl = document.getElementById('groups').children[0];
             if(currentChosenEl) {
-                currentChosenEl = document.getElementById('groups').children[0];
                 currentChosenEl.classList.add('bg-sj-gray');
             }
             content.innerHTML = `{!! $groups->first() ? $groups->first()->description : 'Ұйымдар жоқ!' !!}`;
