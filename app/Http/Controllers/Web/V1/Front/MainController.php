@@ -13,6 +13,7 @@ use App\Models\Entities\Content\Business\BusinessCategory;
 use App\Models\Entities\Content\Business\BusinessContent;
 use App\Models\Entities\Content\Event;
 use App\Models\Entities\Content\EventImage;
+use App\Models\Entities\Content\GovernmentProgram;
 use App\Models\Entities\Content\GuideCategory;
 use App\Models\Entities\Content\Prominent\ProminentArea;
 use App\Models\Entities\Content\Prominent\ProminentDirection;
@@ -49,6 +50,13 @@ class MainController extends WebBaseController
         $groups = TeenagerGroup::orderBy('updated_at', 'desc')->get();
         return $this->frontView('pages.groups', compact('groups'));
     }
+
+    public function programs()
+    {
+        $programs = GovernmentProgram::orderBy('updated_at', 'desc')->get();
+        return $this->frontView('pages.programs', compact('programs'));
+    }
+
 
     public function guide(Request $request)
     {
