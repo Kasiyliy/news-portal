@@ -71,9 +71,13 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/forum/forum-questionnaire', ['uses' => 'ForumController@forumAndQuestionnaire', 'as' => 'forum.forum-questionnaire']);
     Route::get('/forum/questionnaire/{id}', ['uses' => 'ForumController@questionnaire', 'as' => 'forum.questionnaire'])->where('id', '[0-9]+');
     Route::get('/forum/questionnaire-list', ['uses' => 'ForumController@questionnaireList', 'as' => 'forum.questionnaire.list']);
-    Route::get('/forum/categories', ['uses' => 'ForumController@categories', 'as' => 'forum.categories'])->middleware('auth');
-    Route::get('/forum/categories/{id}', ['uses' => 'ForumController@categoryDetail', 'as' => 'forum.category.detail'])->where('id', '[0-9]+')->middleware('auth');
     Route::get('/forum/questionnaire/post', ['uses' => 'ForumController@questionnairePost', 'as' => 'forum.questionnaire.post']);
+    Route::get('/forum/categories', ['uses' => 'ForumController@categories', 'as' => 'forum.categories'])->middleware('auth');
+    Route::get('/forum/category-list/{id}', ['uses' => 'ForumController@categoryList', 'as' => 'forum.category.list'])->where('id', '[0-9]+');
+    Route::get('/forum/category-detail/{id}', ['uses' => 'ForumController@categoryDetail', 'as' => 'forum.category.detail'])->where('id', '[0-9]+')->middleware('auth');
+    Route::post('/forum/category-detail/post/{id}', ['uses' => 'ForumController@categoryDetailPost', 'as' => 'forum.category.detail.post'])->where('id', '[0-9]+')->middleware('auth');
+    Route::get('/forum/messages/{id}', ['uses' => 'ForumController@categoryMessages', 'as' => 'forum.category.messages'])->where('id', '[0-9]+')->middleware('auth');
+    Route::post('/forum/messages/post/{id}', ['uses' => 'ForumController@categoryMessagesPost', 'as' => 'forum.category.messages.post'])->where('id', '[0-9]+')->middleware('auth');
 
 
 });

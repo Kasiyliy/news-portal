@@ -22,8 +22,9 @@
     </section>
     <section class="questionnaire">
         <div class="container justify-content-center my-4">
-{{--            <form action="{{route('forum.questionnaire.post', ['survey_id' => $survey_id])}}" method="post"--}}
-{{--                  enctype="multipart/form-data" class="needs-validation" novalidate>--}}
+            <form onsubmit="getOptions()" method="post" enctype="multipart/form-data"
+                  class="needs-validation">
+
                 {{csrf_field()}}
                 @foreach($questions as $question)
                     <div class="card w-100 mb-4">
@@ -31,27 +32,30 @@
                             <span>{{$question->required ? '*' : ''}}</span></h5>
                         <div class="card-body">
                             @foreach($question->options as $option)
-                                <div class="form-check">
-                                    <input class="form-check-input survey__input"
+                                <div class="custom-control">
+                                    <input class="form-check-input survey__input "
                                            type="{{$question->type->id == 1 ? 'radio' : 'checkbox'}}"
                                            name="options{{$question->id}}"
                                            id="{{$option->id}}"
-                                           value="{{$option->text}}">
-                                    <label class="form-check-label" for="options[{{$question->id}}]" name="options[]">
+                                           value="{{$option->text}}"
+                                        {{$question->required ? 'required' : ''}}>
+                                    <label class="form-check-label" for="{{$option->id}}" name="options[]">
                                         {{$option->text}}
                                     </label>
-                                    @if($loop->last && $question->need_custom_answer)
-                                        <input type="text" class="form-control form-control-sm survey__input"
-                                               aria-label="Text input with checkbox" placeholder="Озімнің жауабым" name="optional-input"
-                                               id="{{$question->id}}">
-                                    @endif
                                 </div>
                             @endforeach
+                            @if($question->need_custom_answer)
+                                <input type="text" class="form-control form-control-sm survey__input mt-3"
+                                       aria-label="Text input with checkbox" placeholder="Озімнің жауабым"
+                                       name="optional-input"
+                                       id="{{$question->id}}">
+                            @endif
                         </div>
                     </div>
                 @endforeach
-                <button type="submit" class="btn btn-primary" onclick="getOptions()">send</button>
-{{--            </form>--}}
+                <label></label>
+                <button type="submit" class="btn btn-primary">send</button>
+            </form>
         </div>
     </section>
 @endsection
@@ -63,11 +67,11 @@
             let inputs = document.getElementsByClassName('survey__input');
             let arr = [];
             let optional = [];
-            for(let i=0; i<inputs.length; i++){
-                if(inputs[i].checked){
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].checked) {
                     arr.push(inputs[i].id);
                 }
-                if(inputs[i].name === 'optional-input' && inputs[i].value != ''){
+                if (inputs[i].name === 'optional-input' && inputs[i].value != '') {
                     optional.push(
                         {
                             'id': inputs[i].id,
@@ -84,7 +88,7 @@
                     data: {
                         options: JSON.stringify(arr),
                         optional: JSON.stringify(optional),
-                        survey_id:'{{$survey_id}}'
+                        survey_id: '{{$survey_id}}'
                     },
                     success: function (response) {
                         window.location.href = response;

@@ -3,17 +3,21 @@
 namespace App\Http\Controllers\Web\V1\Front;
 
 use App\Exceptions\Web\WebServiceExplainedException;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\Web\WebBaseController;
+use App\Http\Requests\Web\V1\System\Content\Forum\SendMessageForumWebRequest;
+use App\Http\Requests\Web\V1\System\Content\Forum\SendTopicForumWebRequest;
 use App\Http\Requests\Web\V1\System\Content\Survey\SendQuestionnaireWebRequest;
+use App\Models\Entities\Content\Forum\ForumCategory;
+use App\Models\Entities\Content\Forum\ForumMessage;
+use App\Models\Entities\Content\Forum\ForumTopic;
 use App\Models\Entities\Content\Survey\Question;
 use App\Models\Entities\Content\Survey\QuestionOption;
 use App\Models\Entities\Content\Survey\Survey;
 use App\Models\Entities\Content\Survey\SurveyResult;
 use App\Models\Entities\Content\Survey\SurveyResultAnswer;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ForumController extends WebBaseController
 {
@@ -39,15 +43,90 @@ class ForumController extends WebBaseController
         return $this->frontView('pages.forum.questionnaire-list', compact('survey'));
     }
 
-    public function categories(Request $request)
+    public function categories()
     {
-        return $this->frontView('pages.forum.categories');
+        $categories = ForumCategory::where('parent_category_id', null)->with(['childCategories'])->get();
+//        $messages = ForumMessage::
+        return $this->frontView('pages.forum.categories', compact('categories'));
+    }
+
+    public function categoryList($id)
+    {
+        if(!$id){
+            throw new WebServiceExplainedException('Не найдено!');
+        }
+        $category_title = ForumCategory::where('id', $id)->first();
+        $subcategories = ForumCategory::where('parent_category_id', $id)->get();
+        return $this->frontView('pages.forum.category-list', compact('category_title','subcategories'));
     }
 
     public function categoryDetail($id)
     {
-        return $this->frontView('pages.forum.category-detail');
+        if(!$id){
+            throw new WebServiceExplainedException('Не найдено!');
+        }
+        $subcategory = ForumCategory::where('id', $id)->first();
+        $topics = ForumTopic::where('forum_category_id', $id)->with(['author'])->with(['messages'])->get();
+        return $this->frontView('pages.forum.category-detail', compact('topics', 'subcategory'));
     }
+
+    public function categoryDetailPost(SendTopicForumWebRequest $request){
+        $user_id = Auth::id();
+        $forum_category_id = $request->route('id');
+        if(!$forum_category_id){
+            throw new WebServiceExplainedException('Не найдено!');
+        }
+        if(!$user_id){
+            throw new WebServiceExplainedException('Пользователь не найден!');
+        }
+        try {
+            DB::beginTransaction();
+            ForumTopic::create([
+                'title' => $request->title,
+                'forum_category_id' => $forum_category_id,
+                'user_id' => $user_id
+            ]);
+            $this->added();
+            DB::commit();
+            return redirect()->back();
+        } catch (\Exception $exception) {
+            DB::rollBack();
+        }
+    }
+
+    public function categoryMessages($id){
+        if(!$id){
+            throw new WebServiceExplainedException('Не найдено!');
+        }
+        $topic = ForumTopic::where('id', $id)->with(['author'])->with(['messages'])->with(['category'])->first();
+        return $this->frontView('pages.forum.messages', compact('topic'));
+    }
+
+    public function categoryMessagesPost(SendMessageForumWebRequest $request){
+        $user_id = Auth::id();
+        $forum_topic_id = $request->route('id');
+        if(!$forum_topic_id){
+            throw new WebServiceExplainedException('Не найдено!');
+        }
+        if(!$user_id){
+            throw new WebServiceExplainedException('Пользователь не найден!');
+        }
+        try {
+            DB::beginTransaction();
+            ForumMessage::create([
+                'text' => $request->text,
+                'forum_topic_id' => $forum_topic_id,
+                'user_id' => $user_id
+            ]);
+            $this->added();
+            DB::commit();
+            return redirect()->back();
+        } catch (\Exception $exception) {
+            DB::rollBack();
+        }
+    }
+
+
 
     public function questionnairePost(SendQuestionnaireWebRequest $request){
         try {

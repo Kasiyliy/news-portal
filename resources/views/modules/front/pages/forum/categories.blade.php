@@ -1,32 +1,74 @@
 @extends ('modules.front.layouts.app-main')
 
 @section('styles')
-<style>
-    .forum-btn{
-        position: relative;
-    }
-    .forum-btn a{
-        background: #00656D;
-    }
-    .button__messages{
-        position: absolute;
-        color: #ffffff;
-        top: 7px;
-        right: 15px;
-    }
-    .forum__title h5{
-        font-size: 36px;
-        color: #00656D;
-    }
-    .forum__content a{
-        font-size: 20px;
-        line-height: 26px;
-        color: #00656D;
-    }
-    .forum__message i, p{
-        color: #00656D;
-    }
-</style>
+    <style>
+        .categories {
+            background-color: #f2f3f5;
+        }
+
+        .news__detail {
+            background-color: #f2f3f5;
+        }
+
+        .card {
+            border: none;
+        }
+
+        .card-header{
+            background-color: #00656D;
+            color:#FFFFFF;
+        }
+
+        .card-body {
+            border-bottom: 1px solid #f2f3f5;
+        }
+
+        .card-title {
+            color: #0e0e12;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .card-title:hover {
+            color: #2981bf;
+            text-decoration: none;
+        }
+
+        .card-subtitle {
+            margin-top: 7px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .subtitle__img {
+            position: absolute;
+            left: 17px;
+            top: 7px;
+        }
+
+        .messages__count {
+            margin: 0;
+            color: #353C41;
+        }
+
+        .category__subtitle {
+            padding-left: 10px;
+        }
+
+        .subtitle__nav {
+            color: #00656D;
+        }
+
+        .subtitle__nav:hover {
+            color: #2981bf;
+            text-decoration: none;
+        }
+
+        .fa.fa-circle {
+            color: #F8A555;
+            font-size: 12px;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -34,70 +76,44 @@
         <div class="container">
             <div class="news__detail__inner">
                 <h1>Форум</h1>
-                <div class="mt-3 mb-3">
+                <div class="mt-3 pb-3">
                     <a href="{{route('forum.forum-questionnaire')}}">← Қайта оралу </a>
                 </div>
-
             </div>
         </div>
     </section>
-
-    <section class="forum">
-        <div class="container justify-content-center my-4">
-            <p class="forum-btn">
-                <a class="btn btn-info btn-block text-left" type="button" data-toggle="collapse"
-                   data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    Ауыл шаруашылығы бойынша форум
-                </a>
-                <span class="button__messages">500 сообщении</span>
-            </p>
-            <div class="collapse mb-2" id="collapseExample">
-                <div class="card card-body flex-row ">
-                    <div class="col forum__title">
-                        <h5>Мал шаруашылығы</h5>
-                    </div>
-                    <div class="col forum__content">
-                        <li><a href="#">Ірі қара мал</a></li>
-                        <li><a href="#">Төрт түлік мал</a></li>
-                        <li><a href="#">Уақ малдар</a></li>
-                    </div>
-                    <div class="forum__message text-center">
-                        <i class="fa fa-comments fa-3x"></i>
-                        <p>300 сообщении</p>
-                    </div>
+    <section class="categories pb-5">
+        <div class="container">
+            <div class="card w-100">
+                <div class="card-header">
+                    <h4 class="pl-2 m-0">Категориялар</h4>
                 </div>
-            </div>
-            <div class="collapse mb-2" id="collapseExample">
-                <div class="card card-body flex-row ">
-                    <div class="col forum__title">
-                        <h5>Егін шаруашылығы</h5>
+                @foreach($categories as $category)
+                    <div class="card-body row">
+                        <div class="col-6">
+                            <a href="{{route('forum.category.list', $category->id)}}" class="card-title">{{$category->name}}</a>
+                            <div class="card-subtitle row">
+                                <img class="subtitle__img" src="{{asset('modules/front/assets/img/subtitle.png')}}"
+                                     alt="subtitle">
+                                @foreach($category->childCategories as $subcategory)
+                                    <div class="category__subtitle">
+                                        <i class="fa fa-circle"></i>
+                                        <a class="subtitle__nav" href={{route('forum.category.detail', $subcategory->id)}} >{{$subcategory->name}}</a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="col-6 row">
+                            <div class="col-4 text-right ">
+                                <h5 class="messages__count font-weight-bold">103426</h5>
+                                <p class="text-muted"> сообщений</p>
+                            </div>
+                            <div class="col-8">
+                                <img src="" alt="">
+                            </div>
+                        </div>
                     </div>
-                    <div class="col forum__content">
-                        <li><a href="#">Дәнді дақылдар</a></li>
-                        <li><a href="#">Қантты дақылдар</a></li>
-                        <li><a href="#">Күздік дақылдар</a></li>
-                    </div>
-                    <div class="forum__message text-center">
-                        <i class="fa fa-comments fa-3x"></i>
-                        <p>200 сообщении</p>
-                    </div>
-                </div>
-            </div>
-            <div class="collapse mb-2" id="collapseExample">
-                <div class="card card-body flex-row ">
-                    <div class="col forum__title">
-                        <h5>Ветеринария </h5>
-                    </div>
-                    <div class="col forum__content">
-                        <li><a href="#">Үй жануарлары</a></li>
-                        <li><a href="#">Төрт түлік мал</a></li>
-                        <li><a href="#">Мал аурулары</a></li>
-                    </div>
-                    <div class="forum__message text-center">
-                        <i class="fa fa-comments fa-3x"></i>
-                        <p>100 сообщении</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
