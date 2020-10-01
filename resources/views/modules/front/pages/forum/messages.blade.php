@@ -56,11 +56,11 @@
             font-size: 12px;
         }
 
-        .answer__button{
+        .answer__button {
             align-self: flex-end;
         }
 
-        .answer__button button{
+        .answer__button button {
             background-color: #00656D;
             color: #FFFFFF !important;
         }
@@ -110,19 +110,41 @@
                         </div>
                     </div>
                 </div>
+                @if(count($topic->messages) == 0)
+                    <p class="m-0 p-0">Бұл сұраққа жауап жоқ. Бірінші болып жауап беріңіз!</p>
+                @endif
                 @foreach($topic->messages as $message)
-                <div class="card-body row align-self-center">
-                    @if(count($topic->messages) == 0)
-                        <p class="m-0 p-0">Бұл сұраққа жауап жоқ. Бірінші болып жауап беріңіз!</p>
-                    @endif
-                    <p>{!! $message->text !!}</p>
-                </div>
+                    <div class="card-body row">
+                        <div class="col-2 row flex-column align-items-center">
+                            <div class="user__img mb-3">
+                                <img
+                                    src="{{asset($topic->author->avatar_path ? $topic->author->avatar_path : 'modules/front/assets/img/defaultuser.png')}}"
+                                    alt="">
+                            </div>
+                            <div class="user__info">
+                                <h5>{{$topic->author->name}}</h5>
+                            </div>
+                        </div>
+                        <div class="col-10 d-flex flex-column justify-content-between ">
+                            <div class="topic__title">
+                                <p>Опубликовано {{date('d-m-Y H:i', strtotime($topic->created_at))}}</p>
+                                <h4>{{$topic->title}}</h4>
+                            </div>
+                            <div class="topic__label">
+                                <button type="button" class="btn btn-outline-secondary btn-sm btn-label disabled">
+                                    {{$topic->category->name}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 @endforeach
                 <div class="card-body row">
                     <form action="{{route('forum.category.messages.post', request()->route('id'))}}" method="post"
-                          enctype="multipart/form-data" class="needs-validation w-100 d-flex flex-column p-4" novalidate>
+                          enctype="multipart/form-data" class="needs-validation w-100 d-flex flex-column p-4"
+                          novalidate>
                         {{csrf_field()}}
-                        <textarea id="mytextarea" placeholder="Жауап жазу" name="text" class="form-control" required></textarea>
+                        <textarea id="mytextarea" placeholder="Жауап жазу" name="text" class="form-control"
+                                  required></textarea>
                         <div class="invalid-tooltip">
                             Тақырыпты толтырыңыз
                         </div>

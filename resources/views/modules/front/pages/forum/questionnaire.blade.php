@@ -5,6 +5,11 @@
         .question__title span {
             color: red;
         }
+
+        .send__button button {
+            background-color: #00656D;
+            color: #FFFFFF !important;
+        }
     </style>
 @endsection
 
@@ -54,7 +59,9 @@
                     </div>
                 @endforeach
                 <label></label>
-                <button type="submit" class="btn btn-primary">send</button>
+                <div class="send__button">
+                    <button type="submit" class="btn btn-primary pr-5 pl-5">Жіберу</button>
+                </div>
             </form>
         </div>
     </section>
