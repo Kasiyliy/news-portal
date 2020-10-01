@@ -33,7 +33,7 @@ class ProminentController extends WebBaseController
         $selectedArea = null;
         $selectedDirections = null;
         $changed = false;
-        $users_photos = ProminentUser::inRandomOrder()->limit(10)->get();
+        $users_photos = ProminentUser::inRandomOrder()->limit(15)->get();
 
         $users_query = ProminentUser::with('area');
         if ($request->directions) {
