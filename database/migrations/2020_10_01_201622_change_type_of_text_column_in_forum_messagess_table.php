@@ -27,7 +27,7 @@ class ChangeTypeOfTextColumnInForumMessagessTable extends Migration
     public function down()
     {
         Schema::table('forum_messages', function (Blueprint $table) {
-            $table->text('text');
+            $table->text('text')->change();
         });
     }
 }
