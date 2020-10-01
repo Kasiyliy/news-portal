@@ -59,8 +59,8 @@
                     </div>
                 @endforeach
                 <label></label>
-                <div class="send__button">
-                    <button type="submit" class="btn btn-primary pr-5 pl-5">Жіберу</button>
+                <div class="send__button d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary pr-5 pl-5">Аяқтау</button>
                 </div>
             </form>
         </div>
