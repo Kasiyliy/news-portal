@@ -246,6 +246,16 @@
                         $("#like"+message_id).text((response[0].likes).length);
                         $("#dislike"+message_id).text((response[0].dislikes).length);
 
+                        var dislike = document.getElementsByClassName("dislike fa fa-thumbs-down "+message_id);
+                        var like = document.getElementsByClassName("like like fa fa-thumbs-up "+message_id);
+                        if(liked == 1) {
+                            like[0].style.color = "#00656D";
+                            dislike[0].style.color = "#718096";
+                        }else{
+                            like[0].style.color = "#718096";
+                            dislike[0].style.color = "#00656D";
+                        }
+
 
                     }
                 });
