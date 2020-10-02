@@ -53,7 +53,9 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/programs', ['uses' => 'MainController@programs', 'as' => 'programs']);
 
     //Guides
-    Route::get('/guide', ['uses' => 'MainController@guide', 'as' => 'guide']);
+    Route::get('/guide/faqs', ['uses' => 'GuideFaqController@guideFaq', 'as' => 'guide.faq']);
+    Route::get('/guide', ['uses' => 'GuideFaqController@guide', 'as' => 'guide']);
+    Route::get('/faqs', ['uses' => 'GuideFaqController@faqs', 'as' => 'faq']);
 
     //Business
     Route::get('/business/category/{id}', ['uses' => 'BusinessController@business', 'as' => 'business'])->where('id', '[0-9]+');
@@ -116,6 +118,18 @@ Route::group(['middleware' => 'auth','verify' => true], function () {
         Route::post('/guide/contents/update/{id}', ['uses' => 'GuideController@contentUpdate', 'as' => 'guide.content.update'])->where('id', '[0-9]+');
         Route::post('/guide/contents/delete/{id}', ['uses' => 'GuideController@contentDelete', 'as' => 'guide.content.delete'])->where('id', '[0-9]+');
 
+        //FAQ
+        Route::get('/faq', ['uses' => 'FaqController@index', 'as' => 'faq.index']);
+        Route::post('/faq/store', ['uses' => 'FaqController@store', 'as' => 'faq.store']);
+        Route::post('/faq/update/{id}', ['uses' => 'FaqController@update', 'as' => 'faq.update'])->where('id', '[0-9]+');
+        Route::post('/faq/delete/{id}', ['uses' => 'FaqController@delete', 'as' => 'faq.delete'])->where('id', '[0-9]+');
+
+        Route::get('/faq/questions/{category_id}', ['uses' => 'FaqController@question', 'as' => 'faq.question.index'])->where('category_id', '[0-9]+');
+        Route::get('/faq/questions/create/{category_id}', ['uses' => 'FaqController@questionCreate', 'as' => 'faq.question.create'])->where('category_id', '[0-9]+');
+        Route::get('/faq/questions/edit/{id}', ['uses' => 'FaqController@questionEdit', 'as' => 'faq.question.edit'])->where('id', '[0-9]+');
+        Route::post('/faq/questions/store/{category_id}', ['uses' => 'FaqController@questionStore', 'as' => 'faq.question.store'])->where('category_id', '[0-9]+');
+        Route::post('/faq/questions/update/{id}', ['uses' => 'FaqController@questionUpdate', 'as' => 'faq.question.update'])->where('id', '[0-9]+');
+        Route::post('/faq/questions/delete/{id}', ['uses' => 'FaqController@questionDelete', 'as' => 'faq.question.delete'])->where('id', '[0-9]+');
         //News
         Route::get('/news', ['uses' => 'NewsController@index', 'as' => 'news.index']);
         Route::get('/news/create', ['uses' => 'NewsController@create', 'as' => 'news.create']);

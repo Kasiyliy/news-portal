@@ -58,19 +58,6 @@ class MainController extends WebBaseController
     }
 
 
-    public function guide(Request $request)
-    {
-        $categories = GuideCategory::with('contents')->get();
-        $i = 0;
-        $currentCategory = $categories->first();
-        if ($request->category_id) {
-            $currentCategory = $categories->where('id', $request->category_id)->first();
-            if (!$currentCategory) throw new WebServiceExplainedException('Не найдено!');
-        }
-        return $this->frontView('pages.guide', compact('categories', 'i', 'currentCategory'));
-    }
-
-
     public function resource()
     {
         return $this->frontView('pages.resource');

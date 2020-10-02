@@ -29,6 +29,7 @@ class Sidebar extends BaseComponent
                 $this->navItem(route('groups.index'), 'ti-home', 'Жастар ұйымдары'),
                 $this->navItem(route('programs.index'), 'ti-archive', 'Программы'),
                 $this->navItem(route('guide.index'), 'ti-help-alt', 'Гид'),
+                $this->navItem(route('faq.index'), 'ti-help', 'FAQ'),
                 $this->navItem(route('news.index'), 'ti-bookmark-alt', 'Новости'),
                 $this->navItem(route('business.index'), 'ti-money', 'Бизнес'),
                 $this->navItem(route('slider.index'), 'ti-layout-media-right-alt', 'Слайдер'),
