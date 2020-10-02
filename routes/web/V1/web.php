@@ -29,9 +29,10 @@ Route::group(['namespace' => 'Auth','verify' => true], function () {
     Route::post('password/reset', 'ResetPassword`Controller@reset');
 });
 
-Route::group(['namespace' => 'Admin'], function () {
+Route::group(['namespace' => 'User'], function () {
     Route::get('/admin/register', ['as' => 'admin.register', 'uses' => 'RegisterController@showRegisterForm']);
     Route::post('/admin/register', ['as' => 'admin.register.post', 'uses' => 'RegisterController@register']);
+    Route::get('/user/login', ['as' => 'user.login', 'uses' => 'LoginController@showLoginForm']);
 
 });
 
