@@ -154,11 +154,9 @@
                                 <i class="fa fa-circle"></i>
                                 <span class="pr-3">
                                     @if(count($topic->messages) == 0)
-                                        нет ответов
-                                    @elseif(substr(count($topic->messages), -1) == 1)
-                                        {{count($topic->messages)}} ответ
+                                        жауап жоқ
                                     @else
-                                        {{count($topic->messages)}} ответов
+                                        {{count($topic->messages)}} жауап
                                     @endif
 
                                 </span>
@@ -168,14 +166,16 @@
 
                         </div>
                         <div class="col-3 row align-items-center">
-                            <div class="user__img mr-3">
-                                <img
-                                    src="{{asset($topic->author->avatar_path ? $topic->author->avatar_path : 'modules/front/assets/img/defaultuser.png')}}"
-                                    alt="">
+                            <div class="col-4">
+                                <div class="user__img ">
+                                    <img
+                                        src="{{asset($topic->author->avatar_path ? $topic->author->avatar_path : 'modules/front/assets/img/defaultuser.png')}}"
+                                        alt="">
+                                </div>
                             </div>
-                            <div class="user__info">
-                                <h5>{{$topic->author->name}}</h5>
-                                <p>{{$topic->author->email}}</p>
+                            <div class="user__info col-8">
+                                <h5 class="text-truncate">{{$topic->author->name}}</h5>
+                                <p class="text-truncate">{{$topic->author->email}}</p>
                             </div>
                         </div>
                     </div>

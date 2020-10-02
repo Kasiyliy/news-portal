@@ -19,12 +19,6 @@
             border: none;
         }
 
-        .card-header {
-            background-color: #FFFFFF;
-            border-bottom: 30px solid #f2f3f5;
-            margin: 0;
-        }
-
         .card-body {
             border-bottom: 1px solid #f2f3f5;
         }
@@ -51,6 +45,13 @@
             color: #718096;
         }
 
+        .answer__date {
+            font-size: 13px;
+            color: #718096;
+            margin: 0;
+            align-self: flex-end;
+        }
+
         .btn-label {
             padding: 4px;
             font-size: 12px;
@@ -63,6 +64,32 @@
         .answer__button button {
             background-color: #00656D;
             color: #FFFFFF !important;
+        }
+
+        .answer__rate i {
+            font-size: 18px;
+            color: #718096;
+            transition: 0.3s;
+        }
+
+        .answer__rate span {
+            color: #718096;
+        }
+
+        .like:hover {
+            color: #00656D;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .dislike:hover {
+            color: #00656D;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .row {
+            margin: 0;
         }
 
         .tox.tox-tinymce {
@@ -78,7 +105,7 @@
                 <h1>{{$topic->category->name}}</h1>
                 <div class="mt-3 pb-3 d-flex justify-content-between">
                     <a href="{{url()->previous()}}">← Қайта оралу </a>
-                    <a href="#" class="btn btn-sm btn__answer">Жауап беру</a>
+                    <a href="#answer" class="btn btn-sm btn__answer">Жауап беру</a>
                 </div>
 
             </div>
@@ -86,8 +113,8 @@
     </section>
     <section class="categories pb-5">
         <div class="container">
-            <div class="card w-100">
-                <div class="card-header row">
+            <div class="card w-100 mb-5">
+                <div class="card-body row">
                     <div class="col-2 row flex-column align-items-center">
                         <div class="user__img mb-3">
                             <img
@@ -110,34 +137,50 @@
                         </div>
                     </div>
                 </div>
-                @if(count($topic->messages) == 0)
-                    <p class="m-0 p-0">Бұл сұраққа жауап жоқ. Бірінші болып жауап беріңіз!</p>
-                @endif
-                @foreach($topic->messages as $message)
+            </div>
+            @if(count($topic->messages) == 0)
+                <div class="card w-100 mt-2 pt-3 pb-3">
+                    <div class="d-flex align-self-center">
+                        <p class="m-0 p-0">Бұл сұраққа жауап жоқ. Бірінші болып жауап беріңіз!</p>
+                    </div>
+                </div>
+            @endif
+            @foreach($messages as $message)
+                <div class="card w-100 mt-2">
                     <div class="card-body row">
                         <div class="col-2 row flex-column align-items-center">
                             <div class="user__img mb-3">
                                 <img
-                                    src="{{asset($topic->author->avatar_path ? $topic->author->avatar_path : 'modules/front/assets/img/defaultuser.png')}}"
+                                    src="{{asset($message->author->avatar_path ? $message->author->avatar_path : 'modules/front/assets/img/defaultuser.png')}}"
                                     alt="">
                             </div>
                             <div class="user__info">
-                                <h5>{{$topic->author->name}}</h5>
+                                <h5>{{$message->author->name}}</h5>
                             </div>
                         </div>
                         <div class="col-10 d-flex flex-column justify-content-between ">
-                            <div class="topic__title">
-                                <p>Опубликовано {{date('d-m-Y H:i', strtotime($topic->created_at))}}</p>
-                                <h4>{{$topic->title}}</h4>
+                            <div class="answer__title">
+                                {!! $message->text !!}
                             </div>
-                            <div class="topic__label">
-                                <button type="button" class="btn btn-outline-secondary btn-sm btn-label disabled">
-                                    {{$topic->category->name}}
-                                </button>
+                            <div class="topic__label d-flex justify-content-between">
+                                <p class="answer__date">
+                                    Опубликовано {{date('d-m-Y H:i', strtotime($message->created_at))}}</p>
+                                <div class="answer__rate d-flex">
+                                    <div class="answer__like">
+                                        <i class="like fa fa-thumbs-up" id="likeDislike" data-post="{{$message->likes}}"></i>
+                                        <span>{{count($message->likes)}}</span>
+                                    </div>
+                                    <div class="answer__dislike ml-3">
+                                        <i class="dislike fa fa-thumbs-down" id="likeDislike"></i>
+                                        <span>{{count($message->dislikes)}}</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                </div>
+            @endforeach
+            <div class="card w-100 mt-5" id="answer">
                 <div class="card-body row">
                     <form action="{{route('forum.category.messages.post', request()->route('id'))}}" method="post"
                           enctype="multipart/form-data" class="needs-validation w-100 d-flex flex-column p-4"
@@ -149,7 +192,7 @@
                             Тақырыпты толтырыңыз
                         </div>
                         <div class="answer__button">
-                            <button type="submit" class="btn mt-3 pr-5 pl-5">Жауап жазу</button>
+                            <button type="submit" class="btn mt-3 pr-5 pl-5">Жауапты жіберу</button>
                         </div>
                     </form>
                 </div>
@@ -162,6 +205,13 @@
     <script>
         tinymce.init({
             selector: '#mytextarea'
+        });
+    </script>
+
+    <script>
+        $(document).on('click', '#likeDislike', function () {
+            console.log($(this)[0].dataset);
+
         });
     </script>
 @endsection

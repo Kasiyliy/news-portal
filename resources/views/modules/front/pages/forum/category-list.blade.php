@@ -14,9 +14,9 @@
             border: none;
         }
 
-        .card-header{
+        .card-header {
             background-color: #00656D;
-            color:#FFFFFF;
+            color: #FFFFFF;
         }
 
         .card-body {
@@ -74,7 +74,9 @@
                 <div class="card-header">
                     <h4 class="pl-2 m-0">Тақырыптар</h4>
                 </div>
+                {{--                {{dd($messageQuery)}}--}}
                 @foreach($subcategories as $subcategory)
+                    {{--                    {{dd($subcategory)}}--}}
                     <div class="card-body row">
                         <div class="col-6 align-self-center title__block">
                             <i class="fa fa-caret-right pr-2"></i>
@@ -83,7 +85,12 @@
                         </div>
                         <div class="col-6 row">
                             <div class="col-4 text-right ">
-                                <h5 class="messages__count font-weight-bold">103426</h5>
+                                <h5 class="messages__count font-weight-bold">
+                                    @foreach($messageQuery as $message)
+                                        @if($subcategory->id == $message->forum_category_id)
+                                        @endif
+                                    @endforeach
+                                </h5>
                                 <p class="text-muted m-0"> сообщений</p>
                             </div>
                             <div class="col-8">
