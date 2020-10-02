@@ -266,8 +266,8 @@ Route::group(['middleware' => 'auth','verify' => true], function () {
     });
     Route::group(['middleware' => 'auth','verify' => true], function () {
         Route::group(['namespace' => 'System'], function () {
-//            Route::get('/profile', ['uses' => 'UserController@profile', 'as' => 'user.profile'])->middleware('verified');
-            Route::get('/profile', ['uses' => 'UserController@profile', 'as' => 'user.profile']);
+            Route::get('/profile', ['uses' => 'UserController@profile', 'as' => 'user.profile'])->middleware('verified');
+//            Route::get('/profile', ['uses' => 'UserController@profile', 'as' => 'user.profile']);
             Route::post('/change-password', ['uses' => 'UserController@changePassword', 'as' => 'change.password']);
             Route::post('/update-profile', ['uses' => 'UserController@updateProfileInfo', 'as' => 'update.profile']);
         });
