@@ -105,11 +105,16 @@
                         </div>
                         <div class="col-6 row">
                             <div class="col-4 text-right ">
-                                <h5 class="messages__count font-weight-bold">103426</h5>
+                                <h5 class="messages__count font-weight-bold">{{$category->categoryMessages($category->id)}}</h5>
                                 <p class="text-muted"> сообщений</p>
                             </div>
                             <div class="col-8">
-                                <img src="" alt="">
+                                <div class="col-8">
+                                    <h5 class="text-truncate">{{$category->categoryLastMessage($category->id)->username}}</h5>
+                                    <p class="text-truncate">{{$category->categoryLastMessage($category->id)->email}}</p>
+                                    <p class="text-truncate">{!! $category->categoryLastMessage($category->id)->text !!}</p>
+
+                                </div>
                             </div>
                         </div>
                     </div>

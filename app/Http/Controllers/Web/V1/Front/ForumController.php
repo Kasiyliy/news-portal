@@ -57,11 +57,8 @@ class ForumController extends WebBaseController
         }
         $category_title = ForumCategory::where('id', $id)->first();
         $subcategories = ForumCategory::where('parent_category_id', $id)->get();
-        $messageQuery = DB::table('forum_categories as fc')
-            ->join('forum_topics as ft', 'ft.forum_category_id', '=', 'fc.id')
-            ->join('forum_messages as fm', 'fm.forum_topic_id', '=', 'ft.id')
-            ->where('fc.parent_category_id', '=', $id)
-            ->get();
+
+//
         return $this->frontView('pages.forum.category-list', compact('category_title', 'subcategories', 'messageQuery'));
     }
 

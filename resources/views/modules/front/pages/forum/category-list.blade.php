@@ -86,16 +86,17 @@
                         <div class="col-6 row">
                             <div class="col-4 text-right ">
                                 <h5 class="messages__count font-weight-bold">
-                                    @foreach($messageQuery as $message)
-                                        @if($subcategory->id == $message->forum_category_id)
-                                        @endif
-                                    @endforeach
+                                    {{$subcategory->childCategoryMessages($subcategory->id)}}
                                 </h5>
                                 <p class="text-muted m-0"> сообщений</p>
                             </div>
                             <div class="col-8">
+                                        <h5 class="text-truncate">{{$subcategory->childCategoryLastMessage($subcategory->id)->username}}</h5>
+                                        <p class="text-truncate">{{$subcategory->childCategoryLastMessage($subcategory->id)->email}}</p>
+                                <p class="text-truncate">{!! $subcategory->childCategoryLastMessage($subcategory->id)->text !!}</p>
 
                             </div>
+
                         </div>
                     </div>
                 @endforeach
