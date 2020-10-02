@@ -19,9 +19,9 @@
                 <div class="mt-3 mb-3">
                     <a href="{{route('welcome')}}">← Қайта оралу </a>
                 </div>
-                <div class="Collage effect-parent">
+                <div class="Collage effect-parent" hidden>
                     @foreach($users_photos as $u_photo)
-                        <img style="max-height: 270px; max-width: 350px;" src="{{$u_photo->avatar_path}}" alt="">
+                        <img src="{{$u_photo->avatar_path}}" alt="">
                     @endforeach
                 </div>
                 <div class="prominent__content row">
@@ -534,9 +534,11 @@
 
         })(jQuery);
 
-        $(window).load(function () {
+        $(window).on('load', function () {
+            $('.Collage').attr("hidden", false);
+
             $('.Collage').collagePlus({
-                'targetHeight': 300
+                'targetHeight': 150,
             });
         });
     </script>
