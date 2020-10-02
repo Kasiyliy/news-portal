@@ -31,7 +31,7 @@ class EventController extends WebBaseController
     {
         $event = Event::where('id', $id)->where('is_accepted', true)->with(['images'])->first();
         if (!$event) {
-            throw new WebServiceExplainedException('Не найдено!');
+            throw new WebServiceExplainedException('Контент табылған жоқ!!');
 
         }
         return $this->frontView('pages.events.event', compact('event'));

@@ -21,7 +21,7 @@ class GuideFaqController extends WebBaseController
         else {
             $currentCategory = $categories->first();
         }
-        if (!$currentCategory) throw new WebServiceExplainedException('Не найдено!');
+        if (!$currentCategory) throw new WebServiceExplainedException('Контент табылған жоқ!');
 
         return $this->frontView('pages.guide-faqs.guide', compact('categories', 'i', 'currentCategory'));
     }
@@ -35,12 +35,12 @@ class GuideFaqController extends WebBaseController
         $i = 0;
         if ($request->category_id) {
             $currentCategory = $categories->where('id', $request->category_id)->first();
-            if (!$currentCategory) throw new WebServiceExplainedException('Не найдено!');
+            if (!$currentCategory) throw new WebServiceExplainedException('Контент табылған жоқ!');
         }
         else {
             $currentCategory = $categories->first();
         }
-        if (!$currentCategory) throw new WebServiceExplainedException('Не найдено!');
+        if (!$currentCategory) throw new WebServiceExplainedException('Контент табылған жоқ!');
 
         return $this->frontView('pages.guide-faqs.faqs', compact('categories', 'i', 'currentCategory'));
 

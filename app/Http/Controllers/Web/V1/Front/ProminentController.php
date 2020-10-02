@@ -19,7 +19,7 @@ class ProminentController extends WebBaseController
     {
         $user = ProminentUser::where('id', $id)->with('directions.direction', 'area')->first();
         if (!$user) {
-            throw new WebServiceExplainedException('Не найдено!');
+            throw new WebServiceExplainedException('Контент табылған жоқ!');
         }
         return $this->frontView('pages.prominent.prominent-detail', compact('user'));
     }
