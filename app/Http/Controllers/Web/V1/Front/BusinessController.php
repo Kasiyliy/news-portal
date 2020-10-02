@@ -17,12 +17,12 @@ class BusinessController extends WebBaseController
         if(!$parent_category) throw new WebServiceExplainedException('Не найдено!');
 
         $categories = BusinessCategory::where('parent_category_id', $parent_category->id)->orderBy('updated_at', 'desc')->get();
-        if($categories->isEmpty()) throw new WebServiceExplainedException('Пустой контент!');
+        if($categories->isEmpty()) throw new WebServiceExplainedException('Контент табылған жоқ!');
         $currentCategory = $categories->first();
 
         if ($request->category_id) {
             $currentCategory = $categories->where('id', $request->category_id)->first();
-            if (!$currentCategory) throw new WebServiceExplainedException('Не найдено!');
+            if (!$currentCategory) throw new WebServiceExplainedException('Контент табылған жоқ!');
         }
 
         $contents = $currentCategory->contents()->paginate(6);
@@ -35,7 +35,7 @@ class BusinessController extends WebBaseController
     {
         $business_content = BusinessContent::where('id', $id)->with('category')->first();
         if (!$business_content) {
-            throw new WebServiceExplainedException('Не найдено!');
+            throw new WebServiceExplainedException('Контент табылған жоқ!');
         }
         $parent_category_id = $business_content->category->parent_category_id;
         return $this->frontView('pages.business.business-detail', compact('business_content', 'parent_category_id'));

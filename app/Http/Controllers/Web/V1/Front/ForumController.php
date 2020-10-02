@@ -31,7 +31,7 @@ class ForumController extends WebBaseController
     {
         $survey = Survey::where('id', $id)->first();
         if (!$survey->id) {
-            throw new WebServiceExplainedException('Не найдено!');
+            throw new WebServiceExplainedException('Контент табылған жоқ!');
         }
         $questions = Question::where('survey_id', $survey->id)->with(['options'])->with('type')->get();
         $survey_id = $id;
@@ -52,8 +52,8 @@ class ForumController extends WebBaseController
 
     public function categoryList($id)
     {
-        if (!$id) {
-            throw new WebServiceExplainedException('Не найдено!');
+        if(!$id){
+            throw new WebServiceExplainedException('Контент табылған жоқ!');
         }
         $category_title = ForumCategory::where('id', $id)->first();
         $subcategories = ForumCategory::where('parent_category_id', $id)->get();
@@ -67,13 +67,11 @@ class ForumController extends WebBaseController
 
     public function categoryDetail($id)
     {
-        if (!$id) {
-            throw new WebServiceExplainedException('Не найдено!');
+        if(!$id){
+            throw new WebServiceExplainedException('Контент табылған жоқ!');
         }
         $subcategory = ForumCategory::where('id', $id)->first();
         $topics = ForumTopic::where('forum_category_id', $id)->with(['author'])->with(['messages'])->get();
-
-
         return $this->frontView('pages.forum.category-detail', compact('topics', 'subcategory'));
     }
 
@@ -81,8 +79,8 @@ class ForumController extends WebBaseController
     {
         $user_id = Auth::id();
         $forum_category_id = $request->route('id');
-        if (!$forum_category_id) {
-            throw new WebServiceExplainedException('Не найдено!');
+        if(!$forum_category_id){
+            throw new WebServiceExplainedException('Контент табылған жоқ!');
         }
         if (!$user_id) {
             throw new WebServiceExplainedException('Пользователь не найден!');
@@ -102,10 +100,9 @@ class ForumController extends WebBaseController
         }
     }
 
-    public function categoryMessages($id)
-    {
-        if (!$id) {
-            throw new WebServiceExplainedException('Не найдено!');
+    public function categoryMessages($id){
+        if(!$id){
+            throw new WebServiceExplainedException('Контент табылған жоқ!');
         }
         $topic = ForumTopic::where('id', $id)->with(['author'])->with(['messages'])->with(['category'])->first();
         $messages = ForumMessage::where('forum_topic_id', $id)->with(['author'])->with('likes')->with(['dislikes'])->get();
@@ -116,8 +113,8 @@ class ForumController extends WebBaseController
     {
         $user_id = Auth::id();
         $forum_topic_id = $request->route('id');
-        if (!$forum_topic_id) {
-            throw new WebServiceExplainedException('Не найдено!');
+        if(!$forum_topic_id){
+            throw new WebServiceExplainedException('Контент табылған жоқ!');
         }
         if (!$user_id) {
             throw new WebServiceExplainedException('Пользователь не найден!');
@@ -147,21 +144,21 @@ class ForumController extends WebBaseController
 
             $survey = Survey::find($request->survey_id);
 
-            if (!$survey) {
-                throw new WebServiceExplainedException('Не найдено!');
+            if(!$survey){
+            throw new WebServiceExplainedException('Контент табылған жоқ!');
+        }
+        DB::beginTransaction();
+        $result = SurveyResult::create([
+            'survey_id' => $survey->id
+        ]);
+        $now = Carbon::now();
+       $answers = array();
+       $answers2 = array();
+        foreach ( $options as $option_id) {
+            $option = QuestionOption::find($option_id);
+            if (!$option){
+                throw new WebServiceExplainedException('Контент табылған жоқ!');
             }
-            DB::beginTransaction();
-            $result = SurveyResult::create([
-                'survey_id' => $survey->id
-            ]);
-            $now = Carbon::now();
-            $answers = array();
-            $answers2 = array();
-            foreach ($options as $option_id) {
-                $option = QuestionOption::find($option_id);
-                if (!$option) {
-                    throw new WebServiceExplainedException('Не найдено!');
-                }
 
                 $answers[] = [
                     'question_id' => $option->question_id,
@@ -172,23 +169,23 @@ class ForumController extends WebBaseController
                 ];
             }
 
-            foreach ($open_answers as $open_answer) {
-                $question = QuestionOption::find($open_answer->id);
-                if (!$question) {
-                    throw new WebServiceExplainedException('Не найдено!');
-                }
-                $answers2[] = [
-                    'question_id' => $question->id,
-                    'survey_result_id' => $result->id,
-                    'text' => $open_answer->value,
-                    'created_at' => $now,
-                    'updated_at' => $now
-                ];
+        foreach ( $open_answers as $open_answer){
+            $question = QuestionOption::find($open_answer->id);
+            if (!$question){
+                throw new WebServiceExplainedException('Контент табылған жоқ!');
             }
-            SurveyResultAnswer::insert($answers);
-            SurveyResultAnswer::insert($answers2);
-            DB::commit();
-            $message = 'Саулнама сәтті жіберілді!';
+            $answers2[] = [
+                'question_id' => $question->id,
+                'survey_result_id' => $result->id,
+                'text' => $open_answer->value,
+                'created_at' => $now,
+                'updated_at' => $now
+            ];
+        }
+        SurveyResultAnswer::insert($answers);
+        SurveyResultAnswer::insert($answers2);
+        DB::commit();
+        $message = 'Саулнама сәтті жіберілді!';
 
             return route('success', compact('message'));
         } catch (\Exception $exception) {
@@ -197,6 +194,7 @@ class ForumController extends WebBaseController
 
         }
     }
+
 
 
 }

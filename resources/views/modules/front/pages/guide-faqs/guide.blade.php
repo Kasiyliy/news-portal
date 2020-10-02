@@ -6,7 +6,7 @@
             <div class="news__detail__inner">
                 <h1>ГИД</h1>
                 <div class="mt-3 mb-3">
-                    <a href="{{route('welcome')}}">← Қайта оралу </a>
+                    <a href="{{route('guide.faq')}}">← Қайта оралу </a>
                 </div>
 
             </div>
@@ -32,33 +32,37 @@
                 <div class="col-md-12 col-lg-9">
                     <div class="accordion card p-3" id="accordionExample">
                         <ul>
-                            @foreach($currentCategory->contents as $content)
-                                <li>
-                                    <h2 class="mb-0 d-flex justify-content-between">
+                            @if($currentCategory->contents->isEmpty())
+                                Мәліметтер жоқ!
+                            @else
+                                @foreach($currentCategory->contents as $content)
+                                    <li>
+                                        <h2 class="mb-0 d-flex justify-content-between">
                                 <span style="font-size: 20px">
                                     {{$content->title}}
                                 </span>
-                                        <span data-toggle="collapse"
-                                              style="font-size: 25px"
-                                              class="cursor"
-                                              data-value="X"
-                                              onclick="changeContent(this)"
-                                              data-target="#collapse{{$content->id}}" aria-expanded="true"
-                                              aria-controls="collapse{{$content->id}}">
+                                            <span data-toggle="collapse"
+                                                  style="font-size: 25px"
+                                                  class="cursor"
+                                                  data-value="X"
+                                                  onclick="changeContent(this)"
+                                                  data-target="#collapse{{$content->id}}" aria-expanded="true"
+                                                  aria-controls="collapse{{$content->id}}">
                                         +
                                     </span>
-                                    </h2>
+                                        </h2>
 
-                                    <div id="collapse{{$content->id}}" class="collapse" aria-labelledby="headingOne"
-                                         data-parent="#accordionExample">
-                                        <div>
-                                            {!! $content->description !!}
+                                        <div id="collapse{{$content->id}}" class="collapse" aria-labelledby="headingOne"
+                                             data-parent="#accordionExample">
+                                            <div>
+                                                {!! $content->description !!}
+                                            </div>
+                                            {{--                                        <h7>{{$content->updated_at}} жанартылды</h7>--}}
                                         </div>
-{{--                                        <h7>{{$content->updated_at}} жанартылды</h7>--}}
-                                    </div>
-                                    <hr>
-                                </li>
-                            @endforeach
+                                        <hr>
+                                    </li>
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>

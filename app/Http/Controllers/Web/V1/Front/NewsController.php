@@ -24,7 +24,7 @@ class NewsController extends WebBaseController
     public function newsDetail($id)
     {
         $news = News::where('id', $id)->first();
-        if(!$news) throw new WebServiceExplainedException('Не найдено!');
+        if(!$news) throw new WebServiceExplainedException('Контент табылған жоқ!');
 
         $news->update(['viewed_count' => $news->viewed_count + 1]);
         return $this->frontView('pages.news.news-detail', compact('news'));

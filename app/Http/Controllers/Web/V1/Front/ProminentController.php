@@ -19,7 +19,7 @@ class ProminentController extends WebBaseController
     {
         $user = ProminentUser::where('id', $id)->with('directions.direction', 'area')->first();
         if (!$user) {
-            throw new WebServiceExplainedException('Не найдено!');
+            throw new WebServiceExplainedException('Контент табылған жоқ!');
         }
         return $this->frontView('pages.prominent.prominent-detail', compact('user'));
     }
@@ -33,6 +33,7 @@ class ProminentController extends WebBaseController
         $selectedArea = null;
         $selectedDirections = null;
         $changed = false;
+        $users_photos = ProminentUser::inRandomOrder()->limit(100)->get();
 
         $users_query = ProminentUser::with('area');
         if ($request->directions) {
@@ -77,6 +78,6 @@ class ProminentController extends WebBaseController
         $directions = ProminentDirection::all();
         $areas = ProminentArea::all();
         return $this->frontView('pages.prominent.prominent', compact('users', 'areas',
-            'directions', 'selectedArea', 'selectedSex', 'maxAge', 'minAge', 'selectedDirections', 'changed'));
+            'directions', 'selectedArea', 'selectedSex', 'maxAge', 'minAge', 'selectedDirections', 'changed', 'users_photos'));
     }
 }
