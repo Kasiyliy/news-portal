@@ -37,6 +37,7 @@ class ForumController extends WebBaseController
         $survey_id = $id;
         return $this->frontView('pages.forum.questionnaire', compact('questions', 'survey_id'));
     }
+
     public function questionnaireList()
     {
         $survey = Survey::where('is_visible', 1)->get();
@@ -46,7 +47,6 @@ class ForumController extends WebBaseController
     public function categories()
     {
         $categories = ForumCategory::where('parent_category_id', null)->with(['childCategories'])->get();
-//        $messages = ForumMessage::
         return $this->frontView('pages.forum.categories', compact('categories'));
     }
 
@@ -57,7 +57,12 @@ class ForumController extends WebBaseController
         }
         $category_title = ForumCategory::where('id', $id)->first();
         $subcategories = ForumCategory::where('parent_category_id', $id)->get();
-        return $this->frontView('pages.forum.category-list', compact('category_title','subcategories'));
+        $messageQuery = DB::table('forum_categories as fc')
+            ->join('forum_topics as ft', 'ft.forum_category_id', '=', 'fc.id')
+            ->join('forum_messages as fm', 'fm.forum_topic_id', '=', 'ft.id')
+            ->where('fc.parent_category_id', '=', $id)
+            ->get();
+        return $this->frontView('pages.forum.category-list', compact('category_title', 'subcategories', 'messageQuery'));
     }
 
     public function categoryDetail($id)
@@ -70,13 +75,14 @@ class ForumController extends WebBaseController
         return $this->frontView('pages.forum.category-detail', compact('topics', 'subcategory'));
     }
 
-    public function categoryDetailPost(SendTopicForumWebRequest $request){
+    public function categoryDetailPost(SendTopicForumWebRequest $request)
+    {
         $user_id = Auth::id();
         $forum_category_id = $request->route('id');
         if(!$forum_category_id){
             throw new WebServiceExplainedException('Контент табылған жоқ!');
         }
-        if(!$user_id){
+        if (!$user_id) {
             throw new WebServiceExplainedException('Пользователь не найден!');
         }
         try {
@@ -99,16 +105,18 @@ class ForumController extends WebBaseController
             throw new WebServiceExplainedException('Контент табылған жоқ!');
         }
         $topic = ForumTopic::where('id', $id)->with(['author'])->with(['messages'])->with(['category'])->first();
-        return $this->frontView('pages.forum.messages', compact('topic'));
+        $messages = ForumMessage::where('forum_topic_id', $id)->with(['author'])->with('likes')->with(['dislikes'])->get();
+        return $this->frontView('pages.forum.messages', compact('topic', 'messages'));
     }
 
-    public function categoryMessagesPost(SendMessageForumWebRequest $request){
+    public function categoryMessagesPost(SendMessageForumWebRequest $request)
+    {
         $user_id = Auth::id();
         $forum_topic_id = $request->route('id');
         if(!$forum_topic_id){
             throw new WebServiceExplainedException('Контент табылған жоқ!');
         }
-        if(!$user_id){
+        if (!$user_id) {
             throw new WebServiceExplainedException('Пользователь не найден!');
         }
         try {
@@ -127,8 +135,8 @@ class ForumController extends WebBaseController
     }
 
 
-
-    public function questionnairePost(SendQuestionnaireWebRequest $request){
+    public function questionnairePost(SendQuestionnaireWebRequest $request)
+    {
         try {
 
             $open_answers = json_decode($request->optional);
@@ -152,14 +160,14 @@ class ForumController extends WebBaseController
                 throw new WebServiceExplainedException('Контент табылған жоқ!');
             }
 
-            $answers[] = [
-                'question_id' => $option->question_id,
-                'question_option_id' => $option->id,
-                'survey_result_id' => $result->id,
-                'created_at' => $now,
-                'updated_at' => $now
-            ];
-        }
+                $answers[] = [
+                    'question_id' => $option->question_id,
+                    'question_option_id' => $option->id,
+                    'survey_result_id' => $result->id,
+                    'created_at' => $now,
+                    'updated_at' => $now
+                ];
+            }
 
         foreach ( $open_answers as $open_answer){
             $question = QuestionOption::find($open_answer->id);
@@ -179,7 +187,7 @@ class ForumController extends WebBaseController
         DB::commit();
         $message = 'Саулнама сәтті жіберілді!';
 
-        return route('success',compact('message'));
+            return route('success', compact('message'));
         } catch (\Exception $exception) {
             DB::rollBack();
             throw new WebServiceExplainedException($exception->getMessage());

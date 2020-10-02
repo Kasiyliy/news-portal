@@ -229,7 +229,7 @@
                     <img src="{{asset('modules/front/assets/img/about.png')}}" alt="about">
                 </div>
                 <div class="about__content col-12 col-lg-6 col-md-6 ">
-                    <h1>Жоба туралы </h1>
+                    <h1>Сайт туралы </h1>
                     <p>Жамбыл облысы әкімдігінің жастар саясаты мәселелері басқармасының тапсыры бойынша Әулие-ата
                         жастарына арналған <a href="{{route('about')}}">толығырақ...</a></p>
                     <div class="about__icons row">
