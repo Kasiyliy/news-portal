@@ -538,7 +538,7 @@
             $('.Collage').attr("hidden", false);
 
             $('.Collage').collagePlus({
-                'targetHeight': 150,
+                'targetHeight': 93,
             });
         });
     </script>
