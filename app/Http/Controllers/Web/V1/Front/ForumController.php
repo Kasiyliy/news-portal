@@ -10,6 +10,7 @@ use App\Http\Requests\Web\V1\System\Content\Survey\SendQuestionnaireWebRequest;
 use App\Models\Entities\Content\Forum\ForumCategory;
 use App\Models\Entities\Content\Forum\ForumMessage;
 use App\Models\Entities\Content\Forum\ForumTopic;
+use App\Models\Entities\Content\Forum\MessageLike;
 use App\Models\Entities\Content\Survey\Question;
 use App\Models\Entities\Content\Survey\QuestionOption;
 use App\Models\Entities\Content\Survey\Survey;
@@ -18,6 +19,7 @@ use App\Models\Entities\Content\Survey\SurveyResultAnswer;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class ForumController extends WebBaseController
 {
@@ -101,8 +103,9 @@ class ForumController extends WebBaseController
         if(!$id){
             throw new WebServiceExplainedException('Контент табылған жоқ!');
         }
-        $topic = ForumTopic::where('id', $id)->with(['author'])->with(['messages'])->with(['category'])->first();
-        $messages = ForumMessage::where('forum_topic_id', $id)->with(['author'])->with('likes')->with(['dislikes'])->get();
+        $topic = ForumTopic::where('id', $id)->with(['author'])->with(['messages','category'])->first();
+        $messages = ForumMessage::where('forum_topic_id', $id)->with(['author','likes','dislikes'])->get();
+
         return $this->frontView('pages.forum.messages', compact('topic', 'messages'));
     }
 
@@ -190,6 +193,37 @@ class ForumController extends WebBaseController
             throw new WebServiceExplainedException($exception->getMessage());
 
         }
+    }
+
+
+    public function messageLike( Request $request){
+
+        $message = ForumMessage::find($request->message_id);
+        if(!$message){
+            throw new WebServiceExplainedException('Контент табылған жоқ!');
+        }
+
+
+        $userLike = MessageLike::where('forum_message_id',$message->id)->where('user_id',Auth::id())->first();
+
+        if(!$userLike){
+
+            MessageLike::create([
+                'user_id' => Auth::id(),
+                'forum_message_id' => $message->id,
+                'liked' => $request->liked
+            ]);
+        }else{
+
+            $userLike->update([
+                'liked'=>$request->liked
+            ]);
+
+        }
+        $message = ForumMessage::where('id',$request->message_id)->with(['likes','dislikes'])->get();
+
+
+        return $message;
     }
 
 

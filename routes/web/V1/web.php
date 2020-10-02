@@ -90,6 +90,8 @@ Route::group(['namespace' => 'Front'], function () {
     Route::post('/forum/category-detail/post/{id}', ['uses' => 'ForumController@categoryDetailPost', 'as' => 'forum.category.detail.post'])->where('id', '[0-9]+')->middleware('auth');
     Route::get('/forum/messages/{id}', ['uses' => 'ForumController@categoryMessages', 'as' => 'forum.category.messages'])->where('id', '[0-9]+')->middleware('auth');
     Route::post('/forum/messages/post/{id}', ['uses' => 'ForumController@categoryMessagesPost', 'as' => 'forum.category.messages.post'])->where('id', '[0-9]+')->middleware('auth');
+    Route::get('/forum/message/like', ['uses' => 'ForumController@messageLike', 'as' => 'forum.category.message.like'])->middleware('auth');
+
 
 
 });

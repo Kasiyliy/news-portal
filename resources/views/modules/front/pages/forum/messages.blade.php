@@ -76,6 +76,9 @@
             color: #718096;
         }
 
+
+
+
         .like:hover {
             color: #00656D;
             transition: 0.3s;
@@ -166,13 +169,21 @@
                                 <p class="answer__date">
                                     Опубликовано {{date('d-m-Y H:i', strtotime($message->created_at))}}</p>
                                 <div class="answer__rate d-flex">
-                                    <div class="answer__like">
-                                        <i class="like fa fa-thumbs-up" id="likeDislike" data-post="{{$message->likes}}"></i>
-                                        <span>{{count($message->likes)}}</span>
+                                    <div class="answer__like" >
+                                        @if ($message->messageLike(Auth::id()) && $message->messageLike(Auth::id())->liked == 1)
+                                        <i class="like fa fa-thumbs-up {{$message->id}}" id="likeDislike" data-post="{{$message->likes}}" style="color: #00656D;"></i>
+                                        @else
+                                            <i class="like fa fa-thumbs-up {{$message->id}}" id="likeDislike" data-post="{{$message->likes}}"></i>
+                                        @endif
+                                        <span id = "like{{$message->id}}">{{count($message->likes)}}</span>
                                     </div>
                                     <div class="answer__dislike ml-3">
-                                        <i class="dislike fa fa-thumbs-down" id="likeDislike"></i>
-                                        <span>{{count($message->dislikes)}}</span>
+                                        @if ($message->messageLike(Auth::id()) && $message->messageLike(Auth::id())->liked == 0)
+                                            <i class="dislike fa fa-thumbs-down {{$message->id}}" id="likeDislike" style="color: #00656D;"></i>
+                                        @else
+                                            <i class="dislike fa fa-thumbs-down {{$message->id}}" id="likeDislike"></i>
+                                        @endif
+                                        <span id = "dislike{{$message->id}}">{{count($message->dislikes)}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -210,7 +221,35 @@
 
     <script>
         $(document).on('click', '#likeDislike', function () {
-            console.log($(this)[0].dataset);
+
+
+            // console.log($(this)[0].classList[3] );
+            var message_id = $(this)[0].classList[3];
+            var liked = 0;
+            if($(this)[0].classList[0] == "like"){
+                // console.log($(this)[0].classList[0]);
+                liked = 1;
+            }
+
+            $(function () {
+                $.ajax({
+                    method: "get",
+                    url: "{{route('forum.category.message.like')}}",
+                    data: {
+                        liked: liked,
+                        message_id:message_id
+
+                    },
+                    success: function (response) {
+                        // console.log((response[0].likes).length);
+                        // console.log((response[0].dislikes).length);
+                        $("#like"+message_id).text((response[0].likes).length);
+                        $("#dislike"+message_id).text((response[0].dislikes).length);
+
+
+                    }
+                });
+            });
 
         });
     </script>
