@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Web\V1\Front;
 
 use App\Exceptions\Web\WebServiceExplainedException;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Models\Entities\Content\Business\BusinessCategory;
 use App\Models\Entities\Content\Business\BusinessContent;

@@ -17,9 +17,9 @@ use App\Models\Entities\Content\Survey\Survey;
 use App\Models\Entities\Content\Survey\SurveyResult;
 use App\Models\Entities\Content\Survey\SurveyResultAnswer;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ForumController extends WebBaseController
 {

@@ -4,28 +4,15 @@
 namespace App\Http\Controllers\Web\V1\Front;
 
 
-use App\Exceptions\Web\WebServiceExplainedException;
 use App\Http\Controllers\Web\WebBaseController;
-use App\Http\Requests\Web\V1\System\Content\UserSendEventWebRequest;
 use App\Models\Entities\Content\AboutProject;
 use App\Models\Entities\Content\AboutUs;
 use App\Models\Entities\Content\Business\BusinessCategory;
-use App\Models\Entities\Content\Business\BusinessContent;
-use App\Models\Entities\Content\Event;
-use App\Models\Entities\Content\EventImage;
 use App\Models\Entities\Content\GovernmentProgram;
-use App\Models\Entities\Content\GuideCategory;
-use App\Models\Entities\Content\Prominent\ProminentArea;
-use App\Models\Entities\Content\Prominent\ProminentDirection;
-use App\Models\Entities\Content\Prominent\ProminentUser;
-use App\Models\Entities\Content\Prominent\ProminentUserDirection;
-use App\Models\Entities\Content\TeenagerGroup;
 use App\Models\Entities\Content\News;
 use App\Models\Entities\Content\Slider;
-use Carbon\Carbon;
-use Facade\FlareClient\Http\Exceptions\NotFound;
+use App\Models\Entities\Content\TeenagerGroup;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class MainController extends WebBaseController
 {

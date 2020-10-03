@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AboutUsSeeder::class);
         $this->call(AboutProjectSeeder::class);
         $this->call(QuestionTypeSeeder::class);
+        $this->call(MapRegionsTableSeeder::class);
     }
 }
