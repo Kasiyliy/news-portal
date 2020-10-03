@@ -14,7 +14,7 @@
                     <a class="nav-link" href=""> <i class="nav__auth fa fa-search"></i></a>
                     <a class="nav-link" href=""> <i class="nav__auth fa fa-eye-slash"></i></a>
                     <a class="nav-link" href=""> <i class="nav__auth fa fa-language"></i></a>
-                    <a class="nav-link" href="{{route('login')}}"> <i class="nav__auth fa fa-user-circle"></i></a>
+                    <a class="nav-link" href="{{route('user.login')}}"> <i class="nav__auth fa fa-user-circle"></i></a>
                 </div>
             </div>
             <div class="header__inner__bottom navbar navbar-expand-lg ">
