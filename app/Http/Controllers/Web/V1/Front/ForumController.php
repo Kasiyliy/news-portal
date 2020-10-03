@@ -59,9 +59,7 @@ class ForumController extends WebBaseController
         }
         $category_title = ForumCategory::where('id', $id)->first();
         $subcategories = ForumCategory::where('parent_category_id', $id)->get();
-
-//
-        return $this->frontView('pages.forum.category-list', compact('category_title', 'subcategories', 'messageQuery'));
+        return $this->frontView('pages.forum.category-list', compact('category_title', 'subcategories'));
     }
 
     public function categoryDetail($id)

@@ -53,6 +53,34 @@
             transition: 0.5s;
         }
 
+        .last__message > * {
+            color: #718096;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 14px !important;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+            margin-bottom: 5px !important;
+        }
+
+        .last__message-img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .last__message-img img {
+            width: 100%;
+            border-radius: 50%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .text-muted {
+            color: #718096 !important;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+        }
+
     </style>
 @endsection
 
@@ -74,30 +102,42 @@
                 <div class="card-header">
                     <h4 class="pl-2 m-0">Тақырыптар</h4>
                 </div>
-                {{--                {{dd($messageQuery)}}--}}
                 @foreach($subcategories as $subcategory)
-                    {{--                    {{dd($subcategory)}}--}}
                     <div class="card-body row">
                         <div class="col-6 align-self-center title__block">
                             <i class="fa fa-caret-right pr-2"></i>
                             <a href="{{route('forum.category.detail', $subcategory->id)}}"
                                class="card-title">{{$subcategory->name}}</a>
                         </div>
-                        <div class="col-6 row">
-                            <div class="col-4 text-right ">
-                                <h5 class="messages__count font-weight-bold">
-                                    {{$subcategory->childCategoryMessages($subcategory->id)}}
-                                </h5>
-                                <p class="text-muted m-0"> сообщений</p>
+                        @if($subcategory->childCategoryLastMessage($subcategory->id))
+                            <div class="col-6 row pr-0">
+                                <div class="col-4 text-right pr-4">
+                                    <h5 class="messages__count font-weight-bold mb-1">
+                                        {{$subcategory->childCategoryMessages($subcategory->id)}}
+                                    </h5>
+                                    <p class="text-muted m-0"> хабарлама</p>
+                                </div>
+                                <div class="col-8 row pr-0">
+                                    <div class="col-12 row pr-0">
+                                        <div class="last__message-img ">
+                                            <img
+                                                src="{{asset($subcategory->childCategoryLastMessage($subcategory->id)->avatar_path ? $subcategory->childCategoryLastMessage($subcategory->id)->avatar_path : 'modules/front/assets/img/defaultuser.png')}}"
+                                                alt="default-user">
+                                        </div>
+                                        <div class="col-10 pr-0">
+                                            <h5 class="text-truncate mb-0">{{$subcategory->childCategoryLastMessage($subcategory->id)->username}}</h5>
+                                            <div class="last__message">
+                                                <p>{!! $subcategory->childCategoryLastMessage($subcategory->id)->text !!}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-8">
-                                        <h5 class="text-truncate">{{$subcategory->childCategoryLastMessage($subcategory->id)->username}}</h5>
-                                        <p class="text-truncate">{{$subcategory->childCategoryLastMessage($subcategory->id)->email}}</p>
-                                <p class="text-truncate">{!! $subcategory->childCategoryLastMessage($subcategory->id)->text !!}</p>
-
+                        @else
+                            <div class="col-6 text-center">
+                                <p class="text-muted mt-4">Бұл категорияда хабарламалар жоқ. Бірінші болыңыз!</p>
                             </div>
-
-                        </div>
+                        @endif
                     </div>
                 @endforeach
             </div>

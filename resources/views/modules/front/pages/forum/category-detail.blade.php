@@ -94,7 +94,7 @@
             <div class="news__detail__inner">
                 <h1>{{$subcategory->name}}</h1>
                 <div class="mt-3 pb-3 d-flex justify-content-between">
-                    <a href="{{url()->previous()}}">← Қайта оралу </a>
+                    <a href="{{route('forum.categories')}}">← Қайта оралу </a>
                     <button class="btn btn-sm btn__new-topic" data-toggle="modal" data-target="#exampleModal">Жаңа
                         тақырып жазу
                     </button>
