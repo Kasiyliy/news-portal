@@ -22,7 +22,7 @@ class MapRegionsTableSeeder extends Seeder
             'address' => 'Тараз қаласы',
         ]);
         MapRegion::create([
-            'region' => 'Сарысу ауданы',
+            'region' => 'Сарысу',
             'title' => 'Сарысу ауданы',
             'description' => 'Сарысу ауданы',
             'boss' => 'Сарысу ауданы',
@@ -31,7 +31,7 @@ class MapRegionsTableSeeder extends Seeder
             'address' => 'Сарысу ауданы',
         ]);
         MapRegion::create([
-            'region' => 'Мойынқұм ауданы',
+            'region' => 'Мойынқұм',
             'title' => 'Мойынқұм ауданы',
             'description' => 'Мойынқұм ауданы',
             'boss' => 'Мойынқұм ауданы',
@@ -40,7 +40,7 @@ class MapRegionsTableSeeder extends Seeder
             'address' => 'Мойынқұм ауданы',
         ]);
         MapRegion::create([
-            'region' => 'Талас ауданы',
+            'region' => 'Талас',
             'title' => 'Талас ауданы',
             'description' => 'Талас ауданы',
             'boss' => 'Талас ауданы',
@@ -49,7 +49,7 @@ class MapRegionsTableSeeder extends Seeder
             'address' => 'Талас ауданы',
         ]);
         MapRegion::create([
-            'region' => 'Шу ауданы',
+            'region' => 'Шу',
             'title' => 'Шу ауданы',
             'description' => 'Шу ауданы',
             'boss' => 'Шу ауданы',
@@ -58,7 +58,7 @@ class MapRegionsTableSeeder extends Seeder
             'address' => 'Шу ауданы',
         ]);
         MapRegion::create([
-            'region' => 'Меркі ауданы',
+            'region' => 'Меркі',
             'title' => 'Меркі ауданы',
             'description' => 'Меркі ауданы',
             'boss' => 'Меркі ауданы',
@@ -67,7 +67,7 @@ class MapRegionsTableSeeder extends Seeder
             'address' => 'Меркі ауданы',
         ]);
         MapRegion::create([
-            'region' => 'Байзақ ауданы',
+            'region' => 'Байзақ',
             'title' => 'Байзақ ауданы',
             'description' => 'Байзақ ауданы',
             'boss' => 'Байзақ ауданы',
@@ -76,7 +76,7 @@ class MapRegionsTableSeeder extends Seeder
             'address' => 'Байзақ ауданы',
         ]);
         MapRegion::create([
-            'region' => 'Қордай ауданы',
+            'region' => 'Қордай',
             'title' => 'Қордай ауданы',
             'description' => 'Қордай ауданы',
             'boss' => 'Қордай ауданы',
@@ -85,7 +85,7 @@ class MapRegionsTableSeeder extends Seeder
             'address' => 'Қордай ауданы',
         ]);
         MapRegion::create([
-            'region' => 'Жуалы ауданы',
+            'region' => 'Жуалы',
             'title' => 'Жуалы ауданы',
             'description' => 'Жуалы ауданы',
             'boss' => 'Жуалы ауданы',
@@ -94,7 +94,7 @@ class MapRegionsTableSeeder extends Seeder
             'address' => 'Жуалы ауданы',
         ]);
         MapRegion::create([
-            'region' => 'Жамбыл ауданы',
+            'region' => 'Жамбыл',
             'title' => 'Жамбыл ауданы',
             'description' => 'Жамбыл ауданы',
             'boss' => 'Жамбыл ауданы',
@@ -103,7 +103,7 @@ class MapRegionsTableSeeder extends Seeder
             'address' => 'Жамбыл ауданы',
         ]);
         MapRegion::create([
-            'region' => 'Тұрар Рысқұлов ауданы',
+            'region' => 'Тұрар Рысқұлов',
             'title' => 'Тұрар Рысқұлов ауданы',
             'description' => 'Тұрар Рысқұлов ауданы',
             'boss' => 'Тұрар Рысқұлов ауданы',

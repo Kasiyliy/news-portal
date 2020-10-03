@@ -68,7 +68,7 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/prominent/{id}', ['uses' => 'ProminentController@prominentDetail', 'as' => 'prominent.detail'])->where('id', '[0-9]+');
 
     //Resource
-    Route::get('/resource', ['uses' => 'MainController@resource', 'as' => 'resource']);
+    Route::get('/resource/{id?}', ['uses' => 'MainController@resource', 'as' => 'resource'])->where('id', '[0-9]+');
 
     //About
     Route::get('/about', ['uses' => 'MainController@about', 'as' => 'about']);

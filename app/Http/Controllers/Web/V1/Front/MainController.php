@@ -9,6 +9,7 @@ use App\Models\Entities\Content\AboutProject;
 use App\Models\Entities\Content\AboutUs;
 use App\Models\Entities\Content\Business\BusinessCategory;
 use App\Models\Entities\Content\GovernmentProgram;
+use App\Models\Entities\Content\Map\MapRegion;
 use App\Models\Entities\Content\News;
 use App\Models\Entities\Content\Slider;
 use App\Models\Entities\Content\TeenagerGroup;
@@ -26,7 +27,8 @@ class MainController extends WebBaseController
         return $this->frontView('pages.index', compact('about_us', 'slider', 'news', 'business_categories'));
     }
 
-    public function success(Request $request) {
+    public function success(Request $request)
+    {
 
         $message = $request->message;
         return $this->frontView('pages.success', compact('message'));
@@ -45,9 +47,10 @@ class MainController extends WebBaseController
     }
 
 
-    public function resource()
+    public function resource($id = null)
     {
-        return $this->frontView('pages.resource');
+        $mapRegion = $id ? MapRegion::findOrFail($id) : MapRegion::findOrFail(1);
+        return $this->frontView('pages.resource', compact('mapRegion'));
     }
 
     public function about()
