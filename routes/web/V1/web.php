@@ -19,8 +19,8 @@ Route::group(['namespace' => 'Auth', 'verify' => true], function () {
 
     Route::get('register', ['as' => 'register', 'uses' => 'RegisterController@showRegistrationForm']);
     Route::post('register', ['as' => 'register.post', 'uses' => 'RegisterController@register']);
-    Route::get('login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
-    Route::post('login', ['as' => 'login.post', 'uses' => 'LoginController@login']);
+    Route::get('/admin/login', ['as' => 'admin.login', 'uses' => 'LoginController@showLoginForm']);
+    Route::post('/admin/login', ['as' => 'admin.login.post', 'uses' => 'LoginController@login']);
     Route::post('logout', ['as' => 'logout', 'uses' => 'LoginController@logout']);
 
 
@@ -31,9 +31,11 @@ Route::group(['namespace' => 'Auth', 'verify' => true], function () {
 });
 
 Route::group(['namespace' => 'User'], function () {
-    Route::get('/admin/register', ['as' => 'admin.register', 'uses' => 'RegisterController@showRegisterForm']);
-    Route::post('/admin/register', ['as' => 'admin.register.post', 'uses' => 'RegisterController@register']);
-    Route::get('/user/login', ['as' => 'user.login', 'uses' => 'LoginController@showLoginForm']);
+//    Route::get('/admin/register', ['as' => 'admin.register', 'uses' => 'RegisterController@showRegisterForm']);
+//    Route::post('/admin/register', ['as' => 'admin.register.post', 'uses' => 'RegisterController@register']);
+    Route::get('login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
+    Route::post('login', ['as' => 'login.post', 'uses' => 'LoginController@login']);
+
 
 });
 
@@ -99,7 +101,7 @@ Route::group(['namespace' => 'Front'], function () {
 Route::group(['middleware' => 'auth', 'verify' => true], function () {
 
 
-    Route::group(['namespace' => 'Core'], function () {
+    Route::group(['namespace' => 'Core','middleware' => ['ROLE_OR:' . \App\Models\Entities\Core\Role::ADMIN_ID]], function () {
         Route::get('/home', ['uses' => 'PageController@home', 'as' => 'home']);
     });
 

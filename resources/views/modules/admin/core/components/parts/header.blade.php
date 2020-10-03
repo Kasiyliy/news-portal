@@ -44,11 +44,15 @@
                         <div class="card-body p-0">
                             <ul class="list-unstyled mb-0">
                                 @foreach($navList as $navItem)
-                                    <li class="mb-3">
-                                        <a class="link-dark" href="{{$navItem['url']}}">
-                                            {{$navItem['title']}}
-                                        </a>
-                                    </li>
+                                    @if($user->role->id == 1 && $navItem['title'] == 'Профиль')
+                                     @else
+                                        <li class="mb-3">
+                                            <a class="link-dark" href="{{$navItem['url']}}">
+                                                {{$navItem['title']}}
+                                            </a>
+                                        </li>
+                                    @endif
+
                                 @endforeach
                                 <li>
                                     <form action="{{route('logout')}}" method="post" id="signOutForm">

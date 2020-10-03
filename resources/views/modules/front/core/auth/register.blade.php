@@ -55,43 +55,43 @@
                                 <div class="form mb-3">
                                     <label for="login">ИИН <span>*</span></label>
                                     <input type="text" class="form-control {{ isset($errors) && $errors->has('iin') ? ' is-invalid' : '' }}" id="login"
-                                           placeholder="Введите ваш ИИН:" name="iin" required value="{{old('iin')}}">
+                                           placeholder="" name="iin" required value="{{old('iin')}}">
                                     @if(isset($errors) && $errors->has('iin'))
                                         <div class="invalid-feedback">{{$errors->first('iin')}}</div>
                                     @endif
                                 </div>
                                 <div class="form mb-3">
                                     <label for="email">Email <span>*</span></label>
-                                    <input type="text" class="form-control {{ isset($errors) && $errors->has('email') ? ' is-invalid' : '' }}" id="email" placeholder="Введите ваш email:"
+                                    <input type="text" class="form-control {{ isset($errors) && $errors->has('email') ? ' is-invalid' : '' }}" id="email" placeholder=""
                                            name="email" required value="{{old('email')}}">
                                     @if(isset($errors) && $errors->has('email'))
                                         <div class="invalid-feedback">{{$errors->first('email')}}</div>
                                     @endif
                                 </div>
                                 <div class="form mb-3">
-                                    <label for="password">Пароль <span>*</span></label>
+                                    <label for="password">Құпия сөз <span>*</span></label>
                                     <input type="password" class="form-control {{ isset($errors) && $errors->has('password') ? ' is-invalid' : '' }}" id="password"
-                                           placeholder="Введите пароль:"
+                                           placeholder=""
                                            name="password" required>
                                     @if(isset($errors) && $errors->has('password'))
                                         <div class="invalid-feedback">{{$errors->first('password')}}</div>
                                     @endif
                                 </div>
                                 <div class="form mb-3">
-                                    <label for="password_confirmation">Подтвердите пароль <span>*</span></label>
+                                    <label for="password_confirmation">Құпия сөзді қайталау <span>*</span></label>
                                     <input type="password" class="form-control {{ isset($errors) && $errors->has('password') ? ' is-invalid' : '' }}" id="password_confirmation"
-                                           placeholder="Подтвердите пароль:"
+                                           placeholder=""
                                            name="password_confirmation" required>
                                     @if(isset($errors) && $errors->has('password'))
                                         <div class="invalid-feedback">{{$errors->first('password')}}</div>
                                     @endif
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <button type="submit" class="enter-btn btn pr-5 pl-5">Регистрация</button>
+                                    <button type="submit" class="enter-btn btn pr-5 pl-5">Тіркелу</button>
                                 </div>
                                 <p class="text-center mb-0">
-                                    Уже есть аккаунт?
-                                    <a class="font-weight-semi-bold" href="{{route('user.login')}}">Вход здесь</a>
+                                    Аккаунтыңыз бар ма?
+                                    <a class="font-weight-semi-bold" href="{{route('login')}}">Кіру</a>
                                 </p>
                             </div>
                         </div>

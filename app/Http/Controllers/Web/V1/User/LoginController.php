@@ -6,6 +6,7 @@ use App\Http\Controllers\Web\WebBaseController;
 use App\Http\Forms\Web\V1\Auth\UserLoginWebForm;
 use App\Models\Entities\Core\Role;
 use App\Providers\RouteServiceProvider;
+use App\Rules\IsUser;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -42,7 +43,7 @@ class LoginController extends WebBaseController
 
         if (strpos($request->email, '@')) {
             $request->validate([
-                'email' => 'required|string',
+                'email' => ['required','string',new IsUser()],
                 'password' => 'required|string',
             ]);
         } else {

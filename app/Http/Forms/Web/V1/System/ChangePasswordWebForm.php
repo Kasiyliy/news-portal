@@ -17,9 +17,9 @@ class ChangePasswordWebForm implements WithForm
     public static function inputGroups($value = null): array
     {
         return array_merge(
-            FormUtil::input('current_password', 'Введите текущий пароль:', 'Текщуий пароль', 'password', true),
-            FormUtil::input('password', 'Введите новый пароль:', 'Новый пароль', 'password', true),
-            FormUtil::input('password_confirmation', 'Подтвердите новый пароль:', 'Подтвердите новый пароль:', 'password', true)
+            FormUtil::input('current_password', 'Ағымдағы құпия сөзді енгізіңіз:', 'Ағымдағы құпия сөз', 'password', true),
+            FormUtil::input('password', 'Жаңа құпия сөзді енгізіңіз:', 'Жаңа құпия сөз', 'password', true),
+            FormUtil::input('password_confirmation', 'Жаңа құпия сөзді растаңыз:', 'Жаңа құпия сөзді растаңыз:', 'password', true)
         );
     }
 }

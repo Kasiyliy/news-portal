@@ -17,9 +17,9 @@ class UpdateProfileWebForm implements WithForm
     public static function inputGroups($value = null): array
     {
         return array_merge(
-            FormUtil::input('name', 'Введите ваше имя:', 'Имя', 'text', true, $value ? $value->name : null),
-            FormUtil::input('surname', 'Введите ваше фамилию:', 'Фамилия', 'text', true, $value ? $value->surname : null),
-            FormUtil::input('file', 'Выберите фото:', 'Аватар:', 'file', false)
+            FormUtil::input('name', 'Атыңызды енгізіңіз:', 'Аты', 'text', true, $value ? $value->name : null),
+            FormUtil::input('surname', 'Тегіңізді енгізіңіз:', 'Тегі', 'text', true, $value ? $value->surname : null),
+            FormUtil::input('file', 'Фото таңдаңыз:', 'Аватар:', 'file', false)
         );
     }
 
