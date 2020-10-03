@@ -130,7 +130,7 @@
         <div class="container">
             <div class="info__inner">
                 <div class="info__content">
-                    <div class="info__card col-12 col-lg-4 col-md-6 mt-4">
+                    <div class="info__card col-12 col-lg-4 col-md-6 mt-4 pl-0">
                         <div class="info__card__head">
                             <img src="{{asset('modules/front/assets/img/school-icon.png')}}" alt="school">
                             <h2>Мемлекеттік бағдарламалар</h2>
@@ -144,7 +144,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="info__card col-12 col-lg-4 col-md-6 mt-4">
+                    <div class="info__card col-12 col-lg-4 col-md-6 mt-4 pl-0">
                         <div class="info__card__head">
                             <img src="{{asset('modules/front/assets/img/people-icon.png')}}" alt="">
                             <h2>100 үздік есім</h2>
@@ -160,7 +160,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="info__card col-12 col-lg-4 col-md-6 mt-4">
+                    <div class="info__card col-12 col-lg-4 col-md-6 mt-4 pl-0">
                         <div class="info__card__head">
                             <img src="{{asset('modules/front/assets/img/building-icon.png')}}" alt="">
                             <h2>Жастар
@@ -175,7 +175,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="info__card col-12 col-lg-4 col-md-6 mt-4">
+                    <div class="info__card col-12 col-lg-4 col-md-6 mt-4 pl-0">
                         <div class="info__card__head reverse">
                             <img src="{{asset('modules/front/assets/img/t-icon.png')}}" alt="">
                             <h2>Форум / Сауалнама</h2>
@@ -189,7 +189,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="info__card col-12 col-lg-4 col-md-6 mt-4">
+                    <div class="info__card col-12 col-lg-4 col-md-6 mt-4 pl-0">
                         <div class="info__card__head reverse">
                             <img src="{{asset('modules/front/assets/img/sigma-icon.png')}}" alt="">
                             <h2>ГИД / FAQ</h2>
@@ -203,7 +203,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="info__card col-12 col-lg-4 col-md-6 mt-4">
+                    <div class="info__card col-12 col-lg-4 col-md-6 mt-4 pl-0">
                         <div class="info__card__head reverse">
                             <img src="{{asset('modules/front/assets/img/tasks-icon.png')}}" alt="">
                             <h2>Еріктілер</h2>
