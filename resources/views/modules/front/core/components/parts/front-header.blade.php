@@ -1,5 +1,4 @@
 
-
 <header class="header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({{asset($about_project->main_image)}})">
     <div class="container">
         <div class="header__inner">
