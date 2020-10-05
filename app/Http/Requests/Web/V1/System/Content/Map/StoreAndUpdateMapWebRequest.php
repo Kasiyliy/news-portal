@@ -23,11 +23,11 @@ class StoreAndUpdateMapWebRequest extends WebBaseRequest
             'email' => ['required', 'string'],
             'phones' => ['required', 'string'],
             'address' => ['required', 'string'],
-            'instagram' => ['string'],
-            'facebook' => ['string'],
-            'vk' => ['string'],
-            'youtube' => ['string'],
-            'twitter' => ['string'],
+            'instagram' => ['nullable'],
+            'facebook' => ['nullable'],
+            'vk' => ['nullable'],
+            'youtube' => ['nullable'],
+            'twitter' => ['nullable'],
         ];
     }
 
