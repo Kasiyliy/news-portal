@@ -17,12 +17,12 @@
             <div class="news__detail__inner">
                 <h1>Профиль</h1>
                 <div class="mt-3 mb-3 d-flex justify-content-between">
-                    <a href="{{route('welcome')}}">← Главная</a>
+                    <a href="{{route('welcome')}}">← Басты бет</a>
                     <form action="{{route('logout')}}" method="post" id="signOutForm">
                         @csrf
                         <a class="btn btn-sm pr-3 pl-3" href="#"
                            onclick="document.getElementById('signOutForm').submit()">
-                            Выйти
+                            Шығу
                         </a>
                     </form>
                 </div>
@@ -50,7 +50,7 @@
             <div class="col-md-6 mb-5">
                 <div class="card h-100">
                     <header class="card-header password">
-                        <h5 class="h5 card-header-title mb-0">Обновить пароль</h5>
+                        <h5 class="h5 card-header-title mb-0">Құпия сөзді жаңарту</h5>
                     </header>
                     <div class="card-body pt-3">
                         <form action="{{route('change.password')}}" method="post">
@@ -58,7 +58,7 @@
                                 :errors="$errors"
                                 :elements="$changePasswordForm"/>
                             <button type="submit" class="btn btn-block btn-wide">
-                                Поменять пароль
+                                Құпия сөзді ауыстыру
                             </button>
                         </form>
                     </div>
@@ -67,7 +67,7 @@
             <div class="col-md-6 mb-5">
                 <div class="card h-100">
                     <header class="card-header info">
-                        <h5 class="h5 card-header-title mb-0">Поменять информацию профиля</h5>
+                        <h5 class="h5 card-header-title mb-0">Профиль ақпаратын өзгерту</h5>
                     </header>
                     <div class="card-body pt-3">
                         <form action="{{route('update.profile')}}" method="post" enctype="multipart/form-data">
@@ -75,7 +75,7 @@
                                 :errors="$errors"
                                 :elements="$updateProfileForm"/>
                             <button type="submit" class="btn btn-block btn-wide">
-                                Обновить
+                                Жаңарту
                             </button>
                         </form>
                     </div>

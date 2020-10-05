@@ -19,8 +19,8 @@ Route::group(['namespace' => 'Auth', 'verify' => true], function () {
 
     Route::get('register', ['as' => 'register', 'uses' => 'RegisterController@showRegistrationForm']);
     Route::post('register', ['as' => 'register.post', 'uses' => 'RegisterController@register']);
-    Route::get('login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
-    Route::post('login', ['as' => 'login.post', 'uses' => 'LoginController@login']);
+    Route::get('/admin/login', ['as' => 'admin.login', 'uses' => 'LoginController@showLoginForm']);
+    Route::post('/admin/login', ['as' => 'admin.login.post', 'uses' => 'LoginController@login']);
     Route::post('logout', ['as' => 'logout', 'uses' => 'LoginController@logout']);
 
 
@@ -31,9 +31,11 @@ Route::group(['namespace' => 'Auth', 'verify' => true], function () {
 });
 
 Route::group(['namespace' => 'User'], function () {
-    Route::get('/admin/register', ['as' => 'admin.register', 'uses' => 'RegisterController@showRegisterForm']);
-    Route::post('/admin/register', ['as' => 'admin.register.post', 'uses' => 'RegisterController@register']);
-    Route::get('/user/login', ['as' => 'user.login', 'uses' => 'LoginController@showLoginForm']);
+//    Route::get('/admin/register', ['as' => 'admin.register', 'uses' => 'RegisterController@showRegisterForm']);
+//    Route::post('/admin/register', ['as' => 'admin.register.post', 'uses' => 'RegisterController@register']);
+    Route::get('login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
+    Route::post('login', ['as' => 'login.post', 'uses' => 'LoginController@login']);
+
 
 });
 
@@ -85,11 +87,11 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/forum/questionnaire/{id}', ['uses' => 'ForumController@questionnaire', 'as' => 'forum.questionnaire'])->where('id', '[0-9]+');
     Route::get('/forum/questionnaire-list', ['uses' => 'ForumController@questionnaireList', 'as' => 'forum.questionnaire.list']);
     Route::get('/forum/questionnaire/post', ['uses' => 'ForumController@questionnairePost', 'as' => 'forum.questionnaire.post']);
-    Route::get('/forum/categories', ['uses' => 'ForumController@categories', 'as' => 'forum.categories'])->middleware('auth');
+    Route::get('/forum/categories', ['uses' => 'ForumController@categories', 'as' => 'forum.categories']);
     Route::get('/forum/category-list/{id}', ['uses' => 'ForumController@categoryList', 'as' => 'forum.category.list'])->where('id', '[0-9]+');
-    Route::get('/forum/category-detail/{id}', ['uses' => 'ForumController@categoryDetail', 'as' => 'forum.category.detail'])->where('id', '[0-9]+')->middleware('auth');
+    Route::get('/forum/category-detail/{id}', ['uses' => 'ForumController@categoryDetail', 'as' => 'forum.category.detail'])->where('id', '[0-9]+');
     Route::post('/forum/category-detail/post/{id}', ['uses' => 'ForumController@categoryDetailPost', 'as' => 'forum.category.detail.post'])->where('id', '[0-9]+')->middleware('auth');
-    Route::get('/forum/messages/{id}', ['uses' => 'ForumController@categoryMessages', 'as' => 'forum.category.messages'])->where('id', '[0-9]+')->middleware('auth');
+    Route::get('/forum/messages/{id}', ['uses' => 'ForumController@categoryMessages', 'as' => 'forum.category.messages'])->where('id', '[0-9]+');
     Route::post('/forum/messages/post/{id}', ['uses' => 'ForumController@categoryMessagesPost', 'as' => 'forum.category.messages.post'])->where('id', '[0-9]+')->middleware('auth');
     Route::get('/forum/message/like', ['uses' => 'ForumController@messageLike', 'as' => 'forum.category.message.like'])->middleware('auth');
 
@@ -99,7 +101,7 @@ Route::group(['namespace' => 'Front'], function () {
 Route::group(['middleware' => 'auth', 'verify' => true], function () {
 
 
-    Route::group(['namespace' => 'Core'], function () {
+    Route::group(['namespace' => 'Core','middleware' => ['ROLE_OR:' . \App\Models\Entities\Core\Role::ADMIN_ID]], function () {
         Route::get('/home', ['uses' => 'PageController@home', 'as' => 'home']);
     });
 

@@ -55,7 +55,7 @@
                                 <div class="form mb-3">
                                     <label for="email">Логин <span>*</span></label>
                                     <input type="text" class="form-control {{ isset($errors) && $errors->has('email') ? ' is-invalid' : '' }}" id="email"
-                                           placeholder="Пошта:" name="email" required>
+                                           placeholder="ЖСН немесе электронды пошта жазу:" name="email" required>
                                     @if(isset($errors) && $errors->has('email'))
                                         <div class="invalid-feedback">{{$errors->first('email')}}</div>
                                     @endif
@@ -70,8 +70,8 @@
                                     <button type="submit" class="enter-btn btn pr-5 pl-5">Кіру</button>
                                 </div>
                                 <p class="text-center mb-0">
-                                    Нет аккаунта?
-                                    <a class="font-weight-semi-bold" href="{{route('register')}}">Регистрация</a>
+                                    Аккаунтыңыз жоқ па?
+                                    <a class="font-weight-semi-bold" href="{{route('register')}}">Тіркелу</a>
                                 </p>
                             </div>
                         </div>

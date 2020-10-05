@@ -32,7 +32,7 @@
                             @foreach($messages as $message)
                                 <tr>
                                     <td>{{$message->id}}</td>
-                                    <td>{{$message->text}}</td>
+                                    <td>{!! $message->text !!}</td>
                                     <td>{{$message->author->name}}</td>
                                     <td>{{$message->created_at}}</td>
                                     <td>{{$message->likes->count()}}</td>

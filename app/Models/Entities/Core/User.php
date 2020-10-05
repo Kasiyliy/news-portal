@@ -5,6 +5,7 @@ namespace App\Models\Entities\Core;
 use App\Models\Entities\Support\AppFile;
 
 
+use App\Notifications\VerifyEmailUser;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -82,6 +83,10 @@ class User extends Authenticatable implements JWTSubject ,MustVerifyEmail
         return $this->role_id == Role::ADMIN_ID;
     }
 
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmailUser());
+    }
 
 
 

@@ -27,7 +27,7 @@
     </section>
     <section class="questionnaire">
         <div class="container justify-content-center my-4">
-            <form onsubmit="getOptions()" method="post" enctype="multipart/form-data"
+            <form onsubmit="return getOptions()" method="post" enctype="multipart/form-data"
                   class="needs-validation">
 
                 {{csrf_field()}}
