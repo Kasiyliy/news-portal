@@ -48,12 +48,16 @@ class VerifyEmailUser extends Notification
         }
 
         return (new MailMessage())
+
+            ->from('smartjastar@gmail.com','SmartJastar')
             ->greeting('Сәлеметсізбе!')
             ->subject(Lang::get('Электрондық Пошта Мекенжайын Тексеріңіз'))
             ->line(Lang::get('Электрондық пошта мекенжайын растау үшін төмендегі батырманы басыңыз.'))
             ->action(Lang::get('Электрондық Пошта Мекенжайын Тексеріңіз'), $verificationUrl)
             ->line(Lang::get('Егер сіз тіркелгі жасамаған болсаңыз, бұдан әрі ешқандай әрекет қажет емес.'))
             ->salutation('Құрметпен,  SmartJastar');
+
+
     }
 
     /**
