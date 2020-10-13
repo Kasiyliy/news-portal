@@ -27,9 +27,8 @@
     </section>
     <section class="questionnaire">
         <div class="container justify-content-center my-4">
-            <form onsubmit="return getOptions()" method="post" enctype="multipart/form-data"
+            <form onsubmit="return getOptions()" enctype="multipart/form-data"
                   class="needs-validation">
-
                 {{csrf_field()}}
                 @foreach($questions as $question)
                     <div class="card w-100 mb-4">

@@ -77,8 +77,6 @@
         }
 
 
-
-
         .like:hover {
             color: #00656D;
             transition: 0.3s;
@@ -95,6 +93,10 @@
             margin: 0;
         }
 
+        .more__messages {
+
+        }
+
         .tox.tox-tinymce {
             height: 300px !important;
         }
@@ -107,8 +109,9 @@
             <div class="news__detail__inner">
                 <h1>{{$topic->category->name}}</h1>
                 <div class="mt-3 pb-3 d-flex justify-content-between">
-                    <a href="{{url()->previous()}}">← Қайта оралу </a>
-                    <a href="#answer" class="btn btn-sm btn__answer">Жауап беру</a>
+                    <a href="{{route('forum.category.detail', $topic->forum_category_id)}}">← Қайта оралу </a>
+                    <a href="{{Auth::guest() ? route('login') : '#answer'}}" class="btn btn-sm btn__answer">Жауап
+                        беру</a>
                 </div>
 
             </div>
@@ -148,49 +151,56 @@
                     </div>
                 </div>
             @endif
-            @foreach($messages as $message)
-                <div class="card w-100 mt-2">
-                    <div class="card-body row">
-                        <div class="col-2 row flex-column align-items-center">
-                            <div class="user__img mb-3">
-                                <img
-                                    src="{{asset($message->author->avatar_path ? $message->author->avatar_path : 'modules/front/assets/img/defaultuser.png')}}"
-                                    alt="">
+            <div id="boxes">
+                @foreach($messages as $message)
+                    <div class="card w-100 mt-2">
+                        <div class="card-body row">
+                            <div class="col-2 row flex-column align-items-center">
+                                <div class="user__img mb-3">
+                                    <img
+                                        src="{{asset($message->author->avatar_path ? $message->author->avatar_path : 'modules/front/assets/img/defaultuser.png')}}"
+                                        alt="">
+                                </div>
+                                <div class="user__info">
+                                    <h5>{{$message->author->name}}</h5>
+                                </div>
                             </div>
-                            <div class="user__info">
-                                <h5>{{$message->author->name}}</h5>
-                            </div>
-                        </div>
-                        <div class="col-10 d-flex flex-column justify-content-between ">
-                            <div class="answer__title">
-                                {!! $message->text !!}
-                            </div>
-                            <div class="topic__label d-flex justify-content-between">
-                                <p class="answer__date">
-                                    Опубликовано {{date('d-m-Y H:i', strtotime($message->created_at))}}</p>
-                                <div class="answer__rate d-flex">
-                                    <div class="answer__like" >
-                                        @if ($message->messageLike(Auth::id()) && $message->messageLike(Auth::id())->liked == 1)
-                                        <i class="like fa fa-thumbs-up {{$message->id}}" id="likeDislike" data-post="{{$message->likes}}" style="color: #00656D;"></i>
-                                        @else
-                                            <i class="like fa fa-thumbs-up {{$message->id}}" id="likeDislike" data-post="{{$message->likes}}"></i>
-                                        @endif
-                                        <span id = "like{{$message->id}}">{{count($message->likes)}}</span>
-                                    </div>
-                                    <div class="answer__dislike ml-3">
-                                        @if ($message->messageLike(Auth::id()) && $message->messageLike(Auth::id())->liked == 0)
-                                            <i class="dislike fa fa-thumbs-down {{$message->id}}" id="likeDislike" style="color: #00656D;"></i>
-                                        @else
-                                            <i class="dislike fa fa-thumbs-down {{$message->id}}" id="likeDislike"></i>
-                                        @endif
-                                        <span id = "dislike{{$message->id}}">{{count($message->dislikes)}}</span>
+                            <div class="col-10 d-flex flex-column justify-content-between ">
+                                <div class="answer__title">
+                                    {!! $message->text !!}
+                                </div>
+                                <div class="topic__label d-flex justify-content-between">
+                                    <p class="answer__date">
+                                        Опубликовано {{date('d-m-Y H:i', strtotime($message->created_at))}}</p>
+                                    <div class="answer__rate d-flex">
+                                        <div class="answer__like">
+                                            @if ($message->messageLike(Auth::id()) && $message->messageLike(Auth::id())->liked == 1)
+                                                <i class="like fa fa-thumbs-up {{$message->id}}" id="likeDislike"
+                                                   data-post="{{$message->likes}}" style="color: #00656D;"></i>
+                                            @else
+                                                <i class="like fa fa-thumbs-up {{$message->id}}" id="likeDislike"
+                                                   data-post="{{$message->likes}}"></i>
+                                            @endif
+                                            <span id="like{{$message->id}}">{{count($message->likes)}}</span>
+                                        </div>
+                                        <div class="answer__dislike ml-3">
+                                            @if ($message->messageLike(Auth::id()) && $message->messageLike(Auth::id())->liked == 0)
+                                                <i class="dislike fa fa-thumbs-down {{$message->id}}" id="likeDislike"
+                                                   style="color: #00656D;"></i>
+                                            @else
+                                                <i class="dislike fa fa-thumbs-down {{$message->id}}"
+                                                   id="likeDislike"></i>
+                                            @endif
+                                            <span id="dislike{{$message->id}}">{{count($message->dislikes)}}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+                {{$messages->links()}}
+            </div>
             <div class="card w-100 mt-5" id="answer">
                 <div class="card-body row">
                     <form action="{{route('forum.category.messages.post', request()->route('id'))}}" method="post"
@@ -203,7 +213,8 @@
                             Тақырыпты толтырыңыз
                         </div>
                         <div class="answer__button">
-                            <button type="submit" class="btn mt-3 pr-5 pl-5">Жауапты жіберу</button>
+                            <button type="submit" class="btn mt-3 pr-5 pl-5" onclick="sendMessage()">Жауапты жіберу
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -219,6 +230,24 @@
         });
     </script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
+        <script>
+            $('ul.pagination').hide();
+            $(function () {
+                $('#boxes').jscroll({
+                    autoTrigger: true,
+                    loadingHtml: '<img class="center-block" src="/images/loading.gif" alt="Loading..." />',
+                    padding: 20,
+                    nextSelector: '.pagination li.active + li a',
+                    contentSelector: 'div#boxes',
+                    callback: function () {
+                        $('ul.pagination').remove();
+                    }
+                });
+            });
+        </script>
+
+
     <script>
         $(document).on('click', '#likeDislike', function () {
 
@@ -226,7 +255,7 @@
             // console.log($(this)[0].classList[3] );
             var message_id = $(this)[0].classList[3];
             var liked = 0;
-            if($(this)[0].classList[0] == "like"){
+            if ($(this)[0].classList[0] == "like") {
                 // console.log($(this)[0].classList[0]);
                 liked = 1;
             }
@@ -237,21 +266,21 @@
                     url: "{{route('forum.category.message.like')}}",
                     data: {
                         liked: liked,
-                        message_id:message_id
+                        message_id: message_id
 
                     },
                     success: function (response) {
                         // console.log((response[0].likes).length);
                         // console.log((response[0].dislikes).length);
-                        $("#like"+message_id).text((response[0].likes).length);
-                        $("#dislike"+message_id).text((response[0].dislikes).length);
+                        $("#like" + message_id).text((response[0].likes).length);
+                        $("#dislike" + message_id).text((response[0].dislikes).length);
 
-                        var dislike = document.getElementsByClassName("dislike fa fa-thumbs-down "+message_id);
-                        var like = document.getElementsByClassName("like like fa fa-thumbs-up "+message_id);
-                        if(liked == 1) {
+                        var dislike = document.getElementsByClassName("dislike fa fa-thumbs-down " + message_id);
+                        var like = document.getElementsByClassName("like like fa fa-thumbs-up " + message_id);
+                        if (liked == 1) {
                             like[0].style.color = "#00656D";
                             dislike[0].style.color = "#718096";
-                        }else{
+                        } else {
                             like[0].style.color = "#718096";
                             dislike[0].style.color = "#00656D";
                         }
