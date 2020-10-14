@@ -48,7 +48,7 @@
                 <form action="{{route('register.post')}}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                     {{csrf_field()}}
                     <div class="info__card col-12 mt-5 ">
-                        <div class="card col-8 p-0 mb-5">
+                        <div class="card col-sm-12 col-md-8 p-0 mb-5">
                             <div class="card-header">
                             </div>
                             <div class="card-body">

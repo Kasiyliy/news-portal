@@ -42,6 +42,12 @@
             margin: 0 auto -200px;
         }
 
+        @media (max-width: 767px) {
+            .news__block.login{
+                margin: 0 auto -70px;
+            }
+        }
+
     </style>
 @endsection
 @section('content')
@@ -55,7 +61,7 @@
                 <form action="{{route('login.post')}}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate >
                     {{csrf_field()}}
                     <div class="info__card col-12 col-lg-10 col-md-2 mt-5 ">
-                        <div class="card col-8 p-0 mb-5">
+                        <div class="card col-sm-12 col-md-8 p-0 mb-5">
                             <div class="card-header">
                             </div>
                             <div class="card-body">
