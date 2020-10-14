@@ -14,20 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes(['verify' => true]);
-Route::group(['namespace' => 'Auth', 'verify' => true], function () {
+//Auth::routes(['verify' => true]);
 
-    Route::get('register', ['as' => 'register', 'uses' => 'RegisterController@showRegistrationForm']);
-    Route::post('register', ['as' => 'register.post', 'uses' => 'RegisterController@register']);
+
+
+
+Route::group(['namespace' => 'Auth'], function () {
     Route::get('/admin/login', ['as' => 'admin.login', 'uses' => 'LoginController@showLoginForm']);
     Route::post('/admin/login', ['as' => 'admin.login.post', 'uses' => 'LoginController@login']);
     Route::post('logout', ['as' => 'logout', 'uses' => 'LoginController@logout']);
-
-
-    Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.reset');
-    Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-    Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset.token');
-    Route::post('password/reset', 'ResetPassword`Controller@reset');
 });
 
 Route::group(['namespace' => 'User'], function () {
@@ -35,8 +30,17 @@ Route::group(['namespace' => 'User'], function () {
 //    Route::post('/admin/register', ['as' => 'admin.register.post', 'uses' => 'RegisterController@register']);
     Route::get('login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
     Route::post('login', ['as' => 'login.post', 'uses' => 'LoginController@login']);
+    Route::get('register', ['as' => 'register', 'uses' => 'RegisterController@showRegistrationForm']);
+    Route::post('register', ['as' => 'register.post', 'uses' => 'RegisterController@register']);
 
+    Route::get('email/verify', 'VerificationController@show')->name('verification.notice');
+    Route::get('email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify');
+    Route::get('email/resend', 'VerificationController@resend')->name('verification.resend');
 
+    Route::get('password/reset',[ 'as' => 'password.request' , 'uses' =>'ForgotPasswordController@showLinkRequestForm']);
+    Route::post('password/email', ['as'=> 'password.email' , 'uses' => 'ForgotPasswordController@sendResetLinkEmail']);
+    Route::get('password/reset/{token}/{email}', ['as'=>'password.reset', 'uses' => 'ResetPasswordController@showResetForm']);
+    Route::post('password/reset', ['as' => 'password.update' , 'uses' => 'ResetPasswordController@reset']);
 });
 
 Route::group(['namespace' => 'Core'], function () {
@@ -90,15 +94,15 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/forum/categories', ['uses' => 'ForumController@categories', 'as' => 'forum.categories']);
     Route::get('/forum/category-list/{id}', ['uses' => 'ForumController@categoryList', 'as' => 'forum.category.list'])->where('id', '[0-9]+');
     Route::get('/forum/category-detail/{id}', ['uses' => 'ForumController@categoryDetail', 'as' => 'forum.category.detail'])->where('id', '[0-9]+');
-    Route::post('/forum/category-detail/post/{id}', ['uses' => 'ForumController@categoryDetailPost', 'as' => 'forum.category.detail.post'])->where('id', '[0-9]+')->middleware('auth');
+    Route::post('/forum/category-detail/post/{id}', ['uses' => 'ForumController@categoryDetailPost', 'as' => 'forum.category.detail.post'])->where('id', '[0-9]+')->middleware('auth')->middleware('verified');;
     Route::get('/forum/messages/{id}', ['uses' => 'ForumController@categoryMessages', 'as' => 'forum.category.messages'])->where('id', '[0-9]+');
-    Route::post('/forum/messages/post/{id}', ['uses' => 'ForumController@categoryMessagesPost', 'as' => 'forum.category.messages.post'])->where('id', '[0-9]+')->middleware('auth');
-    Route::get('/forum/message/like', ['uses' => 'ForumController@messageLike', 'as' => 'forum.category.message.like'])->middleware('auth');
+    Route::post('/forum/messages/post/{id}', ['uses' => 'ForumController@categoryMessagesPost', 'as' => 'forum.category.messages.post'])->where('id', '[0-9]+')->middleware('auth')->middleware('verified');;
+    Route::get('/forum/message/like', ['uses' => 'ForumController@messageLike', 'as' => 'forum.category.message.like'])->middleware('auth')->middleware('verified');
 
 
 });
 
-Route::group(['middleware' => 'auth', 'verify' => true], function () {
+Route::group(['middleware' => 'auth'], function () {
 
 
     Route::group(['namespace' => 'Core','middleware' => ['ROLE_OR:' . \App\Models\Entities\Core\Role::ADMIN_ID]], function () {

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Web\V1\User;
 
-use App\Http\Controllers\Web\WebBaseController;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 class ForgotPasswordController extends Controller
@@ -32,7 +32,14 @@ class ForgotPasswordController extends Controller
 
     public function showLinkRequestForm()
     {
-        return view('modules.admin.core.auth.passwords.email');
+        return view('modules.front.core.auth.passwords.email');
 
+    }
+
+    protected function sendResetLinkFailedResponse(Request $request, $response)
+    {
+        return back()->withErrors(
+            ['email' => trans($response)]
+        )->withInput($request->only('email'));
     }
 }

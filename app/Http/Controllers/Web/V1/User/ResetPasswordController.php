@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\V1\User;
 
 use App\Http\Controllers\Web\WebBaseController;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
@@ -37,4 +38,12 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    public function showResetForm(Request $request, $token = null)
+    {
+        return view('modules.front.core.auth.passwords.reset')->with(
+            ['token' => $token, 'email' => json_decode($request->email)]
+        );
+    }
 }
+

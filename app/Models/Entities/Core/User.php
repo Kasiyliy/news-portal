@@ -6,6 +6,7 @@ use App\Models\Entities\Support\AppFile;
 
 
 use App\Notifications\VerifyEmailUser;
+use App\Notifications\ResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -88,6 +89,9 @@ class User extends Authenticatable implements JWTSubject ,MustVerifyEmail
         $this->notify(new VerifyEmailUser());
     }
 
-
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
+    }
 
 }

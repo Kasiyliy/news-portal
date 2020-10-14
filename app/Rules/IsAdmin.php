@@ -28,7 +28,7 @@ class IsAdmin implements Rule
     public function passes($attribute, $value)
     {
         $user = User::where('email',$value)->first();
-        if($user->role_id == Role::ADMIN_ID){
+        if($user && $user->role_id == Role::ADMIN_ID){
             return true;
         }else{
             return false;
@@ -42,6 +42,6 @@ class IsAdmin implements Rule
      */
     public function message()
     {
-        return 'Вы не являетесь администратором';
+        return 'Неверное имя пользователя или пароль';
     }
 }
