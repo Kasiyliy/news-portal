@@ -95,6 +95,17 @@
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-size: 14px;
         }
+
+        @media (max-width: 992px) {
+            .mobile__mode{
+                display: none;
+            }
+        }
+        /*@media (max-width: 767px) {*/
+        /*    .last__message{*/
+        /*        display: none;*/
+        /*    }*/
+        /*}*/
     </style>
 @endsection
 
@@ -118,7 +129,7 @@
                 @if($categories)
                     @foreach($categories as $category)
                         <div class="card-body row">
-                            <div class="col-6">
+                            <div class="col-sm-12 col-md-6">
                                 <a href="{{route('forum.category.list', $category->id)}}"
                                    class="card-title">{{$category->name}}</a>
                                 <div class="card-subtitle row">
@@ -134,12 +145,12 @@
                                 </div>
                             </div>
                             @if($category->categoryMessages($category->id))
-                                <div class="col-6 row pr-0">
+                                <div class="mobile__mode col-6 row pr-0">
                                     <div class="col-4 text-right pr-4 ">
                                         <h5 class="messages__count font-weight-bold mb-1">{{$category->categoryMessages($category->id)}}</h5>
                                         <p class="text-muted"> хабарлама</p>
                                     </div>
-                                    <div class="col-8 row pr-0">
+                                    <div class=" col-8 row pr-0">
                                         <div class="last__message-img ">
                                             <img
                                                 src="{{asset($category->categoryLastMessage($category->id)->avatar_path ? $category->categoryLastMessage($category->id)->avatar_path : 'modules/front/assets/img/defaultuser.png')}}"
@@ -154,7 +165,7 @@
                                     </div>
                                 </div>
                             @else
-                                <div class="col-6 text-center">
+                                <div class="mobile__mode col-6 text-center">
                                     <p class="text-muted mt-4">Бұл категорияда хабарламалар жоқ. Бірінші болыңыз!</p>
                                 </div>
                             @endif

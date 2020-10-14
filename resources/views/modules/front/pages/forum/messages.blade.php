@@ -106,10 +106,6 @@
             height: 300px !important;
         }
 
-        @media (max-width: 992px) {
-
-        }
-
         @media (max-width: 767px) {
             .user__img{
                 width: 30px;

@@ -85,6 +85,16 @@
             color: #718096;
             margin: 0;
         }
+        @media (max-width: 992px) {
+            .last__message{
+                display: none;
+            }
+        }
+        @media (max-width: 767px) {
+            .last__message{
+                display: none;
+            }
+        }
     </style>
 @endsection
 
@@ -144,7 +154,7 @@
                 </div>
                 @foreach($topics as $topic)
                     <div class="card-body row">
-                        <div class="col-9 align-self-center">
+                        <div class="col-sm-12 col-md-9 align-self-center">
                             <div class="title__block mb-4">
                                 <i class="fa fa-caret-right pr-2"></i>
                                 <a href="{{route('forum.category.messages', $topic->id)}}"
@@ -165,7 +175,7 @@
                             </div>
 
                         </div>
-                        <div class="col-3 row align-items-center">
+                        <div class="last__message col-3 row align-items-center">
                             <div class="col-4">
                                 <div class="user__img ">
                                     <img

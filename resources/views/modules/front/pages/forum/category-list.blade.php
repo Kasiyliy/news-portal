@@ -81,6 +81,17 @@
             font-size: 14px;
         }
 
+        @media (max-width: 992px) {
+            .mobile__mode{
+                display: none;
+            }
+        }
+        /*@media (max-width: 767px) {*/
+        /*    .last__message{*/
+        /*        display: none;*/
+        /*    }*/
+        /*}*/
+
     </style>
 @endsection
 
@@ -104,20 +115,20 @@
                 </div>
                 @foreach($subcategories as $subcategory)
                     <div class="card-body row">
-                        <div class="col-6 align-self-center title__block">
+                        <div class="col-sm-12 col-md-6 align-self-center title__block">
                             <i class="fa fa-caret-right pr-2"></i>
                             <a href="{{route('forum.category.detail', $subcategory->id)}}"
                                class="card-title">{{$subcategory->name}}</a>
                         </div>
                         @if($subcategory->childCategoryLastMessage($subcategory->id))
-                            <div class="col-6 row pr-0">
+                            <div class="mobile__mode col-6 row pr-0">
                                 <div class="col-4 text-right pr-4">
                                     <h5 class="messages__count font-weight-bold mb-1">
                                         {{$subcategory->childCategoryMessages($subcategory->id)}}
                                     </h5>
                                     <p class="text-muted m-0"> хабарлама</p>
                                 </div>
-                                <div class="col-8 row pr-0">
+                                <div class=" col-8 row pr-0">
                                     <div class="col-12 row pr-0">
                                         <div class="last__message-img ">
                                             <img
@@ -134,7 +145,7 @@
                                 </div>
                             </div>
                         @else
-                            <div class="col-6 text-center">
+                            <div class="mobile__mode col-6 text-center">
                                 <p class="text-muted mt-4">Бұл категорияда хабарламалар жоқ. Бірінші болыңыз!</p>
                             </div>
                         @endif
