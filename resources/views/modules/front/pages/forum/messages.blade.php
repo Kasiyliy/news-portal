@@ -220,7 +220,7 @@
                     </div>
                 @endforeach
             </div>
-            <a class="see-more" data-div="#boxes" data-page="2" data-link="3?page=">Көбірек жүктеу</a>
+            <a class="see-more" data-div="#boxes" data-page="2" data-link="?page=">Көбірек жүктеу</a>
             <div class="card w-100 mt-5" id="answer">
                 <div class="card-body row">
                     <form action="{{route('forum.category.messages.post', request()->route('id'))}}" method="post"
