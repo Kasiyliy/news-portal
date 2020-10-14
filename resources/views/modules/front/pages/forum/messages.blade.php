@@ -93,8 +93,13 @@
             margin: 0;
         }
 
-        .more__messages {
-
+        .see-more {
+            color: #00656D;
+            text-decoration: none;
+            cursor:pointer;
+        }
+        .see-more:hover{
+            color: #00656D;
         }
 
         .tox.tox-tinymce {
@@ -199,8 +204,8 @@
                         </div>
                     </div>
                 @endforeach
-                {{$messages->links()}}
             </div>
+            <a class="see-more pt-3" data-div="#boxes" data-page="2" data-link="3?page=">Көбірек жүктеу</a>
             <div class="card w-100 mt-5" id="answer">
                 <div class="card-body row">
                     <form action="{{route('forum.category.messages.post', request()->route('id'))}}" method="post"
@@ -230,23 +235,35 @@
         });
     </script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
-        <script>
-            $('ul.pagination').hide();
-            $(function () {
-                $('#boxes').jscroll({
-                    autoTrigger: true,
-                    loadingHtml: '<img class="center-block" src="/images/loading.gif" alt="Loading..." />',
-                    padding: 20,
-                    nextSelector: '.pagination li.active + li a',
-                    contentSelector: 'div#boxes',
-                    callback: function () {
-                        $('ul.pagination').remove();
-                    }
-                });
-            });
-        </script>
+    <script>
+        $(function () {
+            var $posts = $("#boxes");
+            var $ul = $("ul.pagination");
+            $ul.hide(); // Prevent the default Laravel paginator from showing, but we need the links...
 
+            $pages = {{$messages->lastPage()}}
+                console.log($pages)
+            $(".see-more").click(function () {
+                if ($pages >= $(this).data('page')) {
+                    $div = $($(this).data('div')); //div to append
+
+                    $link = $(this).data('link'); //current URL
+
+                    $page = $(this).data('page'); //get the next page #
+                    $href = $link + $page; //complete URL
+                    $.get($href, function (response) { //append data
+                        $html = $(response).find("#boxes").html();
+                        $div.append($html);
+                    });
+                    $(this).data('page', (parseInt($page) + 1)); //update page #
+                }
+                else{
+                    $(this).remove()
+                }
+            });
+
+        });
+    </script>
 
     <script>
         $(document).on('click', '#likeDislike', function () {
