@@ -91,7 +91,7 @@ class LoginController extends WebBaseController
 
     protected function sendLoginResponse(Request $request)
     {
-        dd($request->session());
+
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
