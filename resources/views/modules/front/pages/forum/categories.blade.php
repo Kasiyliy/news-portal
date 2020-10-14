@@ -90,17 +90,19 @@
             height: 100%;
             object-fit: cover;
         }
-        .text-muted{
-            color: #718096!important;
+
+        .text-muted {
+            color: #718096 !important;
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-size: 14px;
         }
 
         @media (max-width: 992px) {
-            .mobile__mode{
+            .mobile__mode {
                 display: none;
             }
         }
+
         /*@media (max-width: 767px) {*/
         /*    .last__message{*/
         /*        display: none;*/
@@ -120,9 +122,9 @@
             </div>
         </div>
     </section>
-    <section class="categories pb-5">
+    <section class="categories pb-5 ">
         <div class="container">
-            <div class="card w-100">
+            <div class="card w-100 mb-5">
                 <div class="card-header">
                     <h4 class="pl-2 m-0">Категориялар</h4>
                 </div>
@@ -171,6 +173,8 @@
                             @endif
                         </div>
                     @endforeach
+                @else
+                    <p class="text-center mb-5 mt-5">Категориялар әлі қосылмаған.</p>
                 @endif
             </div>
         </div>

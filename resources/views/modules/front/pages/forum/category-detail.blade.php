@@ -85,13 +85,19 @@
             color: #718096;
             margin: 0;
         }
+
+        .ifempty{
+
+        }
+
         @media (max-width: 992px) {
-            .last__message{
+            .last__message {
                 display: none;
             }
         }
+
         @media (max-width: 767px) {
-            .last__message{
+            .last__message {
                 display: none;
             }
         }
@@ -146,50 +152,54 @@
         </div>
     </div>
 
-    <section class="categories pb-5">
+    <section class="categories pb-5 mb-5">
         <div class="container">
             <div class="card w-100">
                 <div class="card-header">
                     <h4 class="pl-2 m-0">Тақырыптар</h4>
                 </div>
-                @foreach($topics as $topic)
-                    <div class="card-body row">
-                        <div class="col-sm-12 col-md-9 align-self-center">
-                            <div class="title__block mb-4">
-                                <i class="fa fa-caret-right pr-2"></i>
-                                <a href="{{route('forum.category.messages', $topic->id)}}"
-                                   class="card-title">{{$topic->title}}</a>
-                            </div>
-                            <div class="subtitle__block">
-                                <i class="fa fa-circle"></i>
-                                <span class="pr-3">
+                @if($topics->isNotEmpty())
+                    @foreach($topics as $topic)
+                        <div class="card-body row">
+                            <div class="col-sm-12 col-md-9 align-self-center">
+                                <div class="title__block mb-4">
+                                    <i class="fa fa-caret-right pr-2"></i>
+                                    <a href="{{route('forum.category.messages', $topic->id)}}"
+                                       class="card-title">{{$topic->title}}</a>
+                                </div>
+                                <div class="subtitle__block">
+                                    <i class="fa fa-circle"></i>
+                                    <span class="pr-3">
                                     @if(count($topic->messages) == 0)
-                                        жауап жоқ
-                                    @else
-                                        {{count($topic->messages)}} жауап
-                                    @endif
+                                            жауап жоқ
+                                        @else
+                                            {{count($topic->messages)}} жауап
+                                        @endif
 
                                 </span>
-                                <i class="fa fa-circle"></i>
-                                <span>{{$topic->created_at}}</span>
-                            </div>
+                                    <i class="fa fa-circle"></i>
+                                    <span>{{$topic->created_at}}</span>
+                                </div>
 
-                        </div>
-                        <div class="last__message col-3 row align-items-center">
-                            <div class="col-4">
-                                <div class="user__img ">
-                                    <img
-                                        src="{{asset($topic->author->avatar_path ? $topic->author->avatar_path : 'modules/front/assets/img/defaultuser.png')}}"
-                                        alt="">
+                            </div>
+                            <div class="last__message col-3 row align-items-center">
+                                <div class="col-4">
+                                    <div class="user__img ">
+                                        <img
+                                            src="{{asset($topic->author->avatar_path ? $topic->author->avatar_path : 'modules/front/assets/img/defaultuser.png')}}"
+                                            alt="">
+                                    </div>
+                                </div>
+                                <div class="user__info col-8">
+                                    <h5 class="text-truncate">{{$topic->author->name}}</h5>
+                                    <p class="text-truncate">{{$topic->author->email}}</p>
                                 </div>
                             </div>
-                            <div class="user__info col-8">
-                                <h5 class="text-truncate">{{$topic->author->name}}</h5>
-                                <p class="text-truncate">{{$topic->author->email}}</p>
-                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @else
+                    <p class="ifempty text-center mt-5 mb-5">Бұл категорияда тақырыптар жоқ. Бірінші болыңыз</p>
+                @endif
             </div>
         </div>
     </section>

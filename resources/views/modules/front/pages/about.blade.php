@@ -7,7 +7,7 @@
     <section class="news__detail">
         <div class="container">
             <div class="news__detail__inner">
-                <h1>Жоба туралы</h1>
+                <h1>Сайт туралы</h1>
                 <div class="mt-3 mb-3">
                     <a href="{{route('welcome')}}">← Қайта оралу </a>
                 </div>
