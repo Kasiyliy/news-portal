@@ -224,7 +224,7 @@
                           novalidate>
                         {{csrf_field()}}
                         <textarea id="mytextarea" placeholder="Жауап жазу" name="text" class="form-control"
-                                  required></textarea>
+                                  required>{{{ old('text') }}}</textarea>
                         <div class="invalid-tooltip">
                             Тақырыпты толтырыңыз
                         </div>
