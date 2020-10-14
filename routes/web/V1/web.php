@@ -94,9 +94,9 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/forum/categories', ['uses' => 'ForumController@categories', 'as' => 'forum.categories']);
     Route::get('/forum/category-list/{id}', ['uses' => 'ForumController@categoryList', 'as' => 'forum.category.list'])->where('id', '[0-9]+');
     Route::get('/forum/category-detail/{id}', ['uses' => 'ForumController@categoryDetail', 'as' => 'forum.category.detail'])->where('id', '[0-9]+');
-    Route::post('/forum/category-detail/post/{id}', ['uses' => 'ForumController@categoryDetailPost', 'as' => 'forum.category.detail.post'])->where('id', '[0-9]+')->middleware('auth')->middleware('verified');;
+    Route::post('/forum/category-detail/post/{id}', ['uses' => 'ForumController@categoryDetailPost', 'as' => 'forum.category.detail.post'])->where('id', '[0-9]+')->middleware('auth');
     Route::get('/forum/messages/{id}', ['uses' => 'ForumController@categoryMessages', 'as' => 'forum.category.messages'])->where('id', '[0-9]+');
-    Route::post('/forum/messages/post/{id}', ['uses' => 'ForumController@categoryMessagesPost', 'as' => 'forum.category.messages.post'])->where('id', '[0-9]+')->middleware('auth')->middleware('verified');;
+    Route::post('/forum/messages/post/{id}', ['uses' => 'ForumController@categoryMessagesPost', 'as' => 'forum.category.messages.post'])->where('id', '[0-9]+')->middleware('auth');
     Route::get('/forum/message/like', ['uses' => 'ForumController@messageLike', 'as' => 'forum.category.message.like'])->middleware('auth')->middleware('verified');
 
 

@@ -86,11 +86,11 @@
                                     Аккаунтыңыз жоқ па?
                                     <a class="font-weight-semi-bold" href="{{route('register')}}">Тіркелу</a>
                                 </p>
-{{--                                @if (Route::has('password.request'))--}}
-{{--                                    <a class="btn btn-link" href="{{ route('password.request') }}">--}}
-{{--                                        {{ __('Құпия сөзді ұмыттыңыз ба?') }}--}}
-{{--                                    </a>--}}
-{{--                                @endif--}}
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Құпия сөзді ұмыттыңыз ба?') }}
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </div>

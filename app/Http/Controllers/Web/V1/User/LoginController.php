@@ -30,6 +30,9 @@ class LoginController extends WebBaseController
      */
     public function __construct()
     {
+        session(['url.intended' => url()->previous()]);
+        $this->redirectTo = session()->get('url.intended');
+
         $this->middleware('guest')->except('logout');
     }
 
@@ -88,12 +91,23 @@ class LoginController extends WebBaseController
 
     protected function sendLoginResponse(Request $request)
     {
+
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
 
         return ($this->guard()->user()->role_id == Role::ADMIN_ID)
-            ?redirect()->route('home'): redirect()->route('user.profile');
+            ?redirect()->route('home'): redirect()->intended($this->redirectPath());
+
+//        if($this->guard()->user()->role_id == Role::ADMIN_ID){
+//            return redirect()->route('home');
+//        }
+//        else if() {
+//
+//        }
+//        else{
+//            return redirect()->route('user.profile');
+//        }
     }
 
 
@@ -122,6 +136,11 @@ class LoginController extends WebBaseController
     public function showLoginForm()
     {
         $loginInputs = UserLoginWebForm::inputGroups(null);
+        if (!session()->has('url.intended')) {
+
+            redirect()->setIntendedUrl(session()->previousUrl());
+        }
+
         return $this->frontView('core.auth.login', compact('loginInputs'));
     }
 

@@ -102,7 +102,7 @@ class ForumController extends WebBaseController
             throw new WebServiceExplainedException('Контент табылған жоқ!');
         }
         $topic = ForumTopic::where('id', $id)->with(['author'])->with(['messages','category'])->first();
-        $messages = ForumMessage::orderBy('created_at', 'desc')->where('forum_topic_id', $id)->with(['author','likes','dislikes'])->paginate(1);
+        $messages = ForumMessage::orderBy('created_at', 'asc')->where('forum_topic_id', $id)->with(['author','likes','dislikes'])->paginate(10);
 
         return $this->frontView('pages.forum.messages', compact('topic', 'messages'));
     }
