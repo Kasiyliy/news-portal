@@ -105,6 +105,21 @@
         .tox.tox-tinymce {
             height: 300px !important;
         }
+
+        @media (max-width: 992px) {
+
+        }
+
+        @media (max-width: 767px) {
+            .user__img{
+                width: 30px;
+                height: 30px;
+            }
+            .user__info h5{
+                font-size: 16px;
+            }
+        }
+
     </style>
 @endsection
 
@@ -126,7 +141,7 @@
         <div class="container">
             <div class="card w-100 mb-5">
                 <div class="card-body row">
-                    <div class="col-2 row flex-column align-items-center">
+                    <div class="col-sm-12 col-md-2 row flex-column align-items-center">
                         <div class="user__img mb-3">
                             <img
                                 src="{{asset($topic->author->avatar_path ? $topic->author->avatar_path : 'modules/front/assets/img/defaultuser.png')}}"
@@ -136,7 +151,7 @@
                             <h5>{{$topic->author->name}}</h5>
                         </div>
                     </div>
-                    <div class="col-10 d-flex flex-column justify-content-between ">
+                    <div class="col-sm-12  col-md-10 d-flex flex-column justify-content-between ">
                         <div class="topic__title">
                             <p>Опубликовано {{date('d-m-Y H:i', strtotime($topic->created_at))}}</p>
                             <h4>{{$topic->title}}</h4>
@@ -160,7 +175,7 @@
                 @foreach($messages as $message)
                     <div class="card w-100 mt-2">
                         <div class="card-body row">
-                            <div class="col-2 row flex-column align-items-center">
+                            <div class="col-sm-12 col-md-2 row flex-column align-items-center">
                                 <div class="user__img mb-3">
                                     <img
                                         src="{{asset($message->author->avatar_path ? $message->author->avatar_path : 'modules/front/assets/img/defaultuser.png')}}"
@@ -170,7 +185,7 @@
                                     <h5>{{$message->author->name}}</h5>
                                 </div>
                             </div>
-                            <div class="col-10 d-flex flex-column justify-content-between ">
+                            <div class="col-sm-12 col-md-10 d-flex flex-column justify-content-between ">
                                 <div class="answer__title">
                                     {!! $message->text !!}
                                 </div>
@@ -205,7 +220,7 @@
                     </div>
                 @endforeach
             </div>
-            <a class="see-more pt-3" data-div="#boxes" data-page="2" data-link="3?page=">Көбірек жүктеу</a>
+            <a class="see-more" data-div="#boxes" data-page="2" data-link="3?page=">Көбірек жүктеу</a>
             <div class="card w-100 mt-5" id="answer">
                 <div class="card-body row">
                     <form action="{{route('forum.category.messages.post', request()->route('id'))}}" method="post"
@@ -242,7 +257,6 @@
             $ul.hide(); // Prevent the default Laravel paginator from showing, but we need the links...
 
             $pages = {{$messages->lastPage()}}
-                console.log($pages)
             $(".see-more").click(function () {
                 if ($pages >= $(this).data('page')) {
                     $div = $($(this).data('div')); //div to append
