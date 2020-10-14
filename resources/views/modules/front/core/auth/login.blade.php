@@ -35,10 +35,17 @@
             color: red;
         }
 
+        .news__block.login{
+            min-height: 100%;
+            height: auto !important;
+            height: 100%;
+            margin: 0 auto -200px;
+        }
+
     </style>
 @endsection
 @section('content')
-    <section class="news__block">
+    <section class="news__block login">
         <div class="container">
             <div class="news__block__inner">
                 <h1>Авторизация</h1>
