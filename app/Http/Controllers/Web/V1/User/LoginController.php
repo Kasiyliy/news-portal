@@ -136,7 +136,6 @@ class LoginController extends WebBaseController
     public function showLoginForm()
     {
         $loginInputs = UserLoginWebForm::inputGroups(null);
-            dd(session());
         if (!session()->has('url.intended')) {
 
             redirect()->setIntendedUrl(session()->previousUrl());
