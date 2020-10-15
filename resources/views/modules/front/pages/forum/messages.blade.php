@@ -223,11 +223,17 @@
                           enctype="multipart/form-data" class="needs-validation w-100 d-flex flex-column p-4"
                           novalidate>
                         {{csrf_field()}}
+                        @auth
                         <textarea id="mytextarea" placeholder="Жауап жазу" name="text" class="form-control"
-                                  required>{{{ old('text') }}}</textarea>
+                                  required></textarea>
                         <div class="invalid-tooltip">
                             Тақырыпты толтырыңыз
                         </div>
+                        @endauth
+                        @guest
+                            <textarea id="mytextarea" placeholder="Жауап жазу" name="text" class="form-control"  readonly="readonly" ></textarea>
+
+                        @endguest
                         <div class="answer__button">
                             <button type="submit" class="btn mt-3 pr-5 pl-5" onclick="sendMessage()">Жауапты жіберу
                             </button>
@@ -241,9 +247,17 @@
 
 @section('scripts')
     <script>
-        tinymce.init({
-            selector: '#mytextarea'
-        });
+        if (document.getElementById('mytextarea').getAttribute('readonly') === 'readonly'){
+            tinymce.init({
+                selector: '#mytextarea',
+                readonly:1
+            });
+        }else{
+            tinymce.init({
+                selector: '#mytextarea',
+            });
+        }
+
     </script>
 
     <script>
@@ -319,4 +333,10 @@
 
         });
     </script>
+
+
+{{--    <script type="text/javascript">--}}
+{{--        tinymce.activeEditor.setMode('readonly');--}}
+
+{{--    </script>--}}
 @endsection
