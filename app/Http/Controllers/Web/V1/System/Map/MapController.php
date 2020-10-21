@@ -21,7 +21,6 @@ class MapController extends WebBaseController
             $mapRegion = MapRegion::findOrFail($id);
         } else {
             $mapRegion = new MapRegion();
-
         }
         $mapRegion->fill($request->all());
         $mapRegion->save();

@@ -50,7 +50,8 @@ class MainController extends WebBaseController
     public function resource($id = null)
     {
         $mapRegion = $id ? MapRegion::findOrFail($id) : MapRegion::findOrFail(1);
-        return $this->frontView('pages.resource', compact('mapRegion'));
+        $regions = MapRegion::all();
+        return $this->frontView('pages.resource', compact('mapRegion', 'regions'));
     }
 
     public function about()

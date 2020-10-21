@@ -37,7 +37,6 @@ class FormUtil
     {
         $type = 'textarea';
         return [$name => compact('placeholder', 'label', 'type', 'required', 'value', 'type')];
-
     }
 
 
