@@ -70,7 +70,7 @@ class RegisterController extends WebBaseController
 
 
         return Validator::make($data, [
-            'iin' => ['required', 'string', 'min:12' , 'max:12','unique:users',new YearRule()],
+            'iin' => ['required', 'string', 'min:12' , 'max:12','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);

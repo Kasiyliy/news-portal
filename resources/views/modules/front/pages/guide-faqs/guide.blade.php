@@ -6,7 +6,7 @@
             <div class="news__detail__inner">
                 <h1>ГИД</h1>
                 <div class="mt-3 mb-3">
-                    <a href="{{route('guide.faq')}}">← Қайта оралу </a>
+                    <a href="{{route('welcome')}}">← Қайта оралу </a>
                 </div>
 
             </div>

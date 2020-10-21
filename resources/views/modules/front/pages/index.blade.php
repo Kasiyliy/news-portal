@@ -192,13 +192,13 @@
                     <div class="info__card col-12 col-lg-4 col-md-6 mt-4 pl-0">
                         <div class="info__card__head reverse">
                             <img src="{{asset('modules/front/assets/img/sigma-icon.png')}}" alt="">
-                            <h2>ГИД / FAQ</h2>
+                            <h2>ГИД</h2>
                         </div>
                         <div class="info__card__content reverse">
                             <p>Мемлекеттік бағдарлама - ресурстар, орындаушылар, ғылыми-зерттеу, өндірістік,
                                 әлеуметтік-экономикалық, ұйымдық және басқа шаралар. </p>
                             <div class="info__card__link">
-                                <a href="{{route('guide.faq')}}">Толығырақ оқу ➞</a>
+                                <a href="{{route('guide')}}">Толығырақ оқу ➞</a>
                                 <h1>05</h1>
                             </div>
                         </div>

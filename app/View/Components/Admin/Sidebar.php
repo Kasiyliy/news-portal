@@ -42,14 +42,13 @@ class Sidebar extends BaseComponent
                     $this->navItem(route('prominent.direction.index'), 'ti-direction-alt', 'Направления'),
                     $this->navItem(route('prominent.user.index'), 'ti-user', 'Люди'),
                 ]),
-                $this->navItem(route('faq.index'), 'ti-tag', 'Гид/FAQ', [
-                    $this->navItem(route('guide.index'), 'ti-help-alt', 'Гид'),
-                    $this->navItem(route('faq.index'), 'ti-help', 'FAQ'),
-                ]),
                 $this->navItem(route('survey.index'), 'ti-notepad', 'Опрос/Форум', [
                     $this->navItem(route('survey.index'), 'ti-check-box', 'Опросы'),
                     $this->navItem(route('forum.index'), 'ti-comments', 'Форум'),
                 ]),
+
+                $this->navItem(route('guide.index'), 'ti-help-alt', 'Гид'),
+
 
             ];
         } else {
