@@ -273,44 +273,10 @@
     <section class="slider">
         <div class="container">
             <div id="myCanvasContainer" class="d-flex">
-                <canvas width="1110" height="550" id="myCanvas" style="" class="m-auto">
-                    <div class="region region-tags">
-                        <div class="block egov-block egov-block-simple" id="tags">
-                            <p><a href="#" onclick="event.preventDefault()">Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар<br/>бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,<br/>жастардың жалпы назары мектепке аударылуы керек.</a></p>
-                            <p><a href="#" onclick="event.preventDefault()">Біз тәуелсіздігінен айрылып қалған елдердің тағдырынан тиісті <br/>қорытынды шығарып, тағылымы мол сабақ алдық.</a></p>
-                            <p><a href="#" onclick="event.preventDefault()">Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар<br/>бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,<br/>жастардың жалпы назары мектепке аударылуы керек.</a></p>
-                            <p><a href="#" onclick="event.preventDefault()">Біз тәуелсіздігінен айрылып қалған елдердің тағдырынан тиісті <br/>қорытынды шығарып, тағылымы мол сабақ алдық.</a></p>
-                            <p><a href="#" onclick="event.preventDefault()">Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар<br/>бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,<br/>жастардың жалпы назары мектепке аударылуы керек.</a></p>
 
-                        </div>
-                    </div>
-                </canvas>
             </div>
         </div>
     </section>
-
-
-
-{{--    <section class="slider">--}}
-{{--        <div class="container">--}}
-{{--            <div class="swiper-container slider">--}}
-{{--                <div class="swiper-wrapper slider">--}}
-{{--                    @foreach($slider as $s)--}}
-{{--                        <div class="swiper-slide slider row slider-reverse-block">--}}
-{{--                            <div class="swiper-text col-md-12 col-lg-5 ml-5">--}}
-{{--                                <h1>{{$s->title}}</h1>--}}
-{{--                            </div>--}}
-{{--                            <div class="swiper-img col-md-6 col-lg-5 ml-4">--}}
-{{--                                <img src="{{asset($s->image_path)}}" alt="">--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    @endforeach--}}
-{{--                </div>--}}
-{{--                <!-- Add Pagination -->--}}
-{{--                <div class="swiper-pagination slider" id="swiper-pagination"></div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
 
     <section class="calendar" id="event">
         <div class="container">
@@ -385,20 +351,37 @@
     <script src="{{asset('modules/front/assets/js/purecounter.js')}}"></script>
     <script src="{{asset('modules/front/assets/js/swiper.min.js')}}"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
+
+        function generateTagCanvas(width) {
+            document.getElementById('myCanvasContainer').innerHTML = `
+            <canvas width="${width}" height="300" id="myCanvas" style="" class="m-auto canvas-slider">
+                    <div class="region region-tags">
+                        <div class="block egov-block egov-block-simple" id="tags">
+                            <p><a href="#" onclick="event.preventDefault()">Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар<br/>бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,<br/>жастардың жалпы назары мектепке аударылуы керек.</a></p>
+                            <p><a href="#" onclick="event.preventDefault()">Біз тәуелсіздігінен айрылып қалған елдердің тағдырынан тиісті <br/>қорытынды шығарып, тағылымы мол сабақ алдық.</a></p>
+                            <p><a href="#" onclick="event.preventDefault()">Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар<br/>бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,<br/>жастардың жалпы назары мектепке аударылуы керек.</a></p>
+                            <p><a href="#" onclick="event.preventDefault()">Біз тәуелсіздігінен айрылып қалған елдердің тағдырынан тиісті <br/>қорытынды шығарып, тағылымы мол сабақ алдық.</a></p>
+                            <p><a href="#" onclick="event.preventDefault()">Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар<br/>бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,<br/>жастардың жалпы назары мектепке аударылуы керек.</a></p>
+                        </div>
+                    </div>
+                </canvas>
+            `;
             if (!$('#myCanvas').tagcanvas({
                 textColour: '#000000',
                 outlineColour: '#F8A555',
                 reverse: true,
                 depth: 0.8,
-                maxSpeed: 0.05
+                maxSpeed: 0.05,
             }, 'tags')) {
                 // something went wrong, hide the canvas container
                 $('#myCanvasContainer').hide();
             }
+        }
+
+        $(document).ready(function () {
+            generateTagCanvas(window.innerWidth * 0.8);
         });
-    </script>
-    <script>
+
         $(document).ready(function () {
                 var currentDate = new Date();
 
@@ -572,13 +555,13 @@
 
                              <div class="calendar__detail-button row">
                                 {{--<div class="col-12 col-md-6 calendar__button left mt-3">--}}
-                                {{--    <button onclick="location.href='{{route('event','')}}'+'/'+${events[i].id};">Толық көру</button>--}}
-                                {{--</div>--}}
-                                {{--<div class="col-12 col-md-6 calendar__button right mt-3">--}}
-                                {{--    <button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>--}}
-                                {{--</div>--}}
-                             </div>
-                        </div>`);
+                                    {{--    <button onclick="location.href='{{route('event','')}}'+'/'+${events[i].id};">Толық көру</button>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="col-12 col-md-6 calendar__button right mt-3">--}}
+                                    {{--    <button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>--}}
+                                    {{--</div>--}}
+                                    </div>
+                               </div>`);
                             }
                         } else {
                             swiperWrapper.innerHTML =
@@ -587,9 +570,9 @@
                                         <div class="col-12 calendar__button right pb-5 pt-5 mb-5 mt-5">
                                             <h5>Бұл күнге ешқандай іс-шара белгіленбеген</h5>
                                             {{--<button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>--}}
-                                        </div>
-                                    </div>
-                                </div>`
+                                </div>
+                            </div>
+                        </div>`
                         }
                         swiper.update();
                     }
@@ -626,9 +609,6 @@
             }
         );
 
-    </script>
-
-    <script>
         let screenSize = $(window).width();
         if (screenSize < 992) {
             let pagination = document.getElementById('swiper-pagination');
@@ -647,10 +627,11 @@
             },
         });
 
-    </script>
-    <script>
         var mybutton = document.getElementById("myBtn");
-        window.onscroll = function() {scrollFunction()};
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
         function scrollFunction() {
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                 mybutton.style.display = "block";
@@ -658,9 +639,11 @@
                 mybutton.style.display = "none";
             }
         }
+
         function topFunction() {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         }
+
     </script>
 @endsection

@@ -481,7 +481,10 @@
 }
 
 
-
+.canvas-slider{
+    width: 1110px;
+    height: 560px;
+}
 
 
 @media (max-width: 1200px) {
@@ -548,10 +551,14 @@
     .footer__apps{
         margin-top:40px;
     }
+    .open__button{
+        display: none;
+    }
 }
 
 @media (max-width: 767px) {
     .calendar__general{
         margin-bottom: 40px;
     }
+
 }
