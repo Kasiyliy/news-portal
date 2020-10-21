@@ -164,9 +164,9 @@
                 <div class="col-4">
                     <ul class="list-group bs-4 mb-5" id="groups">
                         @foreach($regions as $region)
-                            <li class="list-group-item cursor d-flex justify-content-between">
+                            <li @if($region->id == request()->route('id')) style="background-color: #f8a555" @else style="background-color: #00656D" @endif  class="list-group-item cursor d-flex justify-content-between">
                                 <a href="{{route('resource', ['id' => $region->id])}}">
-                                    <span>
+                                    <span class="text-white">
                                         {{$region->title}}
                                     </span>
                                 </a><b>&gt;</b>
