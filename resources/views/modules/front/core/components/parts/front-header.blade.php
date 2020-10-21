@@ -25,7 +25,7 @@
                         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="burger-icon fa fa-bars"></i>
                 </button>
-                <div class="header__nav collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="header__nav collapse navbar-collapse" id="navbarNavAltMarkup"  >
                     <div class="navbar-nav header__nav">
                         @foreach($navItems as $navItem)
                             <a href="{{$navItem['href']}}" class="nav__link nav-link">{{$navItem['title']}}</a>
