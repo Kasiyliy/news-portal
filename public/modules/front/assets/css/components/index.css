@@ -196,6 +196,35 @@
     width: 100%;
 }
 
+.about__content.inner{
+    position: relative;
+}
+
+.about__content.inner{
+    position: relative;
+}
+.about__content.inner:hover .about__logo__overlay{
+    display: flex!important;
+}
+
+.about__logo__overlay{
+    display: none!important;
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 101, 109, 0.5);
+}
+
+.about__logo__overlay a{
+    background: #F8A555;
+    border: #F8A555;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #FFFFFF;
+}
+
 .about__content h1 {
     text-align: center;
     font-size: 36px;

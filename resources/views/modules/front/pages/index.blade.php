@@ -126,13 +126,16 @@
             color: #00656D;
             font-weight: bold;
         }
-        .map-svg svg{
-            margin-top:0!important;
+
+        .map-svg svg {
+            margin-top: 0 !important;
         }
+
         .header__nav {
             justify-content: flex-end;
         }
-        .img_logo{
+
+        .img_logo {
             width: 100%;
         }
     </style>
@@ -285,7 +288,8 @@
                                     <div class="inline-block h-full w-1/2 map-svg">
                                         <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
                                              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd;margin-top: -20px;width: 95%;margin-left: 2.5%;"
-                                             width="665px" height="auto" marginTop="0!important" version="1.1" viewBox="0 0 591.31 428.07"
+                                             width="665px" height="auto" marginTop="0!important" version="1.1"
+                                             viewBox="0 0 591.31 428.07"
                                              xmlns:xlink="http://www.w3.org/1999/xlink">
             <g id="maps">
                 <metadata id="mapLayer"></metadata>
@@ -389,7 +393,12 @@
                 </div>
                 <div class="about__content col-12 col-lg-6 col-md-6 ">
                     <h1>Сайт туралы </h1>
-                    <img class = "img_logo" src="{{asset('modules/front/assets/img/big_logo.png')}}" >
+                    <div class="about__content inner">
+                        <img class="img_logo" src="{{asset('modules/front/assets/img/big_logo.png')}}">
+                        <div class="about__logo__overlay d-flex justify-content-center align-items-center">
+                            <a href="{{route('about')}}" class="px-4 py-2">Көру</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
