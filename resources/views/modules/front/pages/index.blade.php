@@ -132,6 +132,9 @@
         .header__nav {
             justify-content: flex-end;
         }
+        .img_logo{
+            width: 100%;
+        }
     </style>
     <style>
         #maps a .str0 {
@@ -386,22 +389,7 @@
                 </div>
                 <div class="about__content col-12 col-lg-6 col-md-6 ">
                     <h1>Сайт туралы </h1>
-                    <p>Жамбыл облысы әкімдігінің жастар саясаты мәселелері басқармасының тапсыры бойынша Әулие-ата
-                        жастарына арналған <a href="{{route('about')}}">толығырақ...</a></p>
-                    <div class="about__icons row">
-                        <div class="about__icons__content col-3 mx-auto">
-                            <img src="{{asset('modules/front/assets/img/clock-icon.png')}}" alt="clock">
-                            <p>Уақыт үнемдеу</p>
-                        </div>
-                        <div class="about__icons__content col-3 mx-auto">
-                            <img src="{{asset('modules/front/assets/img/attention-icon.png')}}" alt="attention">
-                            <p>Ақпаратқа қолжетімділік</p>
-                        </div>
-                        <div class="about__icons__content col-3 mx-auto">
-                            <img src="{{asset('modules/front/assets/img/mobile-icon.png')}}" alt="mobile">
-                            <p>Мобильді қосымша</p>
-                        </div>
-                    </div>
+                    <img class = "img_logo" src="{{asset('modules/front/assets/img/big_logo.png')}}" >
                 </div>
             </div>
 
