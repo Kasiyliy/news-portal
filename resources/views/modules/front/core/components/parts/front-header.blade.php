@@ -1,6 +1,6 @@
 
 
-<header class="header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({{asset($about_project->main_image)}})">
+<header class="header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({{asset($about_project->main_image)}})" id="header">
     <div class="container">
         <div class="header__inner">
             <div class="header__inner__top row justify-content-between">
@@ -37,7 +37,7 @@
         <div class="main__inner">
             <div class="main__inner__content">
                 <h1>{{$about_project->main_title}}</h1>
-                <a href="{{route('resource')}}"><button>Ресурстық орталықтар ➞</button></a>
+                <a href="{{route('forum.questionnaire.list')}}"><button>Сауалнама ➞</button></a>
             </div>
         </div>
     </div>

@@ -172,11 +172,11 @@
                     <div class="d-flex">
                         @if($mapRegion->instagram)
                             <a href="{{$mapRegion->instagram}}"> <i
-                                        class="resource__social fa fa-2x mr-3 fa-instagram"></i></a>
+                                    class="resource__social fa fa-2x mr-3 fa-instagram"></i></a>
                         @endif
                         @if($mapRegion->facebook)
                             <a href="{{$mapRegion->facebook}}"> <i
-                                        class="resource__social fa fa-2x mr-3 fa-facebook-f"></i></a>
+                                    class="resource__social fa fa-2x mr-3 fa-facebook-f"></i></a>
                         @endif
                         @if($mapRegion->vk)
                             <a href="{{$mapRegion->vk}}"> <i class="resource__social fa fa-2x mr-3 fa-vk"></i></a>

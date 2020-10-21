@@ -364,9 +364,14 @@
                         </div>
                     @endforeach
                 </div>
-
             </div>
         </div>
+    </section>
+
+    <section class="upward">
+        <a href="#header" class="open__button" id="myBtn">
+            <i class="fa fa-chevron-up fa-2x"></i>
+        </a>
     </section>
 
 @endsection
@@ -590,5 +595,20 @@
             },
         });
 
+    </script>
+    <script>
+        var mybutton = document.getElementById("myBtn");
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
     </script>
 @endsection

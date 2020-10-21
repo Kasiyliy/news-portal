@@ -55,7 +55,11 @@
                         </div>
                     </div>
                 </div>
+                <script src="//code.jivosite.com/widget/iwu3lDpdTv" async></script>
             </div>
         </div>
+    </div>
+    <div class="footer__bottom">
+        <p class="text-center text-white py-3 m-0">www.benediximus.kz</p>
     </div>
 </footer>
