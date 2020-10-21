@@ -1,6 +1,7 @@
 <script src="{{asset('modules/front/assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('modules/front/assets/js/popper.min.js')}}"></script>
 <script src="{{asset('modules/front/assets/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('modules/front/assets/js/tagcanvas.min.js')}}"></script>
 <script src="{{asset('modules/front/assets/v_impaired/js/js.cookie.min.js')}}"></script>
 <script src="{{asset('modules/front/assets/v_impaired/js/bvi-init.min.js')}}"></script>
 <script src="{{asset('modules/front/assets/v_impaired/js/bvi.min.js')}}"></script>

@@ -130,7 +130,6 @@
 @endsection
 
 @section('content')
-
     <section class="info">
         <div class="container">
             <div class="info__inner">
@@ -273,24 +272,45 @@
 
     <section class="slider">
         <div class="container">
-            <div class="swiper-container slider">
-                <div class="swiper-wrapper slider">
-                    @foreach($slider as $s)
-                        <div class="swiper-slide slider row slider-reverse-block">
-                            <div class="swiper-text col-md-12 col-lg-5 ml-5">
-                                <h1>{{$s->title}}</h1>
-                            </div>
-                            <div class="swiper-img col-md-6 col-lg-5 ml-4">
-                                <img src="{{asset($s->image_path)}}" alt="">
-                            </div>
+            <div id="myCanvasContainer" class="d-flex">
+                <canvas width="1110" height="550" id="myCanvas" style="" class="m-auto">
+                    <div class="region region-tags">
+                        <div class="block egov-block egov-block-simple" id="tags">
+                            <p><a href="#" onclick="event.preventDefault()">Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар<br/>бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,<br/>жастардың жалпы назары мектепке аударылуы керек.</a></p>
+                            <p><a href="#" onclick="event.preventDefault()">Біз тәуелсіздігінен айрылып қалған елдердің тағдырынан тиісті <br/>қорытынды шығарып, тағылымы мол сабақ алдық.</a></p>
+                            <p><a href="#" onclick="event.preventDefault()">Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар<br/>бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,<br/>жастардың жалпы назары мектепке аударылуы керек.</a></p>
+                            <p><a href="#" onclick="event.preventDefault()">Біз тәуелсіздігінен айрылып қалған елдердің тағдырынан тиісті <br/>қорытынды шығарып, тағылымы мол сабақ алдық.</a></p>
+                            <p><a href="#" onclick="event.preventDefault()">Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар<br/>бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,<br/>жастардың жалпы назары мектепке аударылуы керек.</a></p>
+
                         </div>
-                    @endforeach
-                </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination slider" id="swiper-pagination"></div>
+                    </div>
+                </canvas>
             </div>
         </div>
     </section>
+
+
+
+{{--    <section class="slider">--}}
+{{--        <div class="container">--}}
+{{--            <div class="swiper-container slider">--}}
+{{--                <div class="swiper-wrapper slider">--}}
+{{--                    @foreach($slider as $s)--}}
+{{--                        <div class="swiper-slide slider row slider-reverse-block">--}}
+{{--                            <div class="swiper-text col-md-12 col-lg-5 ml-5">--}}
+{{--                                <h1>{{$s->title}}</h1>--}}
+{{--                            </div>--}}
+{{--                            <div class="swiper-img col-md-6 col-lg-5 ml-4">--}}
+{{--                                <img src="{{asset($s->image_path)}}" alt="">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
+{{--                </div>--}}
+{{--                <!-- Add Pagination -->--}}
+{{--                <div class="swiper-pagination slider" id="swiper-pagination"></div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
     <section class="calendar" id="event">
         <div class="container">
@@ -359,6 +379,20 @@
 @section('scripts')
     <script src="{{asset('modules/front/assets/js/purecounter.js')}}"></script>
     <script src="{{asset('modules/front/assets/js/swiper.min.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (!$('#myCanvas').tagcanvas({
+                textColour: '#000000',
+                outlineColour: '#F8A555',
+                reverse: true,
+                depth: 0.8,
+                maxSpeed: 0.05
+            }, 'tags')) {
+                // something went wrong, hide the canvas container
+                $('#myCanvasContainer').hide();
+            }
+        });
+    </script>
     <script>
         $(document).ready(function () {
                 var currentDate = new Date();
@@ -599,18 +633,6 @@
                 reverse[i].style.flexFlow = 'wrap-reverse';
             }
         }
-
-        var swiper = new Swiper('.swiper-container.slider', {
-            direction: screenSize < 992 ? 'horizontal' : 'vertical',
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next-custom',
-                prevEl: '.swiper-button-prev-custom',
-            },
-        });
 
         var swiper = new Swiper('.swiper-container.calendar', {
             pagination: {
