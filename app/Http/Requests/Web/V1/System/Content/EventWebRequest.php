@@ -13,6 +13,12 @@ class EventWebRequest extends WebBaseRequest
             'description' => ['required', 'string'],
             'date' => ['required','date'],
             'image_path' => ['array'],
+            'representative' => ['required','string'],
+            'place' => ['string'],
+            'fio' => ['required','string'],
+            'phone' => ['required','string'],
+            'email' => ['email'],
+            'website' => ['string'],
         ];
     }
 }

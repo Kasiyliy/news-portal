@@ -121,6 +121,11 @@
         }
 
 
+        .title_label {
+
+            color: #00656D;
+            font-weight: bold;
+        }
     </style>
 @endsection
 
@@ -516,16 +521,63 @@
                             swiperWrapper.innerHTML = '';
                             for (let i = 0; i < events.length; i++) {
                                 swiperWrapper.insertAdjacentHTML('beforeend',
-                                    `<div class="swiper-slide calendar">
-                            <h3>${events[i].title}</h3>
-                            <div class="calendar__detail-button row">
-                                <div class="col-12 col-md-6 calendar__button left mt-3">
-                                    <button onclick="location.href='{{route('event','')}}'+'/'+${events[i].id};">Толық көру</button>
+                                    `<div class="swiper-slide calendar pt-4">
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-3">
+                                    <label class = "title_label">Ұйымдастырушы:</label>
                                 </div>
-                                <div class="col-12 col-md-6 calendar__button right mt-3">
-                                    <button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>
+                                 <div class="form-group col-md-8">
+                                    <label>${events[i].representative}</label>
                                 </div>
-                            </div>
+
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label class = "title_label">Тақырыбы:</label>
+                                </div>
+                                 <div class="form-group col-md-8">
+                                    <label>${events[i].title}</label>
+                                </div>
+
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label class = "title_label">Өтетін орны:</label>
+                                </div>
+                                 <div class="form-group col-md-8">
+                                    <label>${events[i].place}</label>
+                                </div>
+
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label class = "title_label">Телефон:</label>
+                                </div>
+                                 <div class="form-group col-md-8">
+                                    <label>${events[i].phone}</label>
+                                </div>
+
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label class = "title_label">Эл.пошта:</label>
+                                </div>
+                                 <div class="form-group col-md-8">
+                                    <label>${events[i].email}</label>
+                                </div>
+
+                              </div>
+
+                             <div class="calendar__detail-button row">
+                                {{--<div class="col-12 col-md-6 calendar__button left mt-3">--}}
+                                {{--    <button onclick="location.href='{{route('event','')}}'+'/'+${events[i].id};">Толық көру</button>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-12 col-md-6 calendar__button right mt-3">--}}
+                                {{--    <button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>--}}
+                                {{--</div>--}}
+                             </div>
                         </div>`);
                             }
                         } else {
@@ -534,7 +586,7 @@
                                     <div class="calendar__detail-button row mb-5 mt-5">
                                         <div class="col-12 calendar__button right pb-5 pt-5 mb-5 mt-5">
                                             <h5>Бұл күнге ешқандай іс-шара белгіленбеген</h5>
-                                            <button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>
+                                            {{--<button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>--}}
                                         </div>
                                     </div>
                                 </div>`
