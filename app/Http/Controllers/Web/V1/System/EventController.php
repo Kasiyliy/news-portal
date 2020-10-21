@@ -49,7 +49,12 @@ class EventController extends WebBaseController
             'title' => $request->title,
             'description' => $request->description,
             'date' => $request->date,
-            'is_accepted' => true
+            'is_accepted' => true,
+            'representative' => $request->representative,
+            'place' => $request->place,
+            'fio' => $request->fio,
+            'phone' => $request->phone,
+            'email' => $request->email,
         ]);
 
         $image_path = [];
@@ -95,7 +100,12 @@ class EventController extends WebBaseController
         $event->update([
             'title' => $request->title,
             'description' => $request->description,
-            'date' => $request->date
+            'date' => $request->date,
+            'representative' => $request->representative,
+            'place' => $request->place,
+            'fio' => $request->fio,
+            'phone' => $request->phone,
+            'email' => $request->email,
         ]);
 
         $eventUpdate = [];

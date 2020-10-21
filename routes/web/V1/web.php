@@ -81,9 +81,9 @@ Route::group(['namespace' => 'Front'], function () {
 
     //Events
     Route::get('/event/calendar', ['uses' => 'EventController@calendarEvent', 'as' => 'calendar.event']);
-    Route::get('/event/{id}', ['uses' => 'EventController@event', 'as' => 'event'])->where('id', '[0-9]+');
-    Route::get('/event/send', ['uses' => 'EventController@eventSend', 'as' => 'event.send']);
-    Route::post('/event/send/post', ['uses' => 'EventController@eventSendPost', 'as' => 'user.send.event']);
+//    Route::get('/event/{id}', ['uses' => 'EventController@event', 'as' => 'event'])->where('id', '[0-9]+');
+//    Route::get('/event/send', ['uses' => 'EventController@eventSend', 'as' => 'event.send']);
+//    Route::post('/event/send/post', ['uses' => 'EventController@eventSendPost', 'as' => 'user.send.event']);
 
 
     //Forum

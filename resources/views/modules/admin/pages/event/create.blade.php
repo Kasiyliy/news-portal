@@ -27,3 +27,14 @@
         </div>
     </div>
 @endsection
+@section('scripts')
+
+    <script>
+
+        $(function(){
+            element = document.getElementById("phone");
+            element.setAttribute("mask","+7(999) 999-9999");
+            $("#phone").mask("+7(999) 999-9999");
+        });
+    </script>
+@endsection
