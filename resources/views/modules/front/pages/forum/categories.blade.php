@@ -117,7 +117,7 @@
             <div class="news__detail__inner">
                 <h1>Форум</h1>
                 <div class="mt-3 pb-3">
-                    <a href="{{route('forum.forum-questionnaire')}}">← Қайта оралу </a>
+                    <a href="{{route('welcome')}}">← Қайта оралу </a>
                 </div>
             </div>
         </div>
