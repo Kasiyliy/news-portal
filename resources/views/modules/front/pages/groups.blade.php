@@ -18,7 +18,7 @@
             position: absolute;
             top: 30%!important;
             width: 4%;
-            height: 70%;
+            height: 100%;
             /*margin-top: 0!important;*/
             z-index: 10;
             cursor: pointer;
