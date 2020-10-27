@@ -1,5 +1,39 @@
 @extends ('modules.front.layouts.app-main')
 
+@section('styles')
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <style>
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            position: static !important;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+        }
+        .swiper-button-next, .swiper-button-prev {
+            position: absolute;
+            top: 30%!important;
+            width: calc(var(--swiper-navigation-size)/ 44 * 27);
+            height: 70%;
+            margin-top: 0!important;
+            z-index: 10;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00656D;
+        }
+        .swiper-button-next:hover,.swiper-button-prev:hover{
+
+            background-color:  #F8A555;
+
+        }
+    </style>
+@endsection
 @section('content')
     <section class="news__detail">
         <div class="container">
@@ -13,28 +47,46 @@
         </div>
     </section>
 
-    <section class="min__content">
+
         <div class="container my-5">
+{{--            <div class="row">--}}
+{{--                <div class="col-sm-12 col-lg-3">--}}
+{{--                    <ul class="list-group bs-4" id="groups">--}}
+{{--                        @foreach($groups as $group)--}}
+{{--                            <li onclick="chooseContent(this, {{$group}})" class="list-group-item cursor d-flex justify-content-between">--}}
+{{--                                <span>{{$group->name}}</span><b>></b>--}}
+{{--                            </li>--}}
+{{--                        @endforeach--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--                <div class="col-sm-12 col-lg-9">--}}
+{{--                    <div class="card bs-4 d-flex p-3" id="list-group-content">--}}
+{{--                        <span>--}}
+{{--                            не выбрано--}}
+{{--                        </span>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <div class="row">
-                <div class="col-sm-12 col-lg-3">
-                    <ul class="list-group bs-4" id="groups">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+
                         @foreach($groups as $group)
-                            <li onclick="chooseContent(this, {{$group}})" class="list-group-item cursor d-flex justify-content-between">
-                                <span>{{$group->name}}</span><b>></b>
-                            </li>
+                            <div class="swiper-slide">
+                                <div class="card">
+                                <div><h1>{{$group->name}}</h1></div>
+                                <p>{!! $group->description !!}</p>
+                                </div>
+                            </div>
                         @endforeach
-                    </ul>
-                </div>
-                <div class="col-sm-12 col-lg-9">
-                    <div class="card bs-4 d-flex p-3" id="list-group-content">
-                        <span>
-                            не выбрано
-                        </span>
                     </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </div>
-    </section>
+
 @endsection
 
 
@@ -60,5 +112,17 @@
             content.innerHTML = `{!! $groups->first() ? $groups->first()->description : 'Ұйымдар жоқ!' !!}`;
         }
 
+
+    </script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+
+        var swiper = new Swiper('.swiper-container', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
     </script>
 @endsection
