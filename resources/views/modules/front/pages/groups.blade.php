@@ -17,15 +17,21 @@
         .swiper-button-next, .swiper-button-prev {
             position: absolute;
             top: 30%!important;
-            width: calc(var(--swiper-navigation-size)/ 44 * 27);
+            width: 4%;
             height: 70%;
-            margin-top: 0!important;
+            /*margin-top: 0!important;*/
             z-index: 10;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #00656D;
+        }
+        .swiper-button-next{
+           margin-right: 60px;
+        }
+        .swiper-button-prev{
+            margin-left: 60px;
         }
         .swiper-button-next:hover,.swiper-button-prev:hover{
 
