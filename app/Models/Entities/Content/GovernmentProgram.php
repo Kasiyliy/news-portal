@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class GovernmentProgram extends Model
 {
     protected $fillable = [
-        'name', 'description'
+        'name', 'description', 'digital_help', 'traditional_help'
     ];
 }
