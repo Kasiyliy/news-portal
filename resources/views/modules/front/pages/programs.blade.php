@@ -71,7 +71,7 @@
                                              data-value="{{$program->digital_help ?? 'Кешіріңіз, бұл бөлім әзірге дайын емес.'}}"
                                              onclick="changeContent({{$program->id}}, this)"
                                              aria-controls="collapseThree">
-                                            <span class="fa fa-desktop fa-3x"></span>
+                                            <span class="fa fa-desktop fa-2x"></span>
                                         </div>
                                         <div class="col-2 cursor bg-whitey d-flex align-items-center justify-content-center"
                                              data-toggle="collapse"
@@ -79,7 +79,7 @@
                                              data-value="{{$program->traditional_help ?? 'Кешіріңіз, бұл бөлім әзірге дайын емес.'}}"
                                              onclick="changeContent({{$program->id}}, this)"
                                              aria-controls="collapseThree">
-                                            <span class="fa fa-university fa-3x"></span>
+                                            <span class="fa fa-university fa-2x"></span>
                                         </div>
                                     </div>
                                 </div>
