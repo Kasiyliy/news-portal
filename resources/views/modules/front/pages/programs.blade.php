@@ -47,6 +47,9 @@
         <div class="container my-5">
             <div class="row">
                 <div class="col-sm-12">
+                    <div class="w-100 text-right mb-1">
+                        Барлық Мемлекеттік бағдарламалар саны - {{count($programs)}}
+                    </div>
                     <div class="accordion" id="accordionExample">
                         @foreach($programs as $program)
                             <div class="card mb-4 border-bottom">
