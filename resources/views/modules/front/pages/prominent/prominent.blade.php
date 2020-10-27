@@ -15,9 +15,9 @@
     <section class="prominent">
         <div class="container">
             <div class="prominent__inner">
-                <h1>100 үздік есім</h1>
+                <h1>Еріктілер</h1>
                 <div class="mt-3 mb-3">
-                    <a href="{{route('welcome')}}">← Қайта оралу </a>
+                    <a href="{{route('prominent.info')}}">← Қайта оралу </a>
                 </div>
                 <div class="Collage effect-parent" hidden>
                     @foreach($users_photos as $u_photo)

@@ -71,6 +71,7 @@ Route::group(['namespace' => 'Front'], function () {
 
     //Prominent
     Route::get('/prominent', ['uses' => 'ProminentController@prominent', 'as' => 'prominent']);
+    Route::get('/prominent-info', ['uses' => 'ProminentController@prominentInfo', 'as' => 'prominent.info']);
     Route::get('/prominent/{id}', ['uses' => 'ProminentController@prominentDetail', 'as' => 'prominent.detail'])->where('id', '[0-9]+');
 
     //Resource
