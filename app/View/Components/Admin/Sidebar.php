@@ -48,6 +48,7 @@ class Sidebar extends BaseComponent
                 ]),
 
                 $this->navItem(route('guide.index'), 'ti-help-alt', 'Гид'),
+                $this->navItem(route('mobile-link.index'), 'ti-link', 'Ссылки'),
 
 
             ];

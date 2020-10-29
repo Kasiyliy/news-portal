@@ -17,8 +17,6 @@ use Illuminate\Support\Facades\Route;
 //Auth::routes(['verify' => true]);
 
 
-
-
 Route::group(['namespace' => 'Auth'], function () {
     Route::get('/admin/login', ['as' => 'admin.login', 'uses' => 'LoginController@showLoginForm']);
     Route::post('/admin/login', ['as' => 'admin.login.post', 'uses' => 'LoginController@login']);
@@ -37,10 +35,10 @@ Route::group(['namespace' => 'User'], function () {
     Route::get('email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify');
     Route::get('email/resend', 'VerificationController@resend')->name('verification.resend');
 
-    Route::get('password/reset',[ 'as' => 'password.request' , 'uses' =>'ForgotPasswordController@showLinkRequestForm']);
-    Route::post('password/email', ['as'=> 'password.email' , 'uses' => 'ForgotPasswordController@sendResetLinkEmail']);
-    Route::get('password/reset/{token}/{email}', ['as'=>'password.reset', 'uses' => 'ResetPasswordController@showResetForm']);
-    Route::post('password/reset', ['as' => 'password.update' , 'uses' => 'ResetPasswordController@reset']);
+    Route::get('password/reset', ['as' => 'password.request', 'uses' => 'ForgotPasswordController@showLinkRequestForm']);
+    Route::post('password/email', ['as' => 'password.email', 'uses' => 'ForgotPasswordController@sendResetLinkEmail']);
+    Route::get('password/reset/{token}/{email}', ['as' => 'password.reset', 'uses' => 'ResetPasswordController@showResetForm']);
+    Route::post('password/reset', ['as' => 'password.update', 'uses' => 'ResetPasswordController@reset']);
 });
 
 Route::group(['namespace' => 'Core'], function () {
@@ -106,7 +104,7 @@ Route::group(['namespace' => 'Front'], function () {
 Route::group(['middleware' => 'auth'], function () {
 
 
-    Route::group(['namespace' => 'Core','middleware' => ['ROLE_OR:' . \App\Models\Entities\Core\Role::ADMIN_ID]], function () {
+    Route::group(['namespace' => 'Core', 'middleware' => ['ROLE_OR:' . \App\Models\Entities\Core\Role::ADMIN_ID]], function () {
         Route::get('/home', ['uses' => 'PageController@home', 'as' => 'home']);
     });
 
@@ -127,6 +125,11 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/guide/contents/store/{category_id}', ['uses' => 'GuideController@contentStore', 'as' => 'guide.content.store'])->where('category_id', '[0-9]+');
             Route::post('/guide/contents/update/{id}', ['uses' => 'GuideController@contentUpdate', 'as' => 'guide.content.update'])->where('id', '[0-9]+');
             Route::post('/guide/contents/delete/{id}', ['uses' => 'GuideController@contentDelete', 'as' => 'guide.content.delete'])->where('id', '[0-9]+');
+
+            Route::get('/mobile-links', ['uses' => 'MobileLinkController@index', 'as' => 'mobile-link.index']);
+            Route::post('/mobile-links/store-update/{id?}', ['uses' => 'MobileLinkController@storeUpdate', 'as' => 'mobile-link.store-update']);
+            Route::post('/mobile-links/delete/{id}', ['uses' => 'MobileLinkController@delete', 'as' => 'mobile-link.delete']);
+            Route::get('/mobile-links/create-edit/{id?}', ['uses' => 'MobileLinkController@createEdit', 'as' => 'mobile-link.create-edit']);
 
             //FAQ
 //            Route::get('/faq', ['uses' => 'FaqController@index', 'as' => 'faq.index']);
