@@ -14,7 +14,7 @@ class AddColumnsToEventsTable extends Migration
     public function up()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->date('date');
+            $table->date('date')->nullable();
             $table->text('representative')->nullable();
             $table->text('place')->nullable();
             $table->string('fio')->nullable();

@@ -1,5 +1,35 @@
 @extends ('modules.front.layouts.app-main')
 
+@section('styles')
+    <link rel="stylesheet" href="{{asset('modules/front/assets/css/swiper.min.css')}}">
+    <style>
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+    </style>
+@endsection
+
 @section('content')
     <section class="news__detail">
         <div class="container">
@@ -30,41 +60,48 @@
                     </ul>
                 </div>
                 <div class="col-md-12 col-lg-9">
-                    <div class="accordion card p-3" id="accordionExample">
-                        <ul>
-                            @if($currentCategory->contents->isEmpty())
-                                Мәліметтер жоқ!
-                            @else
-                                @foreach($currentCategory->contents as $content)
-                                    <li>
-                                        <h2 class="mb-0 d-flex justify-content-between">
-                                <span style="font-size: 20px">
-                                    {{$content->title}}
-                                </span>
-                                            <span data-toggle="collapse"
-                                                  style="font-size: 25px"
-                                                  class="cursor"
-                                                  data-value="X"
-                                                  onclick="changeContent(this)"
-                                                  data-target="#collapse{{$content->id}}" aria-expanded="true"
-                                                  aria-controls="collapse{{$content->id}}">
-                                        +
-                                    </span>
-                                        </h2>
-
-                                        <div id="collapse{{$content->id}}" class="collapse" aria-labelledby="headingOne"
-                                             data-parent="#accordionExample">
-                                            <div>
-                                                {!! $content->description !!}
-                                            </div>
-                                            {{--                                        <h7>{{$content->updated_at}} жанартылды</h7>--}}
+                    @if($currentCategory->contents->isEmpty())
+                        Мәліметтер жоқ!
+                    @else
+                        @foreach($currentCategory->contents as $content)
+                            <div class="card row flex-row mb-3">
+                                <div class="col-5">
+                                    <div class="swiper-container">
+                                        <div class="swiper-wrapper">
+                                            @if($content->images->isNotEmpty())
+                                                @foreach($content->images as $image)
+                                                    <div class="swiper-slide">
+                                                        <div class="slider__image">
+                                                            <img class="slider__images" src="{{asset($image->image_path)}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
                                         </div>
-                                        <hr>
-                                    </li>
-                                @endforeach
-                            @endif
-                        </ul>
-                    </div>
+                                        <div class="swiper-scrollbar"></div>
+                                    </div>
+                                </div>
+                                <div class="col-7 guide__content d-flex flex-column justify-content-between">
+
+                                    <h1 class="pt-3">{{$content->title}}</h1>
+                                    <div>
+                                        <div class="d-flex">
+                                            <i class="fa fa-map-marker-alt pr-2"></i>
+                                            <p>{{$content->street}}</p>
+                                        </div>
+                                        <div class="d-flex">
+                                            <i class="fa fa-clock pr-2"></i>
+                                            <p>{{$content->time}}</p>
+                                        </div>
+                                        <div class="d-flex">
+                                            <i class="fas fa-mobile-alt pr-2"></i>
+                                            <p>{{$content->phone}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
@@ -72,7 +109,15 @@
 @endsection
 
 @section('scripts')
+    <script src="{{asset('modules/front/assets/js/swiper.min.js')}}"></script>
     <script>
+        var swiper = new Swiper('.swiper-container', {
+            scrollbar: {
+                el: '.swiper-scrollbar',
+                hide: true,
+            },
+        });
+
         function changeContent(el) {
             const newVal = el.dataset.value;
             el.dataset.value = el.innerText;

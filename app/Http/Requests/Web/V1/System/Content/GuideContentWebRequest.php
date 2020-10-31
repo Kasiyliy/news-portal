@@ -11,7 +11,10 @@ class GuideContentWebRequest extends WebBaseRequest
     {
         return [
             'title' => ['required', 'string'],
-            'description' => ['required', 'string'],
+            'street' => ['required', 'string'],
+            'time' => ['required', 'string'],
+            'phone' => ['required', 'string'],
+            'image_path' => ['array'],
         ];
     }
 }

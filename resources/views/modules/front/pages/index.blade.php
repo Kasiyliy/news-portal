@@ -66,7 +66,7 @@
 
 
         .fa {
-            font-size: 0.5em;
+            font-size: 0.5rem;
         }
 
         table {

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Web\V1\System;
 
 use App\Exceptions\Web\WebServiceExplainedException;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Http\Forms\Web\V1\System\Content\GuideContentWebForm;
 use App\Http\Forms\Web\V1\System\Content\GuiderCategoryWebForm;
@@ -11,10 +10,27 @@ use App\Http\Requests\Web\V1\System\Content\GuideCategoryWebRequest;
 use App\Http\Requests\Web\V1\System\Content\GuideContentWebRequest;
 use App\Models\Entities\Content\GuideCategory;
 use App\Models\Entities\Content\GuideContent;
-use Illuminate\Http\Request;
+use App\Models\Entities\Content\GuideContentImage;
+use App\Services\Common\V1\Support\FileService;
+use Carbon\Carbon;
+use Illuminate\Http\UploadedFile;
+
 
 class GuideController extends WebBaseController
 {
+
+    protected $fileService;
+
+    /**
+     * SliderController constructor.
+     * @param $fileService
+     */
+    public function __construct(FileService $fileService)
+    {
+        $this->fileService = $fileService;
+    }
+
+
     public function index()
     {
         $categories = GuideCategory::orderBy('updated_at', 'desc')->paginate(10);
@@ -41,7 +57,8 @@ class GuideController extends WebBaseController
         return redirect()->route('guide.index');
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $category = GuideCategory::find($id);
         if (!$category) throw new WebServiceExplainedException('Категория не найдена!');
         $category->contents()->delete();
@@ -67,17 +84,39 @@ class GuideController extends WebBaseController
     {
         $category = GuideCategory::find($category_id);
         if (!$category) throw new WebServiceExplainedException('Категория не найдена!');
-        GuideContent::create([
+        $guide_content = GuideContent::create([
             'title' => $request->title,
-            'description' => $request->description,
+            'street' => $request->street,
+            'time' => $request->time,
+            'phone' => $request->phone,
             'category_id' => $category_id
         ]);
+
+        $image_path = [];
+        $now = Carbon::now();
+        if ($request->has('image_path')) {
+            $files = $request->image_path;
+            foreach ($files as $file) {
+                if ($file instanceof UploadedFile) {
+                    $image_path[] = [
+                        'image_path' => $this->fileService->store($file, GuideContent::DEFAULT_RESOURCE_DIRECTORY),
+                        'guide_contents_id' => $guide_content->id,
+                        'created_at' => $now,
+                        'updated_at' => $now
+                    ];
+                }
+            }
+        }
+        GuideContentImage::insert($image_path);
+
+
         $this->added();
         return redirect()->route('guide.content.index', ['category_id' => $category_id]);
 
     }
 
-    public function contentEdit($id) {
+    public function contentEdit($id)
+    {
         $content = GuideContent::find($id);
         if (!$content) throw new WebServiceExplainedException('Контент не найден!');
         $category_id = $content->category_id;
@@ -85,21 +124,58 @@ class GuideController extends WebBaseController
         return $this->adminView('pages.guide.content.edit', compact('category_id', 'content_web_form', 'content'));
     }
 
-    public function contentUpdate($id, GuideContentWebRequest $request) {
+    public function contentUpdate($id, GuideContentWebRequest $request)
+    {
+
+        $guide_content = GuideContent::with(['images'])->find($id);
+        if (!$guide_content) {
+            throw new WebServiceExplainedException('Контент не найден!');
+        }
+
+
         $content = GuideContent::find($id);
         if (!$content) throw new WebServiceExplainedException('Контент не найден!');
         $content->title = $request->title;
-        $content->description = $request->description;
+        $content->street = $request->street;
+        $content->time = $request->time;
+        $content->phone = $request->phone;
+
+        $guideContentUpdate = [];
+        $now = Carbon::now();
+        if ($request->has('image_path')) {
+            $image_path = $request->image_path;
+            foreach ($image_path as $image) {
+                $guideContentUpdate[] = [
+                    'image_path' => $this->fileService->store($image, GuideContent::DEFAULT_RESOURCE_DIRECTORY),
+                    'guide_contents_id' => $id,
+                    'created_at' => $now,
+                    'updated_at' => $now
+                ];
+            }
+        }
+        GuideContentImage::insert($guideContentUpdate);
+
         $content->save();
         $this->edited();
         return redirect()->route('guide.content.index', ['category_id' => $content->category_id]);
     }
 
-    public function contentDelete($id) {
+    public function contentDelete($id)
+    {
         $content = GuideContent::find($id);
         if (!$content) throw new WebServiceExplainedException('Контент не найден!');
+        $this->deleteGuideContentImages($content->id);
+        $content->images()->delete();
         $content->delete();
         $this->deleted();
         return redirect()->route('guide.content.index', ['category_id' => $content->category_id]);
+    }
+
+    public function deleteGuideContentImages($guide_content_id)
+    {
+        $contents = GuideContentImage::where('guide_contents_id', $guide_content_id)->get();
+        foreach ($contents as $content) {
+            $this->fileService->remove($content->image_path);
+        }
     }
 }

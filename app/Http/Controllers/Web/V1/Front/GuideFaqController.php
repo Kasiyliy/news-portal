@@ -6,6 +6,7 @@ use App\Exceptions\Web\WebServiceExplainedException;
 use App\Http\Controllers\Web\WebBaseController;
 use App\Models\Entities\Content\Faq\FaqCategory;
 use App\Models\Entities\Content\GuideCategory;
+use App\Models\Entities\Content\GuideContent;
 use Illuminate\Http\Request;
 
 class GuideFaqController extends WebBaseController
@@ -13,6 +14,7 @@ class GuideFaqController extends WebBaseController
     public function guide(Request $request)
     {
         $categories = GuideCategory::with('contents')->get();
+        $guideContent = GuideContent::with(['images'])->get();
         $i = 0;
         if ($request->category_id) {
             $currentCategory = $categories->where('id', $request->category_id)->first();
@@ -22,7 +24,7 @@ class GuideFaqController extends WebBaseController
         }
         if (!$currentCategory) throw new WebServiceExplainedException('Контент табылған жоқ!');
 
-        return $this->frontView('pages.guide-faqs.guide', compact('categories', 'i', 'currentCategory'));
+        return $this->frontView('pages.guide-faqs.guide', compact('categories', 'i', 'currentCategory', 'guideContent'));
     }
 
     public function guideFaq() {
