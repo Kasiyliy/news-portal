@@ -42,6 +42,8 @@ class GovernmentProgramController extends WebBaseController
         $program = $this->checkId($id);
         $program->name = $request->name;
         $program->description = $request->description;
+        $program->digital_help = $request->digital_help;
+        $program->traditional_help = $request->traditional_help;
         $program->save();
         $this->edited();
         return redirect()->route('programs.index');

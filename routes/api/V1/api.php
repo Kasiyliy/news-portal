@@ -19,7 +19,9 @@ Route::group(['namespace' => 'Core'], function () {
     Route::post('/register', ['uses' => 'AuthController@register']);
     Route::post('/send/code', ['uses' => 'AuthController@sendCode']);
     Route::post('/change/password', ['uses' => 'AuthController@changePassword']);
-
+});
+Route::group(['namespace' => 'System'], function () {
+    Route::get('/links', ['uses' => 'MobileLinkController@index']);
 });
 
 Route::group(['middleware' => 'auth:api'], function () {

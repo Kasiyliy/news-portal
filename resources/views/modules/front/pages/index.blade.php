@@ -201,7 +201,7 @@
                     <div class="info__card col-12 col-lg-4 col-md-6 mt-4 pl-0">
                         <div class="info__card__head">
                             <img src="{{asset('modules/front/assets/img/people-icon.png')}}" alt="">
-                            <h2>100 үздік есім</h2>
+                            <h2>Әулие-ата үміті</h2>
                         </div>
                         <div class="info__card__content">
                             <p>
@@ -209,7 +209,7 @@
                                 әлеуметтік-экономикалық, ұйымдық және басқа шаралар.
                             </p>
                             <div class="info__card__link">
-                                <a href="{{route('prominent')}}">Толығырақ оқу ➞</a>
+                                <a href="#">Толығырақ оқу ➞</a>
                                 <h1>02</h1>
                             </div>
                         </div>
@@ -266,7 +266,7 @@
                             <p>Мемлекеттік бағдарлама - ресурстар, орындаушылар, ғылыми-зерттеу, өндірістік,
                                 әлеуметтік-экономикалық, ұйымдық және басқа шаралар. </p>
                             <div class="info__card__link">
-                                <a href="">Толығырақ оқу ➞</a>
+                                <a href="{{route('prominent.info')}}">Толығырақ оқу ➞</a>
                                 <h1>06</h1>
                             </div>
                         </div>

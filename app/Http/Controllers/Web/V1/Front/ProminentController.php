@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 class ProminentController extends WebBaseController
 {
 
+
     public function prominentDetail($id)
     {
         $user = ProminentUser::where('id', $id)->with('directions.direction', 'area')->first();
@@ -78,5 +79,53 @@ class ProminentController extends WebBaseController
         $areas = ProminentArea::all();
         return $this->frontView('pages.prominent.prominent', compact('users', 'areas',
             'directions', 'selectedArea', 'selectedSex', 'maxAge', 'minAge', 'selectedDirections', 'changed', 'users_photos'));
+    }
+
+    public function prominentInfo(Request $request)
+    {
+        $minAge = null;
+        $maxAge = null;
+        $selectedSex = null;
+        $selectedArea = null;
+        $selectedDirections = null;
+        $changed = false;
+        $users_photos = ProminentUser::inRandomOrder()->limit(100)->get();
+
+        $users_query = ProminentUser::with('area');
+        if ($request->directions) {
+            $changed = true;
+            $selectedDirections = explode(',', $request->directions);
+            $ids = ProminentUserDirection::whereIn('direction_id', $selectedDirections)
+                ->groupBy('prominent_user_id')
+                ->distinct()
+                ->pluck('prominent_user_id');
+            $users_query = $users_query->whereIn('id', $ids);
+        }
+        if ($request->sex) {
+            $changed = true;
+            $selectedSex = $request->sex;
+            $users_query = $users_query->where('sex', $selectedSex);
+        }
+        if ($request->area) {
+            $changed = true;
+            $selectedArea = $request->area;
+            $users_query = $users_query->where('area_id', $selectedArea);
+        }
+        if ($request->minAge || $request->maxAge) {
+            $changed = true;
+            if ($request->minAge) $minAge = $request->minAge;
+            if ($request->maxAge) $maxAge = $request->maxAge;
+            $minDate = Carbon::today()->subYears($minAge);
+            $maxDate = Carbon::today()->subYears($maxAge)->endOfDay();
+            if ($request->minAge && $request->maxAge) {
+                $users_query = $users_query->whereBetween('birth_date', [$maxDate, $minDate]);
+            } else if ($request->minAge && !$request->maxAge) {
+                $users_query = $users_query->whereDate('birth_date', '<=', $minDate);
+            } else if (!$request->minAge && $request->maxAge) {
+                $users_query = $users_query->whereDate('birth_date', '>=', $maxDate);
+            }
+        }
+
+        return $this->frontView('pages.prominent.prominent-info', compact('selectedArea', 'selectedSex', 'maxAge', 'minAge', 'selectedDirections', 'changed', 'users_photos'));
     }
 }

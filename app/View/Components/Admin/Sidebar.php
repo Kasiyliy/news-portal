@@ -37,7 +37,7 @@ class Sidebar extends BaseComponent
                     $this->navItem(route('news.index'), 'ti-bookmark-alt', 'Новости'),
                     $this->navItem(route('business.index'), 'ti-money', 'Бизнес'),
                 ]),
-                $this->navItem(route('prominent.area.index'), 'ti-layout-list-thumb', '100 имен', [
+                $this->navItem(route('prominent.area.index'), 'ti-layout-list-thumb', 'Волонтеры', [
                     $this->navItem(route('prominent.area.index'), 'ti-location-arrow', 'Районы'),
                     $this->navItem(route('prominent.direction.index'), 'ti-direction-alt', 'Направления'),
                     $this->navItem(route('prominent.user.index'), 'ti-user', 'Люди'),
@@ -48,6 +48,7 @@ class Sidebar extends BaseComponent
                 ]),
 
                 $this->navItem(route('guide.index'), 'ti-help-alt', 'Гид'),
+                $this->navItem(route('mobile-link.index'), 'ti-link', 'Ссылки'),
 
 
             ];

@@ -12,6 +12,8 @@ class GovernmentProgramWebRequest extends WebBaseRequest
         return [
             'name' => ['required', 'string'],
             'description' => ['required', 'string'],
+            'digital_help' => ['string'],
+            'traditional_help' => ['string'],
         ];
     }
 }

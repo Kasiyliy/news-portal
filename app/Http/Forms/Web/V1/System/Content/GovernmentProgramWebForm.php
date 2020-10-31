@@ -16,7 +16,13 @@ class GovernmentProgramWebForm implements WithForm
                 'text', true, $value ? $value->name : ''),
             FormUtil::textArea('description',
                 '100 мектеп', 'Описание',
-                false, $value ? $value->description : ''));
+                true, $value ? $value->description : ''),
+            FormUtil::textArea('digital_help',
+                'Описание электронной помощи', 'Электронная помощь',
+                false, $value ? $value->digital_help : ''),
+            FormUtil::textArea('traditional_help',
+                'Описание традицонной помощи', 'Традиционная помощь',
+                false, $value ? $value->traditional_help : ''));
 
     }
 }
