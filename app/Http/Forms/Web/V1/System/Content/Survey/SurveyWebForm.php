@@ -13,6 +13,9 @@ class SurveyWebForm implements WithForm
     {
         return array_merge(
             FormUtil::input('title', 'Опрос по трудоустроймости', 'Название',
-                'text', true, $value ? $value->title : ''));
+                'text', true, $value ? $value->title : '',
+                ),
+            FormUtil::input('image', 'Выберите фото:', 'Фото:', 'file', $value ? false : true)
+        );
     }
 }

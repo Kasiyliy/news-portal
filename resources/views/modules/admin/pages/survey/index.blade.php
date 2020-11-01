@@ -43,81 +43,87 @@
 
                                     <td>
                                         <button class="btn btn-outline-primary btn-sm" data-toggle="modal"
-                                                         data-target="#editSurvey{{$survey->id}}"><i class="ti ti-pencil"></i>
+                                                data-target="#editSurvey{{$survey->id}}"><i class="ti ti-pencil"></i>
                                         </button>
                                         <a href="{{route('survey.question.index', ['survey_id' => $survey->id])}}"
-                                            class="btn btn-outline-primary btn-sm"><i class="ti ti-list"></i>
+                                           class="btn btn-outline-primary btn-sm"><i class="ti ti-list"></i>
                                         </a>
                                         @if(!$survey->questions->isEmpty())
-                                        <form class="d-inline" method="post"
-                                              action="{{route('survey.visible.change', ['id' => $survey->id])}}">
-                                            {{csrf_field()}}
-                                            @if($survey->is_visible)
-                                                <button class=" btn  btn-outline-danger btn-sm " type="submit">
-                                                    <i class="ti ti-eye"></i>
-                                                </button>
-                                            @else
-                                                <button class=" btn  btn-outline-success btn-sm " type="submit">
-                                                    <i class="ti ti-eye"></i>
-                                                </button>
-                                            @endif
-                                        </form>
+                                            <form class="d-inline" method="post"
+                                                  action="{{route('survey.visible.change', ['id' => $survey->id])}}">
+                                                {{csrf_field()}}
+                                                @if($survey->is_visible)
+                                                    <button class=" btn  btn-outline-danger btn-sm " type="submit">
+                                                        <i class="ti ti-eye"></i>
+                                                    </button>
+                                                @else
+                                                    <button class=" btn  btn-outline-success btn-sm " type="submit">
+                                                        <i class="ti ti-eye"></i>
+                                                    </button>
+                                                @endif
+                                            </form>
                                         @else
                                         @endif
 
-{{--                                        <button class="btn btn-outline-danger btn-sm" data-toggle="modal"--}}
-{{--                                                data-target="#delete{{$category->id}}"><i class="ti ti-trash"></i>--}}
-{{--                                        </button>--}}
-{{--                                        <div class="modal modal-backdrop" id="delete{{$category->id}}" tabindex="-1"--}}
-{{--                                             role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">--}}
-{{--                                            <div class="modal-dialog" role="document">--}}
-{{--                                                <div class="modal-content">--}}
-{{--                                                    <div class="modal-header">--}}
-{{--                                                        <h4 class="modal-title w-100" id="myModalLabel">Удаление</h4>--}}
-{{--                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-{{--                                                            <span aria-hidden="true">&times;</span>--}}
-{{--                                                        </button>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="modal-body">--}}
-{{--                                                        <p>Вы действительно хотите удалить?</p>--}}
-{{--                                                        <form method="post" action="{{route('business.delete', ['id' => $category->id])}}">--}}
-{{--                                                            {{csrf_field()}}--}}
-{{--                                                            <button type="submit" class="btn btn-outline-danger mt-3">Удалить безвозвратно<i class="ti ti-trash"></i></button>--}}
-{{--                                                        </form>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="modal-footer">--}}
-{{--                                                        <button type="button" class="btn btn-danger-soft btn-sm" data-dismiss="modal">--}}
-{{--                                                            <i class="ti ti-close"></i> Закрыть</button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
+                                        {{--                                        <button class="btn btn-outline-danger btn-sm" data-toggle="modal"--}}
+                                        {{--                                                data-target="#delete{{$category->id}}"><i class="ti ti-trash"></i>--}}
+                                        {{--                                        </button>--}}
+                                        {{--                                        <div class="modal modal-backdrop" id="delete{{$category->id}}" tabindex="-1"--}}
+                                        {{--                                             role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">--}}
+                                        {{--                                            <div class="modal-dialog" role="document">--}}
+                                        {{--                                                <div class="modal-content">--}}
+                                        {{--                                                    <div class="modal-header">--}}
+                                        {{--                                                        <h4 class="modal-title w-100" id="myModalLabel">Удаление</h4>--}}
+                                        {{--                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+                                        {{--                                                            <span aria-hidden="true">&times;</span>--}}
+                                        {{--                                                        </button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                    <div class="modal-body">--}}
+                                        {{--                                                        <p>Вы действительно хотите удалить?</p>--}}
+                                        {{--                                                        <form method="post" action="{{route('business.delete', ['id' => $category->id])}}">--}}
+                                        {{--                                                            {{csrf_field()}}--}}
+                                        {{--                                                            <button type="submit" class="btn btn-outline-danger mt-3">Удалить безвозвратно<i class="ti ti-trash"></i></button>--}}
+                                        {{--                                                        </form>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                    <div class="modal-footer">--}}
+                                        {{--                                                        <button type="button" class="btn btn-danger-soft btn-sm" data-dismiss="modal">--}}
+                                        {{--                                                            <i class="ti ti-close"></i> Закрыть</button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                        </div>--}}
                                     </td>
                                 </tr>
                                 <div class="modal modal-backdrop" id="editSurvey{{$survey->id}}" tabindex="-1"
-                                     role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+                                     role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+                                     data-backdrop="false">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h4 class="modal-title w-100" id="myModalLabel">Редактировать опрос</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
 
-                                                <form action="{{route('survey.update', ['id' => $survey->id])}}" method="post" enctype="multipart/form-data">
+                                                <form action="{{route('survey.update', ['id' => $survey->id])}}"
+                                                      method="post" enctype="multipart/form-data">
                                                     <x-admin.input-form-group-list
-                                                        :errors="$errors"
-                                                        :elements="\App\Http\Forms\Web\V1\System\Content\Survey\SurveyWebForm::inputGroups($survey)"/>
-                                                    <button type="submit" class="offset-md-4 col-md-4 btn btn-block btn-wide btn-primary text-uppercase">
+                                                            :errors="$errors"
+                                                            :elements="$survey->getBaseForm()"/>
+                                                    <button type="submit"
+                                                            class="offset-md-4 col-md-4 btn btn-block btn-wide btn-primary text-uppercase">
                                                         Сохранить <i class="ti ti-check"></i>
                                                     </button>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger-soft btn-sm" data-dismiss="modal">
-                                                    <i class="ti ti-close"></i> Закрыть</button>
+                                                <button type="button" class="btn btn-danger-soft btn-sm"
+                                                        data-dismiss="modal">
+                                                    <i class="ti ti-close"></i> Закрыть
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -146,16 +152,18 @@
                 <div class="modal-body">
                     <form action="{{route('survey.store')}}" method="post" enctype="multipart/form-data">
                         <x-admin.input-form-group-list
-                            :errors="$errors"
-                            :elements="$survey_web_form"/>
-                        <button type="submit" class="offset-md-4 col-md-4 btn btn-block btn-wide btn-primary text-uppercase">
+                                :errors="$errors"
+                                :elements="$survey_web_form"/>
+                        <button type="submit"
+                                class="offset-md-4 col-md-4 btn btn-block btn-wide btn-primary text-uppercase">
                             Сохранить <i class="ti ti-check"></i>
                         </button>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger-soft btn-sm" data-dismiss="modal">
-                        <i class="ti ti-close"></i> Закрыть</button>
+                        <i class="ti ti-close"></i> Закрыть
+                    </button>
                 </div>
             </div>
         </div>

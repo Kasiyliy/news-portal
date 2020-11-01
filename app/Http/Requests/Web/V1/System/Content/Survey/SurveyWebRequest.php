@@ -12,6 +12,7 @@ class SurveyWebRequest extends WebBaseRequest
     {
         return [
             'title' => ['required', 'string'],
+            'image' => ['required', 'image'],
         ];
     }
 }
