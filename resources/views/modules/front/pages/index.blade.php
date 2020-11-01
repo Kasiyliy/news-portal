@@ -64,7 +64,6 @@
             left: 10px;
         }
 
-
         .fa {
             font-size: 0.5rem;
         }
@@ -84,7 +83,6 @@
             font-family: Roboto Condensed;
             font-style: normal;
             color: #00656D;
-
 
         }
 
@@ -119,7 +117,6 @@
         #about a {
             text-decoration: none;
         }
-
 
         .title_label {
 
@@ -435,8 +432,8 @@
             <div class="calendar__inner row pb-5 justify-content-around">
                 <div class="calendar__general col-md-12 col-lg-4">
                     <h1 class="text-center"><a id="left"><i class="fa fa-chevron-left"> </i></a><span>&nbsp;</span><span
-                            id="month"> </span><span>&nbsp;</span><span id="year"> </span><span>&nbsp;</span><a
-                            id="right"><i class="fa fa-chevron-right"> </i></a></h1>
+                                id="month"> </span><span>&nbsp;</span><span id="year"> </span><span>&nbsp;</span><a
+                                id="right"><i class="fa fa-chevron-right"> </i></a></h1>
                     <table class="table"></table>
                 </div>
                 <div class="calendar__detail col-md-12 col-lg-6">
@@ -476,13 +473,17 @@
                 <h1 onclick="location.href='{{route('news')}}';">Жаңалықтар мен хабарландырулар </h1>
                 <div class="row">
                     @foreach($news as $n)
-                        <div class="col-12 col-lg-3">
-                            <a href="{{route('news.detail', $n->id)}}">
-                                <img src="{{asset($n->image_path)}}" alt="" width="210" height="143.17">
-                                <p>{{strlen($n->title) > 111 ?
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                            <div class="news__body">
+                                <a href="{{route('news.detail', $n->id)}}">
+                                    <img class="news__img" src="{{asset($n->image_path)}}">
+                                    <p>
+                                        {{strlen($n->title) > 111 ?
                                     mb_substr($n->title,0,111)."..."
-                                            : $n->title}}</p>
-                            </a>
+                                            : $n->title}}
+                                    </p>
+                                </a>
+                            </div>
                         </div>
                     @endforeach
                 </div>
@@ -706,13 +707,13 @@
 
                              <div class="calendar__detail-button row">
                                 {{--<div class="col-12 col-md-6 calendar__button left mt-3">--}}
-                                    {{--    <button onclick="location.href='{{route('event','')}}'+'/'+${events[i].id};">Толық көру</button>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-12 col-md-6 calendar__button right mt-3">--}}
-                                    {{--    <button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>--}}
-                                    {{--</div>--}}
-                                    </div>
-                               </div>`);
+                                            {{--    <button onclick="location.href='{{route('event','')}}'+'/'+${events[i].id};">Толық көру</button>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="col-12 col-md-6 calendar__button right mt-3">--}}
+                                            {{--    <button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>--}}
+                                            {{--</div>--}}
+                                        </div>
+                                   </div>`);
                             }
                         } else {
                             swiperWrapper.innerHTML =
@@ -721,9 +722,9 @@
                                         <div class="col-12 calendar__button right pb-5 pt-5 mb-5 mt-5">
                                             <h5>Бұл күнге ешқандай іс-шара белгіленбеген</h5>
                                             {{--<button onclick="location.href='{{route('event.send')}}';">Іс-шараны ұсыну</button>--}}
+                                    </div>
                                 </div>
-                            </div>
-                        </div>`
+                            </div>`
                         }
                         swiper.update();
                     }

@@ -55,11 +55,11 @@
     color: #FFFFFF;
 }
 
-.nav__social-media.fa{
+.nav__social-media.fa {
     font-size: inherit;
 }
 
-.nav__auth.fa{
+.nav__auth.fa {
     font-size: inherit;
 }
 
@@ -121,7 +121,6 @@
     border-radius: 15px;
 }
 
-
 .info__card__head {
     display: flex;
     justify-content: space-around;
@@ -136,7 +135,6 @@
 .info__card__head.reverse {
     background-color: #00656D;
 }
-
 
 .info__card__head h2 {
     font-size: 24px;
@@ -196,28 +194,29 @@
     width: 100%;
 }
 
-.about__content.inner{
+.about__content.inner {
     position: relative;
 }
 
-.about__content.inner{
+.about__content.inner {
     position: relative;
 }
-.about__content.inner:hover .about__logo__overlay{
-    display: flex!important;
+
+.about__content.inner:hover .about__logo__overlay {
+    display: flex !important;
 }
 
-.about__logo__overlay{
-    display: none!important;
+.about__logo__overlay {
+    display: none !important;
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 101, 109, 0.5);
 }
 
-.about__logo__overlay a{
+.about__logo__overlay a {
     background: #F8A555;
     border: #F8A555;
     box-sizing: border-box;
@@ -245,7 +244,6 @@
 .about__content a {
     color: #00656D;
 }
-
 
 .about__icons__content {
     display: flex;
@@ -299,8 +297,6 @@
     padding: 20px 0;
 
 }
-
-
 
 /* CALENDAR */
 
@@ -382,9 +378,11 @@
     border-bottom: 3px solid #F8A555;
     padding: 20px 0;
 }
-.business__item a{
+
+.business__item a {
     color: #76767A;
 }
+
 .business__item {
     border-bottom: 1px solid #C4C4C4;
     padding: 30px 0 10px 0;
@@ -410,7 +408,6 @@
 
 .news__inner {
     margin-bottom: 50px;
-
 }
 
 .news__inner h1 {
@@ -427,13 +424,25 @@
 .news__inner p {
     font-size: 14px;
     line-height: 18px;
-    color: #000000;
-    padding: 15px 0 15px 0;
+    padding: 10px 5px 10px 5px;
+    background: #00656D;
+    color: white;
+
 }
 
-.news__inner img {
-    width: 100%;
+.news__body {
+    overflow: hidden;
+    display: block;
+}
+
+.news__body > p {
     border-radius: 10px;
+}
+
+.news__img {
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
 }
 
 /* FOOTER */
@@ -450,7 +459,6 @@
     width: 100px;
     margin: 0 20px 50px 0;
     height: auto;
-    height: intrinsic;
 }
 
 .footer__inner h2 {
@@ -476,12 +484,12 @@
     width: auto;
 }
 
-.footer__apps img{
+.footer__apps img {
     width: 70px;
     height: 70px;
 }
 
-.footer__bottom{
+.footer__bottom {
     background-color: #035056;
 }
 
@@ -502,26 +510,26 @@
     z-index: 9;
     text-align: center;
 }
-.open__button:hover{
+
+.open__button:hover {
     color: #F8A555;
 }
-.open__button i{
+
+.open__button i {
     font-size: 1.5rem;
 }
 
-
-.canvas-slider{
+.canvas-slider {
     width: 1110px;
     height: 560px;
 }
-
 
 @media (max-width: 1200px) {
 
 }
 
 @media (max-width: 992px) {
-    .about__image{
+    .about__image {
         margin-top: 50px;
     }
 
@@ -541,11 +549,11 @@
         height: auto;
     }
 
-    .header__inner__bottom{
+    .header__inner__bottom {
         position: relative;
     }
 
-    .header__nav{
+    .header__nav {
         text-align: right;
         position: absolute;
         right: 0;
@@ -556,7 +564,7 @@
     .main__inner {
         width: 100%;
         height: auto;
-        margin-top:150px;
+        margin-top: 150px;
     }
 
     .main__inner h1 {
@@ -564,29 +572,29 @@
         line-height: 38px;
     }
 
-
     .footer__image__logo {
         margin: 0px 20px 50px 30px;
     }
 
-    .footer__contacts{
+    .footer__contacts {
         text-align: center;
     }
 
-    .footer__resources{
+    .footer__resources {
         margin-top: 30px;
     }
 
-    .footer__apps{
-        margin-top:40px;
+    .footer__apps {
+        margin-top: 40px;
     }
-    .open__button{
+
+    .open__button {
         display: none;
     }
 }
 
 @media (max-width: 767px) {
-    .calendar__general{
+    .calendar__general {
         margin-bottom: 40px;
     }
 
