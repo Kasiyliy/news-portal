@@ -34,8 +34,7 @@
                 @foreach($survey as $surv)
                     <div class="col-md-3 d-flex flex-column align-items-center justify-content-center">
                         <img class="img img-rounded" src="{{asset($surv->image_path)}}">
-                        <a href="{{route('forum.questionnaire', $surv->id)}}" type="button"
-                           class="btn btn-outline-info btn-block survey__list-btn text-left">{{$surv->title}}</a>
+                        <a href="{{route('forum.questionnaire', $surv->id)}}">{{$surv->title}}</a>
                     </div>
                 @endforeach
             </div>
