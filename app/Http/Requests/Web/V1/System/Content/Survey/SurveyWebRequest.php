@@ -12,7 +12,7 @@ class SurveyWebRequest extends WebBaseRequest
     {
         return [
             'title' => ['required', 'string'],
-            'image' => ['required', 'image'],
+            'image' => [request()->route()->parameter('id') ? 'nullable' : 'required', 'image'],
         ];
     }
 }
