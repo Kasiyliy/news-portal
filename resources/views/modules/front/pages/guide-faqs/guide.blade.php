@@ -87,15 +87,15 @@
                                     <div>
                                         <div class="d-flex">
                                             <i class="fa fa-map-marker-alt pr-2"></i>
-                                            <p>{{$content->street}}</p>
+                                            <p>{!! $content->street !!}</p>
                                         </div>
                                         <div class="d-flex">
                                             <i class="fa fa-clock pr-2"></i>
-                                            <p>{{$content->time}}</p>
+                                            <p>{!! $content->time !!}</p>
                                         </div>
                                         <div class="d-flex">
                                             <i class="fas fa-mobile-alt pr-2"></i>
-                                            <p>{{$content->phone}}</p>
+                                            <p>{!! $content->phone !!}</p>
                                         </div>
                                     </div>
                                 </div>
