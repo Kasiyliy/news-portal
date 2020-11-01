@@ -2,7 +2,7 @@
 
 @section('styles')
     <style>
-        
+
         .img {
             object-fit: contain;
             height: 60px;
@@ -32,7 +32,7 @@
         <div class="container justify-content-center my-4">
             <div class="row">
                 @foreach($survey as $surv)
-                    <div class="col-md-3 d-flex align-items-center justify-content-center">
+                    <div class="col-md-3 d-flex flex-column align-items-center justify-content-center">
                         <img class="img img-rounded" src="{{asset($surv->image_path)}}">
                         <a href="{{route('forum.questionnaire', $surv->id)}}" type="button"
                            class="btn btn-outline-info btn-block survey__list-btn text-left">{{$surv->title}}</a>
