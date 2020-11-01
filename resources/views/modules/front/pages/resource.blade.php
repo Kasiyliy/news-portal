@@ -52,7 +52,7 @@
     </section>
     <section class="resource">
         <div class="container">
-            <div class="row">
+            {{--<div class="row">
                 <div class="col-12">
                     <div>
                         <div class="mt-12 flex flex-col lg:flex-row">
@@ -159,9 +159,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>--}}
             <div class="row mt-5">
-                <div class="col-4">
+                <div class="col-5">
                     <ul class="list-group bs-4 mb-5" id="groups">
                         @foreach($regions as $region)
                             <li @if($region->id == request()->route('id')) style="background-color: #f8a555" @else style="background-color: #00656D" @endif  class="list-group-item cursor d-flex justify-content-between">
@@ -174,7 +174,7 @@
                         @endforeach
                     </ul>
                 </div>
-                <div class="col-8">
+                <div class="col-7">
                     <div class="resource__inner">
                         {{--<img src="{{asset('modules/front/assets/img/resource-img.png')}}" alt="resource">--}}
 

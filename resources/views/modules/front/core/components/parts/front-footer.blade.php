@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-12 col-lg-4 mx-auto footer__contacts ">
                     <div class="d-flex">
-                        <img class="footer__image__logo" src="{{asset($about_project->footer_image)}}" alt="logo">
+                        {{--<img class="footer__image__logo" src="{{asset($about_project->footer_image)}}" alt="logo">--}}
 
                         <a href="https://beta.egov.kz/memleket/entities/zhambyl-zhastar-sayasat?lang=kk">
                             <h2>

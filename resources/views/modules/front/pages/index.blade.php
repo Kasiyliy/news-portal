@@ -396,10 +396,6 @@
                             <p class="overlay-text p-5">
                                 Жастар ресурстық орталықтар 2015 жылы ашылған Жастар ресурстық орталықтар 2015 жылы ашылған Жастар ресурстық орталықтар 2015 жылы ашылған
                             </p>
-
-                            <div class="about__logo__overlay d-flex justify-content-center align-items-center">
-                                <a href="{{route('about')}}" class="px-4 py-2">Көру</a>
-                            </div>
                         </div>
                     </div>
                 </div>
