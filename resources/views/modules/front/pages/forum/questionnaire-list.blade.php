@@ -2,9 +2,19 @@
 
 @section('styles')
     <style>
-        .survey__list-btn:hover{
+        .survey__list-btn:hover {
             background-color: #00656D;
             border-color: #00656D;
+        }
+
+        .img {
+            object-fit: contain;
+            height: 60px;
+            width: 60px;
+        }
+
+        .img-rounded {
+            border-radius: 50%;
         }
     </style>
 @endsection
@@ -24,9 +34,13 @@
 
     <section class="min__content">
         <div class="container justify-content-center my-4">
-            <div class="row col-md-12">
+            <div class="row">
                 @foreach($survey as $surv)
-                    <a href="{{route('forum.questionnaire', $surv->id)}}" type="button" class="btn btn-outline-info btn-block survey__list-btn text-left">{{$surv->title}}</a>
+                    <div class="col-md-3 d-flex align-items-center justify-content-center">
+                        <img class="img img-rounded" src="{{asset($surv->image_path)}}">
+                        <a href="{{route('forum.questionnaire', $surv->id)}}" type="button"
+                           class="btn btn-outline-info btn-block survey__list-btn text-left">{{$surv->title}}</a>
+                    </div>
                 @endforeach
             </div>
         </div>
