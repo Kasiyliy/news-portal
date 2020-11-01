@@ -19,7 +19,7 @@
             </div>
             <div class="header__inner__bottom navbar navbar-expand-lg ">
                 <div class="header__logo">
-                    <img src="{{asset('modules/front/assets/img/logo.png')}}" alt="logo">
+                    <img src="{{asset('modules/front/assets/img/icon.png')}}" width="250px" alt="logo">
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

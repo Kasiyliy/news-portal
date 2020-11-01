@@ -599,3 +599,36 @@
     }
 
 }
+
+.quote {
+    margin: 60px 30px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #F8A555;
+    border-radius: 20px;
+}
+
+.quote > .quote-sign {
+    border-radius: 20px;
+    text-align: center;
+    font-size: 60px;
+    padding: 60px 30px;
+    color: #F8A555;
+
+    background-color: #00656D;
+}
+
+.quote > .quote-text {
+    text-align: center;
+    font-size: 24px;
+    line-height: 31px;
+}
+
+.overlay-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(248, 165, 85, 0.2);
+    border-radius: 20px;
+    height: 100%;
+}

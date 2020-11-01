@@ -2,7 +2,7 @@
 @section('styles')
     <style>
         #maps a .str0 {
-            stroke: #1583e9;
+            stroke: #00656D;
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -17,16 +17,16 @@
         }
 
         #maps a .fil0 {
-            fill: #9fd1f9;
+            fill: rgba(0, 195, 204, 0.59);
         }
 
         #maps a:hover .fil0 {
-            fill: #3ea2f4;
+            fill: #00656D;
             transition: 0.6s ease;
         }
 
         #maps a .current {
-            fill: #3ea2f4;
+            fill: #00656D;
         }
 
         #maps a:hover .fil1 {

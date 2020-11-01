@@ -138,7 +138,7 @@
     </style>
     <style>
         #maps a .str0 {
-            stroke: #1583e9;
+            stroke: #00656D;
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -153,16 +153,16 @@
         }
 
         #maps a .fil0 {
-            fill: #9fd1f9;
+            fill: rgba(0, 195, 204, 0.59);
         }
 
         #maps a:hover .fil0 {
-            fill: #3ea2f4;
+            fill: #00656D;
             transition: 0.6s ease;
         }
 
         #maps a .current {
-            fill: #3ea2f4;
+            fill: #00656D;
         }
 
         #maps a:hover .fil1 {
@@ -190,7 +190,7 @@
                             <p>Мемлекеттік бағдарлама - ресурстар, орындаушылар, ғылыми-зерттеу, өндірістік,
                                 әлеуметтік-экономикалық, ұйымдық және басқа шаралар. </p>
                             <div class="info__card__link">
-                                <a href="{{route('programs')}}">Толығырақ оқу ➞</a>
+                                <a class="text-white" href="{{route('programs')}}">Толығырақ оқу ➞</a>
                                 <h1>01</h1>
                             </div>
                         </div>
@@ -206,7 +206,7 @@
                                 әлеуметтік-экономикалық, ұйымдық және басқа шаралар.
                             </p>
                             <div class="info__card__link">
-                                <a href="#">Толығырақ оқу ➞</a>
+                                <a class="text-white" href="#">Толығырақ оқу ➞</a>
                                 <h1>02</h1>
                             </div>
                         </div>
@@ -221,7 +221,7 @@
                             <p>Мемлекеттік бағдарлама - ресурстар, орындаушылар, ғылыми-зерттеу, өндірістік,
                                 әлеуметтік-экономикалық, ұйымдық және басқа шаралар. </p>
                             <div class="info__card__link">
-                                <a href="{{route('groups')}}">Толығырақ оқу ➞</a>
+                                <a class="text-white" href="{{route('groups')}}">Толығырақ оқу ➞</a>
                                 <h1>03</h1>
                             </div>
                         </div>
@@ -277,17 +277,21 @@
         <div class="container">
 
             <div class="row">
-                <div class="about__image col-12 col-lg-6 col-md-6 ">
+                <div class="about__content col-12 col-lg-12 col-md-12">
+                    <h1>Сайт туралы </h1>
+
                     <div class="row">
-                        <div class="col-12">
-                            <div>
-                                <div class="mt-12 flex flex-col lg:flex-row">
-                                    <div class="inline-block h-full w-1/2 map-svg">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
-                                             style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd;margin-top: -20px;width: 95%;margin-left: 2.5%;"
-                                             width="665px" height="auto" marginTop="0!important" version="1.1"
-                                             viewBox="0 0 591.31 428.07"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <div class="about__image col-12 col-lg-6 col-md-6 ">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div>
+                                        <div class="mt-12 flex flex-col lg:flex-row">
+                                            <div class="inline-block h-full w-1/2 map-svg">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+                                                     style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd;margin-top: -20px;width: 95%;margin-left: 2.5%;"
+                                                     width="665px" height="auto" marginTop="0!important" version="1.1"
+                                                     viewBox="0 0 591.31 428.07"
+                                                     xmlns:xlink="http://www.w3.org/1999/xlink">
             <g id="maps">
                 <metadata id="mapLayer"></metadata>
 
@@ -382,18 +386,20 @@
                 </a>
             </g>
         </svg>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="about__content col-12 col-lg-6 col-md-6 ">
-                    <h1>Сайт туралы </h1>
-                    <div class="about__content inner">
-                        <img class="img_logo" src="{{asset('modules/front/assets/img/big_logo.png')}}">
-                        <div class="about__logo__overlay d-flex justify-content-center align-items-center">
-                            <a href="{{route('about')}}" class="px-4 py-2">Көру</a>
+                        <div class="about__content inner col-12 col-lg-6 col-md-6 ">
+                            <p class="overlay-text p-5">
+                                Жастар ресурстық орталықтар 2015 жылы ашылған Жастар ресурстық орталықтар 2015 жылы ашылған Жастар ресурстық орталықтар 2015 жылы ашылған
+                            </p>
+
+                            <div class="about__logo__overlay d-flex justify-content-center align-items-center">
+                                <a href="{{route('about')}}" class="px-4 py-2">Көру</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -420,8 +426,16 @@
 
     <section class="slider">
         <div class="container">
-            <div id="myCanvasContainer" class="d-flex">
-
+            <div class="row">
+                <div class="col-12">
+                    <div class="quote">
+                        <span class="quote-sign fa fa-quote-right">
+                        </span>
+                        <span class="quote-text">
+                            Біз тәуелсіздігінен айрылып қалған елдердің тағдырынан тиісті қорытынды шығарып, тағылымы мол сабақ алдық.
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -503,36 +517,6 @@
     <script src="{{asset('modules/front/assets/js/purecounter.js')}}"></script>
     <script src="{{asset('modules/front/assets/js/swiper.min.js')}}"></script>
     <script type="text/javascript">
-
-        function generateTagCanvas(width) {
-            document.getElementById('myCanvasContainer').innerHTML = `
-            <canvas width="${width}" height="300" id="myCanvas" style="" class="m-auto canvas-slider">
-                    <div class="region region-tags">
-                        <div class="block egov-block egov-block-simple" id="tags">
-                            <p><a href="#" onclick="event.preventDefault()">Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар<br/>бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,<br/>жастардың жалпы назары мектепке аударылуы керек.</a></p>
-                            <p><a href="#" onclick="event.preventDefault()">Біз тәуелсіздігінен айрылып қалған елдердің тағдырынан тиісті <br/>қорытынды шығарып, тағылымы мол сабақ алдық.</a></p>
-                            <p><a href="#" onclick="event.preventDefault()">Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар<br/>бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,<br/>жастардың жалпы назары мектепке аударылуы керек.</a></p>
-                            <p><a href="#" onclick="event.preventDefault()">Біз тәуелсіздігінен айрылып қалған елдердің тағдырынан тиісті <br/>қорытынды шығарып, тағылымы мол сабақ алдық.</a></p>
-                            <p><a href="#" onclick="event.preventDefault()">Жастардың бүгінгі міндеті - оқу, білім, тәрбие жұмыстары. Жастар<br/>бүгін сөзден іске көшетін заман. Білімсіз істің реті болмайды. Сондықтан,<br/>жастардың жалпы назары мектепке аударылуы керек.</a></p>
-                        </div>
-                    </div>
-                </canvas>
-            `;
-            if (!$('#myCanvas').tagcanvas({
-                textColour: '#000000',
-                outlineColour: '#F8A555',
-                reverse: true,
-                depth: 0.8,
-                maxSpeed: 0.05,
-            }, 'tags')) {
-                // something went wrong, hide the canvas container
-                $('#myCanvasContainer').hide();
-            }
-        }
-
-        $(document).ready(function () {
-            generateTagCanvas(window.innerWidth * 0.8);
-        });
 
         $(document).ready(function () {
                 var currentDate = new Date();
