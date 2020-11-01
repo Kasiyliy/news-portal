@@ -5,8 +5,8 @@
 
         .img {
             object-fit: contain;
-            height: 60px;
-            width: 60px;
+            height: 150px;
+            width: 150px;
         }
 
         .img-rounded {
