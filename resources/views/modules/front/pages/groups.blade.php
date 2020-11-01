@@ -5,8 +5,8 @@
 
     <style>
         .swiper-container {
-            width: 100%;
-            height: 100%;
+            width: 89%;
+            /*height: 100%;*/
             position: static !important;
         }
         .swiper-slide {
@@ -28,15 +28,24 @@
             color: #00656D;
         }
         .swiper-button-next{
-           margin-right: 60px;
+           margin-right: 156px;
         }
         .swiper-button-prev{
-            margin-left: 60px;
+            margin-left: 156px;
         }
         .swiper-button-next:hover,.swiper-button-prev:hover{
 
             background-color:  #F8A555;
 
+        }
+
+        @media only screen and (max-width: 600px) {
+            .swiper-button-next{
+                margin-right: 0;
+            }
+            .swiper-button-prev{
+                margin-left: 0;
+            }
         }
     </style>
 @endsection
@@ -73,7 +82,7 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--            </div>--}}
-            <div class="row">
+            <div class="">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
 
@@ -90,6 +99,7 @@
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </div>
+
             </div>
         </div>
 
