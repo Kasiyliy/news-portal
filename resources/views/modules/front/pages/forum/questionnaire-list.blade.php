@@ -2,11 +2,7 @@
 
 @section('styles')
     <style>
-        .survey__list-btn:hover {
-            background-color: #00656D;
-            border-color: #00656D;
-        }
-
+        
         .img {
             object-fit: contain;
             height: 60px;
