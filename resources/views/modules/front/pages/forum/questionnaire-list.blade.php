@@ -4,7 +4,7 @@
     <style>
 
         .img {
-            object-fit: contain;
+            object-fit: cover;
             height: 150px;
             width: 150px;
         }
