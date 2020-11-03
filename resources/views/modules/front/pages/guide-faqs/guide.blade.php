@@ -64,8 +64,8 @@
                         Мәліметтер жоқ!
                     @else
                         @foreach($currentCategory->contents as $content)
-                            <div class="card row flex-row mb-3">
-                                <div class="col-5">
+                            <div class="card row flex-row mb-3 mt-3 mt-md-0">
+                                <div class="col-md-5">
                                     <div class="swiper-container">
                                         <div class="swiper-wrapper">
                                             @if($content->images->isNotEmpty())
@@ -81,8 +81,7 @@
                                         <div class="swiper-scrollbar"></div>
                                     </div>
                                 </div>
-                                <div class="col-7 guide__content d-flex flex-column justify-content-between">
-
+                                <div class="col-md-7 guide__content d-flex flex-column justify-content-between">
                                     <h1 class="pt-3">{{$content->title}}</h1>
                                     <div>
                                         <div class="d-flex">
