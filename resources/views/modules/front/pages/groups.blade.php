@@ -5,20 +5,23 @@
 
     <style>
         .swiper-container {
-            width: 100%;
-            height: 100%;
+            width: 89%;
+            /*height: 100%;*/
             position: static !important;
         }
         .swiper-slide {
             text-align: center;
             font-size: 18px;
             background: #fff;
+            word-wrap:break-word;
+            overflow: hidden;
+
         }
         .swiper-button-next, .swiper-button-prev {
             position: absolute;
             top: 30%!important;
             width: 4%;
-            height: 100%;
+            height: 50%;
             /*margin-top: 0!important;*/
             z-index: 10;
             cursor: pointer;
@@ -28,15 +31,28 @@
             color: #00656D;
         }
         .swiper-button-next{
-           margin-right: 60px;
+           margin-right: 156px;
         }
         .swiper-button-prev{
-            margin-left: 60px;
+            margin-left: 156px;
         }
-        .swiper-button-next:hover,.swiper-button-prev:hover{
+        /*.swiper-button-next:hover,.swiper-button-prev:hover{*/
 
-            background-color:  #F8A555;
+        /*    background-color:  #F8A555;*/
 
+        /*}*/
+        .group{
+            /*display: table-cell;*/
+            height: 50%;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .swiper-button-next{
+                margin-right: 0;
+            }
+            .swiper-button-prev{
+                margin-left: 0;
+            }
         }
     </style>
 @endsection
@@ -53,36 +69,18 @@
         </div>
     </section>
 
-
-        <div class="container my-5">
-{{--            <div class="row">--}}
-{{--                <div class="col-sm-12 col-lg-3">--}}
-{{--                    <ul class="list-group bs-4" id="groups">--}}
-{{--                        @foreach($groups as $group)--}}
-{{--                            <li onclick="chooseContent(this, {{$group}})" class="list-group-item cursor d-flex justify-content-between">--}}
-{{--                                <span>{{$group->name}}</span><b>></b>--}}
-{{--                            </li>--}}
-{{--                        @endforeach--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-{{--                <div class="col-sm-12 col-lg-9">--}}
-{{--                    <div class="card bs-4 d-flex p-3" id="list-group-content">--}}
-{{--                        <span>--}}
-{{--                            не выбрано--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-            <div class="row">
+    <section class="categories pb-5">
+        <div class="container ">
+            <div class="group">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
 
                         @foreach($groups as $group)
                             <div class="swiper-slide">
-                                <div class="card">
+{{--                                <div class="card">--}}
                                 <div><h1>{{$group->name}}</h1></div>
                                 <p>{!! $group->description !!}</p>
-                                </div>
+{{--                                </div>--}}
                             </div>
                         @endforeach
                     </div>
@@ -90,9 +88,11 @@
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </div>
+
             </div>
         </div>
 
+</section>
 @endsection
 
 
