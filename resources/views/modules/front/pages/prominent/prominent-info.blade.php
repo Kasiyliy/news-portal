@@ -1,13 +1,7 @@
 @extends('modules.front.layouts.app-main')
 @section('styles')
+    <link rel="stylesheet" href="{{asset('modules/front/assets/css/swiper.min.css')}}">
     <style>
-
-        .prominent__inner a {
-            font-size: 14px;
-            line-height: 24px;
-            color: #00656D;
-        }
-
         .border-yellow {
             border: 1px solid #F8A555;
         }
@@ -18,19 +12,34 @@
             white-space: nowrap;
         }
 
-        .text-green {
-            font-style: normal;
-            font-weight: normal;
-            font-size: 64px;
-            line-height: 75px;
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
             text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+        .swiper-button-next, .swiper-button-prev{
             color: #00656D;
         }
 
-        .btn-big-green:hover {
-            background-color: #00656D;
-            color: #F8A555;
-        }
 
     </style>
 @endsection
@@ -48,48 +57,32 @@
                         <img src="{{$u_photo->avatar_path}}" alt="">
                     @endforeach
                 </div>
-                <div class="prominent__content row mt-5 mb-5">
-                    <div class="col-12 col-lg-6 mt-1 mb-1 ">
-                        <div class="card border-yellow">
-                            <div class="card-body">
-                                <h4>Сізге көмек керек пе?</h4>
-                                <div class="row">
-                                    <div class="col-12 col-md-8">
-                                        <h5 class="text-muted">
-                                            Егер сіз жобаға немесе мұқтаж жандарға өтеусіз көмек көрсетуге дайын
-                                            болсаңыз, онда сізге осында
-                                        </h5>
-                                    </div>
-                                    <div class="col-12 col-md-4 text-center">
-                                        <div>
-                                            <img src="{{asset('modules/front/assets/img/face.png')}}" alt="">
-                                        </div>
-                                        <div>
-                                            <a class="btn btn-green mt-3 mb-3" href="{{route('prominent')}}">
-                                                Көмек керек
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                <div class="prominent__info">
+                    <h3>Еріктілер ол кімдер?</h3>
+                    <div class="prominent__info-text">
+                        <p>Волонтёрлік (лат.voluntarius — ерікті) — бұл өзара көмек пен дербес көмектің дәстүрлі
+                            түрлерін,
+                            барша жұртшылықтың игілігі үшін ақшалай сыйақыны есептеусіз, ерікті жүзеге асырылатын
+                            қызметтерді ресми көрсету және азаматтық қатысудың басқа да түрлерін қоса алғандағы кең
+                            ауқымды
+                            қызмет. Осылайша, волонтерлік – бұл басқалардың игілігі үшін төленбейтін саналы, ерікті
+                            қызмет. </p>
                     </div>
-                    <div class="col-12 col-lg-6 mt-1 mb-1  ">
+                </div>
+                <div class="prominent__content row mt-5 mb-5">
+                    <div class="col-12 col-lg-6 mt-1 mb-3  ">
                         <div class="card border-yellow">
-                            <div class="card-body">
-                                <h4>Ерікті болғыңыз келеді ме?</h4>
+                            <div class="card-body pt-0">
                                 <div class="row">
-                                    <div class="col-12 col-md-8">
-                                        <h5 class="text-muted">Егер сіз жобаға немесе мұқтаж жандарға өтеусіз көмек көрсетуге дайын
-                                            болсаңыз, онда сізге осында</h5>
+                                    <div class="col-12 col-md-7 align-self-center">
+                                        <h2>Ерікті болғыңыз келеді ме?</h2>
                                     </div>
-                                    <div class="col-12 col-md-4 text-center">
-                                        <div>
-                                            <img src="{{asset('modules/front/assets/img/body.png')}}" alt="">
+                                    <div class="col-12 col-md-5 text-center">
+                                        <div class="prominent__content-img">
+                                            <img src="{{asset('modules/front/assets/img/heart.png')}}" alt="">
                                         </div>
                                         <div>
-                                            <a class="btn btn-green mt-3 mb-3"  href="{{route('prominent')}}">
+                                            <a class="btn btn-green form-control" href="{{route('prominent')}}">
                                                 Ерікті болғым келеді
                                             </a>
                                         </div>
@@ -98,52 +91,143 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row mt-5 mb-5">
-                    <div class="col-12 col-md-6 mt-1 mb-1 ">
-                        <p data-toggle="modal" data-target="#exampleModal" class="text-green btn btn-big-green h-100 w-100 d-flex align-items-center">
-                            Волонтер ол кімдер?
-                        </p>
+                    <div class="col-12 col-lg-6 mt-5 mb-3 mt-md-1 ">
+                        <div class="card border-yellow">
+                            <div class="card-body pt-0">
+                                <div class="row">
+                                    <div class="col-12 col-md-7 align-self-center">
+                                        <h2>Еріктінің көмегі
+                                            қажет пе?</h2>
+                                    </div>
+                                    <div class="col-12 col-md-5 text-center">
+                                        <div class="prominent__content-img">
+                                            <img src="{{asset('modules/front/assets/img/hands.png')}}" alt="">
+                                        </div>
+                                        <div>
+                                            <a class="btn btn-green form-control" href="{{route('prominent')}}">
+                                                Көмек керек
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-6 mt-1 mb-1 ">
-                        <img class="img img-fluid" src="{{asset('modules/front/assets/img/people.png')}}" alt="">
+                </div>
+                <div class="row">
+                    <div class="col-12 py-3">
+                        <h3>Біздің үздік еріктілер</h3>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 d-flex flex-column align-items-center">
+                        <div class="best__prominent-img">
+                            <img src="{{asset('modules/front/assets/img/vol.jpg')}}" alt="">
+                        </div>
+                        <div class="best__prominent-content">
+                            <div class="best__prominent-name">
+                                <p>Ирина Кайратовна</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 d-flex flex-column align-items-center">
+                        <div class="best__prominent-img">
+                            <img src="{{asset('modules/front/assets/img/vol.jpg')}}" alt="">
+                        </div>
+                        <div class="best__prominent-content">
+                            <div class="best__prominent-name">
+                                <p>Ирина Кайратовна</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 d-flex flex-column align-items-center">
+                        <div class="best__prominent-img">
+                            <img src="{{asset('modules/front/assets/img/vol.jpg')}}" alt="">
+                        </div>
+                        <div class="best__prominent-content">
+                            <div class="best__prominent-name">
+                                <p>Ирина Кайратовна</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 d-flex flex-column align-items-center">
+                        <div class="best__prominent-img">
+                            <img src="{{asset('modules/front/assets/img/vol.jpg')}}" alt="">
+                        </div>
+                        <div class="best__prominent-content">
+                            <div class="best__prominent-name">
+                                <p>Ирина Кайратовна</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 py-3">
+                        <h3>Біздің серіктестер</h3>
+                    </div>
+                    <div class="col-12">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="prominent__slider">
+                                        <img src="{{asset('modules/front/assets/img/partner.png')}}" alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="prominent__slider">
+                                        <img src="{{asset('modules/front/assets/img/partner.png')}}" alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="prominent__slider">
+                                        <img src="{{asset('modules/front/assets/img/partner.png')}}" alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="prominent__slider">
+                                        <img src="{{asset('modules/front/assets/img/partner.png')}}" alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="prominent__slider">
+                                        <img src="{{asset('modules/front/assets/img/partner.png')}}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Add Arrows -->
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Волонтёрлік</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        Волонтёрлік (лат.voluntarius — ерікті) — бұл өзара көмек пен дербес көмектің дәстүрлі түрлерін, барша жұртшылықтың игілігі үшін ақшалай сыйақыны есептеусіз, ерікті жүзеге асырылатын қызметтерді ресми көрсету және азаматтық қатысудың басқа да түрлерін қоса алғандағы кең ауқымды қызмет.
-
-                        Осылайша, волонтерлік – бұл басқалардың игілігі үшін төленбейтін саналы, ерікті қызмет. Басқалардың игілігі үшін саналы да риясыз еңбек еткен кез келген адам волонтер болып аталады.
-
-                        Волонтерлік қызметке мыналар жатады: экологиялық қозғалыстар, ағаштар, гүлдер отырғызу, халықтың қауқарсыз тобына: кәрі адамдарға, мүмкіндіктері шектеулі адамдарға, үйсіздерге көмек; СӨС насихаттау; ірі қалалық, халықаралық іс-шаралар, фестивальдар, интернет-еріктіліктерді ұйымдастыруға көмек.
-
-                        Волонтерлік еңбекақыны көздемейді, бірақ көптеген артықшылықтар береді:  адамның жеке тұлға ретінде қалыптасуына, тәжірибе мен жаңа машықтарға үйренуіне, өзін қызметтің түрлі салаларында байқап көру мүмкіндігін береді.
-
-                        Ұйымдастырушылық волонтерліктен басқа әлеуметтік те бар. "Best For Kids" қоғамдық қоры балалар үйіндегі балаларды әлеуметтендіру үшін құрылған. Қор волонтерлері Нұр-Сұлтан қаласынан 120-140 шақырым жерде орналасқан  Ақкөл және Жолымбет екі балалар үйіне мастер-класстар, тренингтер, спорт және мәдени іс-шаралар өткізеді. Волонтер болу үшін көмектесуге және қоғам игілігі үшін жақсы істер атқаруға ниет болса жеткілікті. Еске салайық, 2020 жыл Қазақстан Республикасында еріктілік жылы болып жарияланды.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary"  data-dismiss="modal">Түсінікті</button>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @section('scripts')
+    <script src="{{asset('modules/front/assets/js/swiper.min.js')}}"></script>
+
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            // slidesPerView: 3,
+            spaceBetween: 30,
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            }
+        });
+    </script>
     <script src="{{asset('modules/front/assets/js/jquery.jscroll.min.js')}}"></script>
     <script>
         $(window).on('load', function () {

@@ -107,3 +107,101 @@
 .popover__nav-item{
     color: #000000;
 }
+
+
+.prominent__info {
+    padding: 20px 30px 30px 30px;
+    background: rgba(248, 165, 85, 0.2);
+    border-radius: 10px;
+}
+
+.prominent h3 {
+    font-size: 36px;
+    line-height: 47px;
+    color: #00656D;
+}
+
+.prominent__info-text {
+    border: 1px solid #F8A555;
+    padding: 15px;
+}
+
+.prominent__info-text p {
+    font-size: 18px;
+    line-height: 26px;
+}
+
+.prominent__inner a {
+    font-size: 14px;
+    line-height: 24px;
+    color: #00656D;
+}
+
+.best__prominent-img {
+    width: 205px;
+    height: 205px;
+}
+
+.best__prominent-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #F8A555;
+}
+
+.best__prominent-content{
+    position: relative;
+    height: 50px;
+    width: 140px;
+}
+
+.best__prominent-name {
+    position: absolute;
+    background: #00656D;
+    top:-30px;
+    width: 140px;
+
+}
+
+.best__prominent-name p {
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 5px;
+    margin: 0;
+}
+
+.prominent__content-img {
+    width: 100%;
+    height: 190px;
+    position: relative;
+}
+
+.prominent__content-img img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -50px;
+    left: 0;
+    object-fit: contain;
+}
+
+.prominent__slider{
+    width: 280px;
+    height: 230px;
+}
+
+.prominent__slider img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 767px) {
+    .prominent__content-img img {
+        position: static;
+    }
+
+}
